@@ -1,17 +1,18 @@
 {
-    "publisher": "OpenSemanticLab",
-    "publisherURL": "https://github.com/OpenSemanticLab/PagePackages",
+    "publisher": "OpenSemanticWorld",
+    "publisherURL": "https://github.com/OpenSemanticWorld-Packages/world.opensemantic.core",
     "author": [
         "Simon Stier"
     ],
     "language": "en",
     "licenseName": "CC BY-NC 4.0",
     "packages": {
-        "core": {
-            "globalID": "org.open-semantic-lab.core",
-            "description": "Provides core functionalities of OpenSemanticLab",
-            "version": "0.1.3",
-            "baseURL": "https://raw.githubusercontent.com/OpenSemanticLab/PagePackages/main/core/",
+        "OSW Core": {
+            "globalID": "world.opensemantic.core",
+            "label": "OSW Core",
+            "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
+            "version": "0.2.0",
+            "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
                     "name": "Lustache",
@@ -63,6 +64,7 @@
                 },
                 {
                     "name": "Category",
+                    "label": "CategoryClass",
                     "namespace": "NS_CATEGORY",
                     "urlPath": "Category/Category.slot_main.wikitext",
                     "slots": {
@@ -75,9 +77,6 @@
                         "header": {
                             "urlPath": "Category/Category.slot_header.wikitext"
                         },
-                        "header_template": {
-                            "urlPath": "Category/Category.slot_header_template.wikitext"
-                        },
                         "jsondata": {
                             "urlPath": "Category/Category.slot_jsondata.json"
                         },
@@ -88,6 +87,7 @@
                 },
                 {
                     "name": "Entity",
+                    "label": "Entity",
                     "namespace": "NS_CATEGORY",
                     "urlPath": "Category/Entity.slot_main.wikitext",
                     "slots": {
@@ -110,6 +110,7 @@
                 },
                 {
                     "name": "Item",
+                    "label": "Item",
                     "namespace": "NS_CATEGORY",
                     "urlPath": "Category/Item.slot_main.wikitext",
                     "slots": {
