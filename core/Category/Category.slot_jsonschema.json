@@ -1,0 +1,51 @@
+{
+    "@context": [
+        "/wiki/Category:Entity?action=raw&slot=jsonschema",
+        {
+            "subclass_of": "rdf:subclass_of"
+        }
+    ],
+    "type": "object",
+    "title": "Category",
+    "title*": {
+        "de": "Kategorie",
+        "en": "Category"
+    },
+    "allOf": [
+        {
+            "type": "object",
+            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        }
+    ],
+    "required": [
+        "subclass_of"
+    ],
+    "properties": {
+        "subclass_of": {
+            "title": "Supercategories",
+            "title*": {
+                "en": "Supercategories",
+                "de": "\u00dcberkategorien"
+            },
+            "type": "array",
+            "items": {
+                "title": "Category",
+                "title*": {
+                    "en": "Category",
+                    "de": "Kategorie"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
+                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
+                "labelTemplate": "{{result.printouts.label.[0]}}"
+            },
+            "default": [
+                "Category:Entity"
+            ],
+            "options": {
+                "hidden": false
+            }
+        }
+    }
+}

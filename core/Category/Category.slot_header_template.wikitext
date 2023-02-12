@@ -1,0 +1,3 @@
+{{#set: 
+|IsA=Category:Category
+}}

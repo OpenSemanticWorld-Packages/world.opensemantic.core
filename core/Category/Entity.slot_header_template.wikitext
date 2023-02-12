@@ -1,0 +1,68 @@
+<table class="info_box">
+<tr>
+<th class="heading" colspan="2">{{#if: {{{label|}}}|{{{label|}}} [{{{id|{{PAGENAME}}}}}] | {{{id|{{PAGENAME}}}}} }}</th>
+</tr>
+<tr class="osw-table-details">
+<th>ID</th>
+<td>{{{id|{{PAGENAMEE}}}}}</td>
+</tr>
+<tr class="osw-table-details">
+<th>UUID</th>
+<td>{{{uuid|}}}</td>
+</tr>
+{{#if: {{{label|}}} | <!-- if label is not empty, show -->
+    <tr>
+    <th>{{{_label_label|Label}}}</th>
+    <td>{{{label|}}}</td>
+    </tr>
+    |<!-- else show nothing -->}}
+{{#if: {{{short_name|}}} | <!-- if short_name is not empty, show -->
+    <tr>
+    <th>{{{_label_short_name|Short name}}}</th>
+    <td>{{{short_name|}}}</td>
+    </tr>
+    |<!-- else show nothing -->}}
+{{#if: {{{name|}}} | <!-- if name is not empty, show -->
+    <tr>
+    <th>{{{_label_name|Machine compatible name}}}</th>
+    <td>{{{name|}}}</td>
+    </tr>
+    |<!-- else show nothing -->}}
+{{#if: {{{image|}}}|<!-- show a row if an image exists -->
+    <tr>
+    <td class="picture" colspan="2">[[{{{image|}}}|200x800px]]</td>
+    </tr>
+    |<!-- don't show a row, if there is no image -->}}
+<tr>
+<td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
+    |en=Relations (outgoing)
+    |de=Beziehungen (ausgehend)
+    }}</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center">{{{relations|}}}</td>
+</tr>
+<tr>
+<td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
+    |en=Relations (incoming)
+    |de=Beziehungen (eingehend)
+    }}</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center">
+    {{#ask: [[Category:KB/Relation]][[HasValue::{{FULLPAGENAME}}]] 
+    |?HasProperty=property
+    |format=table
+    |mainlabel=subject
+    |format=plainlist
+    |template=OslTemplate:KB/Relation/ReverseListFormat
+    |named args=yes
+    |@deferred
+    }}</td>
+</tr>
+</table>
+
+=={{{_label_description| {{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung}} }}}==
+{{{description| {{#switch:{{USERLANGUAGECODE}}|en=No description found |de=Keine Beschreibung vorhanden}}}}}
+
+{{{extensions|}}}

@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "rdf": "http://www.w3.org/2000/01/rdf-schema#",
+        "label_": "rdf:label",
+        "wiki": "https://wiki-dev.open-semantic-lab.org/id/",
+        "property": {
+            "@id": "wiki:Property-3A",
+            "@prefix": true
+        },
+        "label": "property:HasLabel",
+        "text": {
+            "@id": "@value"
+        },
+        "lang": {
+            "@id": "@language"
+        }
+    },
+    "title": "Label",
+    "id": "label",
+    "type": "object",
+    "required": [
+        "text",
+        "lang"
+    ],
+    "properties": {
+        "text": {
+            "title": "Text",
+            "title*": {
+                "de": "Text"
+            },
+            "type": "string"
+        },
+        "lang": {
+            "title": "Lang code",
+            "title*": {
+                "de": "Sprache"
+            },
+            "type": "string",
+            "enum": [
+                "en",
+                "de"
+            ],
+            "default": "en"
+        }
+    }
+}

@@ -1,0 +1,206 @@
+{
+    "@context": {
+        "schema": "https://schema.org/",
+        "skos": "https://www.w3.org/TR/skos-reference/",
+        "wiki": "https://wiki-dev.open-semantic-lab.org/id/",
+        "Property": {
+            "@id": "wiki:Property-3A",
+            "@type": "@id",
+            "@prefix": true
+        },
+        "File": {
+            "@id": "https://wiki-dev.open-semantic-lab.org/wiki/Special:Redirect/file/",
+            "@type": "@id",
+            "@prefix": true
+        },
+        "Category": {
+            "@id": "wiki:Category-3A",
+            "@prefix": true
+        },
+        "category": {
+            "@id": "@type"
+        },
+        "name*": "Property:HasName",
+        "label": "skos:prefLabel",
+        "label*": "Property:HasLabel",
+        "text": {
+            "@id": "@value"
+        },
+        "lang": {
+            "@id": "@language"
+        },
+        "query_label": "Property:HasLabel",
+        "description_": "Property:HasDecription",
+        "image": "schema:image",
+        "image*": "Property:HasImage",
+        "short_name": "Property:HasShortName"
+    },
+    "title": "Entity",
+    "type": "object",
+    "id": "entity",
+    "required": [
+        "uuid",
+        "label"
+    ],
+    "properties": {
+        "uuid": {
+            "title": "UUID",
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        },
+        "name": {
+            "title": "Name",
+            "description": "Technical / Machine compatible name",
+            "description*": {
+                "de": "Technischer / Maschinenkompatibler Name"
+            },
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
+        "label": {
+            "type": "array",
+            "title": "Labels",
+            "title*": {
+                "de": "Namen"
+            },
+            "description": "Human readable names. You have to assign at least one.",
+            "description*": {
+                "de": "Menschenlesbarer Namen. Du musst mindestens einen vergeben."
+            },
+            "format": "table",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#label}} |{{lang}}={{text}} {{/label}} {{=<% %>=}} }}"
+                }
+            ],
+            "items": {
+                "title": "Label",
+                "title*": {
+                    "de": "Name"
+                },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "store",
+                        "value": "{{{text}}}@{{{lang}}}"
+                    }
+                ],
+                "$ref": "/wiki/JsonSchema:Label?action=raw"
+            },
+            "minItems": 1
+        },
+        "short_name": {
+            "type": "array",
+            "title": "Short name",
+            "title*": {
+                "de": "Kurzname"
+            },
+            "description": "Abbreviation, Acronym, etc.",
+            "description*": {
+                "de": "Abk\u00fcrzung, Akronym, etc."
+            },
+            "format": "table",
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#label}} |{{lang}}={{text}} {{/label}} {{=<% %>=}} }}"
+            },
+            "items": {
+                "title": "Acronym",
+                "title*": {
+                    "de": "Kurzname"
+                },
+                "$ref": "/wiki/JsonSchema:Label?action=raw"
+            }
+        },
+        "query_label": {
+            "title": "Label",
+            "title*": {
+                "de": "Name"
+            },
+            "type": "string",
+            "options": {
+                "hidden": true,
+                "conditional_visible": {
+                    "modes": [
+                        "query"
+                    ]
+                }
+            }
+        },
+        "description": {
+            "title": "Description",
+            "title*": {
+                "de": "Beschreibung"
+            },
+            "type": "array",
+            "format": "table",
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
+            },
+            "items": {
+                "$ref": "/wiki/JsonSchema:Description?action=raw"
+            }
+        },
+        "image": {
+            "title": "Image",
+            "title*": {
+                "de": "Bild"
+            },
+            "type": "string",
+            "format": "url",
+            "options": {
+                "upload": {}
+            },
+            "links": [
+                {
+                    "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}&width=200&height=200{{/if}}",
+                    "mediaType": "image"
+                },
+                {
+                    "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}{{/if}}",
+                    "rel": "{{#if self}}download{{/if}}",
+                    "download": true
+                }
+            ]
+        },
+        "statements": {
+            "type": "array",
+            "title": "Statements",
+            "title*": {
+                "de": "Aussagen"
+            },
+            "format": "tabs",
+            "items": {
+                "$ref": "/wiki/JsonSchema:Statement?action=raw"
+            }
+        },
+        "extensions": {
+            "title": "Extensions",
+            "title*": {
+                "de": "Erweiterungen"
+            },
+            "type": "array",
+            "format": "tabs",
+            "items": {
+                "title": "Extension",
+                "headerTemplate": "{{i1}} - {{self.osl_template_label}}",
+                "options": {
+                    "keep_oneof_values": false
+                },
+                "oneOf": []
+            },
+            "options": {
+                "hidden": true
+            }
+        }
+    }
+}

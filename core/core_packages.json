@@ -1,0 +1,139 @@
+{
+    "publisher": "OpenSemanticLab",
+    "publisherURL": "https://github.com/OpenSemanticLab/PagePackages",
+    "author": [
+        "Simon Stier"
+    ],
+    "language": "en",
+    "licenseName": "CC BY-NC 4.0",
+    "packages": {
+        "core": {
+            "globalID": "org.open-semantic-lab.core",
+            "description": "Provides core functionalities of OpenSemanticLab",
+            "version": "0.1.3",
+            "baseURL": "https://raw.githubusercontent.com/OpenSemanticLab/PagePackages/main/core/",
+            "pages": [
+                {
+                    "name": "Lustache",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Lustache.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Lustache/Context",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Lustache/Context.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Lustache/Renderer",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Lustache/Renderer.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Lustache/Scanner",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Lustache/Scanner.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Entity",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Entity.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "MwJson",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/MwJson.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Label",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/Label.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "Description",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/Description.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "Category",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/Category.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/Category.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/Category.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/Category.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/Category.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/Category.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/Category.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "Entity",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/Entity.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/Entity.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/Entity.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/Entity.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/Entity.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/Entity.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "Item",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/Item.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/Item.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/Item.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/Item.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/Item.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/Item.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/Item.slot_jsonschema.json"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "@context": [
+        "/wiki/Category:Entity?action=raw&slot=jsonschema",
+        {
+            "type_": {
+                "@id": "@type",
+                "@type": "@id"
+            },
+            "type*": "Property:HasType"
+        }
+    ],
+    "type": "object",
+    "title": "Item",
+    "allOf": [
+        {
+            "type": "object",
+            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        }
+    ],
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "title": "Types/Categories",
+            "title*": {
+                "de": "Typen/Kategorien"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Type",
+                "title*": {
+                    "de": "Type"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
+                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
+                "labelTemplate": "{{result.printouts.label.[0]}}"
+            },
+            "minLength": 1,
+            "default": [
+                "Category:Item"
+            ],
+            "options": {
+                "collapsed": true,
+                "conditional_visible": {
+                    "modes": [
+                        "query"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Entity"
+    ],
+    "uuid": "4240d9f1-cbe6-45bd-b932-0868584f7071",
+    "label": [
+        {
+            "text": "Item",
+            "lang": "en"
+        },
+        {
+            "text": "Gegenstand",
+            "lang": "de"
+        }
+    ],
+    "_debug": false,
+    "description": [
+        {
+            "text": "Item",
+            "lang": "en"
+        }
+    ],
+    "name": "Item",
+    "short_name": [
+        {
+            "text": "Item",
+            "lang": "en"
+        }
+    ]
+}
