@@ -172,36 +172,6 @@
                     "download": true
                 }
             ]
-        },
-        "statements": {
-            "type": "array",
-            "title": "Statements",
-            "title*": {
-                "de": "Aussagen"
-            },
-            "format": "tabs",
-            "items": {
-                "$ref": "/wiki/JsonSchema:Statement?action=raw"
-            }
-        },
-        "extensions": {
-            "title": "Extensions",
-            "title*": {
-                "de": "Erweiterungen"
-            },
-            "type": "array",
-            "format": "tabs",
-            "items": {
-                "title": "Extension",
-                "headerTemplate": "{{i1}} - {{self.osl_template_label}}",
-                "options": {
-                    "keep_oneof_values": false
-                },
-                "oneOf": []
-            },
-            "options": {
-                "hidden": true
-            }
         }
     }
 }
