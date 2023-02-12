@@ -17,6 +17,7 @@ function p.process(frame, mode, title)
 	if (namespace == "Category") then
 		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.header, categories={"Category:Category"}, recursive=true, debug=debug}) end
 		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.footer, categories={"Category:Category"}, recursive=true, debug=debug}) end
+		mw.smw.set( {["IsA"]="Category:Category"}) --Todo: use type / HasType ?
 	else
 		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.header, debug=debug}) end
 		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.footer, debug=debug}) end

@@ -2,7 +2,8 @@
     "@context": [
         "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
-            "subclass_of": "rdf:subclass_of"
+            "subclass_of": "rdf:subclass_of",
+            "utf8_icon": "Property:HasUtf8Icon"
         }
     ],
     "type": "object",
@@ -45,6 +46,20 @@
             ],
             "options": {
                 "hidden": false
+            }
+        },
+        "utf8_icon": {
+            "type": "array",
+            "title": "UTF8-Icons",
+            "description": "see https://www.w3schools.com/charsets/ref_utf_symbols.asp",
+            "description*": {
+                "de": "see https://www.w3schools.com/charsets/ref_utf_symbols.asp"
+            },
+            "items": {
+                "type": "string",
+                "title": "UTF8-Icon",
+                "minLength": 1,
+                "maxLength": 2
             }
         }
     }
