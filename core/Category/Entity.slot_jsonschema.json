@@ -35,6 +35,7 @@
         "image*": "Property:HasImage",
         "short_name": "Property:HasShortName"
     },
+    "uuid": "ce353767-c628-45bd-9d88-d6eb3009aec0",
     "title": "Entity",
     "type": "object",
     "id": "entity",
