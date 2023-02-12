@@ -5,6 +5,7 @@ local p = {} --p stands for package
 p.keys = { --jsonschema / json-ld keys
 	category='type', 
 	subcategory='subclass_of',
+	schema_type='schema_type',
 	property_ns_prefix='Property',
 	schema='osl_schema', 
 	template='eval_template',
@@ -266,6 +267,7 @@ function p.processJsondata(args)
 	if (mode == p.mode.header) then
 		smw_res = p.getSemanticProperties({jsonschema=jsonschema, jsondata=json_res_store.res, store=false, debug=debug})
 		jsonld["@context"] = smw_res.context
+		jsonld["@type"] = p.tableMerge(p.tablefy(jsonschema.schema_type), p.tablefy(jsonld["@type"])) --
 		jsonld['schema:name'] = p.defaultArgPath(jsonld, {p.keys.label, 1, p.keys.text}, jsonld['name']) --google does not support @value and @lang
 		jsonld['schema:description'] = p.defaultArgPath(jsonld, {p.keys.description, 1, p.keys.text}, nil)
 		for k, v in pairs(jsonld) do
@@ -681,6 +683,13 @@ end
 --dumps a table to a string (replaced by mw.dumpObject())
 function p.dump(o)
    return mw.dumpObject(o)
+end
+
+--converts a literal to an table
+function p.tablefy(o)
+	if (o == nil) then o = {} end
+	if (type(o) ~= 'table') then o = {o} end
+	return o
 end
 
 --true if the value is contained in the array (flat arrays only)
