@@ -480,6 +480,8 @@ mw.logObject(p.getSemanticProperties({
 function p.getSemanticProperties(args)
 	local jsondata = p.defaultArg(args.jsondata, {})
 	local schema = p.defaultArg(args.jsonschema, {})
+	local subschema = p.defaultArg(args.subschema, schema)
+	local parent_schema_property = p.defaultArg(args.parent_schema_property, {})
 	local store = p.defaultArg(args.store, false)
 	local root = p.defaultArg(args.root, true)
 	local debug = p.defaultArg(args.debug, false)
@@ -491,7 +493,7 @@ function p.getSemanticProperties(args)
 	local error = ""
 	if (debug) then mw.logObject(context) end
 	if schema ~= nil and context ~= nil then
-		local schema_properties = p.defaultArg(schema.properties, {})
+		local schema_properties = p.defaultArg(subschema.properties, {})
 		if (debug and root) then
 			for k,v in pairs(context) do
 				if type(k) == 'number' then mw.logObject("imports " .. v)
@@ -533,7 +535,7 @@ function p.getSemanticProperties(args)
 					
 					local values = {}
 					if (v[1] == nil) then --key value array = object/dict
-						local id = p.getSemanticProperties({jsonschema=schema, jsondata=v, store=true, root=false, debug=debug, context=context}).id --subobject_id
+						local id = p.getSemanticProperties({jsonschema=schema, jsondata=v, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]}).id --subobject_id
 						if (id ~= nil) then 
 							id = mw.title.getCurrentTitle().fullText .. '#' .. id
 							table.insert(values, id) 
@@ -541,7 +543,7 @@ function p.getSemanticProperties(args)
 					else --list array
 						for i, e in pairs(v) do
 							if (type(e) == 'table') then 
-								local id = p.getSemanticProperties({jsonschema=schema, jsondata=e, store=true, root=false, debug=debug, context=context}).id --subobject_id
+								local id = p.getSemanticProperties({jsonschema=schema, jsondata=e, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]}).id --subobject_id
 								if (id ~= nil) then 
 									id = mw.title.getCurrentTitle().fullText .. '#' .. id
 									table.insert(values, id) 
@@ -578,7 +580,9 @@ function p.getSemanticProperties(args)
 			
 			if jsondata['uuid'] ~= nil then subobjectId = "OSW" .. string.gsub(jsondata['uuid'], "-", "") end
 			properties['@category'] = jsondata[p.keys.category]
-			if (jsondata[p.keys.label] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label], '@')[1] end
+			if (jsondata[p.keys.name] ~= nil) then properties['Display title of'] = jsondata[p.keys.name] 
+			elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label][1], '@')[1] 
+			else properties['Display title of'] = p.defaultArg(parent_schema_property.schema_data['title'], "") end
 			if (p.tableLength(properties) > 0) then
 				store_res = mw.smw.subobject( properties, subobjectId )	--store as subobject
 				if (debug) then mw.logObject("Store subobject with id " .. subobjectId) end
