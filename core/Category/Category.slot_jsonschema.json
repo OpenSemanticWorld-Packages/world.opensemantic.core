@@ -2,7 +2,10 @@
     "@context": [
         "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
-            "subclass_of": "rdf:subclass_of",
+            "subclass_of": {
+                "@id": "rdf:subclass_of",
+                "@type": "@id"
+            },
             "utf8_icon": "Property:HasUtf8Icon"
         }
     ],
