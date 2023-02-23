@@ -6,6 +6,14 @@
                 "@id": "rdf:subclass_of",
                 "@type": "@id"
             },
+            "metaclass": {
+                "@id": "Property:HasMetaCategory",
+                "@type": "@id"
+            },
+            "type": {
+                "@id": "Property:HasType",
+                "@type": "@id"
+            },
             "utf8_icon": "Property:HasUtf8Icon"
         }
     ],
@@ -22,9 +30,55 @@
         }
     ],
     "required": [
-        "subclass_of"
+        "subclass_of",
+        "type"
     ],
     "properties": {
+        "metaclass": {
+            "title": "Metaclasses/-categories",
+            "title*": {
+                "de": "Metaklassen/-kategorien"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Metaclass",
+                "title*": {
+                    "de": "Metaklasse"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
+                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
+                "labelTemplate": "{{result.printouts.label.[0]}}"
+            }
+        },
+        "type": {
+            "title": "Types/Categories",
+            "title*": {
+                "de": "Typen/Kategorien"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Type",
+                "title*": {
+                    "de": "Type"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
+                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
+                "labelTemplate": "{{result.printouts.label.[0]}}"
+            },
+            "minLength": 1,
+            "default": [
+                "Category:Category"
+            ],
+            "options": {
+                "hidden": true
+            }
+        },
         "subclass_of": {
             "title": "Supercategories",
             "title*": {

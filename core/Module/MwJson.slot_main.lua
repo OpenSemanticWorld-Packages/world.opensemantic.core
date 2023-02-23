@@ -238,6 +238,7 @@ function p.processJsondata(args)
 	local recursive = p.defaultArg(args.recursive, true)
 	local mode = p.defaultArg(args.mode, p.mode.header)
 	local debug = p.defaultArg(args.debug, false)
+	local title = mw.title.getCurrentTitle()
 	
 	local wikitext = ""
 	local msg = "" --debug msg
@@ -305,7 +306,7 @@ function p.processJsondata(args)
 	
 	--local display_label = ""
 	--if (jsondata[p.keys.label] ~= nil) then display_label = p.splitString(jsondata[p.keys.label], '@')[1] end
-	wikitext = wikitext .. "\n" .. p.setCategories({categories=jsondata[p.keys.category], sortkey=display_label}).wikitext --items
+	if (title.nsText ~= "Category") then wikitext = wikitext .. "\n" .. p.setCategories({categories=jsondata[p.keys.category], sortkey=display_label}).wikitext end--items
 	wikitext = wikitext .. p.setCategories({categories=jsondata[p.keys.subcategory], sortkey=display_label}).wikitext --classes/categories
 	
 	if (smw_res ~= nil) then
@@ -371,7 +372,7 @@ function p.renderInfoBox(args)
 				end
 			else
 				local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-				if (p_type == '@id') then e = "[[" .. string.gsub(e, "Category:", ":Category:") .. "]]" end
+				if (p_type == '@id') then v = "[[" .. string.gsub(v, "Category:", ":Category:") .. "]]" end
 				cell:wikitext( v )
 			end
 		end

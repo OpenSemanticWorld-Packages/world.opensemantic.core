@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.2.2",
+            "version": "0.3.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -82,6 +82,9 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/Category.slot_jsonschema.json"
+                        },
+                        "schema_template": {
+                            "urlPath": "Category/Category.slot_schema_template.text"
                         }
                     }
                 },
