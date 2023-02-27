@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.3.0",
+            "version": "0.4.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -147,6 +147,78 @@
                     "name": "Helper/UI/Tiles/Tile",
                     "namespace": "NS_TEMPLATE",
                     "urlPath": "Template/Helper/UI/Tiles/Tile.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Helper/UI/VE/Hidden",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Helper/UI/VE/Hidden.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Helper/UI/VE/Visible",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Helper/UI/VE/Visible.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Decoration/Annotation",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Decoration/Annotation.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Decoration/ColoredText",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Decoration/ColoredText.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/DrawIO",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/DrawIO.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/Graph",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/Graph.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/Kekule",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/Kekule.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/Kekule/Default",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/Kekule/Default.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/Spreadsheet",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/Spreadsheet.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/SvgEdit",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/SvgEdit.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/Wellplate",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/Wellplate.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Viewer/Kekule",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Viewer/Kekule.slot_main.wikitext",
                     "slots": {}
                 }
             ]
