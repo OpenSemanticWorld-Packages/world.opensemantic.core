@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.5.2",
+            "version": "0.5.3",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -160,6 +160,26 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/Property.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "ObjectProperty",
+                    "label": "ObjectProperty",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/ObjectProperty.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/ObjectProperty.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/ObjectProperty.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/ObjectProperty.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/ObjectProperty.slot_jsonschema.json"
                         }
                     }
                 },

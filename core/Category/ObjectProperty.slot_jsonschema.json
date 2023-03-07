@@ -1,0 +1,30 @@
+{
+    "@context": [
+        "/wiki/Category:Property?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Property?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "c1ffbdc5-628d-4192-a9d0-3d608dac31a8",
+    "title": "ObjectProperty",
+    "title*": {
+        "en": "Object property",
+        "de": "Objektattribut"
+    },
+    "description": "The named relation between a subject and an object",
+    "description*": {
+        "en": "The named relation between a subject and an object",
+        "de": "Die benannte Beziehung zwischen einem Subjekt und einem Objekt"
+    },
+    "properties": {
+        "property_type": {
+            "default": "Page",
+            "options": {
+                "hidden": "true"
+            }
+        }
+    }
+}

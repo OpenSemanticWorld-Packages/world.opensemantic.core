@@ -1,0 +1,33 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Property"
+    ],
+    "uuid": "c1ffbdc5-628d-4192-a9d0-3d608dac31a8",
+    "label": [
+        {
+            "text": "Object property",
+            "lang": "en"
+        },
+        {
+            "text": "Objektattribut",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "The named relation between a subject and an object",
+            "lang": "en"
+        },
+        {
+            "text": "Die benannte Beziehung zwischen einem Subjekt und einem Objekt",
+            "lang": "de"
+        }
+    ],
+    "utf8_icon": [
+        "\u21e8"
+    ],
+    "name": "ObjectProperty"
+}
