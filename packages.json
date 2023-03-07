@@ -63,6 +63,12 @@
                     "slots": {}
                 },
                 {
+                    "name": "Statement",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/Statement.slot_main.json",
+                    "slots": {}
+                },
+                {
                     "name": "Category",
                     "label": "CategoryClass",
                     "namespace": "NS_CATEGORY",

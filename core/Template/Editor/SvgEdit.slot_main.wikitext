@@ -4,7 +4,8 @@
 }}
 {{Template:Helper/UI/VE/Hidden 
 |content=<div class="SvgEdit" style="width: {{{width|100%}}}; height: 500px;">{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.svg</div>
-}}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
+}}<div style="display:none">[[Media:{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.svg]]</div></includeonly><!-- Hidden link to file to include file in page images-->
+<noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
 {
 	"params": {
