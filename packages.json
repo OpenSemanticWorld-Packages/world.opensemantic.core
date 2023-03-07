@@ -144,6 +144,26 @@
                     }
                 },
                 {
+                    "name": "Property",
+                    "label": "Property",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/Property.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/Property.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/Property.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/Property.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/Property.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
                     "name": "Helper/UI/Tiles/Grid",
                     "namespace": "NS_TEMPLATE",
                     "urlPath": "Template/Helper/UI/Tiles/Grid.slot_main.wikitext",

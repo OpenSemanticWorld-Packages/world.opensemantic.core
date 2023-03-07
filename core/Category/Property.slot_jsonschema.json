@@ -1,0 +1,178 @@
+{
+    "@context": [
+        "/wiki/Category:Entity?action=raw&slot=jsonschema",
+        {
+            "type": {
+                "@id": "Property:HasType",
+                "@type": "@id"
+            },
+            "property_type": "Property:Has_type",
+            "external_uri": "Property:External_formatter_uri",
+            "ontology_iri": "Property:Equivalent URI",
+            "subproperty_of": {
+                "@id": "Property:Subproperty_of",
+                "@type": "@id"
+            }
+        }
+    ],
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        }
+    ],
+    "uuid": "19a1a69a-6843-442c-a9cf-b8e884db7047",
+    "title": "Property",
+    "title*": {
+        "de": "Attribut",
+        "en": "Property"
+    },
+    "required": [
+        "name",
+        "property_type"
+    ],
+    "properties": {
+        "name": {
+            "description": "For properties this value is the primary identifier.",
+            "description*": {
+                "de": "F\u00fcr Attribute ist dieser Wert der prim\u00e4re Identifier."
+            },
+            "options": {
+                "hidden": false
+            }
+        },
+        "property_type": {
+            "title": "Data type",
+            "title*": {
+                "de": "Datentyp"
+            },
+            "description": "see https://www.semantic-mediawiki.org/wiki/Help:List_of_datatypes",
+            "type": "string",
+            "enum": [
+                "Annotation URI",
+                "Boolean",
+                "Email",
+                "Number",
+                "Page",
+                "Temperature",
+                "Text",
+                "URL",
+                "Date",
+                "Code",
+                "Telephone number",
+                "Quantity",
+                "Record",
+                "Monolingual text",
+                "External identifier",
+                "Reference",
+                "Keyword",
+                "Geographic coordinates"
+            ],
+            "default": "Page",
+            "options": {
+                "enum_titles": [
+                    "Annotation URI",
+                    "Boolean",
+                    "Email",
+                    "Number",
+                    "Page",
+                    "Temperature",
+                    "Text",
+                    "URL",
+                    "Date",
+                    "Code",
+                    "Telephone number",
+                    "Quantity",
+                    "Record",
+                    "Monolingual text",
+                    "External identifier",
+                    "Reference",
+                    "Keyword",
+                    "Geographic coordinates"
+                ],
+                "enum_titles*": {
+                    "de": [
+                        "Annotations-URI",
+                        "Wahrheitswert",
+                        "Email",
+                        "Zahl",
+                        "Seite",
+                        "Temperatur",
+                        "Text",
+                        "URL",
+                        "Datum",
+                        "Programmcode",
+                        "Telefonnummer",
+                        "Mengengr\u00f6\u00dfe",
+                        "Aufzeichnung",
+                        "Einsprachiger Text",
+                        "Externe ID",
+                        "Verweis",
+                        "Schlagwort",
+                        "Geographische Koordinaten"
+                    ]
+                }
+            }
+        },
+        "allowed_value": {
+            "title": "Allowed values",
+            "title*": {
+                "de": "Erlaubte Werte"
+            },
+            "type": "array",
+            "items": {
+                "title": "Value",
+                "title*": {
+                    "de": "Wert"
+                },
+                "type": "string"
+            }
+        },
+        "ontology_iri": {
+            "title": "Ontology IRI(s)",
+            "title*": {
+                "de": "Ontologie-IRI(s)"
+            },
+            "description": "e. g. from https://www.qudt.org/doc/DOC_VOCAB-QUANTITY-KINDS.html",
+            "type": "array",
+            "items": {
+                "title": "IRI",
+                "type": "string",
+                "format": "url"
+            }
+        },
+        "subproperty_of": {
+            "title": "Subproperty of",
+            "title*": {
+                "de": "Unterattribut von"
+            },
+            "type": "string",
+            "format": "autocomplete",
+            "options": {
+                "autocomplete": {
+                    "category": "Category:Property"
+                }
+            }
+        },
+        "type": {
+            "title": "Type/Category",
+            "title*": {
+                "de": "Typ/Kategorie"
+            },
+            "description": "see also https://www.w3.org/TR/owl2-syntax/#Object_Properties",
+            "type": "array",
+            "items": {
+                "title": "Type",
+                "title*": {
+                    "de": "Typ"
+                },
+                "type": "string"
+            }
+        }
+    },
+    "description": "The named relation between a subject and an object",
+    "description*": {
+        "en": "The named relation between a subject and an object",
+        "de": "Die benannte Beziehung zwischen einem Subjekt und einem Objekt"
+    }
+}
