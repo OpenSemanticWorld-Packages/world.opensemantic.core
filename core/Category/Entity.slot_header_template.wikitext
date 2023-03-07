@@ -35,27 +35,28 @@
     |<!-- don't show a row, if there is no image -->}}
 <tr>
 <td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
-    |en=Relations (outgoing)
-    |de=Beziehungen (ausgehend)
+    |en=Statements (outgoing)
+    |de=Aussagen (ausgehend)
     }}</td>
 </tr>
 <tr>
-<td colspan="2" style="text-align:center">{{{relations|}}}</td>
+<td colspan="2" style="text-align:center">{{{statements|}}}</td>
 </tr>
 <tr>
 <td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
-    |en=Relations (incoming)
-    |de=Beziehungen (eingehend)
+    |en=Statements (incoming)
+    |de=Aussagen (eingehend)
     }}</td>
 </tr>
 <tr>
 <td colspan="2" style="text-align:center">
-    {{#ask: [[Category:KB/Relation]][[HasValue::{{FULLPAGENAME}}]] 
+    {{#ask: [[HasObject::{{FULLPAGENAME}}]] 
+    |?HasSubject=subject
+    |?-Has_subobject=default_subject
     |?HasProperty=property
-    |format=table
-    |mainlabel=subject
+    |mainlabel=statement
     |format=plainlist
-    |template=OslTemplate:KB/Relation/ReverseListFormat
+    |template=Template:Helper/UI/Query/ReverseListFormat
     |named args=yes
     |@deferred
     }}</td>

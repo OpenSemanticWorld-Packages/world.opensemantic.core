@@ -155,7 +155,7 @@ function p.expandEmbeddedTemplates(args)
 			end
 		elseif type(v) == 'table' then 
 			if (v[1] == nil) then --key value array = object/dict
-				local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=v, template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+				local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=v, jsonschema=p.defaultArgPath(jsonschema, {"properties", k}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
 				msg = msg .. sub_res.debug_msg
 				jsondata[k] = sub_res.res
 				--if (sub_res.unparsed ~= nil) then jsondata[k] = sub_res.unparsed else jsondata[k] = sub_res.wikitext end
@@ -172,7 +172,7 @@ function p.expandEmbeddedTemplates(args)
 							elseif (debug) then msg = msg .. "Ignore eval_template" .. mw.dumpObject( t ) .. "\n<br>"
 							end
 						end
-						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
 						msg = msg .. sub_res.debug_msg
 						if (type(sub_res.res) == 'table') then 
 							if (debug) then msg = msg .. "Values for " .. k .. " contains non-literal items: " .. mw.dumpObject( sub_res.res ) .. " => skip value in wikitemplate array param creation\n<br>" end
@@ -250,7 +250,7 @@ function p.processJsondata(args)
 	if (categories == nil) then categories = jsondata[p.keys.category] end
 	
 	local schema_res = p.walkJsonSchema({jsonschema=jsonschema, categories=categories, mode=mode, recursive=recursive, debug=debug})
-	jsonschema = schema_res.jsonschema
+	jsonschema = p.expandJsonRef({json=schema_res.jsonschema, debug=debug}).json
 	--mw.logObject(jsonschema)
 	
 	local display_label = p.defaultArgPath(jsondata, {p.keys.name}, "")
@@ -274,7 +274,7 @@ function p.processJsondata(args)
 		for k, v in pairs(jsonld) do
 			if (type(v) == "string") then
 				local vpart = p.splitString(v, ':')
-				if (vpart[1] == "File") then jsonld[k] = mw.getCurrentFrame():callParserFunction( 'filepath', { vpart[2] } ) end --google does not follow redirects via "File":"wiki:Special:Redirect/file/"
+				if (p.tableLength(vpart) == 2 and vpart[1] == "File") then jsonld[k] = mw.getCurrentFrame():callParserFunction( 'filepath', { vpart[2] } ) end --google does not follow redirects via "File":"wiki:Special:Redirect/file/"
 			end
 		end
 		wikitext = wikitext .. "<div class='jsonld-header' style='display:none' data-jsonld='" .. mw.text.jsonEncode( jsonld ) .. "'></div>"
@@ -433,15 +433,36 @@ function p.setCategories(args)
 end
 
 --[[ test
-category = "Category:Hardware"
-category2 = "Category:OSW80e240a2e17d4ae5adfe6419051aa0bb"
-jsonschema =p.walkJsonSchema({jsonschema=p.loadJson({title=category, slot="jsonschema"}).json, debug=true}).jsonschema
+category = "Category:Entity"
+jsonschema = p.expandJsonRef({json=p.loadJson({title=category, slot="jsonschema"}).json}).json
+mw.logObject(p.buildContext({jsonschema=jsonschema, debug=true}))
+or
+jsonschema = {
+	["@context"]={test="level 0"}, 
+	properties={
+		test={
+			type="object",
+			["@context"]={test1="level 1"}, 
+			properties= {
+				test= {
+					type="array",
+					items= {
+						type="object",
+						["@context"]={test2="level 2"}
+					}
+				}
+			}
+		}
+	}
+}
 mw.logObject(p.buildContext({jsonschema=jsonschema, debug=true}))
 --]]
+
 function p.buildContext(args)
 	local schema = p.defaultArg(args.jsonschema, {})
+	--mw.logObject(schema)
 	local context = p.defaultArg(args.context, schema[p.keys.context])
-	local result = {}
+	local result = p.defaultArg(args.result, {})
 	if (context ~= nil) then
 		for k,v in pairs(context) do
 			if type(k) == 'number' and type(v) == 'string' then
@@ -453,6 +474,24 @@ function p.buildContext(args)
 			else 
 				result[k] = v	
 			end
+		end
+	end
+	local properties = p.defaultArg(schema.properties, {})
+
+	for k,v in pairs(properties) do
+		local subcontext = nil
+		if (p.defaultArgPath(properties, {k, 'type'}) == 'object') then
+			--mw.logObject(properties[k])
+			subcontext = p.buildContext({jsonschema=properties[k]}).context
+		elseif (p.defaultArgPath(properties, {k, 'items', 'type'}) == 'object') then 
+			mw.logObject(properties[k]['items'])
+			subcontext = p.buildContext({jsonschema=properties[k]['items']}).context
+		end
+		if (subcontext ~= nil and p.tableLength(subcontext) > 0) then
+			if (result[k] == nil) then result[k] = {} end
+			if (type(result[k]) == 'string') then result[k] = {["@id"]=result[k]} end
+			if (result[k][p.keys.context] == nil) then result[k][p.keys.context] = {} end
+			result[k][p.keys.context] = p.tableMerge(result[k][p.keys.context], subcontext)
 		end
 	end
 	return {context=result}
@@ -492,7 +531,7 @@ function p.getSemanticProperties(args)
 	
 	local properties = {} --semantic properties
 	local property_data = {}
-	local context = p.defaultArg(args.context, p.buildContext({jsonschema=schema}).context) --ToDo: subcontext for specific properties
+	local context = p.defaultArg(args.context, p.buildContext({jsonschema=schema}).context)
 	local error = ""
 	if (debug) then mw.logObject(context) end
 	if schema ~= nil and context ~= nil then
@@ -535,22 +574,27 @@ function p.getSemanticProperties(args)
 			if type(v) == 'table' then 
 				--if (debug) then mw.logObject("prop " .. k .. " = " .. mw.dumpObject(v)) end
 				if (mapping_found) then
-					
+					local subcontext = p.copy(p.defaultArgPath(context, {k, p.keys.context}, {})) --deepcopy, see also https://phabricator.wikimedia.org/T269990
+					context = p.tableMerge(context, subcontext) -- pull up nested context
 					local values = {}
 					if (v[1] == nil) then --key value array = object/dict
-						local id = p.getSemanticProperties({jsonschema=schema, jsondata=v, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]}).id --subobject_id
+						local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=v, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
+						local id = subproperties_res.id --subobject_id
 						if (id ~= nil) then 
 							id = mw.title.getCurrentTitle().fullText .. '#' .. id
 							table.insert(values, id) 
 						end
+						properties = p.processStatement({subject=properties, statement=subproperties_res.properties, debug=debug}).subject
 					else --list array
 						for i, e in pairs(v) do
 							if (type(e) == 'table') then 
-								local id = p.getSemanticProperties({jsonschema=schema, jsondata=e, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]}).id --subobject_id
+								local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=e, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
+								local id = subproperties_res.id --subobject_id
 								if (id ~= nil) then 
 									id = mw.title.getCurrentTitle().fullText .. '#' .. id
 									table.insert(values, id) 
 								end
+								properties = p.processStatement({subject=properties, statement=subproperties_res.properties, debug=debug}).subject
 							else values = v end --plain strings
 						end
 					end 
@@ -588,7 +632,7 @@ function p.getSemanticProperties(args)
 			else properties['Display title of'] = p.defaultArg(parent_schema_property.schema_data['title'], "") end
 			if (p.tableLength(properties) > 0) then
 				store_res = mw.smw.subobject( properties, subobjectId )	--store as subobject
-				if (debug) then mw.logObject("Store subobject with id " .. subobjectId) end
+				if (debug) then mw.logObject("Store subobject with id " .. (subobjectId or "<random>")) end
 			end
 		end
 	end
@@ -598,6 +642,26 @@ function p.getSemanticProperties(args)
 	end
 	if (debug) then mw.logObject(error) end
 	return {properties=properties, definitions=property_data, id=subobjectId, context=context, error=error}
+end
+
+function p.processStatement(args)
+	local statement = p.defaultArg(args.statement)
+	local subject = p.defaultArg(args.subject)
+	local debug = p.defaultArg(args.debug, false)
+
+	-- handle "approved" statements
+	if (statement["HasSubject"] == nil or statement["HasSubject"][1] == nil or statement["HasSubject"][1] == "") then --implicit subject
+		if (statement["HasProperty"] ~= nil and statement["HasProperty"][1] ~= nil and statement["HasProperty"][1] ~= "" and statement["HasObject"] ~= nil) then
+			local property = p.splitString(statement["HasProperty"][1], ":")[2]
+			if (debug) then
+				mw.log("Set property " .. property .. " from statement to ")
+				mw.logObject(statement["HasObject"])
+			end
+			if (subject[property] == nil) then subject[property] = {} end
+			for k, v in pairs(statement["HasObject"]) do table.insert(subject[property], v) end
+		end
+	end
+	return {subject=subject}
 end
 
 -- build a semantic query based on provided properties and their schema definition
@@ -646,6 +710,47 @@ function p.getSemanticQuery(args)
 end
 
 -- HELPERS
+
+-- expands all $ref
+--test: mw.logObject(p.expandJsonRef({json={items={test="value", ["$ref"]="/wiki/JsonSchema:Label?action=raw"}}}).json)
+--test: mw.logObject(p.expandJsonRef({json={["$ref"]="/wiki/Category:Item?action=raw&slot=jsonschema"}}).json)
+--test: mw.logObject(p.expandJsonRef({json={["$ref"]="/wiki/JsonSchema:Statement?action=raw"}}).json)
+function p.expandJsonRef(args)
+	local json = p.defaultArg(args.json, {})
+	local debug = p.defaultArg(args.debug, false)
+	local refs = {}
+    for k,v in pairs(json) do
+    	if (k == "$ref") then
+    		-- e. g. "/wiki/JsonSchema:Label?action=raw" or "/wiki/Category:Entity?action=raw&slot=jsonschema"
+    		if string.find(v, "#") then
+    			if (debug) then mw.logObject("Skip relative reference") end
+    		else
+	    		local uri = mw.uri.new(v)
+	    		local ref_title = mw.text.split(uri.path, "wiki/", true)[2]
+	    		local ref_slot = uri.query["slot"]
+	    		if (debug) then 
+		    		if (ref_slot ~= nil) then mw.logObject("Ref found with title " .. ref_title .. " and slot " .. ref_slot)
+		    		else mw.logObject("Ref found with title " .. ref_title) end
+	    		end
+	    		local ref_json = p.loadJson({title=ref_title, slot=ref_slot}).json
+	    		refs[v] = ref_json
+	    		json[k] = nil
+    		end
+    	end
+    end
+	--mw.logObject(refs)
+	for k,v in pairs(refs) do
+		json = p.tableMerge(v, json)
+	end
+    for k,v in pairs(json) do
+    	if type(v) == "table" then
+            json[k] = p.expandJsonRef({json=v}).json
+        end
+    end
+    
+    return {json=json}
+end
+
 function p.defaultArg(arg, default)
 	if (arg == nil) then 
 		return default

@@ -30,10 +30,12 @@
             "@id": "@language"
         },
         "query_label": "Property:HasLabel",
+        "description": "skos:definition",
         "description_": "Property:HasDecription",
         "image": "schema:image",
         "image*": "Property:HasImage",
-        "short_name": "Property:HasShortName"
+        "short_name": "Property:HasShortName",
+        "statements": "Property:HasStatement"
     },
     "uuid": "ce353767-c628-45bd-9d88-d6eb3009aec0",
     "title": "Entity",
@@ -172,6 +174,22 @@
                     "download": true
                 }
             ]
+        },
+        "statements": {
+            "type": "array",
+            "title": "Statements",
+            "title*": {
+                "de": "Aussagen"
+            },
+            "format": "tabs",
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#statements}}.. {{#predicate}}[[{{predicate}}]]{{/predicate}} {{#object}}[[{{object}}]]{{/object}}<br>{{/statements}}"
+            },
+            "items": {
+                "$ref": "/wiki/JsonSchema:Statement?action=raw"
+            }
         }
     }
 }

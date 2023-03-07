@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -159,6 +159,12 @@
                     "name": "Helper/UI/VE/Visible",
                     "namespace": "NS_TEMPLATE",
                     "urlPath": "Template/Helper/UI/VE/Visible.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Helper/UI/Query/ReverseListFormat",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Helper/UI/Query/ReverseListFormat.slot_main.wikitext",
                     "slots": {}
                 },
                 {
