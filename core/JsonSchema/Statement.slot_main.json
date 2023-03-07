@@ -1,0 +1,96 @@
+{
+    "@context": {
+        "Property": "https://wiki-dev.open-semantic-lab.org/id/Property-3A",
+        "subject": "Property:HasSubject",
+        "predicate": "Property:HasProperty",
+        "object": "Property:HasObject",
+        "substatements": "Property:HasStatement",
+        "label": "Property:HasLabel"
+    },
+    "title": "Statement",
+    "type": "object",
+    "id": "statement",
+    "required": [
+        "uuid",
+        "predicate"
+    ],
+    "headerTemplate": "... {{self.predicate}} ...",
+    "properties": {
+        "uuid": {
+            "title": "UUID",
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        },
+        "label": {
+            "title": "Label",
+            "description": "Human readable name",
+            "type": "array",
+            "items": {
+                "title": "Label",
+                "title*": {
+                    "de": "Name"
+                },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "store",
+                        "value": "{{{text}}}@{{{lang}}}"
+                    }
+                ],
+                "$ref": "/wiki/JsonSchema:Label?action=raw"
+            }
+        },
+        "subject": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Subject",
+            "title*": {
+                "de": "Subjekt"
+            },
+            "options": {
+                "autocomplete": {
+                    "category": "Category:Entity",
+                    "query_filter_property": "HasName"
+                }
+            }
+        },
+        "predicate": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Predicate",
+            "title*": {
+                "de": "Pr\u00e4dikat"
+            },
+            "options": {
+                "autocomplete": {
+                    "category": "Category:Property"
+                }
+            }
+        },
+        "object": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Object",
+            "title*": {
+                "de": "Objekt"
+            },
+            "options": {
+                "autocomplete": {
+                    "category": "Category:Entity",
+                    "query_filter_property": "HasName"
+                }
+            }
+        },
+        "substatements": {
+            "title": "Substatements",
+            "type": "array",
+            "format": "tabs",
+            "items": {
+                "$ref": "#"
+            }
+        }
+    }
+}
