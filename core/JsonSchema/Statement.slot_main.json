@@ -3,18 +3,20 @@
         "Property": "https://wiki-dev.open-semantic-lab.org/id/Property-3A",
         "subject": "Property:HasSubject",
         "predicate": "Property:HasProperty",
+        "property": "Property:HasProperty",
+        "quantity": "Property:HasProperty",
         "object": "Property:HasObject",
+        "value": "Property:HasObject",
+        "unit": "Property:HasUnit",
         "substatements": "Property:HasStatement",
         "label": "Property:HasLabel"
     },
-    "title": "Statement",
+    "common_definitions": {},
     "type": "object",
     "id": "statement",
     "required": [
-        "uuid",
-        "predicate"
+        "uuid"
     ],
-    "headerTemplate": "... {{self.predicate}} ...",
     "properties": {
         "uuid": {
             "title": "UUID",
@@ -57,33 +59,6 @@
                 }
             }
         },
-        "predicate": {
-            "type": "string",
-            "format": "autocomplete",
-            "title": "Predicate",
-            "title*": {
-                "de": "Pr\u00e4dikat"
-            },
-            "options": {
-                "autocomplete": {
-                    "category": "Category:Property"
-                }
-            }
-        },
-        "object": {
-            "type": "string",
-            "format": "autocomplete",
-            "title": "Object",
-            "title*": {
-                "de": "Objekt"
-            },
-            "options": {
-                "autocomplete": {
-                    "category": "Category:Entity",
-                    "query_filter_property": "HasName"
-                }
-            }
-        },
         "substatements": {
             "title": "Substatements",
             "type": "array",
@@ -92,5 +67,171 @@
                 "$ref": "#"
             }
         }
-    }
+    },
+    "oneOf": [
+        {
+            "$ref": "#/common_definitions",
+            "title": "Object Statement",
+            "headerTemplate": "... {{self.predicate}} ...",
+            "required": [
+                "uuid",
+                "predicate",
+                "object"
+            ],
+            "properties": {
+                "predicate": {
+                    "type": "string",
+                    "format": "autocomplete",
+                    "title": "Predicate",
+                    "title*": {
+                        "de": "Pr\u00e4dikat"
+                    },
+                    "options": {
+                        "autocomplete": {
+                            "category": "Category:Property"
+                        }
+                    }
+                },
+                "object": {
+                    "type": "string",
+                    "format": "autocomplete",
+                    "title": "Object",
+                    "title*": {
+                        "de": "Objekt"
+                    },
+                    "options": {
+                        "autocomplete": {
+                            "category": "Category:Entity",
+                            "query_filter_property": "HasName"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "$ref": "#/common_definitions",
+            "title": "Data Statement",
+            "title*": {
+                "de": "Datenangabe"
+            },
+            "headerTemplate": "... {{self.property}} ...",
+            "required": [
+                "uuid",
+                "property",
+                "value"
+            ],
+            "properties": {
+                "property": {
+                    "type": "string",
+                    "format": "autocomplete",
+                    "title": "Property",
+                    "title*": {
+                        "de": "Attribut"
+                    },
+                    "options": {
+                        "autocomplete": {
+                            "category": "Category:DataProperty"
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "title": "Value",
+                    "title*": {
+                        "de": "Wert"
+                    }
+                }
+            }
+        },
+        {
+            "$ref": "#/common_definitions",
+            "title": "Quantity Statement",
+            "title*": {
+                "de": "Gr\u00f6\u00dfenangabe"
+            },
+            "headerTemplate": "... {{self.quantity}} ...",
+            "required": [
+                "uuid",
+                "quantity",
+                "value",
+                "unit",
+                "unit_symbol",
+                "numerical_value"
+            ],
+            "properties": {
+                "quantity": {
+                    "type": "string",
+                    "format": "autocomplete",
+                    "title": "Property",
+                    "title*": {
+                        "de": "Attribut"
+                    },
+                    "options": {
+                        "autocomplete": {
+                            "category": "Category:QuantityProperty"
+                        }
+                    }
+                },
+                "numerical_value": {
+                    "type": "string",
+                    "format": "number",
+                    "title": "Numerical value",
+                    "title*": {
+                        "de": "Zahlenwert"
+                    }
+                },
+                "unit": {
+                    "type": "string",
+                    "format": "autocomplete",
+                    "title": "Unit",
+                    "title*": {
+                        "de": "Einheit"
+                    },
+                    "watch": {
+                        "quantity": "statement.quantity",
+                        "unit_symbol": "statement.unit_symbol"
+                    },
+                    "options": {
+                        "autocomplete": {
+                            "query": "[[-HasInputUnit::{{$(quantity)}}]]|?Display_title_of=label",
+                            "render_template": {
+                                "type": [
+                                    "handlebars"
+                                ],
+                                "value": "{{result.printouts.label.[0]}}"
+                            },
+                            "field_maps": [
+                                {
+                                    "source_path": "$",
+                                    "template": "{{{result.printouts.label.[0]}}}",
+                                    "target_path": "$(unit_symbol)"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "unit_symbol": {
+                    "type": "string",
+                    "options": {
+                        "hidden": true
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "title": "Value",
+                    "title*": {
+                        "de": "Wert"
+                    },
+                    "watch": {
+                        "numerical_value": "statement.numerical_value",
+                        "unit_symbol": "statement.unit_symbol"
+                    },
+                    "template": "{{{numerical_value}}} {{{unit_symbol}}}",
+                    "options": {
+                        "hidden": true
+                    }
+                }
+            }
+        }
+    ]
 }

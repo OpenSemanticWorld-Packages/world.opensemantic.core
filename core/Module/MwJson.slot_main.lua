@@ -254,7 +254,9 @@ function p.processJsondata(args)
 	--mw.logObject(jsonschema)
 	
 	local display_label = p.defaultArgPath(jsondata, {p.keys.name}, "")
-	if (display_label == "") then display_label = p.defaultArgPath(jsondata, {p.keys.label, 1, p.keys.text}, "") end
+	if (display_label == "" or (title.nsText ~= "Category" and title.nsText ~= "Property")) then 
+		display_label = p.defaultArgPath(jsondata, {p.keys.label, 1, p.keys.text}, "") --prefere label for all non-category and non-property pages
+	end 
 	
 	local jsonld = p.copy(jsondata)
 	local json_data_store = p.copy(jsondata)
