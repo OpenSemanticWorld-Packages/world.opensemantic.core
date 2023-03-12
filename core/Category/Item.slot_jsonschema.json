@@ -51,6 +51,53 @@
                     ]
                 }
             }
+        },
+        "entry_access": {
+            "type": "object",
+            "title": "Access restrictions",
+            "title*": {
+                "de": "Zugriffsbeschr\u00e4nkungen"
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} {{#ifeq: <%={{ }}=%> {{{entry_access.read.level}}} {{=<% %>=}} |public|{{#set: |Visible to=public }} | }} <%={{ }}=%>"
+            },
+            "properties": {
+                "read": {
+                    "type": "object",
+                    "title": "Read access",
+                    "title*": {
+                        "de": "Lesezugriff"
+                    },
+                    "properties": {
+                        "level": {
+                            "type": "string",
+                            "title": "Level",
+                            "title*": {
+                                "de": "Level"
+                            },
+                            "enum": [
+                                "public",
+                                "internal",
+                                "restricted"
+                            ],
+                            "options": {
+                                "enum_titles": [
+                                    "Public",
+                                    "For all users",
+                                    "For some users"
+                                ],
+                                "enum_titles*": [
+                                    "\u00d6ffentlich",
+                                    "F\u00fcr alle Nutzer",
+                                    "F\u00fcr bestimmte Nutzer"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
