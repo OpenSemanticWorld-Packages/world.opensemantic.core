@@ -35,9 +35,17 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
-                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
-                "labelTemplate": "{{result.printouts.label.[0]}}"
+                "options": {
+                    "autocomplete": {
+                        "query": "[[IsA::Category:Category]] |?Display_title_of=label",
+                        "render_template": {
+                            "type": [
+                                "handlebars"
+                            ],
+                            "value": "<a href='/wiki/{{result.fulltext}}'>{{result.printouts.label.[0]}}</a>"
+                        }
+                    }
+                }
             },
             "minLength": 1,
             "default": [
