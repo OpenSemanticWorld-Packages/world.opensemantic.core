@@ -13,10 +13,15 @@
     },
     "common_definitions": {},
     "type": "object",
+    "format": "grid-strict",
     "id": "statement",
+    "headerTemplate": "... {{#if self.predicate}}{{self.predicate}}{{/if}}{{#if self.property}}{{self.property}}{{/if}}{{#if self.quantity}}{{self.quantity}}{{/if}} ...",
     "required": [
         "uuid"
     ],
+    "options": {
+        "display_required_only": true
+    },
     "properties": {
         "uuid": {
             "title": "UUID",
@@ -30,6 +35,7 @@
             "title": "Label",
             "description": "Human readable name",
             "type": "array",
+            "format": "table",
             "items": {
                 "title": "Label",
                 "title*": {
@@ -43,6 +49,10 @@
                     }
                 ],
                 "$ref": "/wiki/JsonSchema:Label?action=raw"
+            },
+            "options": {
+                "collapsed": true,
+                "grid_columns": 12
             }
         },
         "subject": {
@@ -53,6 +63,7 @@
                 "de": "Subjekt"
             },
             "options": {
+                "grid_columns": 4,
                 "autocomplete": {
                     "category": "Category:Entity",
                     "query_filter_property": "HasName"
@@ -63,8 +74,12 @@
             "title": "Substatements",
             "type": "array",
             "format": "tabs",
+            "propertyOrder": 1010,
             "items": {
                 "$ref": "#"
+            },
+            "options": {
+                "grid_columns": 12
             }
         }
     },
@@ -72,7 +87,6 @@
         {
             "$ref": "#/common_definitions",
             "title": "Object Statement",
-            "headerTemplate": "... {{self.predicate}} ...",
             "required": [
                 "uuid",
                 "predicate",
@@ -87,6 +101,7 @@
                         "de": "Pr\u00e4dikat"
                     },
                     "options": {
+                        "grid_columns": 4,
                         "autocomplete": {
                             "category": "Category:Property"
                         }
@@ -100,6 +115,7 @@
                         "de": "Objekt"
                     },
                     "options": {
+                        "grid_columns": 4,
                         "autocomplete": {
                             "category": "Category:Entity",
                             "query_filter_property": "HasName"
@@ -114,7 +130,6 @@
             "title*": {
                 "de": "Datenangabe"
             },
-            "headerTemplate": "... {{self.property}} ...",
             "required": [
                 "uuid",
                 "property",
@@ -129,6 +144,7 @@
                         "de": "Attribut"
                     },
                     "options": {
+                        "grid_columns": 4,
                         "autocomplete": {
                             "category": "Category:DataProperty"
                         }
@@ -139,6 +155,9 @@
                     "title": "Value",
                     "title*": {
                         "de": "Wert"
+                    },
+                    "options": {
+                        "grid_columns": 4
                     }
                 }
             }
@@ -149,7 +168,6 @@
             "title*": {
                 "de": "Gr\u00f6\u00dfenangabe"
             },
-            "headerTemplate": "... {{self.quantity}} ...",
             "required": [
                 "uuid",
                 "quantity",
@@ -167,6 +185,7 @@
                         "de": "Attribut"
                     },
                     "options": {
+                        "grid_columns": 4,
                         "autocomplete": {
                             "category": "Category:QuantityProperty"
                         }
@@ -175,9 +194,12 @@
                 "numerical_value": {
                     "type": "string",
                     "format": "number",
-                    "title": "Numerical value",
+                    "title": "Value",
                     "title*": {
-                        "de": "Zahlenwert"
+                        "de": "Wert"
+                    },
+                    "options": {
+                        "grid_columns": 2
                     }
                 },
                 "unit": {
@@ -192,6 +214,7 @@
                         "unit_symbol": "statement.unit_symbol"
                     },
                     "options": {
+                        "grid_columns": 2,
                         "autocomplete": {
                             "query": "[[-HasInputUnit::{{$(quantity)}}]]|?Display_title_of=label",
                             "render_template": {
