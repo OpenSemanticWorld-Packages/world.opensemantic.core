@@ -556,7 +556,8 @@ function p.getSemanticProperties(args)
 			for term, def in pairs(context) do
 				local term_parts = p.splitString(term, "*")
 				if (string.find(term, "*", 0, true) and term_parts[1] == k) then --custom additional mapping term*(*...): "Property:..."
-					table.insert(property_definitions, def)
+					if type(def) == 'table' then table.insert(property_definitions, def["@id"])
+					else table.insert(property_definitions, def) end
 				end
 			end
 			if (debug) then mw.logObject(property_definitions) end
