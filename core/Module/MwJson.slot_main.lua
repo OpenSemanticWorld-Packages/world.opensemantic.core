@@ -162,16 +162,19 @@ function p.expandEmbeddedTemplates(args)
 			else --list array
 				local string_list = ""
 				for i,e in pairs(v) do 
-					if type(e) == 'table' then 	
-						local eval_template = nil
-						local eval_templates = p.defaultArgPath(jsonschema, {"properties", k, "items", p.keys.template}, {})
-						if (eval_templates[1] == nil) then eval_templates = {eval_templates} end --ensure list of objects
-						for i, t in pairs(eval_templates) do
-							if (t[p.keys.mode] ~= nil and t[p.keys.mode] == mode) then eval_template = t --use only render templates in render mode and store templates in store mode
-							elseif (t[p.keys.mode] == nil) then  eval_template = t --default
-							elseif (debug) then msg = msg .. "Ignore eval_template" .. mw.dumpObject( t ) .. "\n<br>"
-							end
+					
+					local eval_template = nil
+					local eval_templates = p.defaultArgPath(jsonschema, {"properties", k, "items", p.keys.template}, {})
+					if (eval_templates[1] == nil) then eval_templates = {eval_templates} end --ensure list of objects
+					
+					for i, t in pairs(eval_templates) do
+						if (t[p.keys.mode] ~= nil and t[p.keys.mode] == mode) then eval_template = t --use only render templates in render mode and store templates in store mode
+						elseif (t[p.keys.mode] == nil) then  eval_template = t --default
+						elseif (debug) then msg = msg .. "Ignore eval_template" .. mw.dumpObject( t ) .. "\n<br>"
 						end
+					end
+
+					if type(e) == 'table' then 	
 						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
 						msg = msg .. sub_res.debug_msg
 						if (type(sub_res.res) == 'table') then 
@@ -181,6 +184,13 @@ function p.expandEmbeddedTemplates(args)
 							else v[i] = sub_res.res end
 						end
 					else
+						if (eval_template ~= nil and eval_template["value"] ~= nil) then
+							--evaluate single array item string as json {"self": "<value>", ".": "<value>"}
+							local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+							mw.logObject(sub_res)
+							e = sub_res.res
+							v[i] = e
+						end
 						if (stringify_arrays) then string_list = string_list .. e .. ";" end
 					end
 				end
