@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "required": [
+        "text",
+        "lang"
+    ],
+    "eval_template": [
+        {
+            "type": "wikitext",
+            "mode": "render",
+            "value": "{{{text|}}} [{{{lang|en}}}]"
+        },
+        {
+            "type": "wikitext",
+            "mode": "store",
+            "value": "{{{text|}}}@{{{lang|en}}}"
+        }
+    ],
+    "properties": {
+        "text": {
+            "title": "Text",
+            "title*": {
+                "de": "Text"
+            },
+            "type": "string"
+        },
+        "lang": {
+            "title": "Lang code",
+            "title*": {
+                "de": "Sprache"
+            },
+            "type": "string",
+            "enum": [
+                "en",
+                "de"
+            ],
+            "default": "en"
+        }
+    }
+}

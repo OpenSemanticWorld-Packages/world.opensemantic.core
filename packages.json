@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.7.1",
+            "version": "0.8.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -48,6 +48,18 @@
                     "name": "MwJson",
                     "namespace": "NS_MODULE",
                     "urlPath": "Module/MwJson.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "MultiLangProperty",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/MultiLangProperty.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "UuidUriProperty",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/UuidUriProperty.slot_main.json",
                     "slots": {}
                 },
                 {

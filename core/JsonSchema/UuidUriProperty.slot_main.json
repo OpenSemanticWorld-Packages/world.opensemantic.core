@@ -1,0 +1,20 @@
+{
+    "type": "string",
+    "title": "URI",
+    "format": "autocomplete",
+    "eval_template": {
+        "type": "wikitext",
+        "value": "Item:OSW{{#sub: {{#replace: {{#replace: {{#explode: {{{self|}}} |#|1}} |_|}} |-|}} |-32}}"
+    },
+    "options": {
+        "autocomplete": {
+            "query": "[[Category:OSW57beed5e1294434ba77bb6516e461456]]|?Equivalent_URI=uri",
+            "store_template": {
+                "type": [
+                    "handlebars"
+                ],
+                "value": "{{{result.printouts.uri.[0]}}}"
+            }
+        }
+    }
+}
