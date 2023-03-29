@@ -1,0 +1,176 @@
+{
+    "@context": [
+        "/wiki/Category:QuantityProperty?action=raw&slot=jsonschema",
+        {
+            "main_unit": {
+                "@id": "Property:HasMainUnit",
+                "@type": "@id"
+            },
+            "main_unit*": "Property:HasDisplayUnit",
+            "main_unit**": "Property:HasInputUnit",
+            "additional_units": {
+                "@id": "Property:HasUnit",
+                "@type": "@id"
+            },
+            "additional_units*": "Property:HasDisplayUnit",
+            "additional_units**": "Property:HasInputUnit",
+            "main_symbol": "Property:HasMainUnitSymbol",
+            "alternative_symbols": "Property:HasUnitSymbol",
+            "conversion_factor_to_main_unit": "Property:HasConversionFactor"
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:QuantityProperty?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "1b15ddcf-042c-4599-bd9d-431cbfdf3430",
+    "title": "MainQuantityProperty",
+    "title*": {
+        "en": "Main Quantity Property",
+        "de": "Hauptgr\u00f6\u00dfenattribut"
+    },
+    "description": "Defines valid units for itself and all of its subquantities",
+    "description*": {
+        "en": "Defines valid units for itself and all of its subquantities",
+        "de": "Definiert g\u00fcltige Einheiten f\u00fcr sich selbst und alle seine Untergr\u00f6\u00dfen."
+    },
+    "properties": {
+        "main_unit": {
+            "title": "Main unit",
+            "title*": {
+                "de": "Haupteinheit"
+            },
+            "type": "object",
+            "required": [
+                "uuid",
+                "name",
+                "main_symbol"
+            ],
+            "options": {
+                "compact": true
+            },
+            "id": "unit",
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "1 {{main_unit.main_symbol}} {{=<% %>=}} {{#set: <%={{ }}=%> |Corresponds to=1 {{main_unit.main_symbol}} {{#main_unit.alternative_symbols}}, {{.}}{{/main_unit.alternative_symbols}} {{=<% %>=}} }} <%={{ }}=%>"
+            },
+            "properties": {
+                "uuid": {
+                    "title": "UUID",
+                    "type": "string",
+                    "format": "uuid",
+                    "options": {
+                        "hidden": true
+                    }
+                },
+                "name": {
+                    "title": "Name",
+                    "description": "Technical / Machine compatible name",
+                    "description*": {
+                        "de": "Technischer / Maschinenkompatibler Name"
+                    },
+                    "type": "string",
+                    "watch": {
+                        "main_symbol": "unit.main_symbol"
+                    },
+                    "template": "{{main_symbol}}",
+                    "options": {
+                        "hidden": true
+                    }
+                },
+                "main_symbol": {
+                    "title": "Symbol",
+                    "title*": {
+                        "de": "Symbol"
+                    },
+                    "type": "string"
+                },
+                "alternative_symbols": {
+                    "title": "Alternative symbols",
+                    "title*": {
+                        "de": "Alternative Symbole"
+                    },
+                    "type": "array",
+                    "items": {
+                        "title": "Symbol",
+                        "title*": {
+                            "de": "Symbol"
+                        },
+                        "type": "string"
+                    }
+                },
+                "use_as_input_unit": {
+                    "type": "boolean",
+                    "format": "checkbox"
+                },
+                "use_as_display_unit": {
+                    "type": "boolean",
+                    "format": "checkbox"
+                },
+                "ontology_iri": {
+                    "title": "Ontology IRI(s)",
+                    "title*": {
+                        "de": "Ontologie-IRI(s)"
+                    },
+                    "description": "e. g. from https://www.qudt.org/doc/DOC_VOCAB-UNITS.html",
+                    "type": "array",
+                    "items": {
+                        "title": "IRI",
+                        "type": "string",
+                        "format": "url"
+                    }
+                }
+            }
+        },
+        "additional_units": {
+            "title": "Units",
+            "title*": {
+                "de": "Einheiten"
+            },
+            "type": "array",
+            "format": "tabs",
+            "minItems": 1,
+            "uniqueItems": true,
+            "options": {
+                "dependencies": {
+                    "subproperty_of": ""
+                }
+            },
+            "eval_template_": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#units}} {{conversion_factor_to_main_unit}} {{#unit_symbols}} {{.}}, {{/unit_symbols}} {{=<% %>=}} {{#set: <%={{ }}=%> |Corresponds to={{conversion_factor_to_main_unit}} {{#unit_symbols}} {{.}}, {{/unit_symbols}} {{=<% %>=}} }} <%={{ }}=%> <br> {{/units}}"
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#additional_units}} <br>= {{conversion_factor_to_main_unit}} {{main_symbol}} {{=<% %>=}} {{#set: <%={{ }}=%> |Corresponds to={{conversion_factor_to_main_unit}} {{main_symbol}} {{#alternative_symbols}}, {{.}}{{/alternative_symbols}} {{=<% %>=}} }} <%={{ }}=%> {{/additional_units}}"
+            },
+            "items": {
+                "$ref": "#/properties/main_unit",
+                "title": "Unit",
+                "title*": {
+                    "de": "Einheit"
+                },
+                "headerTemplate": "{{self.main_symbol}}",
+                "properties": {
+                    "conversion_factor_to_main_unit": {
+                        "type": "string",
+                        "format": "number"
+                    }
+                }
+            }
+        },
+        "type": {
+            "default": [
+                "Category:OSW1b15ddcf042c4599bd9d431cbfdf3430"
+            ]
+        }
+    },
+    "required": [
+        "type"
+    ]
+}

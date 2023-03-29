@@ -1,0 +1,30 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:QuantityProperty"
+    ],
+    "uuid": "69f251a9-0094-4602-a08d-1cca830249b5",
+    "label": [
+        {
+            "text": "Sub Quantity Property",
+            "lang": "en"
+        },
+        {
+            "text": "Untergr\u00f6\u00dfenattribut",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Is the sub-property of a main quantity or other sub-quantity and inherits its valid units. Can define a subset of input and display units from it.",
+            "lang": "en"
+        },
+        {
+            "text": "Ist das Unterattribut einer Hauptgr\u00f6\u00dfe oder einer anderen Untergr\u00f6\u00dfe und erbt dessen g\u00fcltige Einheiten. Kann daraus ein Untermenge von Eingabe- und Anzeigeeinheiten definieren.",
+            "lang": "de"
+        }
+    ],
+    "name": "SubQuantityProperty"
+}

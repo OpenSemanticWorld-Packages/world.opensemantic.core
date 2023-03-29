@@ -1,0 +1,30 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Property"
+    ],
+    "uuid": "bc61accf-2c49-44ea-9317-6a4654c1d98a",
+    "name": "QuantityProperty",
+    "label": [
+        {
+            "text": "Quantity Property",
+            "lang": "en"
+        },
+        {
+            "text": "Gr\u00f6\u00dfeneigenschaft",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Property that represents a physical quantity",
+            "lang": "en"
+        },
+        {
+            "text": "Attribut das eine physikalische Gr\u00f6\u00dfe repr\u00e4sentiert",
+            "lang": "de"
+        }
+    ]
+}

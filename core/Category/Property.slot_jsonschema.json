@@ -29,7 +29,8 @@
     },
     "required": [
         "name",
-        "property_type"
+        "property_type",
+        "type"
     ],
     "properties": {
         "name": {
@@ -167,7 +168,10 @@
                     "de": "Typ"
                 },
                 "type": "string"
-            }
+            },
+            "default": [
+                "Category:Property"
+            ]
         }
     },
     "description": "The named relation between a subject and an object",

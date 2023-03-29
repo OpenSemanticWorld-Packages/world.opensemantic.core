@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.9.0",
+            "version": "0.10.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -192,6 +192,75 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/ObjectProperty.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "QuantityProperty",
+                    "label": "QuantityProperty",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/QuantityProperty.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/QuantityProperty.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/QuantityProperty.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/QuantityProperty.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/QuantityProperty.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/QuantityProperty.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW1b15ddcf042c4599bd9d431cbfdf3430",
+                    "label": "MainQuantityProperty",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW1b15ddcf042c4599bd9d431cbfdf3430.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW1b15ddcf042c4599bd9d431cbfdf3430.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW1b15ddcf042c4599bd9d431cbfdf3430.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/OSW1b15ddcf042c4599bd9d431cbfdf3430.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW1b15ddcf042c4599bd9d431cbfdf3430.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW1b15ddcf042c4599bd9d431cbfdf3430.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW69f251a900944602a08d1cca830249b5",
+                    "label": "SubQuantityProperty",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_jsonschema.json"
                         }
                     }
                 },

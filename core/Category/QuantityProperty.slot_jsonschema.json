@@ -1,0 +1,38 @@
+{
+    "@context": [
+        "/wiki/Category:Property?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Property?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "bc61accf-2c49-44ea-9317-6a4654c1d98a",
+    "title": "QuantityProperty",
+    "title*": {
+        "en": "Quantity Property",
+        "de": "Gr\u00f6\u00dfeneigenschaft"
+    },
+    "description": "Property that represents a physical quantity",
+    "description*": {
+        "en": "Property that represents a physical quantity",
+        "de": "Attribut das eine physikalische Gr\u00f6\u00dfe repr\u00e4sentiert"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "property_type": {
+            "default": "Quantity",
+            "options": {
+                "hidden": "true"
+            }
+        },
+        "type": {
+            "default": [
+                "Category:QuantityProperty"
+            ]
+        }
+    }
+}

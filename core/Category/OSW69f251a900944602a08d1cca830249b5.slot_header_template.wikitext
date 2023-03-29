@@ -1,0 +1,27 @@
+<table class="info_box">
+<tr>
+<th class="heading" colspan="2">{{{_label_schema|SubQuantityProperty}}}</th>
+</tr>
+<tr>
+    <th>{{{_label_display_units|Display Units}}}</th>
+    <td>{{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit= |format=plain |mainlabel=-}}</td>
+</tr>
+<tr>
+    <th>{{{_label_input_units|Input Units}}}</th>
+    <td>{{#ask: [[{{FULLPAGENAME}}]] |?HasInputUnit= |format=plain |mainlabel=-}}</td>
+</tr>
+</table>  <!-- 
+-->{{#set: 
+  |Corresponds to={{#ask: [[{{{base_quantity}}}]] |?Corresponds to |mainlabel=- |headers=hide |format=plainlist |link=none |valuesep=;}} |+sep=;
+}}<!-- 
+-->{{#if: {{{display_units|}}} | <!-- set specified display units if defined-->
+{{#set: |Display units={{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit.HasUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=; }} | <!-- else inherit display units -->
+  {{#set: 
+    |Display units={{#ask: [[{{{subproperty_of}}}]] |?HasDisplayUnit.HasUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=; 
+    |HasDisplayUnit={{#ask: [[{{{subproperty_of}}}]] |?HasDisplayUnit= |link=none |format=plain |mainlabel=- |valuesep=;}} |+sep=; 
+  }}
+}}<!-- 
+-->{{#if: {{{input_units|}}} |
+|
+{{#set: |HasInputUnit={{#ask: [[{{{subproperty_of}}}]] |?HasInputUnit= |link=none |format=plain |mainlabel=- |valuesep=;}} |+sep=; }}
+}}

@@ -1,0 +1,14 @@
+<table class="info_box">
+<tr>
+<th class="heading" colspan="2">{{{_label_schema|MainQuantityProperty}}}</th>
+</tr>
+{{#if: {{{main_unit|}}} | <!-- if units is not empty, show -->
+    <tr>
+    <th>{{{_label_units|Units}}}</th>
+    <td>{{{main_unit|}}}{{{additional_units|}}}</td>
+    </tr>
+    |<!-- else show nothing -->}}
+</table>
+{{#set: 
+  |Display units={{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit.HasUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=;
+}}

@@ -25,6 +25,14 @@
             "options": {
                 "hidden": "true"
             }
+        },
+        "type": {
+            "default": [
+                "Category:ObjectProperty"
+            ]
         }
-    }
+    },
+    "required": [
+        "type"
+    ]
 }

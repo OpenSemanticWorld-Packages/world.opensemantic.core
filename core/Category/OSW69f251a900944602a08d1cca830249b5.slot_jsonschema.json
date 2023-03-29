@@ -1,0 +1,134 @@
+{
+    "@context": [
+        "/wiki/Category:QuantityProperty?action=raw&slot=jsonschema",
+        {
+            "display_units": {
+                "@id": "Property:HasDisplayUnit",
+                "@type": "@id"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:QuantityProperty?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "69f251a9-0094-4602-a08d-1cca830249b5",
+    "title": "SubQuantityProperty",
+    "title*": {
+        "en": "Sub Quantity Property",
+        "de": "Untergr\u00f6\u00dfenattribut"
+    },
+    "description": "Is the sub-property of a main quantity or other sub-quantity and inherits its valid units. Can define a subset of input and display units from it.",
+    "description*": {
+        "en": "Is the sub-property of a main quantity or other sub-quantity and inherits its valid units. Can define a subset of input and display units from it.",
+        "de": "Ist das Unterattribut einer Hauptgr\u00f6\u00dfe oder einer anderen Untergr\u00f6\u00dfe und erbt dessen g\u00fcltige Einheiten. Kann daraus ein Untermenge von Eingabe- und Anzeigeeinheiten definieren."
+    },
+    "required": [
+        "subproperty_of",
+        "base_property",
+        "type"
+    ],
+    "properties": {
+        "subproperty_of": {
+            "title": "Subquantity of",
+            "title*": {
+                "de": "Untergr\u00f6\u00dfe von"
+            },
+            "type": "string",
+            "format": "autocomplete",
+            "options": {
+                "autocomplete": {
+                    "category": "Category:QuantityProperty"
+                }
+            }
+        },
+        "base_property": {
+            "title": "Base quantity",
+            "title*": {
+                "de": "Hauptgr\u00f6\u00dfe"
+            },
+            "type": "string",
+            "format": "autocomplete",
+            "options": {
+                "autocomplete": {
+                    "category": "Category:OSW1b15ddcf042c4599bd9d431cbfdf3430"
+                }
+            }
+        },
+        "display_units": {
+            "title": "Display units",
+            "title*": {
+                "de": "Anzeigeeinheiten"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#display_units}} [[{{{.}}}]] <br> {{/display_units}}"
+            },
+            "items": {
+                "title": "Unit",
+                "title*": {
+                    "de": "Einheit"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "previewWikiTextTemplate": "{{result.printouts.label.[0]}}",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[-HasDisplayUnit::{{base_property}}]]|?Display_title_of=label",
+                        "render_template": {
+                            "type": [
+                                "handlebars"
+                            ],
+                            "value": "{{result.printouts.label.[0]}}"
+                        }
+                    }
+                }
+            }
+        },
+        "input_units": {
+            "title": "Input units",
+            "title*": {
+                "de": "Eingabeeinheiten"
+            },
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#input_units}} [[{{{.}}}]] <br> {{/input_units}}"
+            },
+            "items": {
+                "title": "Unit",
+                "title*": {
+                    "de": "Einheit"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "previewWikiTextTemplate": "{{result.printouts.label.[0]}}",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[-HasInputUnit::{{base_property}}]]|?Display_title_of=label",
+                        "render_template": {
+                            "type": [
+                                "handlebars"
+                            ],
+                            "value": "{{result.printouts.label.[0]}}"
+                        }
+                    }
+                }
+            }
+        },
+        "type": {
+            "default": [
+                "Category:OSW69f251a900944602a08d1cca830249b5"
+            ]
+        }
+    }
+}
