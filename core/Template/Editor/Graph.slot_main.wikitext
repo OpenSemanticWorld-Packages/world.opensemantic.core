@@ -4,6 +4,7 @@
 }}
 {{Template:Helper/UI/VE/Hidden 
 |content=<div id="{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}" style="width: {{#ifeq: {{{full_width|0}}}|1|100%| {{{width|600px}}} }};" class="InteractiveSemanticGraph" data-config='{ 
+  "uuid": "{{{uuid|}}}",
   "name":"{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}",
   "root":"{{{root|}}}",
   "properties":[{{#arraymap:{{{properties|}}}|;|x|"x"|,}}],
@@ -157,6 +158,18 @@
 			},
 			"type": "wiki-page-name",
 			"autovalue": "{{subst:FULLPAGENAME}}"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": false
 		}
 	},
 	"description": {

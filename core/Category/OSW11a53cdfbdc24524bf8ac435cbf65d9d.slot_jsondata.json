@@ -1,0 +1,30 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:OSWff333fd349af4f65a69100405a9e60c7"
+    ],
+    "uuid": "11a53cdf-bdc2-4524-bf8a-c435cbf65d9d",
+    "label": [
+        {
+            "text": "Wiki File",
+            "lang": "en"
+        },
+        {
+            "text": "Wiki Datei",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "A file stored directy in the file namespace",
+            "lang": "en"
+        },
+        {
+            "text": "Eine direkt im Datei-Namensraum gespeicherte Datei",
+            "lang": "de"
+        }
+    ],
+    "name": "WikiFile"
+}

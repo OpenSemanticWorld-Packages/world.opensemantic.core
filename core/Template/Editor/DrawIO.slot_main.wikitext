@@ -3,27 +3,45 @@
 |content=Diagram ''{{{file_name}}}''
 }}
 {{Template:Helper/UI/VE/Hidden 
-|content={{#drawio:{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}|type={{{type|svg}}}|max-width={{#ifeq: {{{full_width|0}}}|1|100%| {{{width|500px}}} }}}}
+|content={{#drawio:{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}}}|type={{{type|svg}}}|max-width={{#ifeq: {{{full_width|0}}}|1|100%| {{{width|500px}}} }} |label={{{file_name|}}} }}
 }}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
 {
 	"params": {
 		"file_name": {
-			"label": "Name",
-			"description": "Name der Zeichnung",
-			"type": "wiki-file-name",
+			"label": {
+				"en": "Name",
+				"de": "Name"
+			},
+			"description": {
+				"en": "Name of the diagram",
+				"de": "Name des Diagramms"
+			},
+			"type": "string",
 			"required": true
 		},
 		"type": {
-			"label": "Dateiformat",
-			"description": "Die Zeichnung kann als Vektor- oder Rastergraphik gespeichert werden",
+			"label": {
+				"en": "File format",
+				"de": "Dateiformat"
+			},
+			"description": {
+				"en": "The drawing can be saved as a vector or raster graphic",
+				"de": "Die Zeichnung kann als Vektor- oder Rastergraphik gespeichert werden"
+			},
 			"example": "svg oder png",
 			"type": "string",
 			"autovalue": "svg"
 		},
 		"width": {
-			"label": "Breite",
-			"description": "Breite der Graphik in Pixeln",
+			"label": {
+				"en": "Width",
+				"de": "Breite"
+			},
+			"description": {
+				"en": "Display width of the graphic in pixels",
+				"de": "Anzeigebreite der Graphik in Pixeln"
+			},
 			"type": "string",
 			"autovalue": "600px"
 		},
@@ -33,8 +51,8 @@
 				"de": "Seitename"
 			},
 			"description": {
-				"en": "is filled in automatically",
-				"de": "wird automatisch ausgefüllt"
+				"en": "is filled in automatically and should not be changed",
+				"de": "wird automatisch ausgefüllt und sollte nicht verändert werden"
 			},
 			"type": "wiki-page-name",
 			"autovalue": "{{subst:FULLPAGENAME}}"
@@ -51,6 +69,18 @@
 			"type": "boolean",
 			"autovalue": "0",
 			"suggested": true
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": false
 		}
 	},
 	"description": {

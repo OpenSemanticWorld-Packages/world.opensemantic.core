@@ -3,7 +3,10 @@
 |content=Spreadsheet ''{{{file_name}}}''
 }}
 {{Template:Helper/UI/VE/Hidden 
-|content=<div class="SpreadsheetEditor" style="width:{{{width|100%}}};height:{{{height|500px}}}; max-width:100%;" data-filename="{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.luckysheet.{{{format|json}}}">{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.luckysheet.{{{format|json}}}</div>
+|content=<div class="SpreadsheetEditor" style="width:{{{width|100%}}};height:{{{height|500px}}}; max-width:100%;" data-filename="{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}}}.luckysheet.{{{format|json}}}" data-config='{
+  "file_title": "{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}}}.luckysheet.{{{format|json}}}",
+  "file_label": "{{{file_name}}}"
+}'></div>
 }}</includeonly>
 <noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
@@ -38,14 +41,26 @@
 			"suggested": false
 		},
 		"width": {
-			"label": "Breite",
-			"description": "Breite des Dokuments in Pixeln oder Prozent",
+			"label": {
+				"en": "Width ",
+				"de": "Breite"
+			},
+			"description": {
+				"en": "Display width of the document in pixels or percent",
+				"de": "Anzeigebreite des Dokuments in Pixeln oder Prozent"
+			},
 			"type": "string",
 			"autovalue": "100%"
 		},
 		"height": {
-			"label": "Höhe",
-			"description": "Höhe des Dokuments oder Prozent",
+			"label": {
+				"en": "Height",
+				"de": "Höhe"
+			},
+			"description": {
+				"en": "Display height of the document in pixels",
+				"de": "Anzeigehöhe des Dokuments in Pixeln"
+			},
 			"type": "string",
 			"autovalue": "500px"
 		},
@@ -60,6 +75,18 @@
 			},
 			"type": "wiki-page-name",
 			"autovalue": "{{subst:FULLPAGENAME}}"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": false
 		}
 	},
 	"description": {

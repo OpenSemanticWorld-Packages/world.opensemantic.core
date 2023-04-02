@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "11a53cdf-bdc2-4524-bf8a-c435cbf65d9d",
+    "title": "WikiFile",
+    "title*": {
+        "en": "Wiki File",
+        "de": "Wiki Datei"
+    },
+    "description": "A file stored directy in the file namespace",
+    "description*": {
+        "en": "A file stored directy in the file namespace",
+        "de": "Eine direkt im Datei-Namensraum gespeicherte Datei"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW11a53cdfbdc24524bf8ac435cbf65d9d"
+            ]
+        }
+    }
+}

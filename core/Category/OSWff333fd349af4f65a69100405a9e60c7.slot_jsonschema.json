@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSW2ac4493f8635481eaf1db961b63c8325?action=raw&slot=jsonschema"
+        }
+    ],
+    "title": "File",
+    "@context": [
+        "/wiki/Category:OSW2ac4493f8635481eaf1db961b63c8325?action=raw&slot=jsonschema"
+    ],
+    "uuid": "ff333fd3-49af-4f65-a691-00405a9e60c7",
+    "title*": {
+        "en": "File",
+        "de": "Datei"
+    },
+    "description": "",
+    "description*": {},
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWff333fd349af4f65a69100405a9e60c7"
+            ]
+        },
+        "creator": {
+            "type": "array",
+            "title": "Creator",
+            "title*": {
+                "de": "Ersteller"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
+                    }
+                }
+            }
+        },
+        "editor": {
+            "type": "array",
+            "title": "Editor",
+            "title*": {
+                "de": "Bearbeiter"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
+                    }
+                }
+            }
+        },
+        "creation_context": {
+            "type": "array",
+            "title": "Creation Context",
+            "title*": {
+                "de": "Erstellungskontext"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:Entity"
+                    }
+                }
+            }
+        }
+    }
+}

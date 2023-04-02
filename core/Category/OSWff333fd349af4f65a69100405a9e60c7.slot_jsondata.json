@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:OSW2ac4493f8635481eaf1db961b63c8325"
+    ],
+    "uuid": "ff333fd3-49af-4f65-a691-00405a9e60c7",
+    "name": "File",
+    "label": [
+        {
+            "text": "File",
+            "lang": "en"
+        },
+        {
+            "text": "Datei",
+            "lang": "de"
+        }
+    ]
+}

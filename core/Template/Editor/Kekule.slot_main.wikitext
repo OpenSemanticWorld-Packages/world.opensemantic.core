@@ -3,7 +3,10 @@
 |content=ChemEditor ''{{{file_name}}}''
 }}
 {{Template:Helper/UI/VE/Hidden 
-|content=<div class="div_kekule_view_edit" id="chemViewEdit_{{{file_name}}}" style="width:{{{width|600px}}};height:{{{height|500px}}};border:1px solid black;">{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.kekule.{{{format|json}}}</div>
+|content=<div class="div_kekule_view_edit" id="chemViewEdit_{{#if:{{{uuid|}}}|{{{uuid}}}|{{{file_name}}}}}" style="width:{{{width|600px}}};height:{{{height|500px}}};border:1px solid black;" data-config='{
+  "file_title": "{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}}}.kekule.{{{format|json}}}",
+  "file_label": "{{{file_name}}}"
+}'></div>
 }}</includeonly>
 <noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
@@ -38,14 +41,26 @@
 			"suggested": false
 		},
 		"width": {
-			"label": "Breite",
-			"description": "Breite des Dokuments in Pixeln oder Prozent",
+			"label": {
+				"en": "Width ",
+				"de": "Breite"
+			},
+			"description": {
+				"en": "Display width of the document in pixels or percent",
+				"de": "Anzeigebreite des Dokuments in Pixeln oder Prozent"
+			},
 			"type": "string",
 			"autovalue": "600px"
 		},
 		"height": {
-			"label": "Höhe",
-			"description": "Breite der Dokuments oder Prozent",
+			"label": {
+				"en": "Height",
+				"de": "Höhe"
+			},
+			"description": {
+				"en": "Display height of the document in pixels",
+				"de": "Anzeigehöhe des Dokuments in Pixeln"
+			},
 			"type": "string",
 			"autovalue": "500px"
 		},
@@ -60,6 +75,18 @@
 			},
 			"type": "wiki-page-name",
 			"autovalue": "{{subst:FULLPAGENAME}}"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": false
 		}
 	},
 	"description": {

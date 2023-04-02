@@ -3,7 +3,10 @@
 |content=Wellplate ''{{{file_name}}}''
 }}
 {{Template:Helper/UI/VE/Hidden 
-|content=<div class="WellplateEditor" style="display:hide;">{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.wellplate.svg</div>
+|content=<div class="WellplateEditor" style="display:hide;" data-config='{
+  "file_title": "{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}}}.wellplate.svg",
+  "file_label": "{{{file_name}}}"
+}'></div>
 }}</includeonly>
 <noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
@@ -34,6 +37,18 @@
 			},
 			"type": "wiki-page-name",
 			"autovalue": "{{subst:FULLPAGENAME}}"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": false
 		}
 	},
 	"description": {

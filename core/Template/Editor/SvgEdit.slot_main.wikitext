@@ -3,8 +3,11 @@
 |content=Sketch ''{{{file_name}}}''
 }}
 {{Template:Helper/UI/VE/Hidden 
-|content=<div class="SvgEdit" style="width: {{{width|100%}}}; height: 500px;">{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.svg</div>
-}}<div style="display:none">[[Media:{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}.svg]]</div></includeonly><!-- Hidden link to file to include file in page images-->
+|content=<div class="SvgEdit" style="width: {{{width|100%}}}; height: 500px;" data-config='{
+  "file_title": "{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}}}.svg", 
+  "file_label": "{{{file_name}}}"
+}'></div>
+}}<div style="display:none">[[Media:{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-{{{file_name}}}}}.svg]]</div></includeonly><!-- Hidden link to file to include file in page images-->
 <noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
 {
@@ -45,11 +48,23 @@
 				"de": "Seitename"
 			},
 			"description": {
-				"en": "is filled in automatically",
-				"de": "wird automatisch ausgefüllt"
+				"en": "is filled in automatically and should not be changed",
+				"de": "wird automatisch ausgefüllt und sollte nicht verändert werden"
 			},
 			"type": "wiki-page-name",
 			"autovalue": "{{subst:FULLPAGENAME}}"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": false
 		}
 	},
 	"description": {
