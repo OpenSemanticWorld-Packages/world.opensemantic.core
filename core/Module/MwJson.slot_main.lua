@@ -348,6 +348,7 @@ function p.renderInfoBox(args)
 	local jsondata = p.defaultArg(args.jsondata, {})
 	local schema = p.defaultArg(args.jsonschema, nil)
 	local context = p.buildContext({jsonschema=schema}).context
+	local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
 	local res = ""
 	if schema == nil then return res end
 	local schema_label = ""
@@ -363,29 +364,31 @@ function p.renderInfoBox(args)
 				:attr( 'colspan', '2' )
 				:wikitext( schema_label )
 	for k,v in pairs(jsondata) do
-		if (schema['properties'] ~= nil and schema['properties'][k] ~= nil and (type(v) ~= 'table' or v[1] ~= nil)) then --literal or literal array
-			local def = schema['properties'][k]
-			--mw.logObject(def)
-			local label = k
-			if def['title'] ~= nil then label = def['title'] end
-			--res = res .. title ": " .. v
-			local cell = tbl:tag( 'tr' )
-								:tag( 'th' )
-									:wikitext( label )
-									:done()
-								:tag( 'td' )
-			if (type(v) == 'table') then
-				for i,e in pairs(v) do 
-					if (type(e) ~= 'table') then 
-						local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-						if (p_type == '@id') then e = "[[" .. string.gsub(e, "Category:", ":Category:") .. "]]" end
-						cell:wikitext("\n* " .. e .. "") 
+		if (not ignore_properties[k]) then
+			if (schema['properties'] ~= nil and schema['properties'][k] ~= nil and (type(v) ~= 'table' or v[1] ~= nil)) then --literal or literal array
+				local def = schema['properties'][k]
+				--mw.logObject(def)
+				local label = k
+				if def['title'] ~= nil then label = def['title'] end
+				--res = res .. title ": " .. v
+				local cell = tbl:tag( 'tr' )
+									:tag( 'th' )
+										:wikitext( label )
+										:done()
+									:tag( 'td' )
+				if (type(v) == 'table') then
+					for i,e in pairs(v) do 
+						if (type(e) ~= 'table') then 
+							local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
+							if (p_type == '@id') then e = "[[" .. string.gsub(e, "Category:", ":Category:") .. "]]" end
+							cell:wikitext("\n* " .. e .. "") 
+						end
 					end
+				else
+					local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
+					if (p_type == '@id') then v = "[[" .. string.gsub(v, "Category:", ":Category:") .. "]]" end
+					cell:wikitext( v )
 				end
-			else
-				local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-				if (p_type == '@id') then v = "[[" .. string.gsub(v, "Category:", ":Category:") .. "]]" end
-				cell:wikitext( v )
 			end
 		end
 	end	

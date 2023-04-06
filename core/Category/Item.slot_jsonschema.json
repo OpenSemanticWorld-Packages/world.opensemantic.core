@@ -28,6 +28,13 @@
             },
             "type": "array",
             "format": "table",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{#type}} [[:{{{.}}}]] <br>{{/type}}"
+                }
+            ],
             "items": {
                 "title": "Type",
                 "title*": {

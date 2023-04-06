@@ -10,6 +10,6 @@
 
 <tr>
 <th>{{{_label_type|Type(s)/Category(s)}}}</th>
-<td>{{#ask:[[{{FULLPAGENAME}}]]|?HasType=|format=plain|mainlabel=-}}</td>
+<td>{{{type|}}}</td>
 </tr>
 </table>
