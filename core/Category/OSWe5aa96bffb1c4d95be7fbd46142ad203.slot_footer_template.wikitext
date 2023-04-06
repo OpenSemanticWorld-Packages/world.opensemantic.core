@@ -1,0 +1,4 @@
+=={{#switch:{{USERLANGUAGECODE}}|en=Graph|de=Graph}}==
+<div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["Subcategory of","-Subcategory of","-HasInput","HasOutput", "HasStatement", "HasProperty", "HasSubject", "HasObject"], "ignore_properties":["IsA"], "permalink":true, "depth":5, "edit": true, "edge_labels": true}'></div>
+<br>
+<br>

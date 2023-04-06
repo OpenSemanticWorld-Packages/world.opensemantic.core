@@ -75,6 +75,23 @@
                     }
                 }
             }
+        },
+        "editing_context": {
+            "type": "array",
+            "title": "Editing Context",
+            "title*": {
+                "de": "Bearbeitungskontext"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:Entity"
+                    }
+                }
+            }
         }
     }
 }

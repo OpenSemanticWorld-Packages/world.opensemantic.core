@@ -1,0 +1,233 @@
+{
+    "@context": [
+        "/wiki/Category:Entity?action=raw&slot=jsonschema",
+        {
+            "type": {
+                "@id": "Property:HasType",
+                "@type": "@id"
+            },
+            "tool": {
+                "@id": "Property:HasTool",
+                "@type": "@id"
+            },
+            "input": {
+                "@id": "Property:HasInput",
+                "@type": "@id"
+            },
+            "output": {
+                "@id": "Property:HasOutput",
+                "@type": "@id"
+            },
+            "creator": {
+                "@id": "Property:HasCreator",
+                "@type": "@id"
+            },
+            "actionees": {
+                "@id": "Property:HasActionee",
+                "@type": "@id"
+            },
+            "start_date_time": "Property:HasStartDateAndTime",
+            "end_date_time": "Property:HasEndDateAndTime",
+            "subprocesses": {
+                "@id": "Property:HasPart",
+                "@type": "@id"
+            }
+        }
+    ],
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        }
+    ],
+    "title": "Process",
+    "properties": {
+        "type": {
+            "title": "Types/Categories",
+            "title*": {
+                "de": "Typen/Kategorien"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Type",
+                "title*": {
+                    "de": "Type"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "query": "[[HasType::Category:Category]] |?Display_title_of=label",
+                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
+                "labelTemplate": "{{result.printouts.label.[0]}}"
+            },
+            "minLength": 1,
+            "default": [
+                "Category:Process"
+            ],
+            "options": {
+                "collapsed": true,
+                "hidden": true,
+                "conditional_visible": {
+                    "modes": [
+                        "query"
+                    ]
+                }
+            }
+        },
+        "creator": {
+            "type": "string",
+            "title": "Creator",
+            "title*": {
+                "de": "Ersteller"
+            },
+            "format": "autocomplete",
+            "options": {
+                "autocomplete": {
+                    "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
+                }
+            }
+        },
+        "actionees": {
+            "type": "array",
+            "title": "Actionees",
+            "title*": {
+                "de": "Aktuere"
+            },
+            "items": {
+                "type": "string",
+                "title": "Actionee",
+                "title*": {
+                    "de": "Akteur"
+                },
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
+                    }
+                }
+            }
+        },
+        "start_date_time": {
+            "type": "string",
+            "title": "Start time",
+            "title*": {
+                "de": "Startzeitpunkt"
+            },
+            "format": "date",
+            "options": {
+                "flatpicker": {}
+            }
+        },
+        "end_date_time": {
+            "type": "string",
+            "title": "End time",
+            "title*": {
+                "de": "Endzeitpunkt"
+            },
+            "format": "date",
+            "options": {
+                "flatpicker": {}
+            }
+        },
+        "status": {
+            "type": "string",
+            "title": "Status"
+        },
+        "tool": {
+            "type": "array",
+            "title": "Tools",
+            "title*": {
+                "de": "Werkzeuge"
+            },
+            "items": {
+                "type": "string",
+                "title": "Tool",
+                "title*": {
+                    "de": "Werkzeug"
+                },
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSWe427aafafbac4262955b9f690a83405d"
+                    }
+                }
+            },
+            "options": {
+                "conditional_visible": {
+                    "modes": [
+                        "query"
+                    ]
+                }
+            }
+        },
+        "input": {
+            "type": "array",
+            "title": "Inputs",
+            "title*": {
+                "de": "Eingangsressource"
+            },
+            "items": {
+                "type": "string",
+                "title": "Input",
+                "title*": {
+                    "de": "Ressource"
+                },
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:Entity"
+                    }
+                }
+            },
+            "options": {
+                "conditional_visible": {
+                    "modes": [
+                        "query"
+                    ]
+                }
+            }
+        },
+        "output": {
+            "type": "array",
+            "title": "Outputs",
+            "title*": {
+                "de": "Ausgangsressource"
+            },
+            "items": {
+                "type": "string",
+                "title": "Output",
+                "title*": {
+                    "de": "Ressource"
+                },
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:Entity"
+                    }
+                }
+            },
+            "options": {
+                "conditional_visible": {
+                    "modes": [
+                        "query"
+                    ]
+                }
+            }
+        },
+        "parameters": {
+            "type": "object",
+            "title": "Parameters"
+        },
+        "_subprocesses": {
+            "title": "Subprocesses",
+            "type": "array",
+            "format": "tabs",
+            "items": {
+                "$ref": "#"
+            }
+        }
+    },
+    "required": [
+        "type"
+    ]
+}

@@ -20,6 +20,7 @@
         "category": {
             "@id": "@type"
         },
+        "uuid*": "Property:HasUuid",
         "name*": "Property:HasName",
         "label": "skos:prefLabel",
         "label*": "Property:HasLabel",
@@ -34,8 +35,17 @@
         "description_": "Property:HasDecription",
         "image": "schema:image",
         "image*": "Property:HasImage",
+        "based_on": "skos:isBasedOn",
+        "based_on*": {
+            "@id": "Property:IsBasedOn",
+            "@type": "@id"
+        },
         "short_name": "Property:HasShortName",
-        "statements": "Property:HasStatement"
+        "statements": "Property:HasStatement",
+        "attachments*": {
+            "@id": "Property:HasFileAttachment",
+            "@type": "@id"
+        }
     },
     "uuid": "ce353767-c628-45bd-9d88-d6eb3009aec0",
     "title": "Entity",
@@ -113,7 +123,7 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#label}} |{{lang}}={{text}} {{/label}} {{=<% %>=}} }}"
+                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#short_name}} |{{lang}}={{text}} {{/short_name}} {{=<% %>=}} }}"
             },
             "items": {
                 "title": "Acronym",
@@ -175,6 +185,23 @@
                 }
             ]
         },
+        "based_on": {
+            "type": "array",
+            "title": "Based on",
+            "title*": {
+                "de": "Basierend auf"
+            },
+            "description": "Other entities on which this one is based, e.g. when it is created by copying",
+            "description*": {
+                "de": "Andere Entit\u00e4ten auf die diese basiert, z. B. wenn sie durch Kopieren entstanden ist"
+            },
+            "items": {
+                "type": "string"
+            },
+            "options": {
+                "hidden": "true"
+            }
+        },
         "statements": {
             "type": "array",
             "title": "Statements",
@@ -182,6 +209,7 @@
                 "de": "Aussagen"
             },
             "format": "tabs",
+            "propertyOrder": 1010,
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
@@ -189,6 +217,44 @@
             },
             "items": {
                 "$ref": "/wiki/JsonSchema:Statement?action=raw"
+            }
+        },
+        "attachments": {
+            "type": "array",
+            "title": "File attachments",
+            "title*": {
+                "de": "Dateianh\u00e4nge"
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} <%={{ }}=%> {{#attachments}} [[{{{.}}}]] <br> {{/attachments}} {{=<% %>=}}"
+            },
+            "options": {
+                "collapsed": true
+            },
+            "propertyOrder": 1020,
+            "items": {
+                "title": "Attachment",
+                "title*": {
+                    "de": "Anhang"
+                },
+                "type": "string",
+                "format": "url",
+                "options": {
+                    "upload": {}
+                },
+                "links": [
+                    {
+                        "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}&width=200&height=200{{/if}}",
+                        "mediaType": "image"
+                    },
+                    {
+                        "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}{{/if}}",
+                        "rel": "{{#if self}}download{{/if}}",
+                        "download": true
+                    }
+                ]
             }
         }
     }

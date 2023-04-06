@@ -4,16 +4,27 @@
     "action": "edit",
     "class": "btn btn-outline-secondary", 
     "icon_class": "icon icon-edit",
-    "label": ""
+    "label": "",
+    "tooltip": "Edit page"
 }'></div><div class="pagebot-button" data-config='{
     "action": "edit-data",
     "class": "btn btn-outline-secondary", 
     "icon_class": "icon icon-menu",
     "label": ""
+}'></div><div class="pagebot-button" data-config='{
+    "action": "copy",
+    "class": "btn btn-outline-secondary", 
+    "icon_class": "icon icon-copy",
+    "label": ""
+}'></div><div class="pagebot-button" data-config='{
+    "action": "export",
+    "class": "btn btn-outline-secondary", 
+    "icon_class": "icon icon-download",
+    "label": ""
 }'></div>{{#ifeq: {{NAMESPACE}}|Category|<div class="pagebot-button" data-config='{
     "action": "create-subcategory",
     "class": "btn btn-light", 
-    "icon_class": "icon icon-download",
+    "icon_class": "icon icon-arrow-down",
     "label": ""
 }'></div><div class="pagebot-button" data-config='{
     "action": "create-instance",

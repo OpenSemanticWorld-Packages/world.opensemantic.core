@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.11.3",
+            "version": "0.12.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -115,6 +115,9 @@
                         "footer": {
                             "urlPath": "Category/Entity.slot_footer.wikitext"
                         },
+                        "footer_template": {
+                            "urlPath": "Category/Entity.slot_footer_template.wikitext"
+                        },
                         "header": {
                             "urlPath": "Category/Entity.slot_header.wikitext"
                         },
@@ -156,6 +159,26 @@
                     }
                 },
                 {
+                    "name": "OSW2ac4493f8635481eaf1db961b63c8325",
+                    "label": "Data",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW2ac4493f8635481eaf1db961b63c8325.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW2ac4493f8635481eaf1db961b63c8325.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW2ac4493f8635481eaf1db961b63c8325.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW2ac4493f8635481eaf1db961b63c8325.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW2ac4493f8635481eaf1db961b63c8325.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
                     "name": "OSWff333fd349af4f65a69100405a9e60c7",
                     "label": "File",
                     "namespace": "NS_CATEGORY",
@@ -192,6 +215,29 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSW11a53cdfbdc24524bf8ac435cbf65d9d.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWe5aa96bffb1c4d95be7fbd46142ad203",
+                    "label": "Process",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_jsonschema.json"
                         }
                     }
                 },
