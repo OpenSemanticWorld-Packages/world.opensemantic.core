@@ -318,8 +318,8 @@ function p.processJsondata(args)
 	
 	--local display_label = ""
 	--if (jsondata[p.keys.label] ~= nil) then display_label = p.splitString(jsondata[p.keys.label], '@')[1] end
-	if (title.nsText ~= "Category") then wikitext = wikitext .. "\n" .. p.setCategories({categories=jsondata[p.keys.category], sortkey=display_label}).wikitext end--items
-	wikitext = wikitext .. p.setCategories({categories=jsondata[p.keys.subcategory], sortkey=display_label}).wikitext --classes/categories
+	if (title.nsText ~= "Category") then wikitext = wikitext .. "\n" .. p.setCategories({categories=json_res_store.res[p.keys.category], sortkey=display_label}).wikitext end--items
+	wikitext = wikitext .. p.setCategories({categories=json_res_store.res[p.keys.subcategory], sortkey=display_label}).wikitext --classes/categories
 	
 	if (smw_res ~= nil) then
 		if (debug) then msg = msg .. "Store page properties" end
