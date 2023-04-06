@@ -1,0 +1,30 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "uuid": "e427aafa-fbac-4262-955b-9f690a83405d",
+    "name": "Tool",
+    "label": [
+        {
+            "text": "Tool",
+            "lang": "en"
+        },
+        {
+            "text": "Werkzeug",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Item that participates as a utility (almost) unchanged in a process",
+            "lang": "en"
+        },
+        {
+            "text": "Gegenstand der als Hilfsmittel (nahezu) unver\u00e4ndert in einem Prozess teilnimmt",
+            "lang": "de"
+        }
+    ]
+}

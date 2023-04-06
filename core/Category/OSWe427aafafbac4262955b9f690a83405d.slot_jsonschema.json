@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema"
+    ],
+    "title": "Tool",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "required": [
+        "type"
+    ],
+    "uuid": "e427aafa-fbac-4262-955b-9f690a83405d",
+    "title*": {
+        "en": "Tool",
+        "de": "Werkzeug"
+    },
+    "description": "Item that participates as a utility (almost) unchanged in a process",
+    "description*": {
+        "en": "Item that participates as a utility (almost) unchanged in a process",
+        "de": "Gegenstand der als Hilfsmittel (nahezu) unver\u00e4ndert in einem Prozess teilnimmt"
+    },
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWe427aafafbac4262955b9f690a83405d"
+            ]
+        }
+    }
+}
