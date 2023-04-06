@@ -297,9 +297,10 @@ function p.processJsondata(args)
 	jsondata =json_res.res
 	--mw.log("JSONDATA RENDER")
 	--mw.logObject(jsondata)
-	
 
+	local max_index = p.tableLength(schema_res.visited)
 	for i, category in ipairs(schema_res.visited) do
+		if (mode == p.mode.footer) then category = schema_res.visited[max_index - i +1] end --reverse order for footer templates
 		local jsonschema = schema_res.jsonschemas[category]
 		local template = schema_res.templates[category]
 		if (template ~= nil) then
