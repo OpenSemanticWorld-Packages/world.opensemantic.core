@@ -1,0 +1,78 @@
+<noinclude>
+Example / Selftest
+{{{{FULLPAGENAME}}|url=https://github.com/OpenSemanticLab/osw-python/blob/b83d590553231dcc74d849af7f40239ef43546e0/src/osw/core.py#L49-L61}}
+<templatedata>
+{
+	"params": {
+		"url": {
+			"type": "url",
+			"required": true,
+			"suggested": true,
+			"label": "Github (perma)link",
+			"description": "When using line numbers (in the link or as parameter) use the permalink!",
+			"example": "https://github.com/OpenSemanticLab/mediawiki-extensions-OpenSemanticLab/blob/ca3558f07d1eb90d504f8304ae0a93d8a3c2a85c/includes/OpenSemanticLab.php#L3-L12"
+		},
+		"start_line": {
+			"type": "number",
+			"label": "Start line",
+			"description": "Start line of a sub-section of the file. Can also be specified in the link as #L3",
+			"example": "3"
+		},
+		"end_line": {
+			"type": "number",
+			"label": "End line",
+			"description": "Start line of a sub-section of the file. Can also be specified in the link as #L3-L12",
+			"example": "12"
+		},
+		"show_line_numbers": {
+			"type": "boolean",
+			"label": "Show line numbers",
+			"description": "If selected, line numbers are displayed",
+			"suggested": true
+		},
+		"lang": {
+			"type": "string",
+			"label": "Language",
+			"description": "Language for the syntax highlighting. Auto-detected from the file suffix (e. g. \".py\") for some languages, defaults to \"text\".",
+			"example": "python"
+		},
+		"highlight": {
+			"type": "string",
+			"label": "Highlighted lines",
+			"description": "List of lines or line ranges to highlight. Line numbers are absolute and must be between start and end line of a block selection.",
+			"example": "5,7,9-10",
+			"suggested": true
+		},
+		"uuid": {
+			"label": "UUID (auto-generated, should not be changed)",
+			"type": "string",
+			"autovalue": "{{subst:UUID}}",
+			"required": true
+		}
+	},
+	"format": "block",
+	"description": "Embeds a source code block from github with syntax highlighting",
+	"paramOrder": [
+		"url",
+		"start_line",
+		"end_line",
+		"show_line_numbers",
+		"lang",
+		"highlight",
+		"uuid"
+	]
+}
+</templatedata>
+</noinclude>
+<includeonly>
+
+{{#invoke:Viewer/Github|code
+|uuid={{{uuid|}}}
+|url={{{url|}}}
+|start_line={{{start_line|}}}
+|end_line={{{end_line|}}}
+|show_line_numbers={{{show_line_numbers|}}}
+|lang={{{lang|}}}
+|highlight={{{highlight|}}}
+}}(Source Code from [{{{url|}}} Github])
+</includeonly>

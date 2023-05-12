@@ -11,7 +11,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.12.1",
+            "version": "0.13.0",
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -461,6 +461,18 @@
                     "name": "Viewer/Kekule",
                     "namespace": "NS_TEMPLATE",
                     "urlPath": "Template/Viewer/Kekule.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Viewer/Github/Code",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Viewer/Github/Code.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Viewer/Github",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Viewer/Github.slot_main.lua",
                     "slots": {}
                 }
             ]
