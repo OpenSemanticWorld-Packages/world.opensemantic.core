@@ -28,7 +28,7 @@ Example / Selftest
 			"type": "boolean",
 			"label": "Show line numbers",
 			"description": "If selected, line numbers are displayed",
-			"suggested": true
+			"autovalue": "0"
 		},
 		"lang": {
 			"type": "string",

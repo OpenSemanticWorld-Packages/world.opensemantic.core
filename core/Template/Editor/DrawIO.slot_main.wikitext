@@ -80,13 +80,15 @@
 				"de": "Wird automatisch generiert und sollte nicht verändert werden"
 			},
 			"type": "string",
-			"required": false
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
 		}
 	},
 	"description": {
 		"en": "Adds a MS-Visio-like diagram editor",
 		"de": "Fügt einen MS Visio ähnlichen Graphikeditor ein"
-	}
+	},
+	"format": "block"
 }
 </templatedata>
 </noinclude>

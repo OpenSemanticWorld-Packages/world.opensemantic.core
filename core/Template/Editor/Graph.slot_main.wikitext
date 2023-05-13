@@ -169,7 +169,8 @@
 				"de": "Wird automatisch generiert und sollte nicht verändert werden"
 			},
 			"type": "string",
-			"required": false
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
 		}
 	},
 	"description": {

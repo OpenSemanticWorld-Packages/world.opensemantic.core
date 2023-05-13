@@ -64,14 +64,15 @@
 				"de": "Wird automatisch generiert und sollte nicht verändert werden"
 			},
 			"type": "string",
-			"required": false
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
 		}
 	},
 	"description": {
 		"en": "Adds a freehand graphic editor",
 		"de": "Fügt einen Freihand-Grafik-Editor hinzu"
 	},
-	"format": "\n{{_\n| _ = _\n}}\n"
+	"format": "block"
 }
 </templatedata>
 </noinclude>

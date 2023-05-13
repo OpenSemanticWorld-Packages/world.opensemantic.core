@@ -86,13 +86,15 @@
 				"de": "Wird automatisch generiert und sollte nicht verändert werden"
 			},
 			"type": "string",
-			"required": false
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
 		}
 	},
 	"description": {
 		"en": "Adds a ChemEditor",
 		"de": "Erstellt ein Chemie-Editor (Kekule Composer Widget) zum bearbeiten der angegebenen Unterseite"
-	}
+	},
+	"format": "block"
 }
 </templatedata>
 </noinclude>

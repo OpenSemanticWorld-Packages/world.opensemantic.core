@@ -48,13 +48,15 @@
 				"de": "Wird automatisch generiert und sollte nicht verändert werden"
 			},
 			"type": "string",
-			"required": false
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
 		}
 	},
 	"description": {
 		"en": "Adds a wellplate editor",
 		"de": "Fügt einen Wellplatten-Editor hinzu "
-	}
+	},
+	"format": "block"
 }
 </templatedata>
 </noinclude>

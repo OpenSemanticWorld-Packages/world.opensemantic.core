@@ -20,9 +20,23 @@
 			"type": "string",
 			"suggested": true,
 			"autovalue": "2D"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
 		}
 	},
-	"description": "Erstellt ein Kekule Viewer Widget zum Anzeigen des angegebenen Moleküls"
+	"description": "Erstellt ein Kekule Viewer Widget zum Anzeigen des angegebenen Moleküls",
+	"format": "block"
 }
 </templatedata>
 </noinclude>
