@@ -514,7 +514,7 @@ function p.buildContext(args)
 end
 
 --maps jsondata values to semantic properties by using the @context attribute within the schema
---test: mw.logObject(p.getSemanticProperties({jsonschema={["@context"]={test="Property:TestProperty", myObjectProperty={["@id"]= "Property:MyObjectProperty", ["@type"]= "@id"}}}, jsondata={test="TestValue", myObjectProperty="123"}, debug=true}))
+--test: mw.logObject(p.getSemanticProperties({jsonschema={["@context"]={test="Property:schema:TestProperty", myObjectProperty={["@id"]= "Property:MyObjectProperty", ["@type"]= "@id"}}}, jsondata={test="TestValue", myObjectProperty="123"}, debug=true}))
 --test: mw.logObject(p.getSemanticProperties({jsonschema={["@context"]={"some uri",{test="Property:TestProperty", myObjectProperty={["@id"]= "Property:MyObjectProperty", ["@type"]= "@id"}}}}, jsondata={test="TestValue", myObjectProperty="123"}, debug=true}))
 --[[
 mw.logObject(p.getSemanticProperties({jsonschema={["@context"]={test="Property:TestProperty", subobject="Property:HasSubobject", myObjectProperty={["@id"]= "Property:MyObjectProperty", ["@type"]= "@id"}}}, jsondata={
@@ -579,10 +579,11 @@ function p.getSemanticProperties(args)
 				local property_definition = p.splitString(e, ':')
 				if property_definition[1] == p.keys.property_ns_prefix then
 					mapping_found = true
-					table.insert(property_names, property_definition[2])
+					property_name = string.gsub(e, p.keys.property_ns_prefix .. ":", "") -- also allow prefix properties like: Property:schema:url
+					table.insert(property_names, property_name)
 					local schema_property = p.defaultArg(schema_properties[k], {})
 					local schema_type = p.defaultArg(schema_property.type, nil) --todo: also load smw property type on demand
-					property_data[k] = {schema_type=schema_type, schema_data=schema_property, property=property_definition[2], value=v}
+					property_data[k] = {schema_type=schema_type, schema_data=schema_property, property=property_name, value=v}
 				end
 			end
 			for i, property_name in ipairs(property_names) do
