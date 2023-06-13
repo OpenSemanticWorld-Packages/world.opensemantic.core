@@ -1,13 +1,6 @@
 {
     "@context": {
         "rdf": "http://www.w3.org/2000/01/rdf-schema#",
-        "label_": "rdfs:comment",
-        "wiki": "https://wiki-dev.open-semantic-lab.org/id/",
-        "property": {
-            "@id": "wiki:Property-3A",
-            "@prefix": true
-        },
-        "label": "property:HasDescription",
         "text": {
             "@id": "@value"
         },
