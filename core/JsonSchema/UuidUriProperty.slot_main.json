@@ -4,11 +4,11 @@
     "format": "autocomplete",
     "eval_template": {
         "type": "wikitext",
-        "value": "Item:OSW{{#sub: {{#replace: {{#replace: {{#explode: {{{self|}}} |#|1}} |_|}} |-|}} |-32}}"
+        "value": "Category:OSW{{#sub: {{#replace: {{#replace: {{#explode: {{{self|}}} |#|1}} |_|}} |-|}} |-32}}"
     },
     "options": {
         "autocomplete": {
-            "query": "[[Category:OSW57beed5e1294434ba77bb6516e461456]]|?Equivalent_URI=uri",
+            "query": "[[HasType::Category:OSW57beed5e1294434ba77bb6516e461456]][[Display_title_of::like:*{{{_user_input}}}*]]|?Display_title_of=label|?Equivalent_URI=uri|?HasDescription=description|limit=1000",
             "store_template": {
                 "type": [
                     "handlebars"
