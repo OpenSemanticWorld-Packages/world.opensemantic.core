@@ -64,9 +64,8 @@ Example / Selftest
 }
 </templatedata>
 </noinclude>
-<includeonly>
 
-{{#invoke:Viewer/Github|code
+<includeonly>{{#invoke:Viewer/Github|code
 |uuid={{{uuid|}}}
 |url={{{url|}}}
 |start_line={{{start_line|}}}
@@ -74,5 +73,4 @@ Example / Selftest
 |show_line_numbers={{{show_line_numbers|}}}
 |lang={{{lang|}}}
 |highlight={{{highlight|}}}
-}}(Source Code from [{{{url|}}} Github])
-</includeonly>
+}}(Source Code from [{{{url|}}} Github])</includeonly>
