@@ -360,8 +360,8 @@ function p.renderInfoBox(args)
 	tbl
 		:attr( 'class', 'info_box' )
 		:tag( 'tr' )
-			:tag( 'td' )
-				:attr( 'class', 'subheading' )
+			:tag( 'th' )
+				:attr( 'class', 'heading' )
 				:attr( 'colspan', '2' )
 				:wikitext( schema_label )
 	for k,v in pairs(jsondata) do
