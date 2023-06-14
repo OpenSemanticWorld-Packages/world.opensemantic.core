@@ -257,7 +257,8 @@ function p.processJsondata(args)
 	--if (jsondata == nil or p.tableLength(jsondata) == 0 or (categories == nil and jsonschema == nil and jsondata[p.keys.category] == nil)) then return {wikitext=wikitext, debug_msg=msg} end --nothing to do here
 	--jsonschema = p.defaultArg(jsonschema, {})
 	--jsondata = p.defaultArg(jsondata, {})
-	if (categories == nil) then categories = jsondata[p.keys.category] end
+	--if (categories == nil) then categories = jsondata[p.keys.category] end -- let function param overwrite json property
+	if (not p.nilOrEmpty(jsondata[p.keys.category])) then categories = jsondata[p.keys.category] end -- let json property overwrite function param
 	
 	local schema_res = p.walkJsonSchema({jsonschema=jsonschema, categories=categories, mode=mode, recursive=recursive, debug=debug})
 	jsonschema = p.expandJsonRef({json=schema_res.jsonschema, debug=debug}).json
