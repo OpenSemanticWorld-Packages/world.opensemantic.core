@@ -2,7 +2,8 @@ local p = {} --p stands for package
 
 p.file_type_mapping = {
 	["py"] = "python",
-	["json"] = "json"
+	["json"] = "json",
+	["md"] = "markdown"
 }
 
 function p.code(frame)
@@ -11,6 +12,9 @@ function p.code(frame)
 	local show_line_numbers = frame.args['show_line_numbers']
 	if (show_line_numbers == "" or show_line_numbers == "0" or show_line_numbers == "false") then show_line_numbers = nil end
 	local highlight = frame.args['highlight']
+	local render_markdown = frame.args['render_markdown']
+	if (render_markdown == nil or render_markdown == "") then render_markdown = true end
+	if (render_markdown == "0" or render_markdown == "false") then render_markdown = false end
 
 	local url_parts = p.splitString(url, "#")
 	mw.logObject(url_parts)
@@ -53,23 +57,33 @@ function p.code(frame)
 	lang = p.file_type_mapping[file_type]
 	if (lang == nil) then lang = "text" end
 	
-	local hl_params = {}
-	hl_params["lang"] = lang
-	if (start_line ~= nil and start_line ~= "") then hl_params["start"] = start_line end
-	if (show_line_numbers ~= nil and show_line_numbers ~= "") then hl_params["line"] = "1" end
-	if (highlight ~= nil and highlight ~= "") then 
-		if (start_line ~= nil and start_line ~= "") then
-			local highlight_with_offset =""
-			local offset = tonumber(start_line) - 1
-			d='(%D-)'
-			for k,i,j in highlight:gmatch(d..'(%d+)'..d) do highlight_with_offset = highlight_with_offset .. k .. i-offset .. j end
-			hl_params["highlight"] = highlight_with_offset 
-		else
-			hl_params["highlight"] = highlight
+	local wikitext = ""
+	
+	if (lang == "markdown" and render_markdown) then
+		-- https://www.mediawiki.org/wiki/Extension:WikiMarkdown
+		wikitext = frame:extensionTag{ name = "markdown" , content = res["__text"] }
+	else
+		local hl_params = {}
+		hl_params["lang"] = lang
+		-- extract line numbers from url
+		if (start_line ~= nil and start_line ~= "") then hl_params["start"] = start_line end
+		if (show_line_numbers ~= nil and show_line_numbers ~= "") then hl_params["line"] = "1" end
+		if (highlight ~= nil and highlight ~= "") then 
+			if (start_line ~= nil and start_line ~= "") then
+				local highlight_with_offset =""
+				local offset = tonumber(start_line) - 1
+				d='(%D-)'
+				for k,i,j in highlight:gmatch(d..'(%d+)'..d) do highlight_with_offset = highlight_with_offset .. k .. i-offset .. j end
+				hl_params["highlight"] = highlight_with_offset 
+			else
+				hl_params["highlight"] = highlight
+			end
 		end
+		mw.logObject(hl_params)
+		-- https://www.mediawiki.org/wiki/Extension:SyntaxHighlight
+		wikitext = frame:extensionTag{ name = "syntaxhighlight" , content = res["__text"], args = hl_params }
 	end
-	mw.logObject(hl_params)
-	local wikitext = frame:extensionTag{ name = "syntaxhighlight" , content = res["__text"], args = hl_params }
+	
 	mw.logObject(wikitext)
 	return wikitext
 end
