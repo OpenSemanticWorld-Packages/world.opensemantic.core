@@ -3,14 +3,18 @@ local p = {} --p stands for package
 p.file_type_mapping = {
 	["py"] = "python",
 	["json"] = "json",
-	["md"] = "markdown"
+	["md"] = "markdown",
+	["yml"] = "yaml",
+	["yaml"] = "yaml",
 }
 
 function p.code(frame)
 	local url = frame.args['url']
 	local lang = frame.args['lang']
+	if (lang == "") then lang = nil end
 	local show_line_numbers = frame.args['show_line_numbers']
-	if (show_line_numbers == "" or show_line_numbers == "0" or show_line_numbers == "false") then show_line_numbers = nil end
+	if (show_line_numbers == nil or show_line_numbers == "" or show_line_numbers == "0" or show_line_numbers == "false") then show_line_numbers = false
+	else show_line_numbers = true end
 	local highlight = frame.args['highlight']
 	local render_markdown = frame.args['render_markdown']
 	if (render_markdown == nil or render_markdown == "") then render_markdown = true end
@@ -22,10 +26,10 @@ function p.code(frame)
 	local anchor = url_parts[2]
 	local start_line = frame.args['start_line']
 	local end_line = frame.args['end_line']
-	if ((start_line == nil or start_line == "") and anchor ~= nil) then start_line =  p.splitString(p.splitString(anchor, "-")[1], "L")[1] end
+	if ((start_line == nil or start_line == "") and anchor ~= nil) then start_line =  p.splitString(p.splitString(p.splitString(anchor, "-")[1], "L")[1], "C")[1] end -- '#L65C1-L80C10' => 65
 	if ((end_line == nil or end_line == "") and anchor ~= nil) then 
 		end_line =  p.splitString(anchor, "-")[2]
-		if (end_line ~= nil) then end_line =  p.splitString(end_line, "L")[1] end
+		if (end_line ~= nil) then end_line =  p.splitString(p.splitString(end_line, "L")[1], "C")[1] end -- '#L65C1-L80C10' => 10
 	end
 	mw.logObject(start_line)
 	mw.logObject(end_line)
@@ -54,7 +58,7 @@ function p.code(frame)
 	res = mw.ext.externalData.getWebData(params)
 	mw.logObject(res["__text"])
 	
-	lang = p.file_type_mapping[file_type]
+	if (lang == nil) then lang = p.file_type_mapping[file_type] end
 	if (lang == nil) then lang = "text" end
 	
 	local wikitext = ""
@@ -67,7 +71,7 @@ function p.code(frame)
 		hl_params["lang"] = lang
 		-- extract line numbers from url
 		if (start_line ~= nil and start_line ~= "") then hl_params["start"] = start_line end
-		if (show_line_numbers ~= nil and show_line_numbers ~= "") then hl_params["line"] = "1" end
+		if (show_line_numbers) then hl_params["line"] = "1" end
 		if (highlight ~= nil and highlight ~= "") then 
 			if (start_line ~= nil and start_line ~= "") then
 				local highlight_with_offset =""
