@@ -39,9 +39,15 @@ Example / Selftest
 		"highlight": {
 			"type": "string",
 			"label": "Highlighted lines",
-			"description": "List of lines or line ranges to highlight. Line numbers are absolute and must be between start and end line of a block selection.",
+			"description": "List of lines or line ranges to highlight. Line numbers are absolute and must be between start and end line of a block selection. Not supported with rendered markdown.",
 			"example": "5,7,9-10",
 			"suggested": true
+		},
+		"render_markdown": {
+			"type": "boolean",
+			"label": "Render markdown",
+			"description": "If set, Markdown files (\".md\") are rendered instead of displaying the source text",
+			"autovalue": "1"
 		},
 		"uuid": {
 			"label": "UUID (auto-generated, should not be changed)",
@@ -59,6 +65,7 @@ Example / Selftest
 		"show_line_numbers",
 		"lang",
 		"highlight",
+		"render_markdown",
 		"uuid"
 	]
 }
@@ -73,4 +80,5 @@ Example / Selftest
 |show_line_numbers={{{show_line_numbers|}}}
 |lang={{{lang|}}}
 |highlight={{{highlight|}}}
+|render_markdown={{{render_markdown|}}}
 }}(Source Code from [{{{url|}}} Github])</includeonly>
