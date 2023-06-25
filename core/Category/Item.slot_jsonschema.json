@@ -13,7 +13,6 @@
     "title": "Item",
     "allOf": [
         {
-            "type": "object",
             "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
         }
     ],
@@ -54,7 +53,7 @@
                     }
                 }
             },
-            "minLength": 1,
+            "minItems": 1,
             "default": [
                 "Category:Item"
             ],

@@ -60,7 +60,7 @@
                 "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
                 "labelTemplate": "{{result.printouts.label.[0]}}"
             },
-            "minLength": 1,
+            "minItems": 1,
             "default": [
                 "Category:Process"
             ],
