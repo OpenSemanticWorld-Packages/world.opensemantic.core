@@ -108,9 +108,9 @@
         "utf8_icon": {
             "type": "array",
             "title": "UTF8-Icons",
-            "description": "see https://www.w3schools.com/charsets/ref_utf_symbols.asp",
+            "description": "see https://www.unicode.org/cldr/charts/latest/annotations/romance.html",
             "description*": {
-                "de": "see https://www.w3schools.com/charsets/ref_utf_symbols.asp"
+                "de": "siehe https://www.unicode.org/cldr/charts/latest/annotations/germanic.html"
             },
             "items": {
                 "type": "string",
