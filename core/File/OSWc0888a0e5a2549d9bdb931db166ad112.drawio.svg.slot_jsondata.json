@@ -1,0 +1,26 @@
+{
+    "type": [
+        "Category:OSW11a53cdfbdc24524bf8ac435cbf65d9d"
+    ],
+    "uuid": "c0888a0e-5a25-49d9-bdb9-31db166ad112",
+    "label": [
+        {
+            "text": "tool-schema",
+            "lang": "en"
+        }
+    ],
+    "editor": [
+        "User:Andreas R\u00e4der",
+        "User:Lukas Gold"
+    ],
+    "editing_context": [
+        "Item:OSWe427aafafbac4262955b9f690a83405d"
+    ],
+    "creator": [
+        "User:Andreas R\u00e4der"
+    ],
+    "creation_context": [
+        "Item:OSWe427aafafbac4262955b9f690a83405d"
+    ],
+    "name": "ToolSchema"
+}

@@ -1,2 +1,2 @@
 === Suggested class structure ===
-{{Template:ELN/Editor/DrawIO|file_name=tool-schema|page_name=Category:OSWe427aafafbac4262955b9f690a83405d|full_width=0}}
+{{Template:ELN/Editor/DrawIO|file_name=tool-schema|page_name=Category:OSWe427aafafbac4262955b9f690a83405d|full_width=0|uuid=c0888a0e-5a25-49d9-bdb9-31db166ad112}}
