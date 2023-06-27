@@ -32,7 +32,7 @@
         },
         "query_label": "Property:HasLabel",
         "description": "skos:definition",
-        "description_": "Property:HasDecription",
+        "description*": "Property:HasDescription",
         "image": "schema:image",
         "image*": "Property:HasImage",
         "based_on": "skos:isBasedOn",
@@ -157,9 +157,17 @@
             "format": "table",
             "eval_template": {
                 "type": "mustache-wikitext",
+                "mode": "render",
                 "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
             },
             "items": {
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "store",
+                        "value": "{{{text}}}@{{{lang}}}"
+                    }
+                ],
                 "$ref": "/wiki/JsonSchema:Description?action=raw"
             }
         },
