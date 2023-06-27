@@ -1,0 +1,28 @@
+{
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "HasLabel",
+    "property_type": "Monolingual text",
+    "uuid": "d3a685b2-9fb3-4d04-94e4-4700084f5bec",
+    "label": [
+        {
+            "text": "Label",
+            "lang": "en"
+        },
+        {
+            "text": "Beschriftung",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Multi-language label",
+            "lang": "en"
+        },
+        {
+            "text": "Mehrsprachige Beschriftung",
+            "lang": "de"
+        }
+    ]
+}

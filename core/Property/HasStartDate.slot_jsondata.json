@@ -1,0 +1,21 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasStartDate",
+    "property_type": "Date",
+    "subproperty_of": "Property:HasDate",
+    "uuid": "dadee3b3-a018-429f-a9fb-e8f8b46067ad",
+    "label": [
+        {
+            "text": "HasStartDate",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Begin of an event/process ",
+            "lang": "en"
+        }
+    ]
+}

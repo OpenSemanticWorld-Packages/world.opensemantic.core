@@ -1,0 +1,17 @@
+{
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "HasDescription",
+    "property_type": "Monolingual text",
+    "uuid": "2112e551-2c06-4e1c-95bc-894d652cdbab",
+    "label": [
+        {
+            "text": "HasDescription",
+            "lang": "en"
+        }
+    ],
+    "ontology_iri": [
+        "https://schema.org/description"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasEndDateAndTime",
+    "property_type": "Date",
+    "uuid": "5ad4f364-6e22-453a-9a9a-4990ee80e32e",
+    "label": [
+        {
+            "text": "HasEndDateAndTime",
+            "lang": "en"
+        }
+    ],
+    "subproperty_of": "Property:HasEndDate"
+}

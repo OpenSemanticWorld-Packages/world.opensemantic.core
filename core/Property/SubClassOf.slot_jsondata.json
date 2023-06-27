@@ -1,0 +1,24 @@
+{
+    "property_type": "Page",
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "SubClassOf",
+    "ontology_iri": [
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+    ],
+    "subproperty_of": "Property:IsA",
+    "uuid": "bf833986-6da4-428f-95b7-994aa604b0a3",
+    "label": [
+        {
+            "text": "SubClassOf",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Links as superclass with its subclass",
+            "lang": "en"
+        }
+    ]
+}

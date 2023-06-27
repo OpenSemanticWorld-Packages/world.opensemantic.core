@@ -1,0 +1,14 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasUnitSymbol",
+    "property_type": "Text",
+    "uuid": "8201476f-0580-4085-a5ce-bd5cab69ded1",
+    "label": [
+        {
+            "text": "HasUnitSymbol",
+            "lang": "en"
+        }
+    ]
+}

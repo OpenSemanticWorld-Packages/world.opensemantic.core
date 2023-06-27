@@ -1,0 +1,5 @@
+{{OslTemplate:Property
+|subproperty_of=
+|data_type=Page
+|category=OSL/Property
+}}

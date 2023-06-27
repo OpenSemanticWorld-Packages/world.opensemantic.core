@@ -1,0 +1,21 @@
+{
+    "property_type": "Page",
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "HasType",
+    "uuid": "2ff227b4-c90c-4bc3-baaa-20121d4cd01a",
+    "label": [
+        {
+            "text": "HasType",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Links an instance/individual with a class",
+            "lang": "en"
+        }
+    ],
+    "subproperty_of": "Property:IsA"
+}

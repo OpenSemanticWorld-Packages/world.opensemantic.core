@@ -1,0 +1,20 @@
+{
+    "property_type": "Page",
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "IsA",
+    "uuid": "b8c147f3-06ee-4e75-8345-9f9b1c0f4f26",
+    "label": [
+        {
+            "text": "IsA",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Links a subclass to a superclass / an instance to its type",
+            "lang": "en"
+        }
+    ]
+}

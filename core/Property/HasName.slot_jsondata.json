@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "HasName",
+    "property_type": "Text",
+    "uuid": "9d1417bc-bf29-4736-b6f1-349de316d26c",
+    "label": [
+        {
+            "text": "HasName",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "The alpha-numeric label in English",
+            "lang": "en"
+        }
+    ]
+}

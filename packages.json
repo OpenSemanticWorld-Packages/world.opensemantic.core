@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.15.6",
+            "version": "0.16.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -395,6 +395,226 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSW69f251a900944602a08d1cca830249b5.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "IsA",
+                    "label": "IsA",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/IsA.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/IsA.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/IsA.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/IsA.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasType",
+                    "label": "HasType",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasType.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasType.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasType.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasType.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "SubClassOf",
+                    "label": "SubClassOf",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/SubClassOf.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/SubClassOf.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/SubClassOf.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/SubClassOf.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasUuid",
+                    "label": "HasUuid",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasUuid.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasUuid.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasUuid.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasUuid.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasName",
+                    "label": "HasName",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasName.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasName.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasName.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasName.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasLabel",
+                    "label": "HasLabel",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasLabel.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasLabel.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasLabel.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasLabel.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasDescription",
+                    "label": "HasDescription",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasDescription.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasDescription.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasDescription.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasDescription.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasDate",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasDate.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasDate.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasDate.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasDate.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasStartDate",
+                    "label": "HasStartDate",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasStartDate.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasStartDate.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasStartDate.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasStartDate.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasStartDateAndTime",
+                    "label": "HasStartDateAndTime",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasStartDateAndTime.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasStartDateAndTime.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasStartDateAndTime.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasStartDateAndTime.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasEndDate",
+                    "label": "HasEndDate",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasEndDate.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasEndDate.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasEndDate.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasEndDate.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasEndDateAndTime",
+                    "label": "HasEndDateAndTime",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasEndDateAndTime.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasEndDateAndTime.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasEndDateAndTime.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasEndDateAndTime.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasUnitSymbol",
+                    "label": "HasUnitSymbol",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasUnitSymbol.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasUnitSymbol.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasUnitSymbol.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasUnitSymbol.slot_jsondata.json"
                         }
                     }
                 },

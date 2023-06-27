@@ -1,0 +1,14 @@
+{
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "HasUuid",
+    "property_type": "Text",
+    "uuid": "795f8cb7-8247-40de-a465-f3744c7e7737",
+    "label": [
+        {
+            "text": "HasUuid",
+            "lang": "en"
+        }
+    ]
+}
