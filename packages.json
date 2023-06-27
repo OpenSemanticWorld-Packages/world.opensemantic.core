@@ -4,7 +4,7 @@
     "author": [
         "Simon Stier",
         "Lukas Gold",
-        "Andreas R\u00e4der"
+        "Andreas Raeder"
     ],
     "language": "en",
     "licenseName": "CC BY-NC 4.0",
@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.17.0",
+            "version": "0.17.1",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
