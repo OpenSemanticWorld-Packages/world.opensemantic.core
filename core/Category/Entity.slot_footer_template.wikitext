@@ -1,4 +1,4 @@
-{{#if: {{{attachments|}}} |
+<!-- {{#if: {{{attachments|}}} |-->
 =={{{_label_attachments| {{#switch:{{USERLANGUAGECODE}}|en=Attachments|de=Anhang|#default=Attachments}} }}}==
 <!-- {{#ask: [[IsFileAttachmentOf::{{FULLPAGENAME}}]] -->
 {{#ask: [[-HasFileAttachment::{{FULLPAGENAME}}]]
@@ -14,4 +14,4 @@
 <!-- With format=datatable VE page safe fails!?! -->
 <!-- <div class="fileupload-auto-reload">{{#batchupload:OslTemplate:ELN/Attachment|{{FULLPAGENAME}}|{{REVISIONUSER}}}}</div> -->
 {{#batchupload:}}
-|}}
+<!--|}}-->
