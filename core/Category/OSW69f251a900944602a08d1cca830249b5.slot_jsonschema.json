@@ -77,7 +77,6 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "previewWikiTextTemplate": "{{result.printouts.label.[0]}}",
                 "options": {
                     "autocomplete": {
                         "query": "[[-HasDisplayUnit::{{base_property}}]]|?Display_title_of=label",
@@ -111,7 +110,6 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "previewWikiTextTemplate": "{{result.printouts.label.[0]}}",
                 "options": {
                     "autocomplete": {
                         "query": "[[-HasInputUnit::{{base_property}}]]|?Display_title_of=label",

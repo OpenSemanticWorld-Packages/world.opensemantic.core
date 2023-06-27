@@ -13,5 +13,8 @@
             "lang": "de"
         }
     ],
-    "name": "Process"
+    "name": "Process",
+    "type": [
+        "Category:Category"
+    ]
 }

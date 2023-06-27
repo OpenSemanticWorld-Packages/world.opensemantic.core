@@ -39,8 +39,8 @@
 				"de": "Breite"
 			},
 			"description": {
-				"en": "Display width of the graphic in pixels",
-				"de": "Anzeigebreite der Graphik in Pixeln"
+				"en": "Display width of the graphic in pixels or percent",
+				"de": "Anzeigebreite der Graphik in Pixeln oder Prozent"
 			},
 			"type": "string",
 			"autovalue": "600px"

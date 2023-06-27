@@ -13,7 +13,6 @@
             "lang": "de"
         }
     ],
-    "_debug": false,
     "description": [
         {
             "text": "Item",
@@ -26,5 +25,8 @@
             "text": "Item",
             "lang": "en"
         }
+    ],
+    "type": [
+        "Category:Category"
     ]
 }

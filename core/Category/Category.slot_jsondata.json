@@ -12,5 +12,8 @@
             "lang": "en"
         }
     ],
-    "name": "CategoryClass"
+    "name": "CategoryClass",
+    "type": [
+        "Category:Category"
+    ]
 }

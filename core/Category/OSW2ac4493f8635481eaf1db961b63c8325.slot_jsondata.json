@@ -9,5 +9,8 @@
             "lang": "en"
         }
     ],
-    "name": "Data"
+    "name": "Data",
+    "type": [
+        "Category:Category"
+    ]
 }
