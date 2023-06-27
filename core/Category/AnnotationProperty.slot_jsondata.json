@@ -1,0 +1,22 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Property"
+    ],
+    "uuid": "c3d78c97-6590-43f5-abcf-643513ae55e1",
+    "label": [
+        {
+            "text": "AnnotationProperty",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "To annotate classes and individuals",
+            "lang": "en"
+        }
+    ],
+    "name": "AnnotationProperty"
+}

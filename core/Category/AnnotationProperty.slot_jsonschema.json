@@ -1,0 +1,30 @@
+{
+    "@context": [
+        "/wiki/Category:Property?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Property?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "c3d78c97-6590-43f5-abcf-643513ae55e1",
+    "title": "AnnotationProperty",
+    "title*": {
+        "en": "AnnotationProperty"
+    },
+    "description": "To annotate classes and individuals",
+    "description*": {
+        "en": "To annotate classes and individuals"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWc3d78c97659043f5abcf643513ae55e1"
+            ]
+        }
+    }
+}
