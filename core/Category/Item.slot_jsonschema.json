@@ -6,7 +6,14 @@
                 "@id": "@type",
                 "@type": "@id"
             },
-            "type*": "Property:HasType"
+            "type*": {
+                "@id": "Property:HasType",
+                "@type": "@id"
+            },
+            "type**": {
+                "@id": "Property:HasSchema",
+                "@type": "@id"
+            }
         }
     ],
     "type": "object",
@@ -27,6 +34,7 @@
             },
             "type": "array",
             "format": "table",
+            "propertyOrder": -1000,
             "eval_template": [
                 {
                     "type": "mustache-wikitext",
@@ -43,13 +51,7 @@
                 "format": "autocomplete",
                 "options": {
                     "autocomplete": {
-                        "query": "[[IsA::Category:Category]] |?Display_title_of=label",
-                        "render_template": {
-                            "type": [
-                                "handlebars"
-                            ],
-                            "value": "<a href='/wiki/{{result.fulltext}}'>{{result.printouts.label.[0]}}</a>"
-                        }
+                        "query": "[[HasType::Category:Category]] |?Display_title_of=label"
                     }
                 }
             },

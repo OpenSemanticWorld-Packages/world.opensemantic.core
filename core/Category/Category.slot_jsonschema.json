@@ -6,6 +6,10 @@
                 "@id": "rdf:subclass_of",
                 "@type": "@id"
             },
+            "subclass_of*": {
+                "@id": "Property:SubClassOf",
+                "@type": "@id"
+            },
             "metaclass": {
                 "@id": "Property:HasMetaCategory",
                 "@type": "@id"
@@ -47,9 +51,11 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
-                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
-                "labelTemplate": "{{result.printouts.label.[0]}}"
+                "options": {
+                    "autocomplete": {
+                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
+                    }
+                }
             }
         },
         "type": {
@@ -66,9 +72,11 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
-                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
-                "labelTemplate": "{{result.printouts.label.[0]}}"
+                "options": {
+                    "autocomplete": {
+                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
+                    }
+                }
             },
             "minItems": 1,
             "default": [
@@ -93,9 +101,11 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "query": "[[IsA::Category:Category]] |?Display_title_of=label",
-                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
-                "labelTemplate": "{{result.printouts.label.[0]}}"
+                "options": {
+                    "autocomplete": {
+                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
+                    }
+                }
             },
             "default": [
                 "Category:Entity"

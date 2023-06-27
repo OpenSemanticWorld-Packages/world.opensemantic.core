@@ -1,4 +1,5 @@
+
 =={{#switch:{{USERLANGUAGECODE}}|en=Graph|de=Graph}}==
-<div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["Subcategory of","-Subcategory of","-IsASubcategoryOf","IsASubcategoryOf","-IsInstanceOf","IsLocatedIn"], "ignore_properties":["IsA"], "permalink":true, "depth":2, "edit": true}'></div>
+<div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["IsA","-IsA","HasSchema", "-HasSchema", "-IsInstanceOf","IsLocatedIn"], "ignore_properties":["Subcategory_of", "-Subcategory_of"], "permalink":true, "depth":2, "edit": true}'></div>
 <br>
 <br>
