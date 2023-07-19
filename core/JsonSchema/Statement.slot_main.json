@@ -11,7 +11,6 @@
         "substatements": "Property:HasStatement",
         "label": "Property:HasLabel"
     },
-    "common_definitions": {},
     "type": "object",
     "format": "grid-strict",
     "id": "statement",
@@ -85,7 +84,6 @@
     },
     "oneOf": [
         {
-            "$ref": "#/common_definitions",
             "title": "Object Statement",
             "required": [
                 "uuid",
@@ -125,7 +123,6 @@
             }
         },
         {
-            "$ref": "#/common_definitions",
             "title": "Data Statement",
             "title*": {
                 "de": "Datenangabe"
@@ -163,7 +160,6 @@
             }
         },
         {
-            "$ref": "#/common_definitions",
             "title": "Quantity Statement",
             "title*": {
                 "de": "Gr\u00f6\u00dfenangabe"
