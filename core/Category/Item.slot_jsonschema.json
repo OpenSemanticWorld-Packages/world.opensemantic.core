@@ -2,15 +2,11 @@
     "@context": [
         "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
-            "type_": {
-                "@id": "@type",
-                "@type": "@id"
-            },
-            "type*": {
+            "type": {
                 "@id": "Property:HasType",
                 "@type": "@id"
             },
-            "type**": {
+            "type*": {
                 "@id": "Property:HasSchema",
                 "@type": "@id"
             }
