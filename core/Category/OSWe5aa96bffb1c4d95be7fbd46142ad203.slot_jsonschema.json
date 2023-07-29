@@ -26,6 +26,10 @@
                 "@id": "Property:HasActionee",
                 "@type": "@id"
             },
+            "status": {
+                "@id": "Property:HasStatus",
+                "@type": "@id"
+            },
             "start_date_time": "Property:HasStartDateAndTime",
             "end_date_time": "Property:HasEndDateAndTime",
             "subprocesses": {
@@ -131,7 +135,13 @@
         },
         "status": {
             "type": "string",
-            "title": "Status"
+            "format": "autocomplete",
+            "title": "Status",
+            "options": {
+                "autocomplete": {
+                    "category": "Category:OSW9725d7a91bab4f1aa68f423e4e9bfcf4"
+                }
+            }
         },
         "tool": {
             "type": "array",
