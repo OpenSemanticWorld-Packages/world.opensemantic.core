@@ -1,27 +1,43 @@
 {
     "@context": {
         "Property": "https://wiki-dev.open-semantic-lab.org/id/Property-3A",
-        "subject": "Property:HasSubject",
-        "predicate": "Property:HasProperty",
-        "property": "Property:HasProperty",
-        "quantity": "Property:HasProperty",
-        "object": "Property:HasObject",
-        "value": "Property:HasObject",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "subject*": "Property:HasSubject",
+        "subject": "rdf:subject",
+        "predicate*": "Property:HasProperty",
+        "predicate": "rdf:predicate",
+        "property*": "Property:HasProperty",
+        "property": "rdf:predicate",
+        "quantity*": "Property:HasProperty",
+        "quantity": "rdf:predicate",
+        "object*": "Property:HasObject",
+        "object": "rdf:object",
+        "value*": "Property:HasObject",
+        "value": "rdf:object",
         "unit": "Property:HasUnit",
         "substatements": "Property:HasStatement",
-        "label": "Property:HasLabel"
+        "label*": "Property:HasLabel",
+        "label": "rdfs:label"
     },
     "type": "object",
     "format": "grid-strict",
     "id": "statement",
     "headerTemplate": "... {{#if self.predicate}}{{self.predicate}}{{/if}}{{#if self.property}}{{self.property}}{{/if}}{{#if self.quantity}}{{self.quantity}}{{/if}} ...",
     "required": [
-        "uuid"
+        "uuid",
+        "rdf_type"
     ],
     "options": {
         "display_required_only": true
     },
     "properties": {
+        "rdf_type": {
+            "default": "rdf:Statement",
+            "options": {
+                "hidden": true
+            }
+        },
         "uuid": {
             "title": "UUID",
             "type": "string",
