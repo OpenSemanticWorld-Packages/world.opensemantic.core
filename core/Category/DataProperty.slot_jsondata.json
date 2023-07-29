@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Property"
+    ],
+    "uuid": "5339291d-0c2f-475e-9f77-c85679ab6b24",
+    "label": [
+        {
+            "text": "Data property",
+            "lang": "en"
+        }
+    ],
+    "utf8_icon": [
+        "\u21e8"
+    ],
+    "name": "DataProperty"
+}

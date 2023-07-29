@@ -1,0 +1,31 @@
+{
+    "@context": [
+        "/wiki/Category:Property?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Property?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "5339291d-0c2f-475e-9f77-c85679ab6b24",
+    "title": "DataProperty",
+    "title*": {
+        "en": "Data property"
+    },
+    "description": "",
+    "description*": {},
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "property_type": {
+            "default": "Text"
+        },
+        "type": {
+            "default": [
+                "Category:DataProperty"
+            ]
+        }
+    }
+}
