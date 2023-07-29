@@ -10,5 +10,5 @@
     |<!-- else show nothing -->}}
 </table>
 {{#set: 
-  |Display units={{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit.HasUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=;
+  |Display units={{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit.HasMainUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=;
 }}
