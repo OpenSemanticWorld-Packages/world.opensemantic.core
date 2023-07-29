@@ -671,7 +671,7 @@ function p.processStatement(args)
 	-- handle "approved" statements
 	if (statement["HasSubject"] == nil or statement["HasSubject"][1] == nil or statement["HasSubject"][1] == "") then --implicit subject
 		if (statement["HasProperty"] ~= nil and statement["HasProperty"][1] ~= nil and statement["HasProperty"][1] ~= "" and statement["HasObject"] ~= nil) then
-			local property = p.splitString(statement["HasProperty"][1], ":")[2]
+			local property = string.gsub(statement["HasProperty"][1], p.keys.property_ns_prefix .. ":", "") -- also allow prefix properties like: Property:schema:url
 			if (debug) then
 				mw.log("Set property " .. property .. " from statement to ")
 				mw.logObject(statement["HasObject"])
