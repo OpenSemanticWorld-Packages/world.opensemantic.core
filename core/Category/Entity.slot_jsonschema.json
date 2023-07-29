@@ -17,8 +17,9 @@
             "@id": "wiki:Category-3A",
             "@prefix": true
         },
-        "category": {
-            "@id": "@type"
+        "rdf_type": {
+            "@id": "@type",
+            "@type": "@id"
         },
         "uuid*": "Property:HasUuid",
         "name*": "Property:HasName",
@@ -60,6 +61,18 @@
             "title": "UUID",
             "type": "string",
             "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        },
+        "iri": {
+            "title": "IRI",
+            "description": "The Internationalized Resource Identifier (IRI) of this entity",
+            "description*": {
+                "de": "Der internationalisierte Ressourcenbezeichner (IRI) dieser Entit\u00e4t"
+            },
+            "type": "string",
+            "format": "url",
             "options": {
                 "hidden": true
             }
@@ -263,6 +276,12 @@
                         "download": true
                     }
                 ]
+            }
+        },
+        "meta": {
+            "$ref": "/wiki/JsonSchema:Meta?action=raw",
+            "options": {
+                "hidden": true
             }
         }
     }

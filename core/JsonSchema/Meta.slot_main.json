@@ -1,0 +1,34 @@
+{
+    "@context": {},
+    "title": "Meta",
+    "type": "object",
+    "properties": {
+        "wiki_page": {
+            "title": "Wiki page",
+            "description": "The wiki page containing this entity",
+            "type": "object",
+            "properties": {
+                "title": {
+                    "title": "Title",
+                    "description": "The page title",
+                    "type": "string"
+                },
+                "namespace": {
+                    "title": "Namespace",
+                    "description": "The page namespace",
+                    "example": "Category",
+                    "type": "string"
+                }
+            }
+        },
+        "change_id": {
+            "title": "Change IDs",
+            "description": "To keep track of concerted changes",
+            "type": "array",
+            "items": {
+                "title": "Change ID",
+                "type": "string"
+            }
+        }
+    }
+}

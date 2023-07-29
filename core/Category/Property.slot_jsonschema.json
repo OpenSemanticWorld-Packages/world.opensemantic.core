@@ -9,6 +9,7 @@
             "property_type": "Property:Has_type",
             "external_uri": "Property:External_formatter_uri",
             "ontology_iri": "Property:Equivalent URI",
+            "imported_from*": "Property:Imported_from",
             "subproperty_of": {
                 "@id": "Property:Subproperty_of",
                 "@type": "@id"
@@ -33,6 +34,12 @@
         "type"
     ],
     "properties": {
+        "imported_from": {
+            "type": "string",
+            "description": "A prefixed IRI defining this entry as a imported term. In OSW the prefix must be a registered imported ontology.",
+            "title": "Imported from",
+            "example": "schema:Person"
+        },
         "name": {
             "description": "For properties this value is the primary identifier.",
             "description*": {
