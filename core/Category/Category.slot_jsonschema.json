@@ -2,8 +2,9 @@
     "@context": [
         "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
+            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "subclass_of": {
-                "@id": "rdf:subclass_of",
+                "@id": "rdfs:subClassOf",
                 "@type": "@id"
             },
             "subclass_of*": {
