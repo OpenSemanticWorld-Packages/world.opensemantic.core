@@ -1,0 +1,30 @@
+{
+    "@context": [
+        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "3e3f5dd4-f718-42fb-b8f2-70e511af8031",
+    "title": "LocalFile",
+    "title*": {
+        "en": "Local File"
+    },
+    "description": "A file stored on a local file system",
+    "description*": {
+        "en": "A file stored on a local file system"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW3e3f5dd4f71842fbb8f270e511af8031"
+            ]
+        }
+    }
+}

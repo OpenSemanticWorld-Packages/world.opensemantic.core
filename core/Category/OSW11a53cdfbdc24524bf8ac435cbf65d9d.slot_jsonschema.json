@@ -1,10 +1,10 @@
 {
     "@context": [
-        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+        "/wiki/Category:OSW05b244d0a669436e96fe4e1631d5a171?action=raw&slot=jsonschema"
     ],
     "allOf": [
         {
-            "$ref": "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+            "$ref": "/wiki/Category:OSW05b244d0a669436e96fe4e1631d5a171?action=raw&slot=jsonschema"
         }
     ],
     "type": "object",

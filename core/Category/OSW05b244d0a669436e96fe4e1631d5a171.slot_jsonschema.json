@@ -1,0 +1,30 @@
+{
+    "@context": [
+        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "05b244d0-a669-436e-96fe-4e1631d5a171",
+    "title": "RemoteFile",
+    "title*": {
+        "en": "Remote File"
+    },
+    "description": "A file stored on a remote location, e. g. on a web server",
+    "description*": {
+        "en": "A file stored on a remote location, e. g. on a web server"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW05b244d0a669436e96fe4e1631d5a171"
+            ]
+        }
+    }
+}

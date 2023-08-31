@@ -1,0 +1,22 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:OSWff333fd349af4f65a69100405a9e60c7"
+    ],
+    "uuid": "3e3f5dd4-f718-42fb-b8f2-70e511af8031",
+    "label": [
+        {
+            "text": "Local File",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "A file stored on a local file system",
+            "lang": "en"
+        }
+    ],
+    "name": "LocalFile"
+}

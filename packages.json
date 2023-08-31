@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.19.9",
+            "version": "0.20.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -208,6 +208,46 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSWff333fd349af4f65a69100405a9e60c7.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW3e3f5dd4f71842fbb8f270e511af8031",
+                    "label": "LocalFile",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW3e3f5dd4f71842fbb8f270e511af8031.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW3e3f5dd4f71842fbb8f270e511af8031.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW3e3f5dd4f71842fbb8f270e511af8031.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW3e3f5dd4f71842fbb8f270e511af8031.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW3e3f5dd4f71842fbb8f270e511af8031.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW05b244d0a669436e96fe4e1631d5a171",
+                    "label": "RemoteFile",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW05b244d0a669436e96fe4e1631d5a171.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW05b244d0a669436e96fe4e1631d5a171.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW05b244d0a669436e96fe4e1631d5a171.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW05b244d0a669436e96fe4e1631d5a171.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW05b244d0a669436e96fe4e1631d5a171.slot_jsonschema.json"
                         }
                     }
                 },

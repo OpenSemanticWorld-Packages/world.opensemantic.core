@@ -1,0 +1,22 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:OSWff333fd349af4f65a69100405a9e60c7"
+    ],
+    "uuid": "05b244d0-a669-436e-96fe-4e1631d5a171",
+    "label": [
+        {
+            "text": "Remote File",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "A file stored on a remote location, e. g. on a web server",
+            "lang": "en"
+        }
+    ],
+    "name": "RemoteFile"
+}
