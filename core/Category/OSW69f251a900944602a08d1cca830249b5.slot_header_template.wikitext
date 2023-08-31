@@ -12,7 +12,7 @@
 </tr>
 </table>  <!-- 
 -->{{#set: 
-  |Corresponds to={{#ask: [[{{{base_quantity}}}]] |?Corresponds to |mainlabel=- |headers=hide |format=plainlist |link=none |valuesep=;}} |+sep=;
+  |Corresponds to={{#ask: [[{{{base_property}}}]] |?Corresponds to |mainlabel=- |headers=hide |format=plainlist |link=none |valuesep=;}} |+sep=;
 }}<!-- 
 -->{{#if: {{{display_units|}}} | <!-- set specified display units if defined-->
 {{#set: |Display units={{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit.HasUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=; }} | <!-- else inherit display units -->
