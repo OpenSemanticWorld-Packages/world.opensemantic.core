@@ -1,13 +1,13 @@
 {
     "@context": [
     	{{#each subclass_of}}
-        "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}}
+        "{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}}
         {{/each}}
     ],
     "allOf": [
         {
         	{{#each subclass_of}}
-            "$ref": "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}}
+            "$ref": "{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}}
             {{/each}}
         }
     ],
