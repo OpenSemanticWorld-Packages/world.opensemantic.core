@@ -1,0 +1,72 @@
+{
+    "@context": [
+        "/wiki/Category:OSWe5aa96bffb1c4d95be7fbd46142ad203?action=raw&slot=jsonschema",
+        {
+            "prio": {
+                "@id": "Property:HasPriority",
+                "@type": "@id"
+            },
+            "related_to": {
+                "@id": "Property:IsRelatedTo",
+                "@type": "@id"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWe5aa96bffb1c4d95be7fbd46142ad203?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "c5d4829e-d274-4a21-9ba0-27171c75fa1d",
+    "title": "Task",
+    "title*": {
+        "en": "Task",
+        "de": "Aufgabe"
+    },
+    "description": "",
+    "description*": {},
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWc5d4829ed2744a219ba027171c75fa1d"
+            ]
+        },
+        "prio": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Priority",
+            "title*": {
+                "de": "Priorit\u00e4t"
+            },
+            "options": {
+                "autocomplete": {
+                    "category": "Category:OSW65c8449bdd4f4fbcb7f68203a11d6e8f"
+                }
+            }
+        },
+        "related_to": {
+            "type": "array",
+            "title": "Related to",
+            "title*": {
+                "de": "Bezug zu"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Entry",
+                "title*": {
+                    "de": "Eintrag"
+                },
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:Entity"
+                    }
+                }
+            }
+        }
+    }
+}

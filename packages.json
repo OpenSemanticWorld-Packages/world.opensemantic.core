@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.20.4",
+            "version": "0.21.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -311,6 +311,77 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWc5d4829ed2744a219ba027171c75fa1d",
+                    "label": "Task",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWf474ec34b7df451ea8356134241aef8a",
+                    "label": "Done",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWa2b4567ad4874ea1b9adfed19a3d06d1",
+                    "label": "InWork",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWaa8d29404288446a9f3ec7afa4e2a512",
+                    "label": "ToDo",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_jsondata.json"
                         }
                     }
                 },
@@ -624,7 +695,25 @@
                     }
                 },
                 {
+                    "name": "HasImage",
+                    "label": "HasImage",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasImage.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasImage.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasImage.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasImage.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
                     "name": "HasDate",
+                    "label": "HasDate",
                     "namespace": "SMW_NS_PROPERTY",
                     "urlPath": "Property/HasDate.slot_main.wikitext",
                     "slots": {
@@ -806,6 +895,12 @@
                     "name": "Editor/Wellplate",
                     "namespace": "NS_TEMPLATE",
                     "urlPath": "Template/Editor/Wellplate.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Editor/Kanban",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Editor/Kanban.slot_main.wikitext",
                     "slots": {}
                 },
                 {

@@ -1,0 +1,23 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:OSWe5aa96bffb1c4d95be7fbd46142ad203"
+    ],
+    "uuid": "c5d4829e-d274-4a21-9ba0-27171c75fa1d",
+    "label": [
+        {
+            "text": "Task",
+            "lang": "en"
+        },
+        {
+            "text": "Aufgabe",
+            "lang": "de"
+        }
+    ],
+    "utf8_icon": [
+        "\ud83d\udccb"
+    ],
+    "name": "Task"
+}

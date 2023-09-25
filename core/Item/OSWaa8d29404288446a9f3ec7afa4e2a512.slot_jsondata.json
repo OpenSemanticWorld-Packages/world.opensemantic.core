@@ -1,0 +1,25 @@
+{
+    "type": [
+        "Category:OSW9725d7a91bab4f1aa68f423e4e9bfcf4"
+    ],
+    "uuid": "aa8d2940-4288-446a-9f3e-c7afa4e2a512",
+    "name": "ToDo",
+    "label": [
+        {
+            "text": "To do",
+            "lang": "en"
+        },
+        {
+            "text": "Pending",
+            "lang": "en"
+        },
+        {
+            "text": "Zu tun",
+            "lang": "de"
+        },
+        {
+            "text": "Geplant",
+            "lang": "de"
+        }
+    ]
+}

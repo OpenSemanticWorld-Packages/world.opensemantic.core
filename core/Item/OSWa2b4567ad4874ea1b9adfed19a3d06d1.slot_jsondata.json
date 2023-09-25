@@ -1,0 +1,25 @@
+{
+    "type": [
+        "Category:OSW9725d7a91bab4f1aa68f423e4e9bfcf4"
+    ],
+    "uuid": "a2b4567a-d487-4ea1-b9ad-fed19a3d06d1",
+    "name": "InWork",
+    "label": [
+        {
+            "text": "In work",
+            "lang": "en"
+        },
+        {
+            "text": "In progress",
+            "lang": "en"
+        },
+        {
+            "text": "Running",
+            "lang": "en"
+        },
+        {
+            "text": "In Arbeit",
+            "lang": "de"
+        }
+    ]
+}

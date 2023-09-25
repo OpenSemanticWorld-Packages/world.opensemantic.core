@@ -1,0 +1,113 @@
+<includeonly>{{Template:Helper/UI/VE/Visible
+|icon=tableAddColumnAfter
+|content=Kanban ''{{{file_name}}}''
+}}
+{{Template:Helper/UI/VE/Hidden 
+|content=<div class="Kanban" style="width: {{#ifeq: {{{full_width|1}}}|1|100%| {{{width|600px}}} }};" data-config='{
+  "uuid": "{{{uuid|}}}",
+  "name":"{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}",
+  "edit":{{#ifeq: {{{edit|0}}}|1|true|false}}, 
+  "default_jsondata": {"related_to": ["{{FULLPAGENAME}}"]},
+  {{#if: {{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}|"query": {"type": "smw", "value": "{{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}"}|}}
+}'></div>
+}}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
+<templatedata>
+{
+	"params": {
+		"file_name": {
+			"label": {
+				"en": "Board name",
+				"de": "Name des Boards"
+			},
+			"description": {
+				"en": "Must be unique on this page",
+				"de": "Muss eindeutig auf dieser Seite sein"
+			},
+			"required": true,
+			"autovalue": "kanban-01"
+		},
+		"smw_query": {
+			"label": {
+				"en": "SMW query",
+				"de": "SMW Abfrage"
+			},
+			"description": {
+				"en": "Selects task by running an SMW query, default all task related to the current page",
+				"de": "Wählt Aufgaben durch eine SMW Anfrage aus, Standardwert sind alle Aufgaben mit Bezug zur aktuellen Seite"
+			},
+			"required": false,
+			"autovalue": "[[IsRelatedTo::{{subst:FULLPAGENAME}}]]",
+			"suggested": false
+		},
+		"width": {
+			"label": {
+				"en": "Width",
+				"de": "Breite"
+			},
+			"description": {
+				"en": "Width of the graph in pixels",
+				"de": "Breite des Graphen in Pixeln"
+			},
+			"type": "string",
+			"autovalue": "600px"
+		},
+		"full_width": {
+			"label": {
+				"en": "Full width",
+				"de": "Gesamte Seitenbreite"
+			},
+			"description": {
+				"en": "Used the full page width to display the graph",
+				"de": "Nutzt die gesamte Seitenbreite zur Darstellung des Graphen"
+			},
+			"type": "boolean",
+			"autovalue": "1",
+			"suggested": true
+		},
+		"edit": {
+			"label": {
+				"en": "Edit modus",
+				"de": "Bearbeitungsmodus"
+			},
+			"description": {
+				"en": "Allows editing the board / task",
+				"de": "Erlaubt die Bearbeitung des Boards / der Aufgaben"
+			},
+			"type": "boolean",
+			"autovalue": "1",
+			"suggested": true
+		},
+		"page_name": {
+			"label": {
+				"en": "Page name",
+				"de": "Seitename"
+			},
+			"description": {
+				"en": "is filled in automatically",
+				"de": "wird automatisch ausgefüllt"
+			},
+			"type": "wiki-page-name",
+			"autovalue": "{{subst:FULLPAGENAME}}"
+		},
+		"uuid": {
+			"label": {
+				"en": "Unique ID",
+				"de": "Eindeutige ID"
+			},
+			"description": {
+				"en": "Automatically generated and should not be changed",
+				"de": "Wird automatisch generiert und sollte nicht verändert werden"
+			},
+			"type": "string",
+			"required": true,
+			"autovalue": "{{subst:UUID}}"
+		}
+	},
+	"description": {
+		"en": "Adds a kanban board task viewer and editor",
+		"de": "Fügt einen Kanban Editor ein"
+	},
+	"format": "block"
+}
+</templatedata>
+</noinclude>

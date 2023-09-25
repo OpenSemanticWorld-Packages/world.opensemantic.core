@@ -1,0 +1,24 @@
+{
+    "name": "HasImage",
+    "property_type": "Page",
+    "type": [
+        "Category:Property"
+    ],
+    "uuid": "9609a8aa-ccc7-4189-8d85-189cb3f851d3",
+    "label": [
+        {
+            "text": "HasImage",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Links an entity to a representative image",
+            "lang": "en"
+        },
+        {
+            "text": "Verbindet eine Entit\u00e4t mit einem repr\u00e4sentativen Bild",
+            "lang": "de"
+        }
+    ]
+}
