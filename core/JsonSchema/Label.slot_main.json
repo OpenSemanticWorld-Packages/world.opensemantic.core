@@ -21,7 +21,8 @@
             "title*": {
                 "de": "Text"
             },
-            "type": "string"
+            "type": "string",
+            "minLength": 1
         },
         "lang": {
             "title": "Lang code",
