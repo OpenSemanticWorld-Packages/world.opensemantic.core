@@ -13,4 +13,4 @@ div.ve-hidden.ve-ce-leafNode.ve-ce-mwTransclusionNode { display:none!important; 
 </syntaxhighlight>
 
 </noinclude>
-<includeonly><div class="ve-hidden">{{{content|}}}</div></includeonly>
+<includeonly><div class="ve-hidden osw-editor-container {{{css_class|}}}">{{{content|}}}</div></includeonly>

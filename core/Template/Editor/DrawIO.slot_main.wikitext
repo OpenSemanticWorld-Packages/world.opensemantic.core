@@ -1,8 +1,10 @@
 <includeonly>{{Template:Helper/UI/VE/Visible
 |icon=browser
 |content=Diagram ''{{{file_name}}}''
+|css_class=drawio-editor-container
 }}
 {{Template:Helper/UI/VE/Hidden 
+|css_class=drawio-editor-container
 |content={{#drawio:{{#if:{{{uuid|}}}|OSW{{#replace:{{{uuid}}}|-|}}|{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}}}|type={{{type|svg}}}|max-width={{#ifeq: {{{full_width|0}}}|1|100%| {{{width|500px}}} }} |label={{{file_name|}}} }}
 }}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
