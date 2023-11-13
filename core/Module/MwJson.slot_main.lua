@@ -315,6 +315,7 @@ function p.processJsondata(args)
 				if (type(v) ~= 'table') then stripped_jsondata[k] = v end --delete object values, not supported by wiki templates	
 			end
 			local child = frame:newChild{args=stripped_jsondata}
+			if ( template:sub(1, #"=") == "=" ) then template = "\n" .. template end -- add line break if template starts with heading (otherwise not rendered by mw parser)
 			wikitext = wikitext .. child:preprocess( template )
 		elseif (mode == p.mode.header) then
 			local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
