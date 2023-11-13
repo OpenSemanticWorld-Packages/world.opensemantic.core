@@ -502,6 +502,7 @@ jsonschema = {
 mw.logObject(p.buildContext({jsonschema=jsonschema, debug=true}))
 --]]
 
+-- constructs a property specific local jsonld context
 function p.buildContext(args)
 	local schema = p.defaultArg(args.jsonschema, {})
 	--mw.logObject(schema)
@@ -522,6 +523,7 @@ function p.buildContext(args)
 	end
 	local properties = p.defaultArg(schema.properties, {})
 
+	-- build property context
 	for k,v in pairs(properties) do
 		local subcontext = nil
 		if (p.defaultArgPath(properties, {k, 'type'}) == 'object') then
@@ -675,7 +677,7 @@ function p.getSemanticProperties(args)
 			properties['@category'] = jsondata[p.keys.category]
 			if (jsondata[p.keys.name] ~= nil) then properties['Display title of'] = jsondata[p.keys.name] 
 			elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label][1], '@')[1] 
-			else properties['Display title of'] = p.defaultArg(parent_schema_property.schema_data['title'], "") end
+			else properties['Display title of'] = p.defaultArg(subschema['title'], "") end
 			if (p.tableLength(properties) > 0) then
 				store_res = mw.smw.subobject( properties, subobjectId )	--store as subobject
 				if (debug) then mw.logObject("Store subobject with id " .. (subobjectId or "<random>")) end
