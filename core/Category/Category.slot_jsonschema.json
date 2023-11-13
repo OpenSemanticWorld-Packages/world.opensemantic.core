@@ -38,32 +38,12 @@
         "type"
     ],
     "properties": {
-        "metaclass": {
-            "title": "Metaclasses/-categories",
-            "title*": {
-                "de": "Metaklassen/-kategorien"
-            },
-            "type": "array",
-            "format": "table",
-            "items": {
-                "title": "Metaclass",
-                "title*": {
-                    "de": "Metaklasse"
-                },
-                "type": "string",
-                "format": "autocomplete",
-                "options": {
-                    "autocomplete": {
-                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
-                    }
-                }
-            }
-        },
         "type": {
             "title": "Types/Categories",
             "title*": {
                 "de": "Typen/Kategorien"
             },
+            "propertyOrder": -1010,
             "type": "array",
             "format": "table",
             "items": {
@@ -94,6 +74,7 @@
                 "de": "\u00dcberkategorien"
             },
             "type": "array",
+            "propertyOrder": -1009,
             "items": {
                 "title": "Category",
                 "title*": {
@@ -113,6 +94,28 @@
             ],
             "options": {
                 "hidden": false
+            }
+        },
+        "metaclass": {
+            "title": "Metaclasses/-categories",
+            "title*": {
+                "de": "Metaklassen/-kategorien"
+            },
+            "type": "array",
+            "format": "table",
+            "propertyOrder": -1008,
+            "items": {
+                "title": "Metaclass",
+                "title*": {
+                    "de": "Metaklasse"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
+                    }
+                }
             }
         },
         "utf8_icon": {

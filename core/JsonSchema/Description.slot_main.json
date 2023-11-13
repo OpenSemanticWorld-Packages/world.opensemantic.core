@@ -22,7 +22,11 @@
                 "de": "Text"
             },
             "type": "string",
-            "minLength": 1
+            "format": "textarea",
+            "minLength": 1,
+            "options": {
+                "input_width": "800px"
+            }
         },
         "lang": {
             "title": "Lang code",
@@ -34,7 +38,14 @@
                 "en",
                 "de"
             ],
-            "default": "en"
+            "default": "en",
+            "default*": {
+                "en": "en",
+                "de": "de"
+            },
+            "options": {
+                "input_width": "100px"
+            }
         }
     }
 }

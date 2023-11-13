@@ -56,6 +56,9 @@
         "uuid",
         "label"
     ],
+    "defaultProperties": [
+        "description"
+    ],
     "properties": {
         "uuid": {
             "title": "UUID",

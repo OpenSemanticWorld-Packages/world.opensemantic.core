@@ -29,6 +29,10 @@
     "required": [
         "type"
     ],
+    "defaultProperties": [
+        "description",
+        "actionees"
+    ],
     "properties": {
         "type": {
             "default": [

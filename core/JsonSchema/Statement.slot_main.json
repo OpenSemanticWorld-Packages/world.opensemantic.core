@@ -89,7 +89,7 @@
             "title": "Substatements",
             "type": "array",
             "format": "tabs",
-            "propertyOrder": 1010,
+            "propertyOrder": 3010,
             "items": {
                 "$ref": "#"
             },
@@ -221,6 +221,7 @@
                     "title*": {
                         "de": "Einheit"
                     },
+                    "propertyOrder": 1010,
                     "watch": {
                         "quantity": "statement.quantity",
                         "unit_symbol": "statement.unit_symbol"
