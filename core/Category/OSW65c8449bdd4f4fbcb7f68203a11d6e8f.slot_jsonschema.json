@@ -1,0 +1,28 @@
+{
+    "@context": [
+        "/wiki/Category:OSWa5812d3b5119416c8da1606cbe7054eb?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWa5812d3b5119416c8da1606cbe7054eb?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "65c8449b-dd4f-4fbc-b7f6-8203a11d6e8f",
+    "title": "Priority",
+    "title*": {
+        "en": "Priority"
+    },
+    "description": "",
+    "description*": {},
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW65c8449bdd4f4fbcb7f68203a11d6e8f"
+            ]
+        }
+    }
+}

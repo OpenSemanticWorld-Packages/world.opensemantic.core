@@ -6,9 +6,12 @@
 |content=<div class="Kanban" style="width: {{#ifeq: {{{full_width|1}}}|1|100%| {{{width|600px}}} }};" data-config='{
   "uuid": "{{{uuid|}}}",
   "name":"{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}",
-  "edit":{{#ifeq: {{{edit|0}}}|1|true|false}}, 
-  "default_jsondata": {"related_to": ["{{FULLPAGENAME}}"]},
-  {{#if: {{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}|"query": {"type": "smw", "value": "{{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}"}|}}
+  "edit":{{#ifeq: {{{edit|0}}}|1|true|false}},
+  "board_preset": "prio_backlog_inwork_done",
+  "board": {
+    "default_jsondata": {"related_to": ["{{FULLPAGENAME}}"]}
+  }
+  {{#if: {{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}|,"query": {"type": "smw", "value": "{{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}"}|}}
 }'></div>
 }}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>

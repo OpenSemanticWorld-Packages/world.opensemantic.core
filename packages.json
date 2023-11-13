@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.22.0",
+            "version": "0.23.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -295,26 +295,6 @@
                     }
                 },
                 {
-                    "name": "OSW9725d7a91bab4f1aa68f423e4e9bfcf4",
-                    "label": "State",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
                     "name": "OSWc5d4829ed2744a219ba027171c75fa1d",
                     "label": "Task",
                     "namespace": "NS_CATEGORY",
@@ -331,6 +311,26 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW9725d7a91bab4f1aa68f423e4e9bfcf4",
+                    "label": "State",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsonschema.json"
                         }
                     }
                 },
@@ -382,6 +382,77 @@
                         },
                         "jsondata": {
                             "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW65c8449bdd4f4fbcb7f68203a11d6e8f",
+                    "label": "Priority",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW8743c7d03c4e46c1bd42bb05e1a082d9",
+                    "label": "High",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW8d781c35212548fa9b2fccad3765da65",
+                    "label": "Medium",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWcaf7db070ad6407babc5245e84d76840",
+                    "label": "Low",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_jsondata.json"
                         }
                     }
                 },
