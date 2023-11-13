@@ -279,7 +279,11 @@ function p.processJsondata(args)
 	
 	local smw_res = nil
 	if (mode == p.mode.header) then
+
+		-- get the semantic properties by looking up the json keys in the json-ld context
 		smw_res = p.getSemanticProperties({jsonschema=jsonschema, jsondata=json_res_store.res, store=false, debug=debug})
+		
+		-- embed json-ld in resulting html for search engine discovery
 		jsonld["@context"] = smw_res.context
 		jsonld["@type"] = p.tableMerge(p.tablefy(jsonschema.schema_type), p.tablefy(jsonld["@type"])) --
 		jsonld['schema:name'] = p.defaultArgPath(jsonld, {p.keys.label, 1, p.keys.text}, jsonld['name']) --google does not support @value and @lang
@@ -302,7 +306,7 @@ function p.processJsondata(args)
 	local max_index = p.tableLength(schema_res.visited)
 	for i, category in ipairs(schema_res.visited) do
 		if (mode == p.mode.footer) then category = schema_res.visited[max_index - i +1] end --reverse order for footer templates
-		local jsonschema = schema_res.jsonschemas[category]
+		local super_jsonschema = schema_res.jsonschemas[category]
 		local template = schema_res.templates[category]
 		if (template ~= nil) then
 			if (debug) then msg = msg .. "Parse \n\n" .. template .. " \n\nwith params " .. mw.dumpObject( jsondata ) .. "\n<br>" end
@@ -313,7 +317,19 @@ function p.processJsondata(args)
 			local child = frame:newChild{args=stripped_jsondata}
 			wikitext = wikitext .. child:preprocess( template )
 		elseif (mode == p.mode.header) then
-			local infobox_res = p.renderInfoBox({jsonschema=jsonschema, jsondata=jsondata})
+			local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
+			for j, subcategory in ipairs(schema_res.visited) do
+				if j > i then
+					local subjsonschema = schema_res.jsonschemas[subcategory]
+					for k, v in pairs(subjsonschema['properties']) do
+						-- skip properties that are overwritten in subschemas, render them only once at the most specific position
+						ignore_properties[k] = true
+					end
+				end
+			end
+			-- render the infobox for the schema itself and every super_schema using always the global json-ld context (merged within walkJsonSchema())
+			-- context needs to be preprocessed with buildContext() since the generic json/table merge of the @context atttribute produces a list of strings (remote context) and context objects
+			local infobox_res = p.renderInfoBox({jsonschema=super_jsonschema, context=p.buildContext({jsonschema=jsonschema}).context, jsondata=jsondata, ignore_properties=ignore_properties})
 			wikitext = wikitext .. frame:preprocess( infobox_res.wikitext )
 		end
 	end
@@ -349,10 +365,12 @@ end
 function p.renderInfoBox(args)
 	local jsondata = p.defaultArg(args.jsondata, {})
 	local schema = p.defaultArg(args.jsonschema, nil)
-	local context = p.buildContext({jsonschema=schema}).context
-	local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
 	local res = ""
 	if schema == nil then return res end
+	
+	local context = p.defaultArg(args.context, p.buildContext({jsonschema=schema}).context)
+	local ignore_properties = p.defaultArg(args.ignore_properties, {})
+
 	local schema_label = ""
 	if schema['title'] ~= nil then schema_label = schema['title'] end
 	
@@ -382,13 +400,21 @@ function p.renderInfoBox(args)
 					for i,e in pairs(v) do 
 						if (type(e) ~= 'table') then 
 							local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-							if (p_type == '@id') then e = "[[" .. string.gsub(e, "Category:", ":Category:") .. "]]" end
+							if (p_type == '@id') then 
+								e = string.gsub(e, "Category:", ":Category:") -- make sure category links work
+								e = string.gsub(e, "File:", ":File:") -- do not embedd images but link to them
+								e = "[[" .. e .. "]]" 
+							end
 							cell:wikitext("\n* " .. e .. "") 
 						end
 					end
 				else
 					local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-					if (p_type == '@id') then v = "[[" .. string.gsub(v, "Category:", ":Category:") .. "]]" end
+					if (p_type == '@id') then 
+						v = string.gsub(v, "Category:", ":Category:") -- make sure category links work
+						v = string.gsub(v, "File:", ":File:") -- do not embedd images but link to them
+						v = "[[" .. v .. "]]" 
+					end
 					cell:wikitext( v )
 				end
 			end
