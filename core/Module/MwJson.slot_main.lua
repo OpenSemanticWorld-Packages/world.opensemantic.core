@@ -343,6 +343,8 @@ function p.processJsondata(args)
 	if (smw_res ~= nil) then
 		if (debug) then msg = msg .. "Store page properties" end
 		smw_res.properties['Display title of'] = display_label --set special property display title
+		smw_res.properties['Display title of lowercase'] = display_label:lower() --store lowercase for case insensitive query
+		smw_res.properties['Display title of normalized'] = display_label:lower():gsub('[^%w]+','') --store with all non-alphanumeric chars removed for normalized query
 		mw.ext.displaytitle.set(display_label)
 		--smw_res.properties['@category'] = jsondata[p.keys.category]
 		local store_res = mw.smw.set( smw_res.properties ) --store as semantic properties

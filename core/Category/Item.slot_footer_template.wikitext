@@ -1,5 +1,4 @@
-
-=={{#switch:{{USERLANGUAGECODE}}|en=Graph|de=Graph}}==
-<div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["IsA","-IsA","HasSchema", "-HasSchema", "-IsInstanceOf","IsLocatedIn"], "ignore_properties":["Subcategory_of", "-Subcategory_of"], "permalink":true, "depth":2, "edit": true}'></div>
+<h2 class="section-collapsible-initial-collapsed section-heading--collapsed">{{#switch:{{USERLANGUAGECODE}}|en=Graph|de=Graph}}</h2>
+<div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["IsA","-IsA","HasSchema", "-IsInstanceOf","IsLocatedIn"], "ignore_properties":["Subcategory_of", "-Subcategory_of", "Has_query", "Display_title_of", "Display_title_of_lowercase", "Display_title_of_normalized"], "permalink":true, "depth":2, "edit": true,  "query_limit":25}'></div>
 <br>
 <br>
