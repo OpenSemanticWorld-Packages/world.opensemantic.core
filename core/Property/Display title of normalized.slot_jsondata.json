@@ -1,0 +1,23 @@
+{
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "Display title of normalized",
+    "property_type": "Text",
+    "uuid": "e24c8889-4bde-4f16-800d-dee7b9e11d8a",
+    "label": [
+        {
+            "text": "Normalized display title",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Internal property that stores the lowercase version of Display_title_of with all non-alphanumeric chars removed to enable a normalized search ",
+            "lang": "en"
+        }
+    ],
+    "based_on": [
+        "Property:Display_title_of_lowercase"
+    ]
+}

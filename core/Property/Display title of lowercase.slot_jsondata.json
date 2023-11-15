@@ -1,0 +1,20 @@
+{
+    "property_type": "Text",
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "Display title of lowercase",
+    "uuid": "1d109a6e-996d-4a9d-9e00-473045676ce8",
+    "label": [
+        {
+            "text": "Lowercase display title",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Internal property that stores the lowercase version of Display_title_of to enable case insensitive search ",
+            "lang": "en"
+        }
+    ]
+}
