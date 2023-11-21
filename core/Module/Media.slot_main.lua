@@ -1,5 +1,5 @@
 local lustache = require("Module:Lustache")
-local yaml = require("Module:Yaml")
+--local yaml = require("Module:Yaml")
 local p = {} --p stands for package
 
 p.template = {}
@@ -34,7 +34,7 @@ function p.gallery(frame)
 --function p.test(frame)
 --	local jsondata = mw.text.jsonDecode(frame.args['jsondata']:gsub("UNIQ.*QINU", ""), mw.text.JSON_TRY_FIXING)--:gsub("<*>", ""):gsub("</nowiki>", "")) 
 
-	if (frame.args['yamldata'] ~= nil) then jsondata = yaml.eval(frame.args['yamldata']) end
+	--if (frame.args['yamldata'] ~= nil) then jsondata = yaml.eval(frame.args['yamldata']) end
 	if (frame.args['textdata'] ~= nil) then
 		-- "File:OSW5f36a59d4bb94ea0bf93f08f7470f609.png|test1;File:OSWd1c24f1c4b014ebe99c2a83672e3dfc7.png|test2;"
 		jsondata["elements"] = {}
