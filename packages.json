@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.24.1",
+            "version": "0.25.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -1024,6 +1024,24 @@
                     "name": "Viewer/Github",
                     "namespace": "NS_MODULE",
                     "urlPath": "Module/Viewer/Github.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Link",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Link.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Media",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Media.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
+                    "name": "Media",
+                    "namespace": "NS_MODULE",
+                    "urlPath": "Module/Media.slot_main.lua",
                     "slots": {}
                 }
             ]

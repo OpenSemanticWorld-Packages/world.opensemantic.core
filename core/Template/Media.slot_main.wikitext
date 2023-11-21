@@ -1,0 +1,24 @@
+<includeonly><!-- {{#tag:gallery
+|{{{textdata|}}}
+|widths={{{size|300}}}
+}} --><!-- textdata need preprocessing-->
+{{#invoke:Media|gallery
+<!-- |textdata={{{textdata}}}  --><!-- param is passed directly -->
+}}
+</includeonly>
+<noinclude>
+== Usage ==
+<syntaxhighlight lang="text">
+{{{Media|textdata=
+File:SomeImage{{!}}some caption;
+File:...{{!}}...;
+}}
+</syntaxhighlight>
+<templatedata>
+{
+	"params": {
+	},
+	"format": "block"
+}
+</templatedata>
+</noinclude>

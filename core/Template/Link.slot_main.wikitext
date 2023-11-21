@@ -1,0 +1,21 @@
+<includeonly><span>{{#if: {{{page|}}}<!--
+-->|[[{{{page}}}|{{#if:{{{label|}}}|{{{label}}}|{{#ask: [[{{{page}}}]]|?Display title of=|mainlabel=-|format=plain}}}}]]<!--
+-->|[{{{url}}} {{{label|{{{url}}}}}}]<!--
+-->}}</span></includeonly>
+<noinclude>
+== Test ==
+* {{{{FULLPAGENAME}}|page=Main Page}}
+* {{{{FULLPAGENAME}}|page=Main Page|label=The main page}}
+* {{{{FULLPAGENAME}}|url=https://google.com}}
+<templatedata>
+{
+	"params": {
+		"page": {
+			"label": "Link target"
+		},
+		"label": {}
+	},
+	"format": "inline"
+}
+</templatedata>
+</noinclude>
