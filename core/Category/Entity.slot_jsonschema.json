@@ -270,10 +270,6 @@
                 },
                 "links": [
                     {
-                        "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}&width=200&height=200{{/if}}",
-                        "mediaType": "image"
-                    },
-                    {
                         "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}{{/if}}",
                         "rel": "{{#if self}}download{{/if}}",
                         "download": true

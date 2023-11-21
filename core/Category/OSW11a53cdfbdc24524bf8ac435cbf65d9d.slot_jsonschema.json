@@ -22,10 +22,31 @@
     "required": [
         "type"
     ],
+    "defaultProperties": [
+        "file"
+    ],
     "properties": {
         "type": {
             "default": [
                 "Category:OSW11a53cdfbdc24524bf8ac435cbf65d9d"
+            ]
+        },
+        "file": {
+            "title": "File",
+            "title*": {
+                "de": "Datei"
+            },
+            "type": "string",
+            "format": "url",
+            "options": {
+                "upload": {}
+            },
+            "links": [
+                {
+                    "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}{{/if}}",
+                    "rel": "{{#if self}}download{{/if}}",
+                    "download": true
+                }
             ]
         }
     }
