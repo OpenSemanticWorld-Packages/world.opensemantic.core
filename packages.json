@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.26.3",
+            "version": "0.26.4",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -752,16 +752,16 @@
                     "name": "Display title of lowercase",
                     "label": "Display title of lowercase",
                     "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/Display title of lowercase.slot_main.wikitext",
+                    "urlPath": "Property/Display%20title%20of%20lowercase.slot_main.wikitext",
                     "slots": {
                         "footer": {
-                            "urlPath": "Property/Display title of lowercase.slot_footer.wikitext"
+                            "urlPath": "Property/Display%20title%20of%20lowercase.slot_footer.wikitext"
                         },
                         "header": {
-                            "urlPath": "Property/Display title of lowercase.slot_header.wikitext"
+                            "urlPath": "Property/Display%20title%20of%20lowercase.slot_header.wikitext"
                         },
                         "jsondata": {
-                            "urlPath": "Property/Display title of lowercase.slot_jsondata.json"
+                            "urlPath": "Property/Display%20title%20of%20lowercase.slot_jsondata.json"
                         }
                     }
                 },
@@ -769,16 +769,16 @@
                     "name": "Display title of normalized",
                     "label": "Display title of normalized",
                     "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/Display title of normalized.slot_main.wikitext",
+                    "urlPath": "Property/Display%20title%20of%20normalized.slot_main.wikitext",
                     "slots": {
                         "footer": {
-                            "urlPath": "Property/Display title of normalized.slot_footer.wikitext"
+                            "urlPath": "Property/Display%20title%20of%20normalized.slot_footer.wikitext"
                         },
                         "header": {
-                            "urlPath": "Property/Display title of normalized.slot_header.wikitext"
+                            "urlPath": "Property/Display%20title%20of%20normalized.slot_header.wikitext"
                         },
                         "jsondata": {
-                            "urlPath": "Property/Display title of normalized.slot_jsondata.json"
+                            "urlPath": "Property/Display%20title%20of%20normalized.slot_jsondata.json"
                         }
                     }
                 },
