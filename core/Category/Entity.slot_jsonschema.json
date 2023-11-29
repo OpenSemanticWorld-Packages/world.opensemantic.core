@@ -81,7 +81,10 @@
             }
         },
         "name": {
-            "title": "Name",
+            "title": "Technical name",
+            "title*": {
+                "de": "Technischer Name"
+            },
             "description": "Technical / Machine compatible name",
             "description*": {
                 "de": "Technischer / Maschinenkompatibler Name"
