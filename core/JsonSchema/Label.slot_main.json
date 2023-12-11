@@ -24,7 +24,15 @@
             "type": "string",
             "minLength": 1,
             "options": {
-                "input_width": "800px"
+                "input_width": "800px",
+                "inputAttributes": {
+                    "placeholder": "Title of the entry"
+                },
+                "inputAttributes*": {
+                    "de": {
+                        "placeholder": "Titel dieses Eintrags"
+                    }
+                }
             }
         },
         "lang": {

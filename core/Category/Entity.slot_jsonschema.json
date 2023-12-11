@@ -96,13 +96,13 @@
         },
         "label": {
             "type": "array",
-            "title": "Labels",
+            "title": "Label(s)",
             "title*": {
-                "de": "Namen"
+                "de": "Bezeichnung(en)"
             },
-            "description": "Human readable names. You have to assign at least one.",
+            "description": "At least one label is required.",
             "description*": {
-                "de": "Menschenlesbarer Namen. Du musst mindestens einen vergeben."
+                "de": "Mindestens ein Bezeichnung ist erforderlich."
             },
             "format": "table",
             "eval_template": [
@@ -115,7 +115,7 @@
             "items": {
                 "title": "Label",
                 "title*": {
-                    "de": "Name"
+                    "de": "Bezeichnung"
                 },
                 "eval_template": [
                     {
@@ -130,9 +130,9 @@
         },
         "short_name": {
             "type": "array",
-            "title": "Short name",
+            "title": "Short name(s)",
             "title*": {
-                "de": "Kurzname"
+                "de": "Kurzname(n)"
             },
             "description": "Abbreviation, Acronym, etc.",
             "description*": {
@@ -145,7 +145,7 @@
                 "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#short_name}} |{{lang}}={{text}} {{/short_name}} {{=<% %>=}} }}"
             },
             "items": {
-                "title": "Acronym",
+                "title": "Short name",
                 "title*": {
                     "de": "Kurzname"
                 },
