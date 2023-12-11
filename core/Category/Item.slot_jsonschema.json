@@ -59,6 +59,7 @@
                 "collapsed": true,
                 "conditional_visible": {
                     "modes": [
+                        "default",
                         "query"
                     ]
                 }
