@@ -1,4 +1,19 @@
-<!-- {{#if: {{{attachments|}}} |-->
+
+{{#if: {{#ask: [[IsPartOf::{{FULLPAGENAME}}]]|format=plain|limit=1|searchlabel=}} |
+=={{{_label_attachments| {{#switch:{{USERLANGUAGECODE}}|en=Structure|de=Struktur|#default=Structure}} }}}==
+
+{{#tree:
+{{#ask:
+ [[{{FULLPAGENAME}}]]
+ OR [[IsPartOf::{{FULLPAGENAME}}]]
+ OR [[IsPartOf.IsPartOf::{{FULLPAGENAME}}]]
+ OR [[IsPartOf.IsPartOf.IsPartOf::{{FULLPAGENAME}}]]
+ |format=tree
+ |parent=IsPartOf
+}}
+}}
+|}}<!-- {{#if: {{{attachments|}}} |-->
+
 =={{{_label_attachments| {{#switch:{{USERLANGUAGECODE}}|en=Attachments|de=Anhang|#default=Attachments}} }}}==
 <!-- {{#ask: [[IsFileAttachmentOf::{{FULLPAGENAME}}]] -->
 {{#ask: [[-HasFileAttachment::{{FULLPAGENAME}}]]
