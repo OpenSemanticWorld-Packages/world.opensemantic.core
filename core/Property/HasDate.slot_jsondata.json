@@ -1,20 +1,20 @@
 {
     "type": [
-      "Category:DataProperty"
+        "Category:DataProperty"
     ],
     "name": "HasDate",
     "property_type": "Date",
     "uuid": "023cf9f8-0b40-4dd5-a38b-a7f56fd5e76c",
     "label": [
-      {
-        "text": "HasDate",
-        "lang": "en"
-      }
+        {
+            "text": "HasDate",
+            "lang": "en"
+        }
     ],
     "description": [
-      {
-        "text": "A point in time",
-        "lang": "en"
-      }
+        {
+            "text": "A point in time",
+            "lang": "en"
+        }
     ]
-  }
+}

@@ -102,7 +102,7 @@
             },
             "description": "At least one label is required.",
             "description*": {
-                "de": "Mindestens ein Bezeichnung ist erforderlich."
+                "de": "Mindestens eine Bezeichnung ist erforderlich."
             },
             "format": "table",
             "eval_template": [

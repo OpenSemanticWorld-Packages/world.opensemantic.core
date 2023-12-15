@@ -7,7 +7,34 @@
     ],
     "title": "File",
     "@context": [
-        "/wiki/Category:OSW2ac4493f8635481eaf1db961b63c8325?action=raw&slot=jsonschema"
+        "/wiki/Category:OSW2ac4493f8635481eaf1db961b63c8325?action=raw&slot=jsonschema",
+        {
+            "dcterms": "http://purl.org/dc/terms/",
+            "creator": {
+                "@id": "dcterms:creator",
+                "@type": "@id"
+            },
+            "creator*": {
+                "@id": "Property:HasCreator",
+                "@type": "@id"
+            },
+            "editor": {
+                "@id": "dcterms:creator",
+                "@type": "@id"
+            },
+            "editor*": {
+                "@id": "Property:HasEditor",
+                "@type": "@id"
+            },
+            "creation_context": {
+                "@id": "Property:HasCreationContext",
+                "@type": "@id"
+            },
+            "editing_context": {
+                "@id": "Property:HasEditingContext",
+                "@type": "@id"
+            }
+        }
     ],
     "uuid": "ff333fd3-49af-4f65-a691-00405a9e60c7",
     "title*": {
