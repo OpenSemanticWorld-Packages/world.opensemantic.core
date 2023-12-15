@@ -1,9 +1,13 @@
 {
     "@context": [
-        "/wiki/Category:Entity?action=raw&slot=jsonschema",
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
         {
             "type": {
                 "@id": "Property:HasType",
+                "@type": "@id"
+            },
+            "type*": {
+                "@id": "Property:HasSchema",
                 "@type": "@id"
             },
             "tool": {
@@ -41,43 +45,15 @@
     "type": "object",
     "allOf": [
         {
-            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
         }
     ],
     "title": "Process",
     "properties": {
         "type": {
-            "title": "Types/Categories",
-            "title*": {
-                "de": "Typen/Kategorien"
-            },
-            "type": "array",
-            "format": "table",
-            "items": {
-                "title": "Type",
-                "title*": {
-                    "de": "Type"
-                },
-                "type": "string",
-                "format": "autocomplete",
-                "query": "[[HasType::Category:Category]] |?Display_title_of=label",
-                "previewWikiTextTemplate": "[[:{{result.fulltext}}]]",
-                "labelTemplate": "{{result.printouts.label.[0]}}"
-            },
-            "minItems": 1,
             "default": [
-                "Category:Process"
-            ],
-            "options": {
-                "collapsed": true,
-                "hidden": true,
-                "conditional_visible": {
-                    "modes": [
-                        "default",
-                        "query"
-                    ]
-                }
-            }
+                "Category:OSWe5aa96bffb1c4d95be7fbd46142ad203"
+            ]
         },
         "creator": {
             "type": "string",
@@ -96,7 +72,7 @@
             "type": "array",
             "title": "Actionees",
             "title*": {
-                "de": "Aktuere"
+                "de": "Akteure"
             },
             "items": {
                 "type": "string",
