@@ -80,8 +80,7 @@
             "options": {
                 "grid_columns": 4,
                 "autocomplete": {
-                    "category": "Category:Entity",
-                    "query_filter_property": "HasName"
+                    "query": "[[Category:Entity]]OR[[:Category:%2B]]"
                 }
             }
         },
@@ -131,8 +130,7 @@
                     "options": {
                         "grid_columns": 4,
                         "autocomplete": {
-                            "category": "Category:Entity",
-                            "query_filter_property": "HasName"
+                            "query": "[[Category:Entity]]OR[[:Category:%2B]]"
                         }
                     }
                 }
@@ -229,7 +227,7 @@
                     "options": {
                         "grid_columns": 2,
                         "autocomplete": {
-                            "query": "[[-HasInputUnit::{{$(quantity)}}]]|?Display_title_of=label",
+                            "query": "[[-HasInputUnit::{{$(quantity)}}]][[Display_title_of::like:*{{_user_input}}*]]|?Display_title_of=label",
                             "render_template": {
                                 "type": [
                                     "handlebars"
