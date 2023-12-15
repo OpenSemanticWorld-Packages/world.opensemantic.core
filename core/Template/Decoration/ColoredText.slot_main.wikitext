@@ -1,4 +1,4 @@
-<includeonly><span style="color:{{{color| {{#ifeq: {{{black|}}}|1|black| {{#ifeq: {{{blue|}}}|1|blue| {{#ifeq: {{{green|}}}|1|green| {{#ifeq: {{{red|}}}|1|red|red<!-- default value -->}} }} }} }} }}}">{{{text|}}}</span></includeonly>
+<onlyinclude><span style="color:{{{color| {{#ifeq: {{{black|}}}|1|black| {{#ifeq: {{{blue|}}}|1|blue| {{#ifeq: {{{green|}}}|1|green| {{#ifeq: {{{red|}}}|1|red|red<!-- default value -->}} }} }} }} }}}">{{{text|}}}</span><nowiki /></onlyinclude>
 <noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
 {

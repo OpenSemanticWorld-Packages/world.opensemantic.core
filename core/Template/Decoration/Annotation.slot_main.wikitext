@@ -1,4 +1,4 @@
-<includeonly>{{#info: {{{text|}}} |{{{type| {{#ifeq: {{{error|}}}|1|error| {{#ifeq: {{{warning|}}}|1|warning| {{#ifeq: {{{question|}}}|1|note| {{#ifeq: {{{info|}}}|1|info|info<!-- default value -->}} }} }} }} }}} |max-width= |theme= }}</includeonly>
+<onlyinclude>{{#info: {{{text|}}} |{{{type| {{#ifeq: {{{error|}}}|1|error| {{#ifeq: {{{warning|}}}|1|warning| {{#ifeq: {{{question|}}}|1|note| {{#ifeq: {{{info|}}}|1|info|info<!-- default value -->}} }} }} }} }}} |max-width= |theme= }}<nowiki /></onlyinclude>
 <noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
 {

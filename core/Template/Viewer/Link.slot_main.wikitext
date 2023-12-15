@@ -1,12 +1,12 @@
-<includeonly><span>{{#if: {{{page|}}}<!--
+<onlyinclude>{{#if: {{{page|}}}<!--
 -->|[[{{{page}}}|{{#if:{{{label|}}}|{{{label}}}|{{#ask: [[{{{page}}}]]|?Display title of=|mainlabel=-|format=plain}}}}]]<!--
 -->|[{{{url}}} {{{label|{{{url}}}}}}]<!--
--->}}</span></includeonly>
+-->}}<nowiki /></onlyinclude>
 <noinclude>
 == Test ==
-* {{{{FULLPAGENAME}}|page=Main Page}}
-* {{{{FULLPAGENAME}}|page=Main Page|label=The main page}}
-* {{{{FULLPAGENAME}}|url=https://google.com}}
+* {{{{FULLPAGENAME}}|page=Main Page}} test
+* {{{{FULLPAGENAME}}|page=Main Page|label=The main page}} test
+* {{{{FULLPAGENAME}}|url=https://google.com}} test
 <templatedata>
 {
 	"params": {
