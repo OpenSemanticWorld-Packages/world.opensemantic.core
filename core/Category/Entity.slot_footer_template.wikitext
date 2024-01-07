@@ -15,18 +15,9 @@
 |}}<!-- {{#if: {{{attachments|}}} |-->
 
 =={{{_label_attachments| {{#switch:{{USERLANGUAGECODE}}|en=Attachments|de=Anhang|#default=Attachments}} }}}==
-<!-- {{#ask: [[IsFileAttachmentOf::{{FULLPAGENAME}}]] -->
-{{#ask: [[-HasFileAttachment::{{FULLPAGENAME}}]]
-|?HasName
-<!-- |?HasName #=Name 
-|?HasUrl=Link 
-|?Modification date=Zuletzt geändert  -->
-|?HasUrl
-|format=gallery
-|redirects=HasUrl<!-- Links direct to download -->
-|captionproperty=HasName
-}} <!-- With format=table chem and math formular fail to render on page!?! -->
-<!-- With format=datatable VE page safe fails!?! -->
+{{#tag: gallery
+|{{#arraymap: {{{attachments|}}} |;|__FILE__|__FILE__{{!}}[[:__FILE__]]|\n}}
+}}
 <!-- <div class="fileupload-auto-reload">{{#batchupload:OslTemplate:ELN/Attachment|{{FULLPAGENAME}}|{{REVISIONUSER}}}}</div> -->
 {{#batchupload:}}
 <!--|}}-->

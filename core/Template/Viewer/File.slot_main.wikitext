@@ -1,0 +1,14 @@
+<onlyinclude><div style="float:left">{{#tag:gallery 
+|{{{1}}}{{!}}''[[:{{{1}}}]]''
+|mode=nolines
+}}</div><nowiki /></onlyinclude><noinclude>
+To display files in tables, e. g.
+<pre>
+{{#ask: [[Category:OSW92cc6b1a2e6b4bb7bad470dfdcfdaf26]]
+|?HasDescription
+|?HasFileAttachment  # - |+ template = Viewer/File
+|format=datatable
+|sep=
+}}
+</pre>
+</noinclude>

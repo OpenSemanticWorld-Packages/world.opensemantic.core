@@ -255,7 +255,7 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}} <%={{ }}=%> {{#attachments}} [[{{{.}}}]] <br> {{/attachments}} {{=<% %>=}}"
+                "value": "{{=<% %>=}} <%={{ }}=%>  {{#attachments}}{{{.}}};{{/attachments}} {{=<% %>=}} <%={{ }}=%>"
             },
             "options": {
                 "collapsed": true
