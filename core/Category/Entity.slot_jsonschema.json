@@ -36,6 +36,14 @@
         "description*": "Property:HasDescription",
         "image": "schema:image",
         "image*": "Property:HasImage",
+        "keywords": {
+            "@id": "schema:keywords",
+            "@type": "@id"
+        },
+        "keywords*": {
+            "@id": "Property:HasKeyword",
+            "@type": "@id"
+        },
         "based_on": "skos:isBasedOn",
         "based_on*": {
             "@id": "Property:IsBasedOn",
@@ -211,6 +219,31 @@
                     "download": true
                 }
             ]
+        },
+        "keywords": {
+            "type": "array",
+            "title": "Keywords / Tags",
+            "title*": {
+                "de": "Schlagworte / Tags"
+            },
+            "description": "Designated to the user defined categorization of this element",
+            "description*": {
+                "de": "Dient der nutzerdefinierten Kategorisierung des Elements"
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} <%={{ }}=%>  {{#keywords}}[[{{{.}}}]] <br> {{/keywords}} {{=<% %>=}} <%={{ }}=%>"
+            },
+            "items": {
+                "title": "Keyword",
+                "title*": {
+                    "de": "Schlagwort"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:OSW09f6cdd54bc54de786eafced5f675cbe"
+            }
         },
         "based_on": {
             "type": "array",

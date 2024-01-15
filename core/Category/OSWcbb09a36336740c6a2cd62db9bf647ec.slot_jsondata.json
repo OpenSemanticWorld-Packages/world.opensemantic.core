@@ -1,0 +1,33 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "cbb09a36-3367-40c6-a2cd-62db9bf647ec",
+    "label": [
+        {
+            "text": "Intangible Item",
+            "lang": "en"
+        },
+        {
+            "text": "Immaterieller Gegenstand",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "A utility class that serves as the umbrella for a number of 'intangible' things such as terms, quantities, structured values, etc.",
+            "lang": "en"
+        },
+        {
+            "text": "Eine Gebrauchsklasse, die als Dach f\u00fcr eine Reihe von \\\"immateriellen\\\" Dingen wie Begriffe, Mengen, strukturierte Werte usw. dient.",
+            "lang": "de"
+        }
+    ],
+    "instance_rdf_type": [
+        "schema:Intangible"
+    ],
+    "name": "IntangibleItem"
+}

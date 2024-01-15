@@ -1,0 +1,15 @@
+<table class="info_box">
+<tr>
+<th class="heading" colspan="2">{{{_label_schema|DefinedTerm}}}</th>
+</tr>
+<!--
+<tr>
+<td class="subheading" colspan="2">Info</td>
+</tr>
+-->
+
+<tr>
+<th>{{{_label_type|Type(s)/Category(s)}}}</th>
+<td>{{#ask:[[{{FULLPAGENAME}}]]|?HasType=|format=plain|mainlabel=-}}</td>
+</tr>
+</table>

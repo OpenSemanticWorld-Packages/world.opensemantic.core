@@ -1,0 +1,34 @@
+{
+    "subclass_of": [
+        "Category:OSWa5812d3b5119416c8da1606cbe7054eb"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "09f6cdd5-4bc5-4de7-86ea-fced5f675cbe",
+    "label": [
+        {
+            "text": "Keyword",
+            "lang": "en"
+        },
+        {
+            "text": "Schlagwort",
+            "lang": "de"
+        },
+        {
+            "text": "Schl\u00fcsselwort",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Used as a user defined tag to label entitites",
+            "lang": "en"
+        },
+        {
+            "text": "Wird als nutzerdefiniertes Etikett / Tag genutzt um Entit\u00e4ten zu labeln",
+            "lang": "de"
+        }
+    ],
+    "name": "Keyword"
+}

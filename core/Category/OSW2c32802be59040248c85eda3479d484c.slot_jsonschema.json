@@ -1,0 +1,45 @@
+{
+    "@context": [
+        "/wiki/Category:OSWd02741381aaa4709ae0753a0edc341ce?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWd02741381aaa4709ae0753a0edc341ce?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "2c32802b-e590-4024-8c85-eda3479d484c",
+    "title": "StatusEnumeration",
+    "title*": {
+        "en": "Zustandsaufz\u00e4hlungen",
+        "de": "Aufz\u00e4hlung von Zustandsbeschreibungen"
+    },
+    "description": "Lists or enumerations dealing with status types.",
+    "description*": {
+        "en": "Lists or enumerations dealing with status types.",
+        "de": "Listen oder Aufz\u00e4hlungen, die sich mit Statusarten (Zustandsarten) befassen."
+    },
+    "required": [
+        "type",
+        "rdf_type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW2c32802be59040248c85eda3479d484c"
+            ]
+        },
+        "rdf_type": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "default": [
+                "StatusEnumeration"
+            ],
+            "options": {
+                "hidden": true
+            }
+        }
+    }
+}

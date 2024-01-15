@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.29.0",
+            "version": "0.30.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -315,8 +315,117 @@
                     }
                 },
                 {
+                    "name": "OSWcbb09a36336740c6a2cd62db9bf647ec",
+                    "label": "IntangibleItem",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWa5812d3b5119416c8da1606cbe7054eb",
+                    "label": "DefinedTerm",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWa5812d3b5119416c8da1606cbe7054eb.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW09f6cdd54bc54de786eafced5f675cbe",
+                    "label": "Keyword",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_header.wikitext"
+                        },
+                        "header_template": {
+                            "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_header_template.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWd02741381aaa4709ae0753a0edc341ce",
+                    "label": "Enumeration",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWd02741381aaa4709ae0753a0edc341ce.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWd02741381aaa4709ae0753a0edc341ce.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWd02741381aaa4709ae0753a0edc341ce.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWd02741381aaa4709ae0753a0edc341ce.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWd02741381aaa4709ae0753a0edc341ce.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW2c32802be59040248c85eda3479d484c",
+                    "label": "StatusEnumeration",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
                     "name": "OSW9725d7a91bab4f1aa68f423e4e9bfcf4",
-                    "label": "State",
+                    "label": "TaskStatus",
                     "namespace": "NS_CATEGORY",
                     "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_main.wikitext",
                     "slots": {

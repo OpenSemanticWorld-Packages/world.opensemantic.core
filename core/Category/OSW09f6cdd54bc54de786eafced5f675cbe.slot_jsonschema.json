@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "/wiki/Category:OSWa5812d3b5119416c8da1606cbe7054eb?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWa5812d3b5119416c8da1606cbe7054eb?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "09f6cdd5-4bc5-4de7-86ea-fced5f675cbe",
+    "title": "Keyword",
+    "title*": {
+        "en": "Keyword",
+        "de": "Schl\u00fcsselwort"
+    },
+    "description": "Used as a user defined tag to label entitites",
+    "description*": {
+        "en": "Used as a user defined tag to label entitites",
+        "de": "Wird als nutzerdefiniertes Etikett / Tag genutzt um Entit\u00e4ten zu labeln"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW09f6cdd54bc54de786eafced5f675cbe"
+            ]
+        }
+    }
+}

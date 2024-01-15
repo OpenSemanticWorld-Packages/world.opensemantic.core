@@ -1,0 +1,33 @@
+{
+    "subclass_of": [
+        "Category:OSWcbb09a36336740c6a2cd62db9bf647ec"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "d0274138-1aaa-4709-ae07-53a0edc341ce",
+    "label": [
+        {
+            "text": "Enumeration",
+            "lang": "en"
+        },
+        {
+            "text": "Aufz\u00e4hlung",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Lists or enumerations\u2014for example, a list of cuisines or music genres, etc.",
+            "lang": "en"
+        },
+        {
+            "text": "Listen oder Aufz\u00e4hlungen - zum Beispiel eine Liste von K\u00fcchen oder Musikrichtungen usw.",
+            "lang": "de"
+        }
+    ],
+    "instance_rdf_type": [
+        "schema:Enumeration"
+    ],
+    "name": "Enumeration"
+}

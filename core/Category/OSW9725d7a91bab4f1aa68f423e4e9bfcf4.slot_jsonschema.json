@@ -1,20 +1,23 @@
 {
     "@context": [
-        "/wiki/Category:OSWa5812d3b5119416c8da1606cbe7054eb?action=raw&slot=jsonschema"
+        "/wiki/Category:OSW2c32802be59040248c85eda3479d484c?action=raw&slot=jsonschema"
     ],
     "allOf": [
         {
-            "$ref": "/wiki/Category:OSWa5812d3b5119416c8da1606cbe7054eb?action=raw&slot=jsonschema"
+            "$ref": "/wiki/Category:OSW2c32802be59040248c85eda3479d484c?action=raw&slot=jsonschema"
         }
     ],
     "type": "object",
     "uuid": "9725d7a9-1bab-4f1a-a68f-423e4e9bfcf4",
-    "title": "State",
+    "title": "Task Status",
     "title*": {
-        "en": "Status"
+        "en": "Task Status",
+        "de": "Aufgabenstatus"
     },
-    "description": "",
-    "description*": {},
+    "description": "State of a task.",
+    "description*": {
+        "de": "Status einer Aufgabe"
+    },
     "required": [
         "type"
     ],

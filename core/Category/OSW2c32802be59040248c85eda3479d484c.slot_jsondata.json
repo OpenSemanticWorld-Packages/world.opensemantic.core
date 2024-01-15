@@ -1,0 +1,41 @@
+{
+    "subclass_of": [
+        "Category:OSWd02741381aaa4709ae0753a0edc341ce"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "2c32802b-e590-4024-8c85-eda3479d484c",
+    "label": [
+        {
+            "text": "Status Enumeration",
+            "lang": "en"
+        },
+        {
+            "text": "Statusaufz\u00e4hlungen",
+            "lang": "de"
+        },
+        {
+            "text": "Zustandsaufz\u00e4hlungen",
+            "lang": "en"
+        },
+        {
+            "text": "Aufz\u00e4hlung von Zustandsbeschreibungen",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Lists or enumerations dealing with status types.",
+            "lang": "en"
+        },
+        {
+            "text": "Listen oder Aufz\u00e4hlungen, die sich mit Statusarten (Zustandsarten) befassen.",
+            "lang": "de"
+        }
+    ],
+    "instance_rdf_type": [
+        "StatusEnumeration"
+    ],
+    "name": "StatusEnumeration"
+}

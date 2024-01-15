@@ -62,6 +62,10 @@
     |@deferred
     }}</td>
 </tr>
+    <tr>
+    <th>{{{_keywords_name|Keywords}}}</th>
+    <td>{{{keywords|}}}</td>
+    </tr>
 </table>
 
 =={{{_label_description| {{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung}} }}}==

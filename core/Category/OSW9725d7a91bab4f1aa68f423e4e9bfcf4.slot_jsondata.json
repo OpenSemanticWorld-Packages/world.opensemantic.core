@@ -3,14 +3,18 @@
         "Category:Category"
     ],
     "subclass_of": [
-        "Category:OSWa5812d3b5119416c8da1606cbe7054eb"
+        "Category:OSW2c32802be59040248c85eda3479d484c"
     ],
     "uuid": "9725d7a9-1bab-4f1a-a68f-423e4e9bfcf4",
-    "name": "State",
+    "name": "TaskStatus",
     "label": [
         {
-            "text": "Status",
+            "text": "Task Status",
             "lang": "en"
+        },
+        {
+            "text": "Aufgabenstatus",
+            "lang": "de"
         }
     ]
 }

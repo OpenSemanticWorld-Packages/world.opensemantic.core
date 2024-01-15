@@ -1,0 +1,54 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:OSWcbb09a36336740c6a2cd62db9bf647ec"
+    ],
+    "utf8_icon": [
+        "\ud83d\udcd1"
+    ],
+    "uuid": "a5812d3b-5119-416c-8da1-606cbe7054eb",
+    "name": "DefinedTerm",
+    "label": [
+        {
+            "text": "Defined Term",
+            "lang": "en"
+        },
+        {
+            "text": "Definierter Begriff",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Definition of a noun or compound word describing a specific concept",
+            "lang": "en"
+        },
+        {
+            "text": "Definition eines Ausdruckes der ein spezifisches Konzept repr\u00e4sentiert",
+            "lang": "de"
+        },
+        {
+            "text": "A word, name, acronym, phrase, etc. with a formal definition. Often used in the context of category or subject classification, glossaries or dictionaries, product or creative work types, etc. Use the name property for the term being defined, use termCode if the term has an alpha-numeric code allocated, use description to provide the definition of the term.",
+            "lang": "en"
+        },
+        {
+            "text": "Ein Wort, ein Name, ein Akronym, eine Phrase usw. mit einer formalen Definition. Wird h\u00e4ufig im Zusammenhang mit der Klassifizierung von Kategorien oder Themen, Glossaren oder W\u00f6rterb\u00fcchern, Produkt- oder Kreativwerkstypen usw. verwendet. Verwenden Sie die Eigenschaft name f\u00fcr den zu definierenden Begriff, verwenden Sie termCode, wenn dem Begriff ein alphanumerischer Code zugeordnet ist, verwenden Sie description, um die Definition des Begriffs anzugeben.",
+            "lang": "de"
+        }
+    ],
+    "short_name": [
+        {
+            "text": "DefinedTerm",
+            "lang": "en"
+        },
+        {
+            "text": "DefinierterBegriff",
+            "lang": "de"
+        }
+    ],
+    "instance_rdf_type": [
+        "schema:DefinedTerm"
+    ]
+}

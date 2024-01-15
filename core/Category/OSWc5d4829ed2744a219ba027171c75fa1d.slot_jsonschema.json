@@ -9,6 +9,10 @@
             "related_to": {
                 "@id": "Property:IsRelatedTo",
                 "@type": "@id"
+            },
+            "related_to_project": {
+                "@id": "Property:IsRelatedTo",
+                "@type": "@id"
             }
         }
     ],
@@ -30,8 +34,10 @@
         "type"
     ],
     "defaultProperties": [
+        "actionees",
+        "related_to",
         "description",
-        "actionees"
+        "prio"
     ],
     "properties": {
         "type": {
@@ -40,17 +46,17 @@
             ]
         },
         "prio": {
-            "type": "string",
-            "format": "autocomplete",
             "title": "Priority",
             "title*": {
                 "de": "Priorit\u00e4t"
             },
-            "options": {
-                "autocomplete": {
-                    "category": "Category:OSW65c8449bdd4f4fbcb7f68203a11d6e8f"
-                }
-            }
+            "description": "Bitte w\u00e4hlen. Falls Priorit\u00e4t (noch) nicht gesetzt werden kann, oder zur Diskussion steht, bitte freilassen.",
+            "description*": {
+                "de": "Bitte w\u00e4hlen. Falls Priorit\u00e4t (noch) nicht gesetzt werden kann, oder zur Diskussion steht, bitte freilassen."
+            },
+            "type": "string",
+            "format": "autocomplete",
+            "range": "Category:OSW65c8449bdd4f4fbcb7f68203a11d6e8f"
         },
         "related_to": {
             "type": "array",
@@ -59,17 +65,29 @@
                 "de": "Bezug zu"
             },
             "items": {
-                "type": "string",
-                "format": "autocomplete",
                 "title": "Entry",
                 "title*": {
                     "de": "Eintrag"
                 },
-                "options": {
-                    "autocomplete": {
-                        "category": "Category:Entity"
-                    }
-                }
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:Entity"
+            }
+        },
+        "related_to_project": {
+            "type": "array",
+            "title": "Related to project",
+            "title*": {
+                "de": "Projektzuordnung"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Project",
+                "title*": {
+                    "de": "Projekt"
+                },
+                "range": "Category:OSWb2d7e6a2eff94c82b7f1f2699d5b0ee3"
             }
         }
     }

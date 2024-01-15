@@ -1,0 +1,45 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "cbb09a36-3367-40c6-a2cd-62db9bf647ec",
+    "title": "IntangibleItem",
+    "title*": {
+        "en": "Intangible Item",
+        "de": "Immaterieller Gegenstand"
+    },
+    "description": "A utility class that serves as the umbrella for a number of 'intangible' things such as terms, quantities, structured values, etc.",
+    "description*": {
+        "en": "A utility class that serves as the umbrella for a number of 'intangible' things such as terms, quantities, structured values, etc.",
+        "de": "Eine Gebrauchsklasse, die als Dach f\u00fcr eine Reihe von \"immateriellen\" Dingen wie Begriffe, Mengen, strukturierte Werte usw. dient."
+    },
+    "required": [
+        "type",
+        "rdf_type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWcbb09a36336740c6a2cd62db9bf647ec"
+            ]
+        },
+        "rdf_type": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "default": [
+                "schema:Intangible"
+            ],
+            "options": {
+                "hidden": true
+            }
+        }
+    }
+}

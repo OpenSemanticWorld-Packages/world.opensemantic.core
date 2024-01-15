@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "/wiki/Category:OSWcbb09a36336740c6a2cd62db9bf647ec?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWcbb09a36336740c6a2cd62db9bf647ec?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "a5812d3b-5119-416c-8da1-606cbe7054eb",
+    "title": "DefinedTerm",
+    "title*": {
+        "en": "Defined Term",
+        "de": "Definierter Begriff"
+    },
+    "description": "Definition of a noun or compound word describing a specific concept",
+    "description*": {
+        "en": "Definition of a noun or compound word describing a specific concept",
+        "de": "Definition eines Ausdruckes der ein spezifisches Konzept repr\u00e4sentiert"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWa5812d3b5119416c8da1606cbe7054eb"
+            ]
+        }
+    }
+}
