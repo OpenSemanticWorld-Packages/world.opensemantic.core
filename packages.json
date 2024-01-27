@@ -19,6 +19,7 @@
                 "ExternalData",
                 "WikiMarkdown"
             ],
+            "requiredPackages": [],
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
                 {
@@ -170,6 +171,12 @@
                             "urlPath": "Category/Item.slot_jsonschema.json"
                         }
                     }
+                },
+                {
+                    "name": "Term",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/Term.slot_main.wikitext",
+                    "slots": {}
                 },
                 {
                     "name": "OSW2ac4493f8635481eaf1db961b63c8325",
@@ -589,24 +596,6 @@
                     }
                 },
                 {
-                    "name": "OSWc0888a0e5a2549d9bdb931db166ad112.drawio.svg",
-                    "label": "ToolSchema",
-                    "namespace": "NS_FILE",
-                    "urlPath": "File/OSWc0888a0e5a2549d9bdb931db166ad112.drawio.svg.slot_main.wikitext",
-                    "fileURLPath": "File/OSWc0888a0e5a2549d9bdb931db166ad112.drawio.svg",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "File/OSWc0888a0e5a2549d9bdb931db166ad112.drawio.svg.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "File/OSWc0888a0e5a2549d9bdb931db166ad112.drawio.svg.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "File/OSWc0888a0e5a2549d9bdb931db166ad112.drawio.svg.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
                     "name": "Property",
                     "label": "Property",
                     "namespace": "NS_CATEGORY",
@@ -788,6 +777,12 @@
                             "urlPath": "Property/HasType.slot_jsondata.json"
                         }
                     }
+                },
+                {
+                    "name": "Display_title_of",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/Display_title_of.slot_main.wikitext",
+                    "slots": {}
                 },
                 {
                     "name": "SubClassOf",
