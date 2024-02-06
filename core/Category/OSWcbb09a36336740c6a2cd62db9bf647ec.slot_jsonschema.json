@@ -20,26 +20,13 @@
         "de": "Eine Gebrauchsklasse, die als Dach für eine Reihe von \"immateriellen\" Dingen wie Begriffe, Mengen, strukturierte Werte usw. dient."
     },
     "required": [
-        "type",
-        "rdf_type"
+        "type"
     ],
     "properties": {
         "type": {
             "default": [
                 "Category:OSWcbb09a36336740c6a2cd62db9bf647ec"
             ]
-        },
-        "rdf_type": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "default": [
-                "schema:Intangible"
-            ],
-            "options": {
-                "hidden": true
-            }
         }
     }
 }

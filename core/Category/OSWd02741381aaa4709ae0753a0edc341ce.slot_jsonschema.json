@@ -20,26 +20,13 @@
         "de": "Listen oder Aufzählungen - zum Beispiel eine Liste von Küchen oder Musikrichtungen usw."
     },
     "required": [
-        "type",
-        "rdf_type"
+        "type"
     ],
     "properties": {
         "type": {
             "default": [
                 "Category:OSWd02741381aaa4709ae0753a0edc341ce"
             ]
-        },
-        "rdf_type": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "default": [
-                "schema:Enumeration"
-            ],
-            "options": {
-                "hidden": true
-            }
         }
     }
 }

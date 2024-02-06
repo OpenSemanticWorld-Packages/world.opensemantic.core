@@ -67,6 +67,26 @@
                 "hidden": true
             }
         },
+        "instance_rdf_type": {
+            "type": "array",
+            "title": "RDF type(s) of instances",
+            "title*": {
+                "de": "RDF-Typ(en) der Instanzen"
+            },
+            "description": "References a class/type/category in another ontology to describe the instances of this category. Typically a prefix, representing the resolvable URI of an ontology and an id from the namespace of said ontology, separated by colon, e.g., \"schema:Person\"",
+            "description*": {
+                "de": "Verweist auf eine Klasse/Typ/Kategory in einer anderen Ontologie, um die Instanzen dieser Kategorie zu beschreiben. In der Regel ein Präfix, das den auflösbaren URI einer Ontologie und eine ID aus dem Namensraum dieser Ontologie darstellt, durch einen Doppelpunkt getrennt, z.B. \"schema:Person\""
+            },
+            "format": "table",
+            "items": {
+                "type": "string",
+                "title": "RDF type",
+                "title*": {
+                    "de": "RDF-Typ"
+                },
+                "default": ""
+            }
+        },
         "subclass_of": {
             "title": "Supercategories",
             "title*": {
