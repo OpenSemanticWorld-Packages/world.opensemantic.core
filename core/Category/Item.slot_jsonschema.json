@@ -69,7 +69,7 @@
             "type": "object",
             "title": "Access restrictions",
             "title*": {
-                "de": "Zugriffsbeschr\u00e4nkungen"
+                "de": "Zugriffsbeschränkungen"
             },
             "eval_template": {
                 "type": "mustache-wikitext",
@@ -102,9 +102,9 @@
                                     "For some users"
                                 ],
                                 "enum_titles*": [
-                                    "\u00d6ffentlich",
-                                    "F\u00fcr alle Nutzer",
-                                    "F\u00fcr bestimmte Nutzer"
+                                    "Öffentlich",
+                                    "Für alle Nutzer",
+                                    "Für bestimmte Nutzer"
                                 ]
                             }
                         }

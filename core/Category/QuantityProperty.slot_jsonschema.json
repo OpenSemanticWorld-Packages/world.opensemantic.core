@@ -12,12 +12,12 @@
     "title": "QuantityProperty",
     "title*": {
         "en": "Quantity Property",
-        "de": "Gr\u00f6\u00dfeneigenschaft"
+        "de": "Größeneigenschaft"
     },
     "description": "Property that represents a physical quantity",
     "description*": {
         "en": "Property that represents a physical quantity",
-        "de": "Attribut das eine physikalische Gr\u00f6\u00dfe repr\u00e4sentiert"
+        "de": "Attribut das eine physikalische Größe repräsentiert"
     },
     "required": [
         "type"

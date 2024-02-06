@@ -6,7 +6,7 @@
         "Category:OSWcbb09a36336740c6a2cd62db9bf647ec"
     ],
     "utf8_icon": [
-        "\ud83d\udcd1"
+        "📑"
     ],
     "uuid": "a5812d3b-5119-416c-8da1-606cbe7054eb",
     "name": "DefinedTerm",
@@ -26,7 +26,7 @@
             "lang": "en"
         },
         {
-            "text": "Definition eines Ausdruckes der ein spezifisches Konzept repr\u00e4sentiert",
+            "text": "Definition eines Ausdruckes der ein spezifisches Konzept repräsentiert",
             "lang": "de"
         },
         {
@@ -34,7 +34,7 @@
             "lang": "en"
         },
         {
-            "text": "Ein Wort, ein Name, ein Akronym, eine Phrase usw. mit einer formalen Definition. Wird h\u00e4ufig im Zusammenhang mit der Klassifizierung von Kategorien oder Themen, Glossaren oder W\u00f6rterb\u00fcchern, Produkt- oder Kreativwerkstypen usw. verwendet. Verwenden Sie die Eigenschaft name f\u00fcr den zu definierenden Begriff, verwenden Sie termCode, wenn dem Begriff ein alphanumerischer Code zugeordnet ist, verwenden Sie description, um die Definition des Begriffs anzugeben.",
+            "text": "Ein Wort, ein Name, ein Akronym, eine Phrase usw. mit einer formalen Definition. Wird häufig im Zusammenhang mit der Klassifizierung von Kategorien oder Themen, Glossaren oder Wörterbüchern, Produkt- oder Kreativwerkstypen usw. verwendet. Verwenden Sie die Eigenschaft name für den zu definierenden Begriff, verwenden Sie termCode, wenn dem Begriff ein alphanumerischer Code zugeordnet ist, verwenden Sie description, um die Definition des Begriffs anzugeben.",
             "lang": "de"
         }
     ],

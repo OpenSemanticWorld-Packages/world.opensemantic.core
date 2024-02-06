@@ -29,12 +29,12 @@
     "title": "MainQuantityProperty",
     "title*": {
         "en": "Main Quantity Property",
-        "de": "Hauptgr\u00f6\u00dfenattribut"
+        "de": "Hauptgrößenattribut"
     },
     "description": "Defines valid units for itself and all of its subquantities",
     "description*": {
         "en": "Defines valid units for itself and all of its subquantities",
-        "de": "Definiert g\u00fcltige Einheiten f\u00fcr sich selbst und alle seine Untergr\u00f6\u00dfen."
+        "de": "Definiert gültige Einheiten für sich selbst und alle seine Untergrößen."
     },
     "properties": {
         "main_unit": {

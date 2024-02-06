@@ -20,7 +20,7 @@
     "description": "Item that participates as a utility (almost) unchanged in a process",
     "description*": {
         "en": "Item that participates as a utility (almost) unchanged in a process",
-        "de": "Gegenstand der als Hilfsmittel (nahezu) unver\u00e4ndert in einem Prozess teilnimmt"
+        "de": "Gegenstand der als Hilfsmittel (nahezu) unverändert in einem Prozess teilnimmt"
     },
     "properties": {
         "type": {

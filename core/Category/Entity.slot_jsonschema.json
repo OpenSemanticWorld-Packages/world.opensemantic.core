@@ -80,7 +80,7 @@
             "title": "IRI",
             "description": "The Internationalized Resource Identifier (IRI) of this entity",
             "description*": {
-                "de": "Der internationalisierte Ressourcenbezeichner (IRI) dieser Entit\u00e4t"
+                "de": "Der internationalisierte Ressourcenbezeichner (IRI) dieser Entität"
             },
             "type": "string",
             "format": "url",
@@ -144,7 +144,7 @@
             },
             "description": "Abbreviation, Acronym, etc.",
             "description*": {
-                "de": "Abk\u00fcrzung, Akronym, etc."
+                "de": "Abkürzung, Akronym, etc."
             },
             "format": "table",
             "eval_template": {
@@ -253,7 +253,7 @@
             },
             "description": "Other entities on which this one is based, e.g. when it is created by copying",
             "description*": {
-                "de": "Andere Entit\u00e4ten auf die diese basiert, z. B. wenn sie durch Kopieren entstanden ist"
+                "de": "Andere Entitäten auf die diese basiert, z. B. wenn sie durch Kopieren entstanden ist"
             },
             "items": {
                 "type": "string"
@@ -283,7 +283,7 @@
             "type": "array",
             "title": "File attachments",
             "title*": {
-                "de": "Dateianh\u00e4nge"
+                "de": "Dateianhänge"
             },
             "eval_template": {
                 "type": "mustache-wikitext",

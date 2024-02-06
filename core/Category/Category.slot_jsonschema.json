@@ -71,7 +71,7 @@
             "title": "Supercategories",
             "title*": {
                 "en": "Supercategories",
-                "de": "\u00dcberkategorien"
+                "de": "Überkategorien"
             },
             "type": "array",
             "propertyOrder": -1009,

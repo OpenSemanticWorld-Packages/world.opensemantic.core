@@ -12,12 +12,12 @@
     "title": "Keyword",
     "title*": {
         "en": "Keyword",
-        "de": "Schl\u00fcsselwort"
+        "de": "Schlüsselwort"
     },
     "description": "Used as a user defined tag to label entitites",
     "description*": {
         "en": "Used as a user defined tag to label entitites",
-        "de": "Wird als nutzerdefiniertes Etikett / Tag genutzt um Entit\u00e4ten zu labeln"
+        "de": "Wird als nutzerdefiniertes Etikett / Tag genutzt um Entitäten zu labeln"
     },
     "required": [
         "type"

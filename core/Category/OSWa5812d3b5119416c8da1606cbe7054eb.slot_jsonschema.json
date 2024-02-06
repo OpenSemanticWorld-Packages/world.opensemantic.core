@@ -17,7 +17,7 @@
     "description": "Definition of a noun or compound word describing a specific concept",
     "description*": {
         "en": "Definition of a noun or compound word describing a specific concept",
-        "de": "Definition eines Ausdruckes der ein spezifisches Konzept repr\u00e4sentiert"
+        "de": "Definition eines Ausdruckes der ein spezifisches Konzept repräsentiert"
     },
     "required": [
         "type"

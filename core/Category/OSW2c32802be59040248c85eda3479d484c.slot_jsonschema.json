@@ -11,13 +11,13 @@
     "uuid": "2c32802b-e590-4024-8c85-eda3479d484c",
     "title": "StatusEnumeration",
     "title*": {
-        "en": "Zustandsaufz\u00e4hlungen",
-        "de": "Aufz\u00e4hlung von Zustandsbeschreibungen"
+        "en": "Zustandsaufzählungen",
+        "de": "Aufzählung von Zustandsbeschreibungen"
     },
     "description": "Lists or enumerations dealing with status types.",
     "description*": {
         "en": "Lists or enumerations dealing with status types.",
-        "de": "Listen oder Aufz\u00e4hlungen, die sich mit Statusarten (Zustandsarten) befassen."
+        "de": "Listen oder Aufzählungen, die sich mit Statusarten (Zustandsarten) befassen."
     },
     "required": [
         "type",

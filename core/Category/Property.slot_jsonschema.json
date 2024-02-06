@@ -8,7 +8,7 @@
             },
             "property_type": "Property:Has_type",
             "external_uri": "Property:External_formatter_uri",
-            "ontology_iri": "Property:Equivalent URI",
+            "ontology_iri": "Property:Equivalent_URI",
             "imported_from*": "Property:Imported_from",
             "subproperty_of": {
                 "@id": "Property:Subproperty_of",
@@ -43,7 +43,7 @@
         "name": {
             "description": "For properties this value is the primary identifier.",
             "description*": {
-                "de": "F\u00fcr Attribute ist dieser Wert der prim\u00e4re Identifier."
+                "de": "Für Attribute ist dieser Wert der primäre Identifier."
             },
             "options": {
                 "hidden": false
@@ -111,7 +111,7 @@
                         "Datum",
                         "Programmcode",
                         "Telefonnummer",
-                        "Mengengr\u00f6\u00dfe",
+                        "Mengengröße",
                         "Aufzeichnung",
                         "Einsprachiger Text",
                         "Externe ID",

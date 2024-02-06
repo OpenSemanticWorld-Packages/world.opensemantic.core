@@ -12,12 +12,12 @@
     "title": "Enumeration",
     "title*": {
         "en": "Enumeration",
-        "de": "Aufz\u00e4hlung"
+        "de": "Aufzählung"
     },
-    "description": "Lists or enumerations\u2014for example, a list of cuisines or music genres, etc.",
+    "description": "Lists or enumerations—for example, a list of cuisines or music genres, etc.",
     "description*": {
-        "en": "Lists or enumerations\u2014for example, a list of cuisines or music genres, etc.",
-        "de": "Listen oder Aufz\u00e4hlungen - zum Beispiel eine Liste von K\u00fcchen oder Musikrichtungen usw."
+        "en": "Lists or enumerations—for example, a list of cuisines or music genres, etc.",
+        "de": "Listen oder Aufzählungen - zum Beispiel eine Liste von Küchen oder Musikrichtungen usw."
     },
     "required": [
         "type",

@@ -111,7 +111,7 @@
                     "format": "autocomplete",
                     "title": "Predicate",
                     "title*": {
-                        "de": "Pr\u00e4dikat"
+                        "de": "Prädikat"
                     },
                     "options": {
                         "grid_columns": 4,
@@ -176,7 +176,7 @@
         {
             "title": "Quantity Statement",
             "title*": {
-                "de": "Gr\u00f6\u00dfenangabe"
+                "de": "Größenangabe"
             },
             "required": [
                 "uuid",

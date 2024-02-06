@@ -18,12 +18,12 @@
     "title": "SubQuantityProperty",
     "title*": {
         "en": "Sub Quantity Property",
-        "de": "Untergr\u00f6\u00dfenattribut"
+        "de": "Untergrößenattribut"
     },
     "description": "Is the sub-property of a main quantity or other sub-quantity and inherits its valid units. Can define a subset of input and display units from it.",
     "description*": {
         "en": "Is the sub-property of a main quantity or other sub-quantity and inherits its valid units. Can define a subset of input and display units from it.",
-        "de": "Ist das Unterattribut einer Hauptgr\u00f6\u00dfe oder einer anderen Untergr\u00f6\u00dfe und erbt dessen g\u00fcltige Einheiten. Kann daraus ein Untermenge von Eingabe- und Anzeigeeinheiten definieren."
+        "de": "Ist das Unterattribut einer Hauptgröße oder einer anderen Untergröße und erbt dessen gültige Einheiten. Kann daraus ein Untermenge von Eingabe- und Anzeigeeinheiten definieren."
     },
     "required": [
         "subproperty_of",
@@ -34,7 +34,7 @@
         "subproperty_of": {
             "title": "Subquantity of",
             "title*": {
-                "de": "Untergr\u00f6\u00dfe von"
+                "de": "Untergröße von"
             },
             "type": "string",
             "format": "autocomplete",
@@ -47,7 +47,7 @@
         "base_property": {
             "title": "Base quantity",
             "title*": {
-                "de": "Hauptgr\u00f6\u00dfe"
+                "de": "Hauptgröße"
             },
             "type": "string",
             "format": "autocomplete",

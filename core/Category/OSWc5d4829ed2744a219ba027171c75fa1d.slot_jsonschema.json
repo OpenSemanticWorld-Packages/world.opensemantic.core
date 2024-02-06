@@ -48,11 +48,11 @@
         "prio": {
             "title": "Priority",
             "title*": {
-                "de": "Priorit\u00e4t"
+                "de": "Priorität"
             },
-            "description": "Bitte w\u00e4hlen. Falls Priorit\u00e4t (noch) nicht gesetzt werden kann, oder zur Diskussion steht, bitte freilassen.",
+            "description": "Bitte wählen. Falls Priorität (noch) nicht gesetzt werden kann, oder zur Diskussion steht, bitte freilassen.",
             "description*": {
-                "de": "Bitte w\u00e4hlen. Falls Priorit\u00e4t (noch) nicht gesetzt werden kann, oder zur Diskussion steht, bitte freilassen."
+                "de": "Bitte wählen. Falls Priorität (noch) nicht gesetzt werden kann, oder zur Diskussion steht, bitte freilassen."
             },
             "type": "string",
             "format": "autocomplete",
