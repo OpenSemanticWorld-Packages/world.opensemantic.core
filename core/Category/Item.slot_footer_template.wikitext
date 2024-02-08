@@ -1,4 +1,14 @@
 <h2 class="section-collapsible-initial-collapsed section-heading--collapsed">{{#switch:{{USERLANGUAGECODE}}|en=Graph|de=Graph}}</h2>
 <div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["IsA","-IsA","HasSchema", "-IsInstanceOf","IsLocatedIn"], "ignore_properties":["Subcategory_of", "-Subcategory_of", "Has_query", "Display_title_of", "Display_title_of_lowercase", "Display_title_of_normalized"], "permalink":true, "depth":2, "edit": true,  "query_limit":25}'></div>
 <br>
-<br>
+<h2 class="section-collapsible-initial-collapsed section-heading--collapsed">{{#switch:{{USERLANGUAGECODE}}|en=QR Code|de=QR-Code|#default=QR Code}}</h2>
+<div class="QrCodeGenerator" data-config='{
+    "text": "{{fullurl:{{FULLPAGENAME}}}}",
+    "heading": "{{{label|{{#ask:[[{{FULLPAGENAME}}]]|?HasLabel.[0].text=|mainlabel=-}}}}}",
+    "image": true,
+    "print": true,
+    "print_unit": "mm",
+    "print_format": [29,42],
+    "print_margin": [3,3,3,3],
+    "print_scale": 0.115
+}' style="height: 250px; width: 200px;"></div><!-- space for the print button -->
