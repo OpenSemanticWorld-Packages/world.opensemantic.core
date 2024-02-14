@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "37a57741-ae2e-4dd4-b29b-1172b6848be8",
+    "title": "PhysicalItem",
+    "title*": {
+        "en": "Physical Item",
+        "de": "Physischer Gegenstand"
+    },
+    "description": "Physical item as opposed to intangible item. It can posses properties such as position, geometry, weight, volume , etc.  ",
+    "description*": {
+        "en": "Physical item as opposed to intangible item. It can posses properties such as position, geometry, weight, volume , etc.  ",
+        "de": "Physischer Gegenstand im Gegensatz zu immateriellen Gegenständen. Er kann Eigenschaften wie Position, Geometrie, Gewicht, Volumen usw. besitzen.  "
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW37a57741ae2e4dd4b29b1172b6848be8"
+            ]
+        }
+    }
+}

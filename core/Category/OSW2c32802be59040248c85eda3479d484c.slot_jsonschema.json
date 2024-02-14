@@ -20,26 +20,13 @@
         "de": "Listen oder Aufzählungen, die sich mit Statusarten (Zustandsarten) befassen."
     },
     "required": [
-        "type",
-        "rdf_type"
+        "type"
     ],
     "properties": {
         "type": {
             "default": [
                 "Category:OSW2c32802be59040248c85eda3479d484c"
             ]
-        },
-        "rdf_type": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "default": [
-                "StatusEnumeration"
-            ],
-            "options": {
-                "hidden": true
-            }
         }
     }
 }

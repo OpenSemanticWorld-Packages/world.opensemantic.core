@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "37a57741-ae2e-4dd4-b29b-1172b6848be8",
+    "label": [
+        {
+            "text": "Physical Item",
+            "lang": "en"
+        },
+        {
+            "text": "Physischer Gegenstand",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Physical item as opposed to intangible item. It can posses properties such as position, geometry, weight, volume , etc.  ",
+            "lang": "en"
+        },
+        {
+            "text": "Physischer Gegenstand im Gegensatz zu immateriellen Gegenständen. Er kann Eigenschaften wie Position, Geometrie, Gewicht, Volumen usw. besitzen.  ",
+            "lang": "de"
+        }
+    ],
+    "name": "PhysicalItem"
+}
