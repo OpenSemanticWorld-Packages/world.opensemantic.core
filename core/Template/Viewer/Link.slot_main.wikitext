@@ -1,5 +1,5 @@
 <onlyinclude>{{#if: {{{page|}}}<!--
--->|[[{{{page}}}|{{#if:{{{label|}}}|{{{label}}}|{{#ask: [[{{{page}}}]]|?Display title of=|mainlabel=-|format=plain}}}}]]<!--
+-->|[[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}|{{#if:{{{label|}}}|{{{label}}}|{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?Display title of=|mainlabel=-|format=plain}}}}]]<!--
 -->|[{{{url}}} {{{label|{{{url}}}}}}]<!--
 -->}}<nowiki /></onlyinclude>
 <noinclude>
@@ -7,6 +7,7 @@
 * {{{{FULLPAGENAME}}|page=Main Page}} test
 * {{{{FULLPAGENAME}}|page=Main Page|label=The main page}} test
 * {{{{FULLPAGENAME}}|url=https://google.com}} test
+* {{{{FULLPAGENAME}}|page=Category:Entity}} category test
 <templatedata>
 {
 	"params": {
