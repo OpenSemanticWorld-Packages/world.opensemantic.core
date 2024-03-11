@@ -184,12 +184,22 @@ function p.expandEmbeddedTemplates(args)
 							else v[i] = sub_res.res end
 						end
 					else
-						if (eval_template ~= nil and eval_template["value"] ~= nil) then
-							--evaluate single array item string as json {"self": "<value>", ".": "<value>"}
-							local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
-							mw.logObject(sub_res)
-							e = sub_res.res
-							v[i] = e
+						if (eval_template ~= nil and eval_template.value ~= nil) then
+							
+							--evaluate single array item string as json {"self": "<value>", ".": "<value>"} => does not work since jsondata is an object
+							--e = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+							
+
+							if (eval_template.type == "mustache" or eval_template.type == "mustache-wikitext") then
+								if (debug) then msg = msg .. "Parse mustache template " .. eval_template.value .. " with params " .. mw.dumpObject( e ) .. "\n<br>" end
+								-- {{.}} in the template will be the value of e
+								e = lustache:render(eval_template.value,e)
+							end
+							if (eval_template.type == "mustache-wikitext") then --or eval_template.type == "wikitext") then 
+								if (debug) then msg = msg .. "Parse wikitext template " .. e .. " with params " .. mw.dumpObject( e ) .. "\n<br>" end
+								e = frame:preprocess( e )
+							end
+							v[i] = e -- update array
 						end
 						if (stringify_arrays) then string_list = string_list .. e .. ";" end
 					end
@@ -878,6 +888,8 @@ end
 -- merges t2 to t1
 --test: mw.logObject(p.tableMerge({"string", test1="test1", subtable1={"test"}}, {"string2", test1="test2", test3="test4"}))
 function p.tableMerge(t1, t2)
+	if (t1 == nil) then t1 = {} elseif (type(t1) ~= 'table') then t1 = {t1} end
+	if (t2 == nil) then t2 = {} elseif (type(t2) ~= 'table') then t2 = {t2} end
     for k,v in pairs(t2) do
         if type(v) == "table" then
             if type(t1[k] or false) == "table" then
