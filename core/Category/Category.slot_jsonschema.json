@@ -22,6 +22,7 @@
             "utf8_icon": "Property:HasUtf8Icon"
         }
     ],
+    "uuid": "89aafe6d-ae5a-4f29-97ff-df7736d4cab6",
     "type": "object",
     "title": "Category",
     "title*": {

@@ -25,7 +25,9 @@
         "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
     	{{/each}}
     },
-    "required": ["type"],
+    "required": [
+        "type"
+    ],
     "properties": {
         "type": {
             "default": ["{{{_page_title}}}"]
