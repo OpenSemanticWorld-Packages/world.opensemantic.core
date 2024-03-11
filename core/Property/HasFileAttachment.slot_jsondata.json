@@ -1,0 +1,28 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "HasFileAttachment",
+    "property_type": "Page",
+    "uuid": "a20244bd-156b-4b4e-bef2-4ceaae6e622d",
+    "label": [
+        {
+            "text": "HasFileAttachment",
+            "lang": "en"
+        },
+        {
+            "text": "HatDateiAnhang",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Connects an entity with a file containing further information",
+            "lang": "en"
+        },
+        {
+            "text": "Verbindet eine Entität mit einer Datei die weiterführende Informationen enthält",
+            "lang": "de"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "HasInput",
+    "property_type": "Page",
+    "uuid": "15b429db-cbdb-4fec-8bab-d482c77d2402",
+    "label": [
+        {
+            "text": "HasInput",
+            "lang": "en"
+        },
+        {
+            "text": "HatEingangsressource",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Connects a process with an input resource",
+            "lang": "en"
+        },
+        {
+            "text": "Verbindet einen Prozess mit einer Eingangsressource",
+            "lang": "de"
+        }
+    ],
+    "ontology_iri": [
+        "https://gpo.ontology.link/GPO_703ec528_ea40_486e_9924_b911782b1a75"
+    ]
+}

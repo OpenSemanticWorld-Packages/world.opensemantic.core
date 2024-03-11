@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.31.1",
+            "version": "0.31.2",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -941,6 +941,46 @@
                     }
                 },
                 {
+                    "name": "HasFileAttachment",
+                    "label": "HasFileAttachment",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasFileAttachment.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasFileAttachment.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasFileAttachment.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasFileAttachment.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasUnitSymbol",
+                    "label": "HasUnitSymbol",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasUnitSymbol.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasUnitSymbol.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasUnitSymbol.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasUnitSymbol.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "Corresponds to",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/Corresponds%20to.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
                     "name": "HasDate",
                     "label": "HasDate",
                     "namespace": "SMW_NS_PROPERTY",
@@ -973,18 +1013,6 @@
                             "urlPath": "Property/HasStartDate.slot_jsondata.json"
                         }
                     }
-                },
-                {
-                    "name": "Corresponds to",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/Corresponds%20to.slot_main.wikitext",
-                    "slots": {}
-                },
-                {
-                    "name": "Visible to",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/Visible%20to.slot_main.wikitext",
-                    "slots": {}
                 },
                 {
                     "name": "HasStartDateAndTime",
@@ -1038,21 +1066,44 @@
                     }
                 },
                 {
-                    "name": "HasUnitSymbol",
-                    "label": "HasUnitSymbol",
+                    "name": "HasInput",
+                    "label": "HasInput",
                     "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasUnitSymbol.slot_main.wikitext",
+                    "urlPath": "Property/HasInput.slot_main.wikitext",
                     "slots": {
                         "footer": {
-                            "urlPath": "Property/HasUnitSymbol.slot_footer.wikitext"
+                            "urlPath": "Property/HasInput.slot_footer.wikitext"
                         },
                         "header": {
-                            "urlPath": "Property/HasUnitSymbol.slot_header.wikitext"
+                            "urlPath": "Property/HasInput.slot_header.wikitext"
                         },
                         "jsondata": {
-                            "urlPath": "Property/HasUnitSymbol.slot_jsondata.json"
+                            "urlPath": "Property/HasInput.slot_jsondata.json"
                         }
                     }
+                },
+                {
+                    "name": "HasOutput",
+                    "label": "HasOutput",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasOutput.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasOutput.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasOutput.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasOutput.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "Visible to",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/Visible%20to.slot_main.wikitext",
+                    "slots": {}
                 },
                 {
                     "name": "Helper/UI/Tiles/Grid",

@@ -1,0 +1,31 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "HasOutput",
+    "property_type": "Page",
+    "uuid": "c03af64d-8b94-48e7-8297-0c11295d5616",
+    "label": [
+        {
+            "text": "HasOutput",
+            "lang": "en"
+        },
+        {
+            "text": "HatAusgangsressource",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Connects a process with an output resource",
+            "lang": "en"
+        },
+        {
+            "text": "Verbindet einen Prozess mit einer Ausgangsressource",
+            "lang": "en"
+        }
+    ],
+    "ontology_iri": [
+        "https://gpo.ontology.link/GPO_8c869b47_a258_43b9_9c75_4285a80a1dfb"
+    ]
+}
