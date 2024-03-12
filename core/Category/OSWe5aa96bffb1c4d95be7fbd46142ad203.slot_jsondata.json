@@ -2,6 +2,9 @@
     "subclass_of": [
         "Category:Item"
     ],
+    "type": [
+        "Category:Category"
+    ],
     "uuid": "e5aa96bf-fb1c-4d95-be7f-bd46142ad203",
     "label": [
         {
@@ -14,7 +17,14 @@
         }
     ],
     "name": "Process",
-    "type": [
-        "Category:Category"
+    "description": [
+        {
+            "text": "Members of the Process Category describe the act of changing the state or properties of something",
+            "lang": "en"
+        },
+        {
+            "text": "Prozesse beschreiben den Akt des Änderns eines Zustandes oder der Eigenschaften von etwas.",
+            "lang": "de"
+        }
     ]
 }

@@ -112,12 +112,31 @@
         },
         "status": {
             "type": "string",
-            "format": "autocomplete",
+            "_format": "autocomplete",
+            "format": "choices",
             "title": "Status",
+            "enum": [
+                "Item:OSWaa8d29404288446a9f3ec7afa4e2a512",
+                "Item:OSWa2b4567ad4874ea1b9adfed19a3d06d1",
+                "Item:OSWf474ec34b7df451ea8356134241aef8a"
+            ],
             "options": {
-                "autocomplete": {
+                "_autocomplete": {
                     "category": "Category:OSW9725d7a91bab4f1aa68f423e4e9bfcf4"
-                }
+                },
+                "enum_titles": [
+                    "To do",
+                    "In work",
+                    "Done"
+                ],
+                "enum_titles*": {
+                    "de": [
+                        "Zu tun",
+                        "In Arbeit",
+                        "Erledigt"
+                    ]
+                },
+                "grid_columns": 6
             }
         },
         "tool": {
@@ -216,5 +235,15 @@
     },
     "required": [
         "type"
-    ]
+    ],
+    "uuid": "5a07d666-c55b-4ffa-89d4-9633c708029d",
+    "title*": {
+        "en": "Process",
+        "de": "Prozess"
+    },
+    "description": "Members of the Process Category describe the act of changing the state or properties of something",
+    "description*": {
+        "en": "Members of the Process Category describe the act of changing the state or properties of something",
+        "de": "Prozesse beschreiben den Akt des Änderns eines Zustandes oder der Eigenschaften von etwas."
+    }
 }
