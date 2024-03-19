@@ -1,0 +1,28 @@
+{
+    "type": [
+        "Category:AnnotationProperty"
+    ],
+    "name": "HasNormalizedLabel ",
+    "property_type": "Monolingual text",
+    "uuid": "2f5f33ab-f3ad-4d32-ab23-8f7b527bcaac",
+    "label": [
+        {
+            "text": "Normalized label",
+            "lang": "en"
+        },
+        {
+            "text": "Normalisierte Bezeichnung",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Property that stores the lowercase version of HasLabel with all non-alphanumeric chars removed to enable a normalized search ",
+            "lang": "en"
+        },
+        {
+            "text": "Attribut, das HasLabel in Kleinbuchstaben speichert, wobei alle nicht alphanumerischen Zeichen entfernt werden, um eine normalisierte Suche zu ermöglichen ",
+            "lang": "de"
+        }
+    ]
+}

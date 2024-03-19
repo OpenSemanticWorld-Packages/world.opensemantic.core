@@ -355,6 +355,7 @@ function p.processJsondata(args)
 		smw_res.properties['Display title of'] = display_label --set special property display title
 		smw_res.properties['Display title of lowercase'] = display_label:lower() --store lowercase for case insensitive query
 		smw_res.properties['Display title of normalized'] = display_label:lower():gsub('[^%w]+','') --store with all non-alphanumeric chars removed for normalized query
+		p.setNormalizedLabel(smw_res.properties) --build normalized multilang label
 		mw.ext.displaytitle.set(display_label)
 		--smw_res.properties['@category'] = jsondata[p.keys.category]
 		local store_res = mw.smw.set( smw_res.properties ) --store as semantic properties
@@ -690,6 +691,7 @@ function p.getSemanticProperties(args)
 			if (jsondata[p.keys.name] ~= nil) then properties['Display title of'] = jsondata[p.keys.name] 
 			elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label][1], '@')[1] 
 			else properties['Display title of'] = p.defaultArg(subschema['title'], "") end
+			p.setNormalizedLabel(properties) --build normalized multilang label
 			if (p.tableLength(properties) > 0) then
 				store_res = mw.smw.subobject( properties, subobjectId )	--store as subobject
 				if (debug) then mw.logObject("Store subobject with id " .. (subobjectId or "<random>")) end
@@ -915,6 +917,39 @@ function p.copy(obj, seen)
   s[obj] = res
   for k, v in pairs(obj) do res[p.copy(k, s)] = p.copy(v, s) end
   return res
+end
+
+-- build normalized multilang label
+function p.setNormalizedLabel(properties, use_fallbacks)
+	if (use_fallbacks == nil) then use_fallbacks = true end
+	if (properties['HasLabel'] ~= nil) then 
+		labels = properties['HasLabel']
+		if(type(labels) ~= 'table') then labels = {labels} end
+		properties['HasNormalizedLabel'] = {}
+		for i, label in ipairs(labels) do
+			label_norm = p.splitString(label, '@')[1]:lower():gsub('[^%w]+','')
+			label_lang = "en"
+			if (p.splitString(label, '@')[2] ~= nil) then label_lang = p.splitString(label, '@')[2] end
+			table.insert(properties['HasNormalizedLabel'], label_norm .. "@" .. label_lang)	
+		end
+	
+	elseif (use_fallbacks and properties['HasName'] ~= nil) then -- fallback, assume English lang
+		labels = properties['HasName']
+		if(type(labels) ~= 'table') then labels = {labels} end
+		properties['HasNormalizedLabel'] = {}
+		for i, label in ipairs(labels) do
+			label_norm = p.splitString(label, '@')[1]:lower():gsub('[^%w]+','')
+			table.insert(properties['HasNormalizedLabel'], label_norm .. "@en")
+		end
+	elseif (use_fallbacks and properties['Display title of'] ~= nil) then -- fallback, assume English lang
+		labels = properties['Display title of']
+		if(type(labels) ~= 'table') then labels = {labels} end
+		properties['HasNormalizedLabel'] = {}
+		for i, label in ipairs(labels) do
+			label_norm = p.splitString(label, '@')[1]:lower():gsub('[^%w]+','')
+			table.insert(properties['HasNormalizedLabel'], label_norm .. "@en")
+		end
+	end
 end
 
 return p
