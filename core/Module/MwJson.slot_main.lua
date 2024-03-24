@@ -4,6 +4,7 @@ local p = {} --p stands for package
 
 p.keys = { --jsonschema / json-ld keys
 	category='type', 
+	category_pseudoproperty='Category', -- Property:Category
 	subcategory='subclass_of',
 	schema_type='schema_type',
 	property_ns_prefix='Property',
@@ -347,11 +348,19 @@ function p.processJsondata(args)
 	
 	--local display_label = ""
 	--if (jsondata[p.keys.label] ~= nil) then display_label = p.splitString(jsondata[p.keys.label], '@')[1] end
-	if (title.nsText ~= "Category") then wikitext = wikitext .. "\n" .. p.setCategories({categories=json_res_store.res[p.keys.category], sortkey=display_label}).wikitext end--items
-	wikitext = wikitext .. p.setCategories({categories=json_res_store.res[p.keys.subcategory], sortkey=display_label}).wikitext --classes/categories
+	local set_categories_in_wikitext = {}
+	p.tableMerge(set_categories_in_wikitext, json_res_store.res[p.keys.subcategory])  --classes/categories, nil for items
+	if (title.nsText ~= "Category") then --items
+		p.tableMerge(set_categories_in_wikitext, json_res_store.res[p.keys.category]) -- categories from schema type
+	end
 	
+	-- Todo: Consider moving the category and this block to p.getSemanticProperties with store=true. However, settings categories with @category is only possible for subobjects
 	if (smw_res ~= nil) then
 		if (debug) then msg = msg .. "Store page properties" end
+		-- category handling
+		p.tableMerge(set_categories_in_wikitext, smw_res.properties[p.keys.category_pseudoproperty]) 
+		smw_res.properties[p.keys.category_pseudoproperty] = nil -- delete pseudo property
+		
 		smw_res.properties['HasOswId'] = mw.title.getCurrentTitle().fullText  --set special property OswId to own title
 		
 		-- label and display title handling
@@ -371,6 +380,7 @@ function p.processJsondata(args)
 		end
 		--wikitext = mw.dumpObject(smw_res.properties) .. wikitext
 	end
+	wikitext = wikitext .. "\n" .. p.setCategories({categories=set_categories_in_wikitext, sortkey=display_label}).wikitext
 	
 	if (debug) then mw.logObject(res) end
 	return {wikitext=wikitext, debug_msg=msg}
@@ -693,6 +703,10 @@ function p.getSemanticProperties(args)
 				subobjectId = "OSW" .. string.gsub(jsondata['uuid'], "-", "") 
 				properties['HasOswId'] = mw.title.getCurrentTitle().fullText .. '#' .. subobjectId
 			end
+			properties['@category'] = {}
+			p.tableMerge(properties['@category'], jsondata[p.keys.category]) -- from json property 'type'
+			p.tableMerge(properties['@category'], properties[p.keys.category_pseudoproperty]) -- from json-ld context 'Property:Category'
+			properties[p.keys.category_pseudoproperty] = nil -- delete pseudo property
 			if (jsondata[p.keys.name] ~= nil) then properties['Display title of'] = jsondata[p.keys.name] 
 			elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label][1], '@')[1] 
 			else properties['Display title of'] = p.defaultArg(subschema['title'], "") end
