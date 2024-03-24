@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasOswId",
+    "property_type": "Text",
+    "uuid": "a6d5a93e-35fd-46d5-a509-bfeb8746dc2a",
+    "label": [
+        {
+            "text": "OSW-ID",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Consists of a namespace, the prefix OSW and an UUID without any delimiters. Subobjects extend the OSW-ID of their parent with and Hash-Char followed by their own ID (prefix OSW and an UUID without any delimiters)",
+            "lang": "en"
+        }
+    ]
+}

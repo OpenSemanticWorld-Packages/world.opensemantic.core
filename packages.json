@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.32.1",
+            "version": "0.33.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -835,6 +835,23 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasUuid.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasOswId",
+                    "label": "HasOswId",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasOswId.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasOswId.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasOswId.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasOswId.slot_jsondata.json"
                         }
                     }
                 },

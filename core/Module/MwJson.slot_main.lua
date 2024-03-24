@@ -352,6 +352,9 @@ function p.processJsondata(args)
 	
 	if (smw_res ~= nil) then
 		if (debug) then msg = msg .. "Store page properties" end
+		smw_res.properties['HasOswId'] = mw.title.getCurrentTitle().fullText  --set special property OswId to own title
+		
+		-- label and display title handling
 		smw_res.properties['Display title of'] = display_label --set special property display title
 		smw_res.properties['Display title of lowercase'] = display_label:lower() --store lowercase for case insensitive query
 		smw_res.properties['Display title of normalized'] = display_label:lower():gsub('[^%w]+','') --store with all non-alphanumeric chars removed for normalized query
@@ -686,8 +689,10 @@ function p.getSemanticProperties(args)
 			store_res = mw.smw.set( properties ) --store as semantic properties
 		else
 			
-			if jsondata['uuid'] ~= nil then subobjectId = "OSW" .. string.gsub(jsondata['uuid'], "-", "") end
-			properties['@category'] = jsondata[p.keys.category]
+			if jsondata['uuid'] ~= nil then 
+				subobjectId = "OSW" .. string.gsub(jsondata['uuid'], "-", "") 
+				properties['HasOswId'] = mw.title.getCurrentTitle().fullText .. '#' .. subobjectId
+			end
 			if (jsondata[p.keys.name] ~= nil) then properties['Display title of'] = jsondata[p.keys.name] 
 			elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label][1], '@')[1] 
 			else properties['Display title of'] = p.defaultArg(subschema['title'], "") end
