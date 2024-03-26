@@ -957,7 +957,7 @@ function p.setNormalizedLabel(properties, use_fallbacks)
 		if(type(labels) ~= 'table') then labels = {labels} end
 		properties['HasNormalizedLabel'] = {}
 		for i, label in ipairs(labels) do
-			label_norm = p.splitString(label, '@')[1]:lower():gsub('[^%w]+','')
+			label_norm = label:lower():gsub('[^%w]+','')
 			table.insert(properties['HasNormalizedLabel'], label_norm .. "@en")
 		end
 	elseif (use_fallbacks and properties['Display title of'] ~= nil) then -- fallback, assume English lang
@@ -965,7 +965,7 @@ function p.setNormalizedLabel(properties, use_fallbacks)
 		if(type(labels) ~= 'table') then labels = {labels} end
 		properties['HasNormalizedLabel'] = {}
 		for i, label in ipairs(labels) do
-			label_norm = p.splitString(label, '@')[1]:lower():gsub('[^%w]+','')
+			label_norm = label:lower():gsub('[^%w]+','')
 			table.insert(properties['HasNormalizedLabel'], label_norm .. "@en")
 		end
 	end
