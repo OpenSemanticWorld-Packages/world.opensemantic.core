@@ -151,8 +151,10 @@ function p.expandEmbeddedTemplates(args)
 		if (eval_template ~= nil and eval_template.value ~= nil and (eval_template.type == "mustache" or eval_template.type == "mustache-wikitext")) then
 			-- mustache can handle objects and array to we can parse it directly
 			-- todo: handle nested templates
-			if (debug) then msg = msg .. "Parse mustache template " .. eval_template.value .. " with params " .. mw.dumpObject( {[k]=v} ) .. "\n<br>" end
-			jsondata[k] = lustache:render(eval_template.value, {[k]=v})
+			local template_param = {[k]=v}
+			if (eval_template.root_key == false) then template_param = v end
+			if (debug) then msg = msg .. "Parse mustache template " .. eval_template.value .. " with params " .. mw.dumpObject( template_param ) .. "\n<br>" end
+			jsondata[k] = lustache:render(eval_template.value, template_param, p.tableMerge({self=eval_template.value}, eval_template.partials)) -- render with self as registered partial for recursion
 			if (eval_template.type == "mustache-wikitext") then 
 				jsondata[k] = frame:preprocess( jsondata[k] )
 			end
@@ -196,7 +198,7 @@ function p.expandEmbeddedTemplates(args)
 							if (eval_template.type == "mustache" or eval_template.type == "mustache-wikitext") then
 								if (debug) then msg = msg .. "Parse mustache template " .. eval_template.value .. " with params " .. mw.dumpObject( e ) .. "\n<br>" end
 								-- {{.}} in the template will be the value of e
-								e = lustache:render(eval_template.value,e)
+								e = lustache:render(eval_template.value, e, p.tableMerge({self=eval_template.value}, eval_template.partials)) -- render with self as registered partial for recursion
 							end
 							if (eval_template.type == "mustache-wikitext") then --or eval_template.type == "wikitext") then 
 								if (debug) then msg = msg .. "Parse wikitext template " .. e .. " with params " .. mw.dumpObject( e ) .. "\n<br>" end
