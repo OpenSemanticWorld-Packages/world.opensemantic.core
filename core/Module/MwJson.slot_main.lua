@@ -446,7 +446,7 @@ function p.renderInfoBox(args)
 						v = string.gsub(v, "File:", ":File:") -- do not embedd images but link to them
 						v = "[[" .. v .. "]]" 
 					end
-					cell:wikitext( v )
+					cell:wikitext("\n" .. v .. "")
 				end
 			end
 		end
