@@ -419,8 +419,25 @@ function p.renderInfoBox(args)
 			if (schema['properties'] ~= nil and schema['properties'][k] ~= nil and (type(v) ~= 'table' or v[1] ~= nil)) then --literal or literal array
 				local def = schema['properties'][k]
 				--mw.logObject(def)
+				
 				local label = k
 				if def['title'] ~= nil then label = def['title'] end
+				if def['title*'] ~= nil then -- multilang label with switch
+					label = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  label
+					for k,v in pairs(def['title*']) do label = label .. " |" .. k .. "=" .. v end
+					label = label .. " }}"
+				end
+				
+				local description = ""
+				if def['description'] ~= nil then description = def['description'] end
+				if def['description*'] ~= nil then -- multilang label with switch
+					description = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  description
+					for k,v in pairs(def['description*']) do description = description .. " |" .. k .. "=" .. v end
+					description = description .. " }}"
+				end
+				if (description ~= "") then description = "{{#info: " .. description .. "|note }}" end -- smw tooltip
+				label = label .. description
+
 				--res = res .. title ": " .. v
 				local cell = tbl:tag( 'tr' )
 									:tag( 'th' )
