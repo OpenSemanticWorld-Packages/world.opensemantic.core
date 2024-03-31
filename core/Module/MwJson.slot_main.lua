@@ -1,3 +1,5 @@
+-- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Item:OSW7d7193567ea14e4e89b74de88983b718", slot="jsondata"}).json, debug=true, mode="header"}))
+
 local lustache = require("Module:Lustache")
 
 local p = {} --p stands for package
@@ -427,7 +429,8 @@ function p.renderInfoBox(args)
 					for i,e in pairs(v) do 
 						if (type(e) ~= 'table') then 
 							local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-							if (p_type == '@id') then 
+							if (p_type == '@id' and p.defaultArgPath(def, {'items', 'type'}, 'unknown') == 'string' and def['eval_template'] == nil) then
+								-- auto-link (OSW-)IDs if no eval_template is present
 								e = string.gsub(e, "Category:", ":Category:") -- make sure category links work
 								e = string.gsub(e, "File:", ":File:") -- do not embedd images but link to them
 								e = "[[" .. e .. "]]" 
@@ -437,7 +440,8 @@ function p.renderInfoBox(args)
 					end
 				else
 					local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-					if (p_type == '@id') then 
+					if (p_type == '@id' and p.defaultArgPath(def, {'type'}, 'unknown') == 'string' and def['eval_template'] == nil) then 
+						-- auto-link (OSW-)IDs if no eval_template is present
 						v = string.gsub(v, "Category:", ":Category:") -- make sure category links work
 						v = string.gsub(v, "File:", ":File:") -- do not embedd images but link to them
 						v = "[[" .. v .. "]]" 
