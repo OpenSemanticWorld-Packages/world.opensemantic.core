@@ -537,6 +537,7 @@ end
 category = "Category:Entity"
 jsonschema = p.expandJsonRef({json=p.loadJson({title=category, slot="jsonschema"}).json}).json
 mw.logObject(p.buildContext({jsonschema=jsonschema, debug=true}))
+mw.log(mw.text.jsonEncode(p.buildContext({jsonschema=jsonschema, debug=false}).context))
 or
 jsonschema = {
 	["@context"]={test="level 0"}, 
@@ -571,7 +572,7 @@ function p.buildContext(args)
 				--table.insert(result, v) --skip context imports
 			elseif (type(v) == 'table' and v[1] ~= nil) then --custom addtional mappings, e. g. "type*": ["Property:HasType"]
 				result[k] = v
-			elseif (type(v) == 'table' and v['@id'] == nil) then --subcontext
+			elseif (type(v) == 'table' and v['@id'] == nil and v['@reverse'] == nil) then --subcontext
 				p.tableMerge(result, p.buildContext({context=v}).context)
 			else 
 				result[k] = v	
@@ -626,13 +627,20 @@ function p.getSemanticProperties(args)
 	local jsondata = p.defaultArg(args.jsondata, {})
 	local schema = p.defaultArg(args.jsonschema, {})
 	local subschema = p.defaultArg(args.subschema, schema)
-	local parent_schema_property = p.defaultArg(args.parent_schema_property, {})
+	local parent_schema_property = p.defaultArg(args.parent_schema_property, {}) -- ToDo: Not used except in getSemanticQuery => remove
 	local store = p.defaultArg(args.store, false)
 	local root = p.defaultArg(args.root, true)
+	local properties = p.defaultArg(args.properties, {}) --semantic properties to store, dict key=property_name, value=array of string values
 	local debug = p.defaultArg(args.debug, false)
 	--if (debug) then mw.logObject("Call getSemanticProperties with args " .. mw.dumpObject( args ) .. "\n<br>") end
 	
-	local properties = {} --semantic properties
+	local subjectId = mw.title.getCurrentTitle().fullText
+	local subobjectId = nil
+	if (root == false and jsondata['uuid'] ~= nil) then 
+		subobjectId = "OSW" .. string.gsub(jsondata['uuid'], "-", "") 
+		subjectId = subjectId .. '#' .. subobjectId
+	end
+	
 	local property_data = {}
 	local context = p.defaultArg(args.context, p.buildContext({jsonschema=schema}).context)
 	local error = ""
@@ -648,29 +656,34 @@ function p.getSemanticProperties(args)
 		end
 		for k,v in pairs(jsondata) do
 			local property_names = {}
+			local subobject_properties = {} -- reverse properties to store in the subobject
 			local mapping_found = false
-			local property_definitions = {}
-			if (context[k] ~= nil) then --json-ld mapping
-				if type(context[k]) == 'table' then table.insert(property_definitions, context[k]["@id"])
-				else table.insert(property_definitions, context[k]) end
-			end
+			local property_definitions = {} -- list of objects {id=..., reverse=...}
+
 			for term, def in pairs(context) do
 				local term_parts = p.splitString(term, "*")
-				if (string.find(term, "*", 0, true) and term_parts[1] == k) then --custom additional mapping term*(*...): "Property:..."
-					if type(def) == 'table' then table.insert(property_definitions, def["@id"])
-					else table.insert(property_definitions, def) end
+				if (term_parts[1] == k) then --custom additional mapping term*(*...): "Property:..."
+					if type(def) == 'table' then 
+						-- note: json-ld allows only @id OR @reverse
+						if (def["@id"] ~= nil) then table.insert(property_definitions, {id=def["@id"], reverse=false}) end
+						if (def["@reverse"] ~= nil) then table.insert(property_definitions, {id=def["@reverse"], reverse=true}) end
+					else table.insert(property_definitions, {id=def}) end
 				end
 			end
 			if (debug) then mw.logObject(property_definitions) end
 			for i,e in ipairs(property_definitions) do 
-				local property_definition = p.splitString(e, ':')
+				local id = e["id"]
+				local property_definition = p.splitString(id, ':')
 				if property_definition[1] == p.keys.property_ns_prefix then
 					mapping_found = true
-					property_name = string.gsub(e, p.keys.property_ns_prefix .. ":", "") -- also allow prefix properties like: Property:schema:url
-					table.insert(property_names, property_name)
+					property_name = string.gsub(id, p.keys.property_ns_prefix .. ":", "") -- also allow prefix properties like: Property:schema:url
+					if (e["reverse"]) then -- reverse properties are handled in the respective subobject
+						if (subobject_properties[property_name] == nil) then subobject_properties[property_name] = {} end --initialize empty list
+						table.insert(subobject_properties[property_name], subjectId) -- add triple subobject -property-> subject
+					else table.insert(property_names, property_name) end
 					local schema_property = p.defaultArg(schema_properties[k], {})
 					local schema_type = p.defaultArg(schema_property.type, nil) --todo: also load smw property type on demand
-					property_data[k] = {schema_type=schema_type, schema_data=schema_property, property=property_name, value=v}
+					property_data[k] = {schema_type=schema_type, schema_data=schema_property, property=property_name, value=v, reverse=e["reverse"]}
 				end
 			end
 			for i, property_name in ipairs(property_names) do
@@ -683,7 +696,7 @@ function p.getSemanticProperties(args)
 					context = p.tableMerge(context, subcontext) -- pull up nested context
 					local values = {}
 					if (v[1] == nil) then --key value array = object/dict
-						local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=v, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
+						local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=v, properties=subobject_properties, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
 						local id = subproperties_res.id --subobject_id
 						if (id ~= nil) then 
 							id = mw.title.getCurrentTitle().fullText .. '#' .. id
@@ -693,7 +706,7 @@ function p.getSemanticProperties(args)
 					else --list array
 						for i, e in pairs(v) do
 							if (type(e) == 'table') then 
-								local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=e, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
+								local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=e, properties=subobject_properties, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
 								local id = subproperties_res.id --subobject_id
 								if (id ~= nil) then 
 									id = mw.title.getCurrentTitle().fullText .. '#' .. id
@@ -722,18 +735,13 @@ function p.getSemanticProperties(args)
 		end
 	end
 	
-	local subobjectId = nil
 	local store_res = nil
 	if (store) then 
+		properties['HasOswId'] = subjectId
 		if (root) then 
 			if (debug) then mw.logObject("Store page properties") end
 			store_res = mw.smw.set( properties ) --store as semantic properties
 		else
-			
-			if jsondata['uuid'] ~= nil then 
-				subobjectId = "OSW" .. string.gsub(jsondata['uuid'], "-", "") 
-				properties['HasOswId'] = mw.title.getCurrentTitle().fullText .. '#' .. subobjectId
-			end
 			properties['@category'] = {}
 			p.tableMerge(properties['@category'], jsondata[p.keys.category]) -- from json property 'type'
 			p.tableMerge(properties['@category'], properties[p.keys.category_pseudoproperty]) -- from json-ld context 'Property:Category'
