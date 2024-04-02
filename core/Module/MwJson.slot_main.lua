@@ -453,6 +453,10 @@ function p.renderInfoBox(args)
 								e = string.gsub(e, "Category:", ":Category:") -- make sure category links work
 								e = string.gsub(e, "File:", ":File:") -- do not embedd images but link to them
 								e = "[[" .. e .. "]]" 
+							elseif (p_type == 'xsd:date') then -- formate date & time with user preferences
+								e = "{{#dateformat:" .. e .. "|ymd}}" 
+							elseif ((string.len(e) > 100) and (string.find(e, "{{") == nil) and (string.find(e, "</") == nil)) then 
+								e = string.sub(e, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
 							end
 							cell:wikitext("\n* " .. e .. "") 
 						end
@@ -464,6 +468,10 @@ function p.renderInfoBox(args)
 						v = string.gsub(v, "Category:", ":Category:") -- make sure category links work
 						v = string.gsub(v, "File:", ":File:") -- do not embedd images but link to them
 						v = "[[" .. v .. "]]" 
+					elseif (p_type == 'xsd:date') then -- formate date & time with user preferences
+						v = "{{#dateformat:" .. v .. "|ymd}}" 
+					elseif ((string.len(v) > 100) and (string.find(v, "{{") == nil) and (string.find(v, "</") == nil)) then
+						v = string.sub(v, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
 					end
 					cell:wikitext("\n" .. v .. "")
 				end

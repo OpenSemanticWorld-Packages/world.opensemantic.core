@@ -2,6 +2,7 @@
     "@context": {
         "schema": "https://schema.org/",
         "skos": "https://www.w3.org/TR/skos-reference/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
         "wiki": "https://wiki-dev.open-semantic-lab.org/id/",
         "Property": {
             "@id": "wiki:Property-3A",
