@@ -118,7 +118,8 @@
                 {
                     "type": "mustache-wikitext",
                     "mode": "render",
-                    "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#label}} |{{lang}}={{text}} {{/label}} {{=<% %>=}} }}"
+                    "$comment": "Displays value according to user language with eng as fallback option. Note: {{=<% %>=}} changes mustache expression from {{..}} to <% %> for mixing with wikitext templates",
+                    "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#label%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/label%> }}"
                 }
             ],
             "items": {
@@ -151,13 +152,21 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#short_name}} |{{lang}}={{text}} {{/short_name}} {{=<% %>=}} }}"
+                "$comment": "Displays value according to user language with eng as fallback option. Note: {{=<% %>=}} changes mustache expression from {{..}} to <% %> for mixing with wikitext templates",
+                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#short_name%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/short_name%> }}"
             },
             "items": {
                 "title": "Short name",
                 "title*": {
                     "de": "Kurzname"
                 },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "store",
+                        "value": "{{{text}}}@{{{lang}}}"
+                    }
+                ],
                 "$ref": "/wiki/JsonSchema:Label?action=raw"
             }
         },
@@ -186,7 +195,8 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
+                "$comment": "Displays value according to user language with eng as fallback option. Note: {{=<% %>=}} changes mustache expression from {{..}} to <% %> for mixing with wikitext templates",
+                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#description%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/description%> }}"
             },
             "items": {
                 "eval_template": [
