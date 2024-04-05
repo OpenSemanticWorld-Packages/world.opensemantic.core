@@ -276,8 +276,9 @@ function p.processJsondata(args)
 	if (not p.nilOrEmpty(jsondata[p.keys.category])) then categories = jsondata[p.keys.category] end -- let json property overwrite function param
 	
 	local schema_res = p.walkJsonSchema({jsonschema=jsonschema, categories=categories, mode=mode, recursive=recursive, debug=debug})
-	jsonschema = p.expandJsonRef({json=schema_res.jsonschema, debug=debug}).json
-	--mw.logObject(jsonschema)
+	local expand_res = p.expandJsonRef({json=schema_res.jsonschema, debug=debug})
+	jsonschema = expand_res.json
+	--mw.log(mw.text.jsonEncode(jsonschema))
 	
 	local display_label = p.defaultArgPath(jsondata, {p.keys.name}, "")
 	if (display_label == "" or (title.nsText ~= "Category" and title.nsText ~= "Property")) then 
@@ -345,7 +346,8 @@ function p.processJsondata(args)
 			end
 			-- render the infobox for the schema itself and every super_schema using always the global json-ld context (merged within walkJsonSchema())
 			-- context needs to be preprocessed with buildContext() since the generic json/table merge of the @context atttribute produces a list of strings (remote context) and context objects
-			local infobox_res = p.renderInfoBox({jsonschema=super_jsonschema, context=p.buildContext({jsonschema=jsonschema}).context, jsondata=jsondata, ignore_properties=ignore_properties})
+			-- context is already build in p.getSemanticProperties. schema_allOfMerged is used to provide the full schema for overridden properties
+			local infobox_res = p.renderInfoBox({jsonschema=super_jsonschema, schema_allOfMerged=jsonschema, context=smw_res.context, property_definitions=smw_res.definitions, jsondata=jsondata, ignore_properties=ignore_properties})
 			wikitext = wikitext .. frame:preprocess( infobox_res.wikitext )
 		end
 	end
@@ -394,8 +396,11 @@ end
 -- renders a default infobox
 -- test: mw.logObject(p.renderInfoBox({jsonschema=p.loadJson({title="JsonSchema:Entity"}).json, jsondata={uuid="123123"}}))
 function p.renderInfoBox(args)
+	local debug = p.defaultArg(args.debug, false)
 	local jsondata = p.defaultArg(args.jsondata, {})
-	local schema = p.defaultArg(args.jsonschema, nil)
+	local schema = p.defaultArg(args.jsonschema, nil) -- local schema from the perspective of the current category
+	local schema_allOfMerged = p.defaultArg(args.schema_allOfMerged, schema) -- global schema with allOfs merged
+	local property_definitions = p.defaultArg(args.property_definitions, {}) -- dict schema_key: {property: <smw_property>, ...}
 	local res = ""
 	if schema == nil then return res end
 	
@@ -417,7 +422,7 @@ function p.renderInfoBox(args)
 	for k,v in pairs(jsondata) do
 		if (not ignore_properties[k]) then
 			if (schema['properties'] ~= nil and schema['properties'][k] ~= nil and (type(v) ~= 'table' or v[1] ~= nil)) then --literal or literal array
-				local def = schema['properties'][k]
+				local def = schema_allOfMerged['properties'][k]
 				--mw.logObject(def)
 				
 				local label = k
@@ -453,10 +458,22 @@ function p.renderInfoBox(args)
 								e = string.gsub(e, "Category:", ":Category:") -- make sure category links work
 								e = string.gsub(e, "File:", ":File:") -- do not embedd images but link to them
 								e = "[[" .. e .. "]]" 
-							elseif (p_type == 'xsd:date') then -- formate date & time with user preferences
+							elseif (p_type == 'xsd:date') then -- formate date with user preferences
 								e = "{{#dateformat:" .. e .. "|ymd}}" 
+							elseif (p_type == 'xsd:dateTime') then -- formate time with user preferences
+								local smw_property = p.defaultArgPath(property_definitions, {k, 'property'})
+								if (smw_property ~= nil) then e = "{{#ask: [[{{FULLPAGENAME}}]]|?" .. smw_property .. "#LOCL#TO= |format=plain |mainlabel=-}}"
+								else 
+									local _, _, date, hours, minutes = string.find(e, "(%S+)[T ](%S+)[:](%S+)[:?]")
+									e = "{{#dateformat:" .. date .. "|ymd}} " .. hours .. ":" .. minutes .. " (UTC)"
+								end
+							elseif (type(v) == 'boolean') then 
+								if (v) then v = "&#x2705;" else v = "&#x274C;" end -- green check mark or red cross
 							elseif ((string.len(e) > 100) and (string.find(e, "{{") == nil) and (string.find(e, "</") == nil)) then 
 								e = string.sub(e, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
+							elseif (debug) then
+								mw.log("Unformated: " .. k .. " " .. p.defaultArgPath(def, {'items', 'type'}, 'unknown'))
+								mw.logObject(def)
 							end
 							cell:wikitext("\n* " .. e .. "") 
 						end
@@ -469,9 +486,21 @@ function p.renderInfoBox(args)
 						v = string.gsub(v, "File:", ":File:") -- do not embedd images but link to them
 						v = "[[" .. v .. "]]" 
 					elseif (p_type == 'xsd:date') then -- formate date & time with user preferences
-						v = "{{#dateformat:" .. v .. "|ymd}}" 
+						v = "{{#dateformat:" .. v .. "|ymd}}"
+					elseif (p_type == 'xsd:dateTime') then -- formate time with user preferences
+						local smw_property = p.defaultArgPath(property_definitions, {k, 'property'})
+						if (smw_property ~= nil) then v = "{{#ask: [[{{FULLPAGENAME}}]]|?" .. smw_property .. "#LOCL#TO= |format=plain |mainlabel=-}}"
+						else 
+							local _, _, date, hours, minutes = string.find(v, "(%S+)[T ](%S+)[:](%S+)[:?]")
+							v = "{{#dateformat:" .. date .. "|ymd}} " .. hours .. ":" .. minutes .. " (UTC)"
+						end
+					elseif (type(v) == 'boolean') then 
+						if (v) then v = "&#x2705;" else v = "&#x274C;" end -- green check mark or red cross
 					elseif ((string.len(v) > 100) and (string.find(v, "{{") == nil) and (string.find(v, "</") == nil)) then
 						v = string.sub(v, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
+					elseif (debug) then
+						mw.log("Unformated: " .. k .. " " .. p.defaultArgPath(def, {'type'}, 'unknown'))
+						mw.logObject(def)
 					end
 					cell:wikitext("\n" .. v .. "")
 				end
@@ -588,7 +617,7 @@ function p.buildContext(args)
 			--mw.logObject(properties[k])
 			subcontext = p.buildContext({jsonschema=properties[k]}).context
 		elseif (p.defaultArgPath(properties, {k, 'items', 'type'}) == 'object') then 
-			mw.logObject(properties[k]['items'])
+			--mw.logObject(properties[k]['items'])
 			subcontext = p.buildContext({jsonschema=properties[k]['items']}).context
 		end
 		if (subcontext ~= nil and p.tableLength(subcontext) > 0) then
@@ -867,9 +896,22 @@ function p.expandJsonRef(args)
             json[k] = p.expandJsonRef({json=v}).json
         end
     end
+    local result = p.copy(json)
+    for k,v in pairs(json) do
+    	if (k == "allOf") then
+            if (type(v) == "table" and v[1] == nil) then v = {v} end -- ensure array
+            for i,s in pairs(v) do 
+            	result = p.tableMerge(s, result)
+            	if (debug) then mw.log("merge allOf with title " .. s["title"]) end
+            end
+            result[k] = nil
+        end
+    end
     
-    return {json=json}
+    return {json=result}
 end
+
+
 
 function p.defaultArg(arg, default)
 	if (arg == nil) then 
