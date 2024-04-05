@@ -107,9 +107,9 @@ function p.walkJsonSchema(args)
 		end
 	end	
 	if (root) then
-		jsonschema = {}
 		for i, category in ipairs(visited) do
-			jsonschema = p.tableMerge(jsonschema, jsonschemas[category]) --merge all schemas
+			--merge all schemas. we need to make a copy here, otherwise jsonschemas["Category:Entity"] contains the merged schema
+			jsonschema = p.copy(p.tableMerge(jsonschema, jsonschemas[category])) 
 		end	
 	end
 	if (debug) then wikitext = msg .. wikitext  end
@@ -299,6 +299,15 @@ function p.processJsondata(args)
 		-- get the semantic properties by looking up the json keys in the json-ld context
 		smw_res = p.getSemanticProperties({jsonschema=jsonschema, jsondata=json_res_store.res, store=false, debug=debug})
 		
+		-- store metadata where properties were defined / overridden
+		for i, category in ipairs(schema_res.visited) do 
+			for k, v in pairs(schema_res.jsonschemas[category]['properties']) do
+				if smw_res.definitions[k] == nil then smw_res.definitions[k] = {} end
+				if smw_res.definitions[k]['defined_in'] == nil then smw_res.definitions[k]['defined_in'] = {} end
+				table.insert(smw_res.definitions[k]['defined_in'], category)
+			end
+		end
+		
 		-- embed json-ld in resulting html for search engine discovery
 		jsonld["@context"] = smw_res.context
 		jsonld["@type"] = p.tableMerge(p.tablefy(jsonschema.schema_type), p.tablefy(jsonld["@type"])) --
@@ -439,6 +448,11 @@ function p.renderInfoBox(args)
 					description = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  description
 					for k,v in pairs(def['description*']) do description = description .. " |" .. k .. "=" .. v end
 					description = description .. " }}"
+				end
+				if (p.tableLength(p.defaultArgPath(property_definitions, {k, 'defined_in'}, {})) > 0) then description = description .. "<br>Definition: " end
+				for i, c in pairs(p.defaultArgPath(property_definitions, {k, 'defined_in'}, {})) do 
+					if (i > 1) then description = description .. ", " end
+					description = description .. "[[:" ..c .. "]]"
 				end
 				if (description ~= "") then description = "{{#info: " .. description .. "|note }}" end -- smw tooltip
 				label = label .. description

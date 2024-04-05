@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.36.1",
+            "version": "0.37.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
