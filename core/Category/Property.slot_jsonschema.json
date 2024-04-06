@@ -7,6 +7,8 @@
                 "@type": "@id"
             },
             "property_type": "Property:Has_type",
+            "label**": "Property:Has_preferred_property_label",
+            "description**": "Property:Has_property_description",
             "external_uri": "Property:External_formatter_uri",
             "ontology_iri": "Property:Equivalent_URI",
             "imported_from*": "Property:Imported_from",
