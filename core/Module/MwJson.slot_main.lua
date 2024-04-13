@@ -739,7 +739,7 @@ function p.getSemanticProperties(args)
 					context = p.tableMerge(context, subcontext) -- pull up nested context
 					local values = {}
 					if (v[1] == nil) then --key value array = object/dict
-						local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=v, properties=subobject_properties, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
+						local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=v, properties=p.copy(subobject_properties), store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
 						local id = subproperties_res.id --subobject_id
 						if (id ~= nil) then 
 							id = mw.title.getCurrentTitle().fullText .. '#' .. id
@@ -749,7 +749,7 @@ function p.getSemanticProperties(args)
 					else --list array
 						for i, e in pairs(v) do
 							if (type(e) == 'table') then 
-								local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=e, properties=subobject_properties, store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
+								local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=e, properties=p.copy(subobject_properties), store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
 								local id = subproperties_res.id --subobject_id
 								if (id ~= nil) then 
 									id = mw.title.getCurrentTitle().fullText .. '#' .. id
