@@ -1,5 +1,10 @@
 <onlyinclude>{{#if: {{{page|}}}<!--
--->|[[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}|{{#if:{{{label|}}}|{{{label}}}|{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?Display title of=|mainlabel=-|format=plain}}}}]]<!--
+-->|[[{{#replace:{{#replace:{{{page}}}|File:|<nowiki/> Media:}}|Category:|<nowiki/> :Category:}}|{{#if:{{{label|}}}|{{{label}}}|<!--
+-->{{#if:{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?HasLabel=|+lang={{USERLANGUAGECODE}}|mainlabel=-|format=plain}}<!--
+  -->|{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?HasLabel=|+lang={{USERLANGUAGECODE}}|mainlabel=-|format=plain}}<!--
+  -->|{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?HasLabel=|+lang=en|mainlabel=-|format=plain}}<!--
+-->}}<!--
+-->}}]]<!--
 -->|[{{{url}}} {{{label|{{{url}}}}}}]<!--
 -->}}<nowiki /></onlyinclude>
 <noinclude>
@@ -8,6 +13,8 @@
 * {{{{FULLPAGENAME}}|page=Main Page|label=The main page}} test
 * {{{{FULLPAGENAME}}|url=https://google.com}} test
 * {{{{FULLPAGENAME}}|page=Category:Entity}} category test
+* {{{{FULLPAGENAME}}|page=File:OSW5f36a59d4bb94ea0bf93f08f7470f609.png}} file test
+
 <templatedata>
 {
 	"params": {
