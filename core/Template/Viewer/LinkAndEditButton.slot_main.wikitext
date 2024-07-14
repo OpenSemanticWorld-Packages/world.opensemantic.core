@@ -1,0 +1,34 @@
+<onlyinclude>{{Viewer/Link |page={{{1}}}}} <i class="icon icon-edit pagebutton" data-config='{ "action": "edit-data", "params": {"source_page": "{{{1}}}", "reload": false}, "label": "", "icon_class": "icon icon-edit" }'></i></onlyinclude><noinclude>
+<!-- <div class="btn btn-sm pagebutton" data-config='{ "action": "edit-data", "params": {"source_page": "{{{1}}}", "reload": false}, "label": "", "icon_class": "icon icon-edit" }'><i class="icon icon-edit"></i></div> -->
+To display edit buttons in tables, e. g.
+<pre>
+
+</pre>
+
+{{#tree:
+{{#ask:
+ [[SubClassOf::Category:Item]]
+ OR [[SubClassOf.SubClassOf::Category:Item]]
+ OR [[SubClassOf.SubClassOf.SubClassOf::Category:Item]]
+<!-- HasProject subproperty of IsPartOf -->
+ <!-- |?HasProject=IsPartOf -->
+ |?SubClassOf=parent
+ |?HasType=parent
+ |format=tree
+ |parent=SubClassOf
+ |template=Viewer/LinkAndEditButton
+ |link=none
+}}
+}}
+
+{{#ask:
+ [[SubClassOf::Category:Item]]
+ OR [[SubClassOf.SubClassOf::Category:Item]]<!-- HasProject subproperty of IsPartOf -->
+ OR [[SubClassOf.SubClassOf.SubClassOf::Category:Item]]
+ <!-- |?HasProject=IsPartOf -->
+ |format=tree
+ |parent=SubClassOf
+ |template=Viewer/LinkAndEditButton
+ |link=none
+}}
+</noinclude>
