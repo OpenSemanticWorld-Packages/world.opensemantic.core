@@ -161,7 +161,8 @@
             "options": {
                 "conditional_visible": {
                     "modes": [
-                        "query"
+                        "query",
+                        "default"
                     ]
                 }
             }
@@ -170,7 +171,7 @@
             "type": "array",
             "title": "Inputs",
             "title*": {
-                "de": "Eingangsressource"
+                "de": "Eingangsressource (Input)"
             },
             "items": {
                 "type": "string",
@@ -188,7 +189,8 @@
             "options": {
                 "conditional_visible": {
                     "modes": [
-                        "query"
+                        "query",
+                        "default"
                     ]
                 }
             }
@@ -197,7 +199,7 @@
             "type": "array",
             "title": "Outputs",
             "title*": {
-                "de": "Ausgangsressource"
+                "de": "Ausgangsressource (Output)"
             },
             "items": {
                 "type": "string",
@@ -215,7 +217,8 @@
             "options": {
                 "conditional_visible": {
                     "modes": [
-                        "query"
+                        "query",
+                        "default"
                     ]
                 }
             }
