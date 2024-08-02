@@ -1,0 +1,187 @@
+{
+    "@context": {
+        "offered_by": {
+            "@id": "schema:offeredBy",
+            "@type": "@id"
+        },
+        "price_specification": {
+            "@id": "schema:priceSpecification",
+            "@type": "@id",
+            "@context": {
+                "numerical_value": {
+                    "@id": "schema:price"
+                },
+                "unit_code": {
+                    "@id": "schema:priceCurrency"
+                }
+            }
+        },
+        "eligible_quantity": {
+            "@id": "schema:eligibleQuantity",
+            "@type": "@id",
+            "@context": {
+                "numerical_value": {
+                    "@id": "schema:value"
+                },
+                "unit_code": {
+                    "@id": "schema:unitCode"
+                },
+                "unit_symbol": {
+                    "@id": "schema:unitText"
+                }
+            }
+        },
+        "valid_from": {
+            "@id": "schema:validFrom",
+            "@type": "@id"
+        },
+        "valid_through": {
+            "@id": "schema:validThrough",
+            "@type": "@id"
+        }
+    },
+    "type": "object",
+    "title": "Offer",
+    "title*": {
+        "de": "Angebot"
+    },
+    "required": [
+        "rdf_type",
+        "uuid"
+    ],
+    "defaultProperties": [
+        "offered_by",
+        "eligible_quantity",
+        "price_specification"
+    ],
+    "properties": {
+        "rdf_type": {
+            "type": "string",
+            "default": "schema:Offer",
+            "options": {
+                "hidden": true
+            }
+        },
+        "uuid": {
+            "title": "UUID",
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        },
+        "offered_by": {
+            "title": "Offerer",
+            "title*": {
+                "de": "Anbieter"
+            },
+            "type": "string",
+            "format": "autocomplete",
+            "$comment": "OrganisationUnit or Person (todo)",
+            "range": "Category:OSW3cb8cef2225e403092f098f99bc4c472"
+        },
+        "price_specification": {
+            "$comment": "A QuantityStatement with additional rdf_type and fixed quantity",
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:QuantityStatement?action=raw"
+                }
+            ],
+            "title": "Price specification",
+            "title*": {
+                "de": "Preisangabe"
+            },
+            "properties": {
+                "rdf_type": {
+                    "default": "schema:PriceSpecification"
+                },
+                "quantity": {
+                    "options": {
+                        "hidden": true
+                    },
+                    "default": "Property:HasPrice"
+                },
+                "unit": {
+                    "title": "Currency",
+                    "title*": {
+                        "de": "Währung"
+                    }
+                }
+            }
+        },
+        "eligible_quantity": {
+            "$comment": "A QuantityStatement with additional rdf_type",
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:QuantityStatement?action=raw"
+                }
+            ],
+            "title": "Quantity / Amount",
+            "title*": {
+                "de": "Mengenangabe"
+            },
+            "properties": {
+                "rdf_type": {
+                    "default": "schema:EligibleQuantity"
+                }
+            }
+        },
+        "valid_from": {
+            "title": "Valid from",
+            "title*": {
+                "de": "Gültig ab"
+            },
+            "type": "string",
+            "format": "datetime-local",
+            "options": {
+                "flatpicker": {}
+            }
+        },
+        "valid_through": {
+            "title": "Valid through",
+            "title*": {
+                "de": "Gültig bis (einschließlich)"
+            },
+            "type": "string",
+            "format": "datetime-local",
+            "options": {
+                "flatpicker": {}
+            }
+        },
+        "attachments": {
+            "$comment": "From Category:Entity",
+            "type": "array",
+            "title": "File attachments",
+            "title*": {
+                "de": "Dateianhänge"
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} <%={{ }}=%>  {{#attachments}}{{{.}}};{{/attachments}} {{=<% %>=}} <%={{ }}=%>"
+            },
+            "options": {
+                "collapsed": true
+            },
+            "propertyOrder": 1020,
+            "items": {
+                "title": "Attachment",
+                "title*": {
+                    "de": "Anhang"
+                },
+                "type": "string",
+                "format": "url",
+                "options": {
+                    "upload": {}
+                },
+                "links": [
+                    {
+                        "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}{{/if}}",
+                        "rel": "{{#if self}}download{{/if}}",
+                        "download": true
+                    }
+                ]
+            }
+        }
+    }
+}
