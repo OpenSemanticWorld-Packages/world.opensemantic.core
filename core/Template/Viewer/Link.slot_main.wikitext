@@ -1,19 +1,13 @@
-<onlyinclude>{{#if: {{{page|}}}<!--
--->|[[{{#replace:{{#replace:{{{page}}}|File:|<nowiki/> Media:}}|Category:|<nowiki/> :Category:}}|{{#if:{{{label|}}}|{{{label}}}|<!--
--->{{#if:{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?HasLabel=|+lang={{USERLANGUAGECODE}}|mainlabel=-|format=plain}}<!--
-  -->|{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?HasLabel=|+lang={{USERLANGUAGECODE}}|mainlabel=-|format=plain}}<!--
-  -->|{{#ask: [[{{#replace:{{{page}}}|Category:|<nowiki/> :Category:}}]]|?HasLabel=|+lang=en|mainlabel=-|format=plain}}<!--
--->}}<!--
--->}}]]<!--
--->|[{{{url}}} {{{label|{{{url}}}}}}]<!--
--->}}<nowiki /></onlyinclude>
+<onlyinclude>{{#invoke:Viewer/Link|render}}</onlyinclude>
 <noinclude>
 == Test ==
 * {{{{FULLPAGENAME}}|page=Main Page}} test
 * {{{{FULLPAGENAME}}|page=Main Page|label=The main page}} test
+* {{{{FULLPAGENAME}}|page=Main Page|url=|label=}} test
 * {{{{FULLPAGENAME}}|url=https://google.com}} test
-* {{{{FULLPAGENAME}}|page=Category:Entity}} category test
+* {{{{FULLPAGENAME}}|page=Category:Entity|url=|label=}} category test
 * {{{{FULLPAGENAME}}|page=File:OSW5f36a59d4bb94ea0bf93f08f7470f609.png}} file test
+* {{{{FULLPAGENAME}}|page=Item:OSW9ac4532e584340bcadab9022402a9697#OSW2ac7f0e6172e4fb88d61527e493c3366}} subobject test
 
 <templatedata>
 {
