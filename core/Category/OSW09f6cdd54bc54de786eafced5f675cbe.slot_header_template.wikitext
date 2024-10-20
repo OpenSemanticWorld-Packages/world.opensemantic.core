@@ -1,4 +1,4 @@
-== {{#switch: {{USERLANGUAGECODE}} |de=Verknüpfte Einträge |@default=Related entries}}==
+== {{#switch: {{USERLANGUAGECODE}} |de=Verknüpfte Einträge |#default=Related entries}}==
 {{#ask: [[HasKeyword::{{FULLPAGENAME}}]]
 |?HasDescription={{#switch: {{USERLANGUAGECODE}} |de=Beschreibung |@default=Description}}
 |format=datatable

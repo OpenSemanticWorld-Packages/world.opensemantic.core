@@ -45,11 +45,7 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "options": {
-                    "autocomplete": {
-                        "query": "[[HasType::Category:Category]] |?Display_title_of=label"
-                    }
-                }
+                "subclassof_range": "Category:Item"
             },
             "minItems": 1,
             "default": [

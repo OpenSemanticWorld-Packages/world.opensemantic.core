@@ -39,7 +39,9 @@
             "type": "string",
             "format": "url",
             "options": {
-                "upload": {}
+                "upload": {
+                    "create_inline": false
+                }
             },
             "links": [
                 {

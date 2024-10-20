@@ -1,12 +1,11 @@
 {
-    "type": [
-        "Category:Category"
-    ],
     "subclass_of": [
         "Category:Item"
     ],
+    "type": [
+        "Category:Category"
+    ],
     "uuid": "e427aafa-fbac-4262-955b-9f690a83405d",
-    "name": "Tool",
     "label": [
         {
             "text": "Tool",
@@ -26,5 +25,9 @@
             "text": "Gegenstand der als Hilfsmittel (nahezu) unverändert in einem Prozess teilnimmt",
             "lang": "de"
         }
+    ],
+    "name": "Tool",
+    "utf8_icon": [
+        "🔧"
     ]
 }
