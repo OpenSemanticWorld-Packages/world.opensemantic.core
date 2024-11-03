@@ -22,6 +22,7 @@ p.keys = { --jsonschema / json-ld keys
 	debug='_debug'
 } 
 p.slots = { --slot names
+	main='main',
 	jsondata='jsondata', 
 	jsonschema='jsonschema', 
 	header_template='header_template',
@@ -34,32 +35,45 @@ p.mode = {
 	query='query'
 }
 
+p.cache = {}
+
 --loads json from a wiki page
 --test: mw.logObject(p.loadJson({title="JsonSchema:Entity"}))
 --test: mw.logObject(p.loadJson({title="Category:Entity", slot="jsonschema"}))
 function p.loadJson(args)
 	local page_title = p.defaultArg(args.title, "JsonSchema:Entity") --for testing
-	local slot = p.defaultArg(args.slot, nil)
+	local slot = p.defaultArg(args.slot, 'main')
 	local debug = p.defaultArg(args.debug, nil)
 	local msg = ""
 	
 	local json = {}
 	
-	if (slot == nil) then
+	if p.cache[page_title] ~= nil then
+		if p.cache[page_title][slot] ~= nil then
+			if (debug) then msg = msg .. "Fetch slot " .. p.slots.jsondata .. " of page " .. page_title .. " from cache <br>" end
+			json = p.cache[page_title][slot]
+			return {json=json, debug_msg=msg}
+		end
+	else p.cache[page_title] = {}
+	end
+	
+	if (slot == 'main') then
 		--json = mw.loadJsonData( "JsonSchema:Entity" ) --requires MediaWiki 1.39
 		local page = mw.title.makeTitle(p.splitString(page_title, ':')[1], p.splitString(page_title, ':')[2])
 		local text = page:getContent()
 		if (text ~= nil) then json = mw.text.jsonDecode(text) end
 	else
-		if (debug) then msg = msg .. "Fetch slot " .. p.slots.jsondata .. " from page " .. title .. "<br>" end
+		if (debug) then msg = msg .. "Fetch slot " .. p.slots.jsondata .. " of page " .. page_title .. "<br>" end
 		local text = mw.slots.slotContent( slot , page_title )
 		if (text ~= nil) then json = mw.text.jsonDecode(text) end
 	end	
 	
 	--mw.logObject(json)
+	p.cache[page_title][slot] = json
 
 	return {json=json, debug_msg=msg}
 end
+
 
 -- test: mw.logObject(p.walkJsonSchema({jsonschema=p.loadJson({title="Category:Hardware", slot="jsonschema"}).json, debug=true}).jsonschema)
 function p.walkJsonSchema(args)
