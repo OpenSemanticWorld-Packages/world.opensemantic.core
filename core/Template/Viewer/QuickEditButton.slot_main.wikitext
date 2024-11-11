@@ -1,0 +1,29 @@
+<onlyinclude>
+<div style="float:left">
+<div class="pagebutton btn btn-light" data-config='{ "action": "edit-data", "params": {"source_page": "{{{1}}}", "reload": false} }' ><i class="icon icon-edit"></i></div>
+</div><nowiki /> </onlyinclude><noinclude>
+To display a quick edit buttons in tables, e. g.
+<pre>
+<div class="pagebutton btn btn-secondary" data-config='{ "action": "purge"}' ><i class="icon icon-refresh"></i> {{#switch: {{USERLANGUAGECODE}} |de=Tabelle aktualisieren |#default=Refresh table}}</div>
+{{#ask: [[Category:Item]]
+|?HasOswId # - ={{#info: {{#switch: {{USERLANGUAGECODE}} |de=Schnellbearbeitung dieses Eintrags. Aktualisieren Sie die Datenansicht anschließend, um die Änderungen zu sehen. |#default=Quick-edit of this entry. Refresh the data view afterwards to see the updates.}} |note }}|+ template = Viewer/EditButton
+|?
+<!-- |?# - =|+ template = Viewer/EditButton -->
+|?HasLabel
+|?HasDescription
+|format=datatable
+|defer-each=10000
+<!-- |limit=3 do no set limit! see https://github.com/SemanticMediaWiki/SemanticResultFormats/issues/860 -->
+}}
+</pre>
+<div class="pagebutton btn btn-secondary" data-config='{ "action": "purge"}' ><i class="icon icon-refresh"></i> {{#switch: {{USERLANGUAGECODE}} |de=Tabelle aktualisieren |#default=Refresh table}}</div>
+{{#ask: [[Category:Item]]
+|?HasOswId # - ={{#info: {{#switch: {{USERLANGUAGECODE}} |de=Schnellbearbeitung dieses Eintrags. Aktualisieren Sie die Datenansicht anschließend, um die Änderungen zu sehen. |#default=Quick-edit of this entry. Refresh the data view afterwards to see the updates.}} |note }}|+ template = Viewer/EditButton
+|?
+<!-- |?# - =|+ template = Viewer/EditButton -->
+|?HasLabel
+|?HasDescription
+|format=datatable
+|defer-each=10000
+}}
+</noinclude>

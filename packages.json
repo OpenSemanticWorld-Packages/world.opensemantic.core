@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.40.0",
+            "version": "0.41.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -1269,6 +1269,12 @@
                     "name": "Media",
                     "namespace": "NS_MODULE",
                     "urlPath": "Module/Media.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Viewer/QuickEditButton",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Viewer/QuickEditButton.slot_main.wikitext",
                     "slots": {}
                 }
             ]
