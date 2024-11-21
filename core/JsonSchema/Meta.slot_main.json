@@ -1,8 +1,24 @@
 {
-    "@context": {},
+    "@context": {
+        "change_id": {
+            "@id": "Property:HasChangeId",
+            "@type": "xsd:string"
+        }
+    },
     "title": "Meta",
     "type": "object",
+    "required": [
+        "uuid"
+    ],
     "properties": {
+        "uuid": {
+            "title": "UUID",
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        },
         "wiki_page": {
             "title": "Wiki page",
             "description": "The wiki page containing this entity",

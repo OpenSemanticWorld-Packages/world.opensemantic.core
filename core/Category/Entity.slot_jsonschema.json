@@ -55,6 +55,16 @@
         "attachments*": {
             "@id": "Property:HasFileAttachment",
             "@type": "@id"
+        },
+        "meta": {
+          "@id": "Property:HasMeta",
+          "@type": "@id",
+          "@context": {
+            "change_id": {
+              "@id": "Property:HasChangeId",
+              "@type": "xsd:string"
+            }
+          }
         }
     },
     "uuid": "ce353767-c628-45bd-9d88-d6eb3009aec0",
@@ -171,9 +181,9 @@
             }
         },
         "query_label": {
-            "title": "Label",
+            "title": "Query label",
             "title*": {
-                "de": "Name"
+                "de": "Abfrage-Bezeichnung"
             },
             "type": "string",
             "options": {
