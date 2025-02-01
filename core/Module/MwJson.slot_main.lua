@@ -489,7 +489,7 @@ function p.renderInfoBox(args)
 								end
 							elseif (type(v) == 'boolean') then 
 								if (v) then v = "&#x2705;" else v = "&#x274C;" end -- green check mark or red cross
-							elseif ((string.len(e) > 100) and (string.find(e, "{{") == nil) and (string.find(e, "</") == nil)) then 
+							elseif ((string.len(e) > 100) and (string.find(e, "{{") == nil) and (string.find(e, "</") == nil) and (string.find(e, "%[%[") == nil)) then -- no markup, no links
 								e = string.sub(e, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
 							elseif (debug) then
 								mw.log("Unformated: " .. k .. " " .. p.defaultArgPath(def, {'items', 'type'}, 'unknown'))
@@ -516,7 +516,7 @@ function p.renderInfoBox(args)
 						end
 					elseif (type(v) == 'boolean') then 
 						if (v) then v = "&#x2705;" else v = "&#x274C;" end -- green check mark or red cross
-					elseif ((string.len(v) > 100) and (string.find(v, "{{") == nil) and (string.find(v, "</") == nil)) then
+					elseif ((string.len(v) > 100) and (string.find(v, "{{") == nil) and (string.find(v, "</") == nil) and (string.find(v, "%[%[") == nil)) then -- no markup, no links
 						v = string.sub(v, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
 					elseif (debug) then
 						mw.log("Unformated: " .. k .. " " .. p.defaultArgPath(def, {'type'}, 'unknown'))
