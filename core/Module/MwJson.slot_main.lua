@@ -385,6 +385,9 @@ function p.processJsondata(args)
 	
 	-- Todo: Consider moving the category and this block to p.getSemanticProperties with store=true. However, settings categories with @category is only possible for subobjects
 	if (smw_res ~= nil) then
+		local display_label = p.getDisplayLabel(jsondata, smw_res.properties)
+		if title.nsText == "Property" then display_label = p.defaultArgPath(jsondata, {p.keys.name}, display_label) end
+
 		if (debug) then msg = msg .. "Store page properties" end
 		-- category handling
 		p.tableMerge(set_categories_in_wikitext, smw_res.properties[p.keys.category_pseudoproperty]) 
@@ -393,9 +396,11 @@ function p.processJsondata(args)
 		smw_res.properties['HasOswId'] = mw.title.getCurrentTitle().fullText  --set special property OswId to own title
 		
 		-- label and display title handling
-		smw_res.properties['Display title of'] = display_label --set special property display title
-		smw_res.properties['Display title of lowercase'] = display_label:lower() --store lowercase for case insensitive query
-		smw_res.properties['Display title of normalized'] = display_label:lower():gsub('[^%w]+','') --store with all non-alphanumeric chars removed for normalized query
+		if display_label ~= nil then 
+			smw_res.properties['Display title of'] = display_label --set special property display title
+			smw_res.properties['Display title of lowercase'] = display_label:lower() --store lowercase for case insensitive query
+			smw_res.properties['Display title of normalized'] = display_label:lower():gsub('[^%w]+','') --store with all non-alphanumeric chars removed for normalized query
+		end
 		p.setNormalizedLabel(smw_res.properties) --build normalized multilang label
 		mw.ext.displaytitle.set(display_label)
 		--smw_res.properties['@category'] = jsondata[p.keys.category]
@@ -790,9 +795,12 @@ function p.getSemanticProperties(args)
 			p.tableMerge(properties['@category'], jsondata[p.keys.category]) -- from json property 'type'
 			p.tableMerge(properties['@category'], properties[p.keys.category_pseudoproperty]) -- from json-ld context 'Property:Category'
 			properties[p.keys.category_pseudoproperty] = nil -- delete pseudo property
-			if (jsondata[p.keys.name] ~= nil) then properties['Display title of'] = jsondata[p.keys.name] 
-			elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then properties['Display title of'] = p.splitString(jsondata[p.keys.label][1], '@')[1] 
-			else properties['Display title of'] = p.defaultArg(subschema['title'], "") end
+			
+			local display_label = p.getDisplayLabel(jsondata, properties)
+			if properties['Display title of'] == nil and properties['Display_title_of'] == nil then
+				if (display_label ~= nil and display_label ~= "") then properties['Display title of'] = display_label
+				else properties['Display title of'] = p.defaultArg(subschema['title'], "") end -- fall back to property name in schema
+			end
 			p.setNormalizedLabel(properties) --build normalized multilang label
 			if (p.tableLength(properties) > 0) then
 				store_res = mw.smw.subobject( properties, subobjectId )	--store as subobject
@@ -1032,6 +1040,22 @@ function p.copy(obj, seen)
   s[obj] = res
   for k, v in pairs(obj) do res[p.copy(k, s)] = p.copy(v, s) end
   return res
+end
+
+-- get normalized label
+function p.getDisplayLabel(jsondata, properties)
+	local display_label = nil
+	-- check if label properties are mapped
+	if (properties["HasLabel"] ~= nil and properties["HasLabel"][1] ~= nil) then display_label = p.splitString(properties["HasLabel"][1], '@')[1] 
+	elseif (properties["HasName"] ~= nil) then 
+		if type(properties["HasName"]) == 'table' then display_label = properties["HasName"][1]
+		else display_label = properties["HasName"] end
+	-- fall back to unmapped keywords
+	elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then display_label = p.splitString(jsondata[p.keys.label][1], '@')[1] 
+	elseif (jsondata[p.keys.name] ~= nil) then display_label = jsondata[p.keys.name] 
+	end
+
+	return display_label
 end
 
 -- build normalized multilang label
