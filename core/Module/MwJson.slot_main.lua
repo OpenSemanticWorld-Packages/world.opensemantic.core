@@ -430,8 +430,7 @@ function p.renderInfoBox(args)
 	local context = p.defaultArg(args.context, p.buildContext({jsonschema=schema}).context)
 	local ignore_properties = p.defaultArg(args.ignore_properties, {})
 
-	local schema_label = ""
-	if schema['title'] ~= nil then schema_label = schema['title'] end
+	local schema_label = p.renderMultilangValue({jsonschema=schema})
 	
 	-- see also: https://help.fandom.com/wiki/Extension:Scribunto/HTML_Library_usage_notes
 	local tbl = mw.html.create( 'table' )
@@ -448,21 +447,9 @@ function p.renderInfoBox(args)
 				local def = schema_allOfMerged['properties'][k]
 				--mw.logObject(def)
 				
-				local label = k
-				if def['title'] ~= nil then label = def['title'] end
-				if def['title*'] ~= nil then -- multilang label with switch
-					label = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  label
-					for k,v in pairs(def['title*']) do label = label .. " |" .. k .. "=" .. v end
-					label = label .. " }}"
-				end
+				local label = p.renderMultilangValue({jsonschema=def, default=k})
 				
-				local description = ""
-				if def['description'] ~= nil then description = def['description'] end
-				if def['description*'] ~= nil then -- multilang label with switch
-					description = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  description
-					for k,v in pairs(def['description*']) do description = description .. " |" .. k .. "=" .. v end
-					description = description .. " }}"
-				end
+				local description = p.renderMultilangValue({jsonschema=def, key="description"})
 				if (p.tableLength(p.defaultArgPath(property_definitions, {k, 'defined_in'}, {})) > 0) then description = description .. "<br>Definition: " end
 				for i, c in pairs(p.defaultArgPath(property_definitions, {k, 'defined_in'}, {})) do 
 					if (i > 1) then description = description .. ", " end
@@ -1078,6 +1065,38 @@ function p.setNormalizedLabel(properties, use_fallbacks)
 			table.insert(properties['HasNormalizedLabel'], label_norm .. "@en")
 		end
 	end
+end
+
+function p.renderMultilangValue(args)
+	local jsondata = p.defaultArg(args.jsondata, {})
+	local jsonschema = p.defaultArg(args.jsonschema, {})
+	local key = p.defaultArg(args.key, "title")
+	local result = p.defaultArg(args.default, "")
+	local default = p.defaultArg(args.default, nil)
+	-- "title*": {"de": ...}
+	if jsonschema[key] ~= nil then result = jsonschema[key] end
+	if jsonschema[key .. '*'] ~= nil then -- multilang label with switch
+		result = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  result
+		for k,v in pairs(jsonschema[key .. '*']) do 
+			if k == en then default = v 
+			else result = result .. " |" .. k .. "=" .. v end 
+		end
+		if default ~= nil then result = result .. " |#default=" ..  default end
+		result = result .. " }}"
+	end	
+	-- "some_property": [{"lang": "de", "text": ...}]
+	if jsondata[key] ~= nil then -- multilang label with switch
+		result = "{{#switch:{{USERLANGUAGECODE}}"
+		for k,v in pairs(jsondata[key]) do 
+			if v["lang"] ~= nil and v["text"] ~= nil then
+				if v["lang"] == "en" then default = v["text"]
+				else result = result .. " |" .. v["lang"] .. "=" .. v["text"] end
+			end
+		end
+		if default ~= nil then result = result .. " |#default=" ..  default end
+		result = result .. " }}"
+	end		
+	return result
 end
 
 return p
