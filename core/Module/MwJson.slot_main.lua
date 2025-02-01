@@ -315,7 +315,7 @@ function p.processJsondata(args)
 		
 		-- store metadata where properties were defined / overridden
 		for i, category in ipairs(schema_res.visited) do 
-			for k, v in pairs(schema_res.jsonschemas[category]['properties']) do
+			for k, v in pairs(p.defaultArgPath(schema_res.jsonschemas, {category, 'properties'}, {})) do --property section may not exisit
 				if smw_res.definitions[k] == nil then smw_res.definitions[k] = {} end
 				if smw_res.definitions[k]['defined_in'] == nil then smw_res.definitions[k]['defined_in'] = {} end
 				table.insert(smw_res.definitions[k]['defined_in'], category)
@@ -361,7 +361,7 @@ function p.processJsondata(args)
 			for j, subcategory in ipairs(schema_res.visited) do
 				if j > i then
 					local subjsonschema = schema_res.jsonschemas[subcategory]
-					for k, v in pairs(subjsonschema['properties']) do
+					for k, v in pairs(p.defaultArg(subjsonschema['properties'], {})) do
 						-- skip properties that are overwritten in subschemas, render them only once at the most specific position
 						ignore_properties[k] = true
 					end
