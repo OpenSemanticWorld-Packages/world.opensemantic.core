@@ -1,6 +1,6 @@
 <table class="info_box">
 <tr>
-<th class="heading" colspan="2">{{#if: {{{label|}}}|{{{label|}}} [{{{id|{{PAGENAME}}}}}] | {{{id|{{PAGENAME}}}}} }} 
+<th class="heading" colspan="2">{{#if: {{{label|}}}|{{{label|}}} | {{{id|{{PAGENAME}}}}} }} 
 </th>
 </tr>
 <tr class="osw-table-details">
@@ -62,10 +62,19 @@
     |@deferred
     }}</td>
 </tr>
+<tr>
+{{#if: {{{ordering_categories|}}}|<!-- show a row if an ordering_categories exists -->
+    <th>{{{_label_ordering_categories|Classification categories}}}</th>
+    <td>{{{ordering_categories|}}}</td>
+    </tr>
+    <tr>
+|}}
+{{#if: {{{keywords|}}}|<!-- show a row if an keywords exists -->
     <tr>
     <th>{{{_keywords_name|Keywords}}}</th>
     <td>{{{keywords|}}}</td>
     </tr>
+|}}
 </table>
 
 =={{{_label_description| {{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung}} }}}==

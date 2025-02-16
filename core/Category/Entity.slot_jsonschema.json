@@ -243,6 +243,7 @@
         },
         "keywords": {
             "type": "array",
+            "format": "table",
             "title": "Keywords / Tags",
             "title*": {
                 "de": "Schlagworte / Tags"
@@ -254,7 +255,7 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}} <%={{ }}=%>  {{#keywords}}[[{{{.}}}]] <br> {{/keywords}} {{=<% %>=}} <%={{ }}=%>"
+                "value": "{{#keywords}}[[{{{.}}}]] <br> {{/keywords}}"
             },
             "items": {
                 "title": "Keyword",
