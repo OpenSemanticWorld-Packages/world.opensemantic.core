@@ -1,6 +1,16 @@
 {
     "@context": [
-        "/wiki/Category:Property?action=raw&slot=jsonschema"
+        "/wiki/Category:Property?action=raw&slot=jsonschema",
+        {
+            "range": {
+                "@id": "rdfs:range",
+                "@type": "@id"
+            },
+            "range*": {
+                "@id": "Property:HasRange",
+                "@type": "@id"
+            }
+        }
     ],
     "allOf": [
         {
@@ -19,6 +29,12 @@
         "en": "The named relation between a subject and an object",
         "de": "Die benannte Beziehung zwischen einem Subjekt und einem Objekt"
     },
+    "required": [
+        "type"
+    ],
+    "defaultProperties": [
+        "range"
+    ],
     "properties": {
         "property_type": {
             "default": "Page",
@@ -30,9 +46,29 @@
             "default": [
                 "Category:ObjectProperty"
             ]
+        },
+        "range": {
+            "type": "array",
+            "title": "Value range",
+            "description": "Enables autocomplete support by lookup all elements that are at least in one of the listed categories. Currently only a single category is supprted.",
+            "title*": {
+                "de": "Wertebereich"
+            },
+            "description*": {
+                "de": "Ermöglicht die Unterstützung der automatischen Vervollständigung durch Nachschlagen aller Elemente, die mindestens in einer der aufgeführten Kategorien enthalten sind. Derzeit wird nur eine einzelne Kategorie unterstützt."
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:Category",
+                "subclassof_range": "Category:Item",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[:Category:%2B]]"
+                    },
+                    "compact": true
+                }
+            }
         }
-    },
-    "required": [
-        "type"
-    ]
+    }
 }

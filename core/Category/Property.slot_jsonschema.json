@@ -2,18 +2,33 @@
     "@context": [
         "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
+            "owl": "http://www.w3.org/2002/07/owl#",
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
             "type": {
                 "@id": "Property:HasType",
                 "@type": "@id"
             },
             "property_type": "Property:Has_type",
-            "label**": "Property:Has_preferred_property_label",
-            "description**": "Property:Has_property_description",
+            "label**": "Property:Has preferred property label",
+            "description**": "Property:Has property description",
             "external_uri": "Property:External_formatter_uri",
             "ontology_iri": "Property:Equivalent_URI",
             "imported_from*": "Property:Imported_from",
             "subproperty_of": {
+                "@id": "rdfs:subPropertyOf",
+                "@type": "@id"
+            },
+            "subproperty_of*": {
                 "@id": "Property:Subproperty_of",
+                "@type": "@id"
+            },
+            "inverse_of": {
+                "@id": "owl:inverseOf",
+                "@type": "@id"
+            },
+            "inverse_of*": {
+                "@id": "Property:InverseOf",
                 "@type": "@id"
             }
         }
@@ -29,6 +44,11 @@
     "title*": {
         "de": "Attribut",
         "en": "Property"
+    },
+    "description": "The named relation between a subject and an object",
+    "description*": {
+        "en": "The named relation between a subject and an object",
+        "de": "Die benannte Beziehung zwischen einem Subjekt und einem Objekt"
     },
     "required": [
         "name",
@@ -152,16 +172,35 @@
             }
         },
         "subproperty_of": {
+            "type": "array",
             "title": "Subproperty of",
             "title*": {
                 "de": "Unterattribut von"
             },
-            "type": "string",
-            "format": "autocomplete",
-            "options": {
-                "autocomplete": {
-                    "category": "Category:Property"
-                }
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Property",
+                "title*": {
+                    "de": "Attribut"
+                },
+                "range": "Category:Property"
+            }
+        },
+        "inverse_of": {
+            "type": "array",
+            "title": "Inverse of",
+            "title*": {
+                "de": "Gegenteil von"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Property",
+                "title*": {
+                    "de": "Attribut"
+                },
+                "range": "Category:Property"
             }
         },
         "type": {
@@ -182,10 +221,5 @@
                 "Category:Property"
             ]
         }
-    },
-    "description": "The named relation between a subject and an object",
-    "description*": {
-        "en": "The named relation between a subject and an object",
-        "de": "Die benannte Beziehung zwischen einem Subjekt und einem Objekt"
     }
 }

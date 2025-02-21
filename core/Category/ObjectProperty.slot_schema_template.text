@@ -1,0 +1,17 @@
+{
+    "uuid": "{{{uuid}}}",
+    "title": "{{{name}}}",
+    "title*": {
+    	{{#each label}}
+        "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
+    	{{/each}}
+    },
+    "description": "{{{description.[0].text}}}",
+    "description*": {
+    	{{#each description}}
+        "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
+    	{{/each}}
+    },
+    "type": "string"
+    {{#if range}}, "format": "autocomplete", "range": "{{{range.[0]}}}"{{/if}}
+}

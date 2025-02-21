@@ -26,14 +26,9 @@
     "type": "object",
     "title": "Category",
     "title*": {
-        "de": "Kategorie",
-        "en": "Category"
+        "de": "Kategorie (Klasse)",
+        "en": "Category (Class)"
     },
-    "allOf": [
-        {
-            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
-        }
-    ],
     "required": [
         "subclass_of",
         "type"
@@ -56,7 +51,7 @@
                 "format": "autocomplete",
                 "options": {
                     "autocomplete": {
-                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
+                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
                     }
                 }
             },
