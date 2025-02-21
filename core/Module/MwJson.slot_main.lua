@@ -83,6 +83,7 @@ function p.walkJsonSchema(args)
 	local visited = p.defaultArg(args.visited, {})
 	local mode = p.defaultArg(args.mode, p.mode.header)
 	--local merged_jsonschema = p.defaultArg(args.merged_jsonschema, {})
+	local template = p.defaultArg(args.template, nil)
 	local templates = p.defaultArg(args.templates, {})
 	local recursive = p.defaultArg(args.recursive, true)
 	local root = p.defaultArg(args.root, true)
@@ -94,16 +95,17 @@ function p.walkJsonSchema(args)
 	if (mode == p.mode.footer) then category_template_slot = p.slots.footer_template end
 	if (mode == p.mode.header) then category_template_slot = p.slots.header_template end
 	
-	if (categories == nil) then categories = p.getCategories({jsonschema=jsonschema, includeNamespace=true}).categories end
+	if (categories == nil) then categories = p.getCategories({jsonschema=jsonschema, includeNamespace=true, includeSchemas=true}).categories end
 	if (type(categories) ~= 'table') then categories = {categories} end
 	if (debug) then msg = msg .. "Supercategories: " .. mw.dumpObject(categories) .. "\n<br>" end
 	for k, category in pairs(categories) do
 		if (not p.tableContains(visited, category)) then
 			--mw.logObject("Visit " .. category)
 			if (debug) then msg = msg .. "Fetch slot " .. p.slots.jsonschema .. " from page " .. category .. "\n<br>" end
-			local super_jsonschema_str = mw.slots.slotContent( p.slots.jsonschema , category )
-			if (super_jsonschema_str ~= nil) then
-				super_jsonschema = mw.text.jsonDecode( super_jsonschema_str )
+			local super_jsonschema = nil
+			if p.splitString(category, ':')[1] == "JsonSchema" then super_jsonschema = p.loadJson({title=category, slot=p.slots.main}).json
+			else super_jsonschema = p.loadJson({title=category, slot=p.slots.jsonschema}).json end
+			if (super_jsonschema ~= nil) then
 				if (recursive) then	
 					local res = p.walkJsonSchema({jsonschema=super_jsonschema, jsonschemas=jsonschemas, templates=templates, mode=mode, visited=visited, root=false})
 					wikitext = wikitext .. res.wikitext 
@@ -112,7 +114,8 @@ function p.walkJsonSchema(args)
 				--table.insert(jsonschemas, super_jsonschema ) 
 				--mw.logObject("Store " .. category)
 				table.insert(visited, category)
-				jsonschemas[category] = mw.text.jsonDecode( super_jsonschema_str ) --keep a copy of the schema, super_jsonschema passed by references gets modified
+				
+				jsonschemas[category] = p.copy( super_jsonschema ) --keep a copy of the schema, super_jsonschema passed by references gets modified
 				--jsonschema = p.tableMerge(jsonschema, super_jsonschema) --merge superschema is done by the caller
 			end
 			
@@ -150,6 +153,7 @@ function p.expandEmbeddedTemplates(args)
 	local stringify_arrays = p.defaultArg(args.stringify_arrays, false)
 	local msg = ""
 	local res = p.defaultArg(args.jsondata, "")
+	local root = p.defaultArg(args.root, true) -- first entry into recursion
 	
 	for k,v in pairs(jsondata) do
 		local eval_template = nil
@@ -173,8 +177,8 @@ function p.expandEmbeddedTemplates(args)
 				jsondata[k] = frame:preprocess( jsondata[k] )
 			end
 		elseif type(v) == 'table' then 
-			if (v[1] == nil) then --key value array = object/dict
-				local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=v, jsonschema=p.defaultArgPath(jsonschema, {"properties", k}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+			if (p.tableLength(v) > 0 and v[1] == nil) then --key value array = object/dict
+				local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=v, jsonschema=p.defaultArgPath(jsonschema, {"properties", k}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false})
 				msg = msg .. sub_res.debug_msg
 				jsondata[k] = sub_res.res
 				--if (sub_res.unparsed ~= nil) then jsondata[k] = sub_res.unparsed else jsondata[k] = sub_res.wikitext end
@@ -194,7 +198,7 @@ function p.expandEmbeddedTemplates(args)
 					end
 
 					if type(e) == 'table' then 	
-						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false})
 						msg = msg .. sub_res.debug_msg
 						if (type(sub_res.res) == 'table') then 
 							if (debug) then msg = msg .. "Values for " .. k .. " contains non-literal items: " .. mw.dumpObject( sub_res.res ) .. " => skip value in wikitemplate array param creation\n<br>" end
@@ -206,7 +210,7 @@ function p.expandEmbeddedTemplates(args)
 						if (eval_template ~= nil and eval_template.value ~= nil) then
 							
 							--evaluate single array item string as json {"self": "<value>", ".": "<value>"} => does not work since jsondata is an object
-							--e = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays})
+							--e = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false})
 							
 
 							if (eval_template.type == "mustache" or eval_template.type == "mustache-wikitext") then
@@ -229,7 +233,7 @@ function p.expandEmbeddedTemplates(args)
 	end	
 	
 	
-	if (template == nil) then 
+	if (template == nil and root == false) then -- don't stringify root json objects
 		local templates = jsondata[p.keys.template]
 		if (templates == nil) then templates = p.defaultArg(jsonschema[p.keys.template], {}) end
 		if (templates[1] == nil) then templates = {templates} end --ensure list of objects
@@ -241,7 +245,7 @@ function p.expandEmbeddedTemplates(args)
 		end
 	end
 	
-	if template ~= nil then
+	if (template ~= nil and root == false) then -- don't stringify root json objects
 		if (template.type == "wikitext") then
 			for k,v in pairs(jsondata) do
 				if type(v) == 'table' then 
@@ -539,28 +543,29 @@ end
 function p.getCategories(args)
 	local jsonschema = p.defaultArg(args.jsonschema, {})
 	local includeNamespace = p.defaultArg(args.includeNamespace, false)
+	local includeSchemas = p.defaultArg(args.includeSchemas, false)
 	
 	local categories = {}
 		local allOf = jsonschema[p.keys.allOf]
 		if (allOf ~= nil) then
 			--properties['@category'] = {}
 			for k, entry in pairs(allOf) do
-				if type(entry) == 'table' then -- "allOf": [{"$ref": "/wiki/Category:Test?action=raw"}]
-					for p, v in pairs(entry) do
-						if (p == '$ref') then
-							for category in v:gmatch("Category:([^?]+)") do -- e.g. "/wiki/Category:Test?action=raw"
-								if (includeNamespace) then category = "Category:" .. category end
-							    table.insert(categories, category)
+				local refs = nil
+				if type(entry) == 'table' then refs = entry -- "allOf": [{"$ref": "/wiki/Category:Test?action=raw"}]
+				else refs = {entry} end-- "allOf": {"$ref": "/wiki/Category:Test?action=raw"}
+				for p, v in pairs(entry) do
+					if (p == '$ref') then
+						for category in v:gmatch("Category:([^?]+)") do -- e.g. "/wiki/Category:Test?action=raw"
+							if (includeNamespace) then category = "Category:" .. category end
+						    table.insert(categories, category)
+						end
+						if includeSchemas then
+							for schema in v:gmatch("JsonSchema:([^?]+)") do -- e.g. "/wiki/JsonSchema:Test?action=raw"
+								if (includeNamespace) then schema = "JsonSchema:" .. schema end
+							    table.insert(categories, schema)
 							end
 						end
 					end
-				else -- "allOf": {"$ref": "/wiki/Category:Test?action=raw"}
-					if (k == '$ref') then
-						for category in entry:gmatch("Category:([^?]+)") do -- e.g. "/wiki/Category:Test?action=raw"
-							if (includeNamespace) then category = "Category:" .. category end
-							table.insert(categories, category)
-						end
-					end	
 				end
 			end
 		end	
