@@ -297,12 +297,8 @@ function p.processJsondata(args)
 	local expand_res = p.expandJsonRef({json=schema_res.jsonschema, debug=debug})
 	jsonschema = expand_res.json
 	--mw.log(mw.text.jsonEncode(jsonschema))
-	
-	local display_label = p.defaultArgPath(jsondata, {p.keys.name}, "")
-	if (display_label == "" or (title.nsText ~= "Category" and title.nsText ~= "Property")) then 
-		display_label = p.defaultArgPath(jsondata, {p.keys.label, 1, p.keys.text}, "") --prefere label for all non-category and non-property pages
-	end 
-	
+
+
 	local jsonld = p.copy(jsondata)
 	local json_data_store = p.copy(jsondata)
 	local json_data_render = p.copy(jsondata)
@@ -749,7 +745,7 @@ function p.getSemanticProperties(args)
 					local subcontext = p.copy(p.defaultArgPath(context, {k, p.keys.context}, {})) --deepcopy, see also https://phabricator.wikimedia.org/T269990
 					context = p.tableMerge(context, subcontext) -- pull up nested context
 					local values = {}
-					if (v[1] == nil) then --key value array = object/dict
+					if (p.tableLength(v) > 0 and v[1] == nil) then --key value array = object/dict => subobject
 						local subproperties_res = p.getSemanticProperties({jsonschema=schema, jsondata=v, properties=p.copy(subobject_properties), store=true, root=false, debug=debug, context=context, subschema=schema_properties[k], parent_schema_property=property_data[k]})
 						local id = subproperties_res.id --subobject_id
 						if (id ~= nil) then 
