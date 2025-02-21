@@ -4,39 +4,82 @@
         "skos": "https://www.w3.org/TR/skos-reference/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "wiki": "https://wiki-dev.open-semantic-lab.org/id/",
-        "Property": {
-            "@id": "wiki:Property-3A",
-            "@type": "@id",
-            "@prefix": true
-        },
-        "File": {
-            "@id": "https://wiki-dev.open-semantic-lab.org/wiki/Special:Redirect/file/",
-            "@type": "@id",
-            "@prefix": true
-        },
         "Category": {
             "@id": "wiki:Category-3A",
             "@prefix": true
         },
-        "rdf_type": {
-            "@id": "@type",
+        "File": {
+            "@id": "https://wiki-dev.open-semantic-lab.org/wiki/Special:Redirect/file/",
+            "@prefix": true
+        },
+        "Property": {
+            "@id": "wiki:Property-3A",
+            "@prefix": true
+        },
+        "Item": {
+            "@id": "wiki:Item-3A",
+            "@prefix": true
+        },
+        "attachments*": {
+            "@id": "Property:HasFileAttachment",
             "@type": "@id"
         },
-        "uuid*": "Property:HasUuid",
-        "name*": "Property:HasName",
-        "label": "skos:prefLabel",
-        "label*": "Property:HasLabel",
-        "text": {
-            "@id": "@value"
+        "based_on": {
+            "@id": "skos:isBasedOn",
+            "@type": "@id"
+        },
+        "based_on*": {
+            "@id": "Property:IsBasedOn",
+            "@type": "@id"
+        },
+        "description": {
+            "@id": "skos:definition"
+        },
+        "description*": {
+            "@id": "Property:HasDescription"
+        },
+        "image": {
+            "@id": "schema:image",
+            "@type": "@id"
+        },
+        "image*": {
+            "@id": "Property:HasImage",
+            "@type": "@id"
+        },
+        "label": {
+            "@id": "skos:prefLabel"
+        },
+        "label*": {
+            "@id": "Property:HasLabel"
         },
         "lang": {
             "@id": "@language"
         },
-        "query_label": "Property:HasLabel",
-        "description": "skos:definition",
-        "description*": "Property:HasDescription",
-        "image": "schema:image",
-        "image*": "Property:HasImage",
+        "text": {
+            "@id": "@value"
+        },
+        "uuid*": {
+            "@id": "Property:HasUuid"
+        },
+        "meta": {
+            "@id": "Property:HasMeta",
+            "@type": "@id",
+            "@context": {
+                "change_id": {
+                    "@id": "Property:HasChangeId",
+                    "@type": "xsd:string"
+                }
+            }
+        },
+        "name*": {
+            "@id": "Property:HasName"
+        },
+        "query_label": {
+            "@id": "Property:HasLabel"
+        },
+        "short_name": {
+            "@id": "Property:HasShortName"
+        },
         "keywords": {
             "@id": "schema:keywords",
             "@type": "@id"
@@ -45,26 +88,9 @@
             "@id": "Property:HasKeyword",
             "@type": "@id"
         },
-        "based_on": "skos:isBasedOn",
-        "based_on*": {
-            "@id": "Property:IsBasedOn",
+        "statements": {
+            "@id": "Property:HasStatement",
             "@type": "@id"
-        },
-        "short_name": "Property:HasShortName",
-        "statements": "Property:HasStatement",
-        "attachments*": {
-            "@id": "Property:HasFileAttachment",
-            "@type": "@id"
-        },
-        "meta": {
-          "@id": "Property:HasMeta",
-          "@type": "@id",
-          "@context": {
-            "change_id": {
-              "@id": "Property:HasChangeId",
-              "@type": "xsd:string"
-            }
-          }
         }
     },
     "uuid": "ce353767-c628-45bd-9d88-d6eb3009aec0",
@@ -224,6 +250,7 @@
             "title*": {
                 "de": "Bild"
             },
+            "propertyOrder": 1020,
             "type": "string",
             "format": "url",
             "options": {
@@ -315,7 +342,7 @@
             "options": {
                 "collapsed": true
             },
-            "propertyOrder": 1020,
+            "propertyOrder": 1030,
             "items": {
                 "title": "Attachment",
                 "title*": {
