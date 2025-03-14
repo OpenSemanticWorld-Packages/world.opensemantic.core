@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "5f0dff1c-477e-45e7-ad45-e4e247e28f35",
+    "label": [
+        {
+            "text": "Documentation Extension",
+            "lang": "en"
+        },
+        {
+            "text": "Dokumentations-Erweiterung",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Instances of this category can be used to extend the documentation of a page. Instances select a Category page to be extended by its content. Category pages in turn, within their footer, invoke a query on pages with the Property:ExtendsDocumentationOf pointing to them. ",
+            "lang": "en"
+        },
+        {
+            "text": "Instanzen dieser Kategorie können verwendet werden, um die Dokumentation einer Seite zu erweitern. Instanzen wählen eine Kategorieseite aus, die durch ihren Inhalt erweitert werden soll. Kategorieseiten wiederum rufen in ihrer Fußzeile eine Abfrage auf Seiten auf, die mit Property:ExtendsDocumentationOf auf sie zeigt.",
+            "lang": "de"
+        }
+    ],
+    "name": "DocumentationExtension"
+}

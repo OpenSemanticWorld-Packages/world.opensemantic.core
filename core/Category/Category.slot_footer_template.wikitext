@@ -1,3 +1,11 @@
+<!-- Include optional extensions of this page  -->
+{{#ask: [[ExtendsDocumentationOf::{{FULLPAGENAME}}]]
+ |format=embedded
+ |embedformat=h1
+ |embedonly=yes
+}}
+
+
 =={{#switch:{{USERLANGUAGECODE}}|en=Graph|de=Graph}}==
 <div style="width: 100%;" class="InteractiveSemanticGraph" data-config='{ "root":"{{FULLPAGENAME}}", "properties":["SubClassOf","HasImage","HasUtf8Icon"], "ignore_properties":["Subcategory_of", "-Subcategory_of", "Has_query", "Display_title_of", "Display_title_of_lowercase", "Display_title_of_normalized"], "permalink":true, "depth":2, "edit": true, "edge_labels": false, "query_limit":25}'></div>
 <br>
