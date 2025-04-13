@@ -375,8 +375,6 @@ function p.processJsondata(args)
 		end
 	end
 	
-	--local display_label = ""
-	--if (jsondata[p.keys.label] ~= nil) then display_label = p.splitString(jsondata[p.keys.label], '@')[1] end
 	local set_categories_in_wikitext = {}
 	p.tableMerge(set_categories_in_wikitext, json_res_store.res[p.keys.subcategory])  --classes/categories, nil for items
 	if (title.nsText ~= "Category") then --items
@@ -385,8 +383,8 @@ function p.processJsondata(args)
 	
 	-- Todo: Consider moving the category and this block to p.getSemanticProperties with store=true. However, settings categories with @category is only possible for subobjects
 	if (smw_res ~= nil) then
-		local display_label = p.getDisplayLabel(jsondata, smw_res.properties)
-		if title.nsText == "Property" then display_label = p.defaultArgPath(jsondata, {p.keys.name}, display_label) end
+		local display_label = p.getDisplayLabel(json_res_store.res, smw_res.properties)
+		if title.nsText == "Property" then display_label = p.defaultArgPath(json_res_store.res, {p.keys.name}, display_label) end
 
 		if (debug) then msg = msg .. "Store page properties" end
 		-- category handling
