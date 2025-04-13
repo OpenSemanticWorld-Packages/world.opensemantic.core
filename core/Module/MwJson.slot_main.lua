@@ -1050,7 +1050,9 @@ function p.getDisplayLabel(jsondata, properties)
 		if type(properties["HasName"]) == 'table' then display_label = properties["HasName"][1]
 		else display_label = properties["HasName"] end
 	-- fall back to unmapped keywords
-	elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then display_label = p.splitString(jsondata[p.keys.label][1], '@')[1] 
+	elseif (jsondata[p.keys.label] ~= nil and jsondata[p.keys.label][1] ~= nil) then
+		if type(jsondata[p.keys.label][1]) ~= 'table' then display_label = p.splitString(jsondata[p.keys.label][1], '@')[1]
+		else display_label = jsondata[p.keys.label][1][p.keys.text] end -- no eval_template applied
 	elseif (jsondata[p.keys.name] ~= nil) then display_label = jsondata[p.keys.name] 
 	end
 
