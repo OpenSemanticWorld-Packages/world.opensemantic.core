@@ -1,0 +1,119 @@
+{
+    "@context": {
+        "Property": "https://wiki-dev.open-semantic-lab.org/id/Property-3A",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "quantity*": "Property:HasProperty",
+        "quantity": "rdf:predicate",
+        "value*": "Property:HasObject",
+        "value": "rdf:object",
+        "unit": "Property:HasUnit"
+    },
+    "$comment": "A reduced version of JsonSchema:Statement",
+    "type": "object",
+    "format": "grid-strict",
+    "id": "statement",
+    "title": "Quantity",
+    "title*": {
+        "de": "Menge"
+    },
+    "_headerTemplate": "{{self.value}}",
+    "required": [
+        "uuid",
+        "quantity",
+        "value",
+        "unit",
+        "unit_symbol",
+        "numerical_value"
+    ],
+    "properties": {
+        "uuid": {
+            "title": "UUID",
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        },
+        "quantity": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Property",
+            "title*": {
+                "de": "Attribut"
+            },
+            "propertyOrder": 10,
+            "options": {
+                "grid_columns": 8,
+                "autocomplete": {
+                    "category": "Category:QuantityProperty"
+                }
+            }
+        },
+        "numerical_value": {
+            "type": "string",
+            "format": "number",
+            "title": "Value",
+            "title*": {
+                "de": "Wert"
+            },
+            "propertyOrder": 20,
+            "options": {
+                "grid_columns": 2
+            }
+        },
+        "unit": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Unit",
+            "title*": {
+                "de": "Einheit"
+            },
+            "propertyOrder": 30,
+            "watch": {
+                "quantity": "statement.quantity",
+                "unit_symbol": "statement.unit_symbol"
+            },
+            "options": {
+                "grid_columns": 2,
+                "autocomplete": {
+                    "query": "[[-HasInputUnit::{{$(quantity)}}]][[Display_title_of::like:*{{_user_input}}*]]|?Display_title_of=label",
+                    "render_template": {
+                        "type": [
+                            "handlebars"
+                        ],
+                        "value": "{{result.printouts.label.[0]}}"
+                    },
+                    "field_maps": [
+                        {
+                            "source_path": "$",
+                            "template": "{{{result.printouts.label.[0]}}}",
+                            "target_path": "$(unit_symbol)"
+                        }
+                    ]
+                }
+            }
+        },
+        "unit_symbol": {
+            "type": "string",
+            "options": {
+                "hidden": true
+            }
+        },
+        "value": {
+            "type": "string",
+            "title": "Value",
+            "title*": {
+                "de": "Wert"
+            },
+            "watch": {
+                "numerical_value": "statement.numerical_value",
+                "unit_symbol": "statement.unit_symbol"
+            },
+            "template": "{{{numerical_value}}} {{{unit_symbol}}}",
+            "options": {
+                "hidden": true
+            }
+        }
+    }
+}
