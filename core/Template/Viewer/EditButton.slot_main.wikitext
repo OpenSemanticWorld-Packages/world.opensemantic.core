@@ -1,8 +1,8 @@
-<onlyinclude>
+<onlyinclude> <!-- {{#pagebutton: { "action": "edit-data", "params": {"source_page": "{{{1}}}", "reload": false}, "label": "", "icon_class": "icon icon-edit" } }}  -->
 <div style="float:left">
 <div class="pagebutton btn btn-light" data-config='{ "action": "edit-data", "params": {"source_page": "{{{1}}}", "reload": false} }' ><i class="icon icon-edit"></i></div>
 </div><nowiki /> </onlyinclude><noinclude>
-To display a quick edit buttons in tables, e. g.
+To display edit buttons in tables, e. g.
 <pre>
 <div class="pagebutton btn btn-secondary" data-config='{ "action": "purge"}' ><i class="icon icon-refresh"></i> {{#switch: {{USERLANGUAGECODE}} |de=Tabelle aktualisieren |#default=Refresh table}}</div>
 {{#ask: [[Category:Item]]
