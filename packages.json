@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.44.5",
+            "version": "0.44.6",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -1277,6 +1277,12 @@
                     "name": "Viewer/Link",
                     "namespace": "NS_MODULE",
                     "urlPath": "Module/Viewer/Link.slot_main.lua",
+                    "slots": {}
+                },
+                {
+                    "name": "Viewer/LinkAndEditButton",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Viewer/LinkAndEditButton.slot_main.wikitext",
                     "slots": {}
                 },
                 {
