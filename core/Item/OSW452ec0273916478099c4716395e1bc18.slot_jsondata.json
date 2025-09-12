@@ -1,0 +1,18 @@
+{
+    "type": [
+        "Category:OSW09f6cdd54bc54de786eafced5f675cbe"
+    ],
+    "uuid": "452ec027-3916-4780-99c4-716395e1bc18",
+    "label": [
+        {
+            "text": "Classification category",
+            "lang": "en"
+        },
+        {
+            "text": "Ordnungskategorie",
+            "lang": "de"
+        }
+    ],
+    "description": [],
+    "name": "ClassificationCategory"
+}

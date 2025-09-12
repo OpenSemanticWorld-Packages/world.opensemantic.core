@@ -1,0 +1,30 @@
+{
+    "@context": [
+        "/wiki/Category:Category?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Category?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "379d5a15-89c7-4c82-bc0d-e47938264d00",
+    "title": "OwlThing",
+    "title*": {
+        "en": "OwlThing"
+    },
+    "description": "Represents the set of all individuals. In the DL literature this is often called the top concept.",
+    "description*": {
+        "en": "Represents the set of all individuals. In the DL literature this is often called the top concept."
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW379d5a1589c74c82bc0de47938264d00"
+            ]
+        }
+    }
+}

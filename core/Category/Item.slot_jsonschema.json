@@ -1,36 +1,31 @@
 {
     "@context": [
-        "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
-            "type": {
-                "@id": "Property:HasType",
-                "@type": "@id"
+            "exact_ontology_match***": {
+                "@id": "owl:sameAs",
+                "@ype": "@id"
             },
-            "type*": {
-                "@id": "Property:HasSchema",
-                "@type": "@id"
+            "rdf_type*": {
+                "@id": "schema:additionalType"
             }
-        }
+        },
+        "/wiki/Category:Entity?action=raw&slot=jsonschema"
     ],
-    "type": "object",
-    "title": "Item",
     "allOf": [
         {
             "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
         }
     ],
+    "type": "object",
+    "title": "Item",
+    "title*": {
+        "de": "Item"
+    },
     "required": [
         "type"
     ],
     "properties": {
         "type": {
-            "title": "Types/Categories",
-            "title*": {
-                "de": "Typen/Kategorien"
-            },
-            "type": "array",
-            "format": "table",
-            "propertyOrder": -1000,
             "eval_template": [
                 {
                     "type": "mustache-wikitext",
@@ -39,12 +34,6 @@
                 }
             ],
             "items": {
-                "title": "Type",
-                "title*": {
-                    "de": "Type"
-                },
-                "type": "string",
-                "format": "autocomplete",
                 "subclassof_range": "Category:Item"
             },
             "minItems": 1,

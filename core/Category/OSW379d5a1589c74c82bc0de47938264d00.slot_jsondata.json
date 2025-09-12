@@ -1,0 +1,25 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Category"
+    ],
+    "uuid": "379d5a15-89c7-4c82-bc0d-e47938264d00",
+    "label": [
+        {
+            "text": "OwlThing",
+            "lang": "en"
+        }
+    ],
+    "metaclass": [
+        "Category:OSW725a3cf5458f4daea86615fcbd0029f8"
+    ],
+    "description": [
+        {
+            "text": "Represents the set of all individuals. In the DL literature this is often called the top concept.",
+            "lang": "en"
+        }
+    ],
+    "name": "OwlThing"
+}

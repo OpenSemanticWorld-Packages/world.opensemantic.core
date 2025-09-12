@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.44.6",
+            "version": "0.45.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -183,6 +183,26 @@
                     "namespace": "NS_CATEGORY",
                     "urlPath": "Category/Term.slot_main.wikitext",
                     "slots": {}
+                },
+                {
+                    "name": "OSW379d5a1589c74c82bc0de47938264d00",
+                    "label": "OwlThing",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW379d5a1589c74c82bc0de47938264d00.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW379d5a1589c74c82bc0de47938264d00.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW379d5a1589c74c82bc0de47938264d00.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW379d5a1589c74c82bc0de47938264d00.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW379d5a1589c74c82bc0de47938264d00.slot_jsonschema.json"
+                        }
+                    }
                 },
                 {
                     "name": "OSW5f0dff1c477e45e7ad45e4e247e28f35",
@@ -430,6 +450,23 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSW09f6cdd54bc54de786eafced5f675cbe.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW452ec0273916478099c4716395e1bc18",
+                    "label": "ClassificationCategory",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSW452ec0273916478099c4716395e1bc18.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSW452ec0273916478099c4716395e1bc18.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSW452ec0273916478099c4716395e1bc18.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSW452ec0273916478099c4716395e1bc18.slot_jsondata.json"
                         }
                     }
                 },

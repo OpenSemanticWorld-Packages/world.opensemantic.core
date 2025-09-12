@@ -1,8 +1,14 @@
 {
     "@context": [
-        "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
-            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+            "exact_ontology_match***": {
+                "@id": "owl:equivalentClass",
+                "@type": "@id"
+            },
+            "metaclass": {
+                "@id": "Property:HasMetaCategory",
+                "@type": "@id"
+            },
             "subclass_of": {
                 "@id": "rdfs:subClassOf",
                 "@type": "@id"
@@ -11,16 +17,9 @@
                 "@id": "Property:SubClassOf",
                 "@type": "@id"
             },
-            "metaclass": {
-                "@id": "Property:HasMetaCategory",
-                "@type": "@id"
-            },
-            "type": {
-                "@id": "Property:HasType",
-                "@type": "@id"
-            },
             "utf8_icon": "Property:HasUtf8Icon"
-        }
+        },
+        "/wiki/Category:Entity?action=raw&slot=jsonschema"
     ],
     "allOf": [
         {
@@ -40,19 +39,7 @@
     ],
     "properties": {
         "type": {
-            "title": "Types/Categories",
-            "title*": {
-                "de": "Typen/Kategorien"
-            },
-            "propertyOrder": -1010,
-            "type": "array",
-            "format": "table",
             "items": {
-                "title": "Type",
-                "title*": {
-                    "de": "Type"
-                },
-                "type": "string",
                 "format": "autocomplete",
                 "options": {
                     "autocomplete": {
@@ -60,7 +47,6 @@
                     }
                 }
             },
-            "minItems": 1,
             "default": [
                 "Category:Category"
             ],
@@ -68,30 +54,9 @@
                 "hidden": true
             }
         },
-        "instance_rdf_type": {
-            "type": "array",
-            "title": "RDF type(s) of instances",
-            "title*": {
-                "de": "RDF-Typ(en) der Instanzen"
-            },
-            "description": "References a class/type/category in another ontology to describe the instances of this category. Typically a prefix, representing the resolvable URI of an ontology and an id from the namespace of said ontology, separated by colon, e.g., \"schema:Person\"",
-            "description*": {
-                "de": "Verweist auf eine Klasse/Typ/Kategory in einer anderen Ontologie, um die Instanzen dieser Kategorie zu beschreiben. In der Regel ein Präfix, das den auflösbaren URI einer Ontologie und eine ID aus dem Namensraum dieser Ontologie darstellt, durch einen Doppelpunkt getrennt, z.B. \"schema:Person\""
-            },
-            "format": "table",
-            "items": {
-                "type": "string",
-                "title": "RDF type",
-                "title*": {
-                    "de": "RDF-Typ"
-                },
-                "default": ""
-            }
-        },
         "subclass_of": {
             "title": "Supercategories",
             "title*": {
-                "en": "Supercategories",
                 "de": "Überkategorien"
             },
             "type": "array",
@@ -99,16 +64,11 @@
             "items": {
                 "title": "Category",
                 "title*": {
-                    "en": "Category",
                     "de": "Kategorie"
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "options": {
-                    "autocomplete": {
-                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
-                    }
-                }
+                "subclassof_range": "Category:Entity"
             },
             "default": [
                 "Category:Entity"
@@ -132,16 +92,15 @@
                 },
                 "type": "string",
                 "format": "autocomplete",
-                "options": {
-                    "autocomplete": {
-                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|HasDescription=description"
-                    }
-                }
+                "subclassof_range": "Category:Category"
             }
         },
         "utf8_icon": {
             "type": "array",
             "title": "UTF8-Icons",
+            "title*": {
+                "de": "UTF8-Symbole"
+            },
             "description": "see https://www.unicode.org/cldr/charts/latest/annotations/romance.html",
             "description*": {
                 "de": "siehe https://www.unicode.org/cldr/charts/latest/annotations/germanic.html"
