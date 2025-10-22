@@ -694,7 +694,8 @@ function p.getSemanticProperties(args)
 	local error = ""
 	if (debug) then mw.logObject(context) end
 	if schema ~= nil and context ~= nil then
-		local schema_properties = p.defaultArg(subschema.properties, {})
+		local schema_properties = p.defaultArg(subschema.properties, nil)
+		if schema_properties == nil then schema_properties = p.defaultArgPath(subschema,  {"items", "properties"},  {}) end -- array schema
 		if (debug and root) then
 			for k,v in pairs(context) do
 				if type(k) == 'number' then mw.logObject("imports " .. v)
@@ -750,6 +751,7 @@ function p.getSemanticProperties(args)
 							id = mw.title.getCurrentTitle().fullText .. '#' .. id
 							table.insert(values, id) 
 						end
+						-- create statement shortcut on the parent object
 						properties = p.processStatement({subject=properties, statement=subproperties_res.properties, debug=debug}).subject
 					else --list array
 						for i, e in pairs(v) do
@@ -760,6 +762,7 @@ function p.getSemanticProperties(args)
 									id = mw.title.getCurrentTitle().fullText .. '#' .. id
 									table.insert(values, id) 
 								end
+								-- create statement shortcut on the parent object
 								properties = p.processStatement({subject=properties, statement=subproperties_res.properties, debug=debug}).subject
 							else values = v end --plain strings
 						end
