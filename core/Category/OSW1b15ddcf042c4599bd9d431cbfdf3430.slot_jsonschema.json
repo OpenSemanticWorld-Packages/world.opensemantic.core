@@ -1,6 +1,5 @@
 {
     "@context": [
-        "/wiki/Category:QuantityProperty?action=raw&slot=jsonschema",
         {
             "main_unit": {
                 "@id": "Property:HasMainUnit",
@@ -16,8 +15,20 @@
             "additional_units**": "Property:HasInputUnit",
             "main_symbol": "Property:HasMainUnitSymbol",
             "alternative_symbols": "Property:HasUnitSymbol",
-            "conversion_factor_to_main_unit": "Property:HasConversionFactor"
-        }
+            "codes": {
+                "@id": "Property:HasUnitCode"
+            },
+            "conversion_factor_to_main_unit": "Property:HasConversionFactor",
+            "proportional_to": {
+                "@id": "Property:IsProportionalTo",
+                "@type": "@id"
+            },
+            "inverse_proportional_to": {
+                "@id": "Property:IsInverseProportionalTo",
+                "@type": "@id"
+            }
+        },
+        "/wiki/Category:QuantityProperty?action=raw&slot=jsonschema"
     ],
     "allOf": [
         {
@@ -36,6 +47,13 @@
         "en": "Defines valid units for itself and all of its subquantities",
         "de": "Definiert gültige Einheiten für sich selbst und alle seine Untergrößen."
     },
+    "required": [
+        "type"
+    ],
+    "defaultProperties": [
+        "main_unit",
+        "additional_units"
+    ],
     "properties": {
         "main_unit": {
             "title": "Main unit",
@@ -43,11 +61,6 @@
                 "de": "Haupteinheit"
             },
             "type": "object",
-            "required": [
-                "uuid",
-                "name",
-                "main_symbol"
-            ],
             "options": {
                 "compact": true
             },
@@ -57,6 +70,14 @@
                 "mode": "render",
                 "value": "1 {{main_unit.main_symbol}} {{=<% %>=}} {{#set: <%={{ }}=%> |Corresponds to=1 {{main_unit.main_symbol}} {{#main_unit.alternative_symbols}}, {{.}}{{/main_unit.alternative_symbols}} {{=<% %>=}} }} <%={{ }}=%>"
             },
+            "required": [
+                "uuid",
+                "name",
+                "main_symbol"
+            ],
+            "defaultProperties": [
+                "main_symbol"
+            ],
             "properties": {
                 "uuid": {
                     "title": "UUID",
@@ -102,6 +123,24 @@
                         "type": "string"
                     }
                 },
+                "codes": {
+                    "title": "Unit codes",
+                    "title*": {
+                        "de": "Einheiten Codes"
+                    },
+                    "description": "e.g. UN/CEFACT Common Code (measurement units), ISO 4217 (currencies)",
+                    "description*": {
+                        "de": "z. B. UN/CEFACT Common Code (Maßeinheiten), ISO 4217 (Währungen)"
+                    },
+                    "type": "array",
+                    "items": {
+                        "title": "Code",
+                        "title*": {
+                            "de": "Code"
+                        },
+                        "type": "string"
+                    }
+                },
                 "use_as_input_unit": {
                     "type": "boolean",
                     "format": "checkbox"
@@ -132,8 +171,6 @@
             },
             "type": "array",
             "format": "tabs",
-            "minItems": 1,
-            "uniqueItems": true,
             "options": {
                 "dependencies": {
                     "subproperty_of": ""
@@ -150,12 +187,19 @@
                 "value": "{{#additional_units}} <br>= {{conversion_factor_to_main_unit}} {{main_symbol}} {{=<% %>=}} {{#set: <%={{ }}=%> |Corresponds to={{conversion_factor_to_main_unit}} {{main_symbol}} {{#alternative_symbols}}, {{.}}{{/alternative_symbols}} {{=<% %>=}} }} <%={{ }}=%> {{/additional_units}}"
             },
             "items": {
-                "$ref": "#/properties/main_unit",
+                "allOf": [
+                    {
+                        "$ref": "#/properties/main_unit"
+                    }
+                ],
                 "title": "Unit",
                 "title*": {
                     "de": "Einheit"
                 },
                 "headerTemplate": "{{self.main_symbol}}",
+                "defaultProperties": [
+                    "conversion_factor_to_main_unit"
+                ],
                 "properties": {
                     "conversion_factor_to_main_unit": {
                         "type": "string",
@@ -164,13 +208,64 @@
                 }
             }
         },
+        "proportional_to": {
+            "title": "Proportional to",
+            "title*": {
+                "de": "Proportional zu"
+            },
+            "description": "Related quantity which units are in the numerator of the units of this quantity",
+            "description*": {
+                "de": "Verwandte Größe deren Einheiten im Zähler der Einheiten dieser Größe stehen "
+            },
+            "type": "array",
+            "items": {
+                "title": "Quantity",
+                "title*": "Größe*",
+                "type": "string",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW1b15ddcf042c4599bd9d431cbfdf3430"
+                    }
+                }
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#proportional_to}} <br> [[{{{.}}}]] {{/proportional_to}}"
+            }
+        },
+        "inverse_proportional_to": {
+            "title": "Inverse proportional to",
+            "title*": {
+                "de": "Invers proportional zu"
+            },
+            "description": "Related quantity which units are in the denominator of the units of this quantity",
+            "description*": {
+                "de": "Verwandte Größe deren Einheiten im Nenner der Einheiten dieser Größe stehen "
+            },
+            "type": "array",
+            "items": {
+                "title": "Quantity",
+                "title*": "Größe*",
+                "type": "string",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW1b15ddcf042c4599bd9d431cbfdf3430"
+                    }
+                }
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#inverse_proportional_to}} <br> [[{{{.}}}]] {{/inverse_proportional_to}}"
+            }
+        },
         "type": {
             "default": [
                 "Category:OSW1b15ddcf042c4599bd9d431cbfdf3430"
             ]
         }
-    },
-    "required": [
-        "type"
-    ]
+    }
 }

@@ -5,6 +5,10 @@
             "display_units": {
                 "@id": "Property:HasDisplayUnit",
                 "@type": "@id"
+            },
+            "input_units": {
+                "@id": "Property:HasInputUnit",
+                "@type": "@id"
             }
         }
     ],
@@ -36,12 +40,10 @@
             "title*": {
                 "de": "Untergröße von"
             },
-            "type": "string",
-            "format": "autocomplete",
-            "options": {
-                "autocomplete": {
-                    "category": "Category:QuantityProperty"
-                }
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:QuantityProperty"
             }
         },
         "base_property": {
@@ -65,10 +67,8 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
-            "eval_template": {
-                "type": "mustache-wikitext",
-                "mode": "render",
-                "value": "{{#display_units}} [[{{{.}}}]] <br> {{/display_units}}"
+            "watch": {
+                "base_property": "base_property"
             },
             "items": {
                 "title": "Unit",
@@ -79,13 +79,7 @@
                 "format": "autocomplete",
                 "options": {
                     "autocomplete": {
-                        "query": "[[-HasDisplayUnit::{{base_property}}]]|?Display_title_of=label",
-                        "render_template": {
-                            "type": [
-                                "handlebars"
-                            ],
-                            "value": "{{result.printouts.label.[0]}}"
-                        }
+                        "query": "[[-HasDisplayUnit::{{base_property}}]][[Display_title_of::~*{{{_user_input}}}*]]|?Display_title_of=label"
                     }
                 }
             }
@@ -98,10 +92,8 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
-            "eval_template": {
-                "type": "mustache-wikitext",
-                "mode": "render",
-                "value": "{{#input_units}} [[{{{.}}}]] <br> {{/input_units}}"
+            "watch": {
+                "base_property": "base_property"
             },
             "items": {
                 "title": "Unit",
@@ -112,13 +104,7 @@
                 "format": "autocomplete",
                 "options": {
                     "autocomplete": {
-                        "query": "[[-HasInputUnit::{{base_property}}]]|?Display_title_of=label",
-                        "render_template": {
-                            "type": [
-                                "handlebars"
-                            ],
-                            "value": "{{result.printouts.label.[0]}}"
-                        }
+                        "query": "[[-HasInputUnit::{{base_property}}]][[Display_title_of::~*{{{_user_input}}}*]]|?Display_title_of=label"
                     }
                 }
             }

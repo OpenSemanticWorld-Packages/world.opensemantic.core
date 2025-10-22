@@ -8,6 +8,18 @@
     <td>{{{main_unit|}}}{{{additional_units|}}}</td>
     </tr>
     |<!-- else show nothing -->}}
+{{#if: {{{proportional_to|}}} | <!-- if units is not empty, show -->
+    <tr>
+    <th>{{{_label_proportional_to|Proportional to}}}</th>
+    <td>{{{proportional_to|}}}</td>
+    </tr>
+    |<!-- else show nothing -->}}
+{{#if: {{{inverse_proportional_to|}}} | <!-- if units is not empty, show -->
+    <tr>
+    <th>{{{_label_inverse_proportional_to|Inverse proportional to}}}</th>
+    <td>{{{inverse_proportional_to|}}}</td>
+    </tr>
+    |<!-- else show nothing -->}}
 </table>
 {{#set: 
   |Display units={{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit.HasMainUnitSymbol= |format=plain |mainlabel=- |valuesep=;}} |+sep=;

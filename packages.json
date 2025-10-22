@@ -767,6 +767,9 @@
                         "header": {
                             "urlPath": "Category/QuantityProperty.slot_header.wikitext"
                         },
+                        "header_template": {
+                            "urlPath": "Category/QuantityProperty.slot_header_template.wikitext"
+                        },
                         "jsondata": {
                             "urlPath": "Category/QuantityProperty.slot_jsondata.json"
                         },
