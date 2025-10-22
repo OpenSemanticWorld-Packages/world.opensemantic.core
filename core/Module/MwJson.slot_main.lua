@@ -1099,11 +1099,14 @@ function p.renderMultilangValue(args)
 	local result = p.defaultArg(args.default, "")
 	local default = p.defaultArg(args.default, nil)
 	-- "title*": {"de": ...}
-	if jsonschema[key] ~= nil then result = jsonschema[key] end
+	if jsonschema[key] ~= nil then 
+		result = jsonschema[key]
+		default = jsonschema[key] -- default is the English value
+	end
 	if jsonschema[key .. '*'] ~= nil then -- multilang label with switch
-		result = "{{#switch:{{USERLANGUAGECODE}} |#default=" ..  result
+		result = "{{#switch:{{USERLANGUAGECODE}}"
 		for k,v in pairs(jsonschema[key .. '*']) do 
-			if k == en then default = v 
+			if k == "en" then default = v -- override with explicit English value
 			else result = result .. " |" .. k .. "=" .. v end 
 		end
 		if default ~= nil then result = result .. " |#default=" ..  default end
