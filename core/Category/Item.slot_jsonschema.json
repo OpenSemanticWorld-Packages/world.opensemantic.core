@@ -3,7 +3,7 @@
         {
             "exact_ontology_match***": {
                 "@id": "owl:sameAs",
-                "@ype": "@id"
+                "@type": "@id"
             },
             "rdf_type*": {
                 "@id": "schema:additionalType"
