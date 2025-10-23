@@ -1,4 +1,0 @@
-{{#if: {{{image|}}}|<!-- 
-defined: do nothing 
--->|<!-- undefined: set self reference -->{{#set: HasImage={{FULLPAGENAME}} }}}}|<!-- 
-for SMW gallery queries-->{{#set: |HasUrl={{filepath:{{PAGENAME}}}} }}
