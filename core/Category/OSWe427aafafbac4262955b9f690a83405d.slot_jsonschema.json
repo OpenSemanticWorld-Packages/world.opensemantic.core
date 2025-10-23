@@ -1,18 +1,81 @@
 {
     "@context": [
-        "/wiki/Category:Item?action=raw&slot=jsonschema"
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
+        {
+            "components": {
+                "@id": "Property:HasStatement",
+                "@type": "@id",
+                "@context": {
+                    "component_instance_property": {
+                        "@id": "Property:HasProperty",
+                        "@type": "@id"
+                    },
+                    "component_instance": {
+                        "@id": "Property:HasObject",
+                        "@type": "@id"
+                    }
+                }
+            },
+            "events": {
+                "@id": "Property:HasEvent",
+                "@type": "@id"
+            },
+            "purposes": {
+                "@id": "Property:HasPurpose",
+                "@type": "xsd:string"
+            },
+            "slots": {
+                "@id": "Property:HasSlot",
+                "@type": "@id",
+                "@context": {
+                    "slot_osw_id": {
+                        "@id": "Property:HasOswId",
+                        "@type": "xsd:string"
+                    },
+                    "slot_id": {
+                        "@id": "Property:HasId",
+                        "@type": "xsd:string"
+                    },
+                    "name": {
+                        "@id": "Property:HasName",
+                        "@type": "xsd:string"
+                    },
+                    "description": {
+                        "@id": "Property:HasDescription",
+                        "@type": "@id"
+                    },
+                    "slot_init_date_time": {
+                        "@id": "Property:HasInitDate",
+                        "@type": "xsd:dateTime"
+                    },
+                    "slot_occupant": {
+                        "@id": "Property:HasStatement",
+                        "@type": "@id",
+                        "@context": {
+                            "slot_occupant_instance_property": "Property:HasProperty",
+                            "slot_occupant_instance": "Property:HasObject"
+                        }
+                    },
+                    "slot_type_restriction": {
+                        "@id": "Property:HasTypeRestriction",
+                        "@type": "@id"
+                    }
+                }
+            },
+            "typical_process": {
+                "@id": "Property:HasTypicalProcess",
+                "@type": "@id"
+            }
+        }
     ],
-    "title": "Tool",
-    "type": "object",
     "allOf": [
         {
             "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
         }
     ],
-    "required": [
-        "type"
-    ],
+    "type": "object",
     "uuid": "e427aafa-fbac-4262-955b-9f690a83405d",
+    "title": "Tool",
     "title*": {
         "en": "Tool",
         "de": "Werkzeug"
@@ -22,11 +85,542 @@
         "en": "Item that participates as a utility (almost) unchanged in a process",
         "de": "Gegenstand der als Hilfsmittel (nahezu) unverändert in einem Prozess teilnimmt"
     },
+    "required": [
+        "type"
+    ],
+    "defaultProperties": [],
     "properties": {
         "type": {
             "default": [
                 "Category:OSWe427aafafbac4262955b9f690a83405d"
             ]
+        },
+        "purposes": {
+            "title": "Purpose(s)",
+            "title*": {
+                "de": "Zweck(e)"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Purpose",
+                "title*": {
+                    "de": "Zweck"
+                },
+                "type": "string"
+            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <ul><%#purposes%><li><%.%></li><%/purposes%></ul>"
+                }
+            ]
+        },
+        "typical_process": {
+            "title": "Typical Process(es)",
+            "title*": {
+                "de": "Typische(r) Prozess(e)"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Process",
+                "title*": {
+                    "de": "Prozess"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:Category",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[SubClassOf::Category:OSWe5aa96bffb1c4d95be7fbd46142ad203]]OR[[SubClassOf.SubClassOf::Category:OSWe5aa96bffb1c4d95be7fbd46142ad203]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:OSWe5aa96bffb1c4d95be7fbd46142ad203]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe5aa96bffb1c4d95be7fbd46142ad203]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe5aa96bffb1c4d95be7fbd46142ad203]]"
+                    }
+                }
+            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <ul><%#typical_process%><li>[[:<%.%>]]</li><%/typical_process%></ul>"
+                }
+            ]
+        },
+        "components": {
+            "type": "array",
+            "format": "tabs",
+            "title": "Components",
+            "title*": {
+                "de": "Komponenten"
+            },
+            "description": "Component are permanent parts of a tool (vs. Slots for exchangeable parts).",
+            "description*": {
+                "de": "Komponenten sind dauerhafte Teile eines Werkzeugs (im Gegensatz zu Slots für austauschbare Teile)."
+            },
+            "options": {
+                "enable_array_copy": true,
+                "array_copy_ignore": [
+                    "uuid",
+                    "component_id",
+                    "attachments"
+                ]
+            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <ul><%#components%><li>[[<%component_instance%>]] ({{#switch:{{USERLANGUAGECODE}}|en=Type|de=Typ|#default=Type}}: {{#ask:[[<%component_instance%>]]|?HasType=|format=plain|mainlabel=-}})</li><%/components%></ul>"
+                }
+            ],
+            "items": {
+                "type": "object",
+                "format": "grid-strict",
+                "title": "Component",
+                "title*": {
+                    "de": "Komponente"
+                },
+                "id": "component",
+                "headerTemplate": "{{ i1 }} - {{ self.component_id }}",
+                "defaultProperties": [],
+                "required": [
+                    "uuid",
+                    "component_id",
+                    "component_type",
+                    "component_instance_property",
+                    "component_instance"
+                ],
+                "properties": {
+                    "uuid": {
+                        "title": "UUID",
+                        "title*": {
+                            "de": "UUID"
+                        },
+                        "type": "string",
+                        "$comment": "format uuid field are copied, if not set in copy_ignore",
+                        "format": "uuid",
+                        "_template": "dynamic_template",
+                        "dynamic_template": "{{_uuid_}}",
+                        "options": {
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "empty"
+                            }
+                        }
+                    },
+                    "component_id": {
+                        "$comment": "Will be used as a visual reference for the user",
+                        "title": "ID",
+                        "title*": {
+                            "de": "ID"
+                        },
+                        "description": "Automatically generated",
+                        "description*": {
+                            "de": "Wird automatisch generiert"
+                        },
+                        "type": "string",
+                        "format": "dynamic_template",
+                        "dynamic_template": "Component{{patternformat '00' _array_index_}}",
+                        "readOnly": true,
+                        "options": {
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "always"
+                            },
+                            "grid_columns": 6
+                        },
+                        "propertyOrder": 10
+                    },
+                    "label": {
+                        "title": "Label",
+                        "title*": {
+                            "de": "Bezeichnung"
+                        },
+                        "description": "Designation of the function or role of the component in this specific context.",
+                        "description*": {
+                            "de": "Bezeichnung der Funktion oder Rolle der Komponente in diesem spezifischen Kontext."
+                        },
+                        "type": "array",
+                        "format": "table",
+                        "eval_template": {
+                            "type": "mustache-wikitext",
+                            "mode": "render",
+                            "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#label}} |{{lang}}={{text}} {{/label}} {{=<% %>=}} }}"
+                        },
+                        "items": {
+                            "eval_template": [
+                                {
+                                    "type": "wikitext",
+                                    "mode": "store",
+                                    "value": "{{{text}}}@{{{lang}}}"
+                                }
+                            ],
+                            "$ref": "/wiki/JsonSchema:Label?action=raw"
+                        },
+                        "options": {
+                            "grid_columns": 12
+                        },
+                        "propertyOrder": 20
+                    },
+                    "description": {
+                        "title": "Description",
+                        "title*": {
+                            "de": "Beschreibung"
+                        },
+                        "description": "Optional, additional details on the role or function of the component in this specific context.",
+                        "description*": {
+                            "de": "Optional, zusätzliche Angaben zur Rolle oder Funktion der Komponente in diesem spezifischen Kontext."
+                        },
+                        "type": "array",
+                        "format": "table",
+                        "eval_template": {
+                            "type": "mustache-wikitext",
+                            "mode": "render",
+                            "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
+                        },
+                        "items": {
+                            "eval_template": [
+                                {
+                                    "type": "wikitext",
+                                    "mode": "store",
+                                    "value": "{{{text}}}@{{{lang}}}"
+                                }
+                            ],
+                            "$ref": "/wiki/JsonSchema:Description?action=raw"
+                        },
+                        "options": {
+                            "grid_columns": 12
+                        },
+                        "propertyOrder": 30
+                    },
+                    "component_type": {
+                        "title": "Component type",
+                        "title*": {
+                            "de": "Typ der Komponente"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:Category",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "Tool",
+                                "query": "[[:Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]"
+                            },
+                            "grid_columns": 12
+                        },
+                        "default": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                        "propertyOrder": 40
+                    },
+                    "component_instance_property": {
+                        "type": "string",
+                        "default": "Property:HasPart",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "component_instance": {
+                        "title": "Instance",
+                        "title*": {
+                            "de": "Instanz"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                        "watch": {
+                            "component_type_": "component.component_type"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[HasType::$(component_type_)]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                            },
+                            "grid_columns": 12
+                        },
+                        "propertyOrder": 50
+                    }
+                }
+            }
+        },
+        "slots": {
+            "type": "array",
+            "format": "tabs",
+            "title": "Slot configuration",
+            "title*": {
+                "de": "Slot-Konfiguration"
+            },
+            "description": "Slots represent spaces for exchangable parts or components of a tool (vs. Components, which are permanent parts). Slot exchange events can be used to document changes on slots. This is the initial slot configuration!",
+            "description*": {
+                "de": "Slots stellen Plätze für austauschbare Teile oder Komponenten eines Werkzeugs dar (im Gegensatz zu Komponenten, die permanente Teile sind). Slot-Austauschereignisse können verwendet werden, um Änderungen an Slots zu dokumentieren. Dies ist die anfängliche Slot-Konfiguration!"
+            },
+            "options": {
+                "enable_array_copy": true,
+                "array_copy_ignore": [
+                    "uuid",
+                    "slot_osw_id",
+                    "slot_id",
+                    "attachments"
+                ]
+            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <%#slots%> {{Viewer/Link |page=<%slot_osw_id%>}}: {{#if: <!-- if there's at least one ToolMaintenanceEvent-->{{#ask: [[Category:OSW5433f882b9f14dca81994e058c8ab4a0]][[HasTarget::{{FULLPAGENAME}}]][[HasAction.HasSlot::<%slot_osw_id%>]]|sort=HasEndDate|order=desc|format=plain|link=none|limit=1|searchlabel=}}<!-- use the action of the latest ToolMaintenanceEvent-->|{{#ask:[[HasType::Category:SlotAction]][[HasSlot::<%slot_osw_id%>]]<!-- same query as above-->[[-HasAction::{{#ask: [[Category:OSW5433f882b9f14dca81994e058c8ab4a0]][[HasTarget::{{FULLPAGENAME}}]][[HasAction.HasSlot::<%slot_osw_id%>]]|sort=HasEndDate|order=desc|format=plain|link=none|limit=1|searchlabel=}}]] <!-- -->|?HasOccupant=|format=plain|mainlabel=-|default={{#switch:{{USERLANGUAGECODE}}|de=Keine Belegung|#default=No occupant}} }} <!-- else use the default occupant-->|{{#ask: [[<%slot_osw_id%>]]|?HasOccupant=|format=plain|sort=HasInitDate|order=desc|limit=1|searchlabel=|mainlabel=-|default={{#switch:{{USERLANGUAGECODE}}|de=Keine Belegung|#default=No occupant}}}} }} <br> <%/slots%>"
+                }
+            ],
+            "items": {
+                "type": "object",
+                "format": "grid-strict",
+                "title": "Slot",
+                "title*": {
+                    "de": "Slot"
+                },
+                "id": "slot",
+                "headerTemplate": "{{ i1 }} - {{ self.slot_id }}",
+                "defaultProperties": [
+                    "name",
+                    "description",
+                    "slot_occupant"
+                ],
+                "required": [
+                    "uuid",
+                    "slot_osw_id",
+                    "slot_id",
+                    "slot_init_date_time",
+                    "slot_type_restriction"
+                ],
+                "properties": {
+                    "uuid": {
+                        "title": "UUID",
+                        "title*": {
+                            "de": "UUID"
+                        },
+                        "type": "string",
+                        "$comment": "format uuid field are copied, if not set in copy_ignore",
+                        "_format": "uuid",
+                        "_template": "dynamic_template",
+                        "dynamic_template": "{{_uuid_}}",
+                        "options": {
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "empty"
+                            }
+                        }
+                    },
+                    "slot_osw_id": {
+                        "$comment": "Will be used an unique reference for slot exchange events.",
+                        "title": "OSW-ID",
+                        "title*": {
+                            "de": "OSW-ID"
+                        },
+                        "type": "string",
+                        "watch": {
+                            "_own_uuid": "slot.uuid"
+                        },
+                        "_format": "dynamic_template",
+                        "dynamic_template": "{{_current_subject_}}#OSW{{#replace '-' ''}}{{_own_uuid}}{{/replace}}",
+                        "readOnly": true,
+                        "options": {
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "empty"
+                            }
+                        }
+                    },
+                    "slot_id": {
+                        "$comment": "Will be used as a visual reference for the user",
+                        "title": "ID",
+                        "title*": {
+                            "de": "ID"
+                        },
+                        "description": "Automatically generated",
+                        "description*": {
+                            "de": "Wird automatisch generiert"
+                        },
+                        "type": "string",
+                        "format": "dynamic_template",
+                        "dynamic_template": "Slot{{patternformat '00' _array_index_}}",
+                        "readOnly": true,
+                        "options": {
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "always"
+                            },
+                            "grid_columns": 6
+                        },
+                        "propertyOrder": 10
+                    },
+                    "name": {
+                        "title": "Name",
+                        "title*": {
+                            "de": "Name"
+                        },
+                        "type": "string",
+                        "options": {
+                            "grid_columns": 6
+                        },
+                        "propertyOrder": 20
+                    },
+                    "description": {
+                        "title": "Description",
+                        "title*": {
+                            "de": "Beschreibung"
+                        },
+                        "type": "array",
+                        "format": "table",
+                        "eval_template": {
+                            "type": "mustache-wikitext",
+                            "mode": "render",
+                            "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
+                        },
+                        "items": {
+                            "eval_template": [
+                                {
+                                    "type": "wikitext",
+                                    "mode": "store",
+                                    "value": "{{{text}}}@{{{lang}}}"
+                                }
+                            ],
+                            "$ref": "/wiki/JsonSchema:Description?action=raw"
+                        },
+                        "options": {
+                            "grid_columns": 12
+                        },
+                        "propertyOrder": 30
+                    },
+                    "slot_init_date_time": {
+                        "allOf": [
+                            {
+                                "$ref": "/wiki/JsonSchema:StartDateTime?action=raw&slot=main"
+                            }
+                        ],
+                        "title": "Date of slot initialization",
+                        "title*": {
+                            "de": "Datum der Slot-Initialisierung"
+                        },
+                        "dynamic_template": "{{_now_}}",
+                        "options": {
+                            "dynamic_template": {
+                                "override": "empty"
+                            },
+                            "grid_columns": 4
+                        },
+                        "propertyOrder": 21
+                    },
+                    "slot_type_restriction": {
+                        "title": "Type restriction of the slot",
+                        "title*": {
+                            "de": "Typeinschränkung des Slots"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:Category",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "Tool",
+                                "query": "[[:Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]"
+                            }
+                        },
+                        "default": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                        "propertyOrder": 50
+                    },
+                    "slot_occupant": {
+                        "type": "object",
+                        "title": "Initial occupant of the slot",
+                        "title*": {
+                            "de": "Initiale Belegung des Slots"
+                        },
+                        "description": "Tool or component installed in the slot.",
+                        "description*": {
+                            "de": "Im Slot installiertes Werkzeug oder Komponente."
+                        },
+                        "id": "slot_occupant",
+                        "required": [
+                            "slot_occupant_instance_property",
+                            "slot_occupant_instance"
+                        ],
+                        "defaultProperties": [
+                            "slot_occupant_type"
+                        ],
+                        "properties": {
+                            "slot_occupant_type": {
+                                "title": "Type",
+                                "title*": {
+                                    "de": "Typ"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "range": "Category:Category",
+                                "watch": {
+                                    "slot_type": "slot.slot_type_restriction"
+                                },
+                                "options": {
+                                    "autocomplete": {
+                                        "$comment": "Tool",
+                                        "query": "[[:$(slot_type)]]OR[[SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf.SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::$(slot_type)]]"
+                                    }
+                                },
+                                "propertyOrder": 11
+                            },
+                            "slot_occupant_instance_property": {
+                                "type": "string",
+                                "default": "Property:HasOccupant",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "slot_occupant_instance": {
+                                "title": "Instance",
+                                "title*": {
+                                    "de": "Instanz"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "range": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                                "watch": {
+                                    "slot_occupant_type_": "slot_occupant.slot_occupant_type"
+                                },
+                                "options": {
+                                    "autocomplete": {
+                                        "query": "[[HasType::$(slot_occupant_type_)]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                                    }
+                                },
+                                "propertyOrder": 21
+                            }
+                        },
+                        "options": {
+                            "grid_columns": 12
+                        },
+                        "propertyOrder": 60
+                    }
+                }
+            }
+        },
+        "events": {
+            "type": "array",
+            "format": "table",
+            "title": "Event(s)",
+            "title*": {
+                "de": "Ereignis(se)"
+            },
+            "items": {
+                "title": "Event",
+                "title*": {
+                    "de": "Ereignis"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:OSWb97757b46edb430591758662c18d354d",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[Category:OSWb97757b46edb430591758662c18d354d]]|?HasLabel=label|?HasType.Display_title_of=type_label",
+                        "render_template": {
+                            "type": [
+                                "handlebars"
+                            ],
+                            "value": "{{result.printouts.label}} (Type: {{result.printouts.type_label}})"
+                        }
+                    }
+                }
+            }
         }
     }
 }

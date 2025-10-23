@@ -1,0 +1,18 @@
+=={{#switch:{{USERLANGUAGECODE}}|en=Instances|de=Instanzen|#default=Instances}}==  
+{{#ask: [[{{FULLPAGENAME}}]]
+|?HasType={{#switch:{{USERLANGUAGECODE}}|en=Type|de=Typ|#default=Type}}
+|?HasDescription={{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung|#default=Description}}
+|format=datatable
+|limit = 2000
+}}
+
+=={{#switch:{{USERLANGUAGECODE}}|en=Subcategories|de=Subkategorien|#default=Subcategories}}==
+{{#ask:
+ [[SubClassOf::{{FULLPAGENAME}}]] OR
+ [[SubClassOf.SubClassOf::{{FULLPAGENAME}}]] OR
+ [[SubClassOf.SubClassOf.SubClassOf::{{FULLPAGENAME}}]] OR
+ [[SubClassOf.SubClassOf.SubClassOf.SubClassOf::{{FULLPAGENAME}}]] OR [[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::{{FULLPAGENAME}}]]
+ |?HasDescription={{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung|#default=Description}}
+ |format=datatable
+ |limit = 2000
+}}

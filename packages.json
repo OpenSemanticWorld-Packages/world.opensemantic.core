@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.46.0",
+            "version": "0.48.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -745,6 +745,9 @@
                     "slots": {
                         "footer": {
                             "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_footer_template.wikitext"
                         },
                         "header": {
                             "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_header.wikitext"

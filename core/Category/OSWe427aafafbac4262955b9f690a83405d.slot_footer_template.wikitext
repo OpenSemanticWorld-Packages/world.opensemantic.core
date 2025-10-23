@@ -1,0 +1,38 @@
+<!-- List of all events--> 
+== {{#switch:{{USERLANGUAGECODE}}|#default=Events|de=Ereignisse}} ==
+{{#ask:[[-HasEvent::{{FULLPAGENAME}}]] OR [[Category:OSWb97757b46edb430591758662c18d354d]][[HasTarget::{{FULLPAGENAME}}]]
+|mainlabel={{#switch:{{USERLANGUAGECODE}}|#default=Event|de=Ereignis}}
+|?HasType={{#switch:{{USERLANGUAGECODE}}|#default=Type|de=Typ}}
+|?HasStartDate={{#switch:{{USERLANGUAGECODE}}|#default=Start|de=Start}}
+|?HasEndDate={{#switch:{{USERLANGUAGECODE}}|#default=End|de=Ende}}
+|?HasAction # - ={{#switch:{{USERLANGUAGECODE}}|#default=Action (Occupant @ Slot)|de=Aktion (Belegung @ Slot)}} |+ template = Query/SlotAction |sep=
+|format=datatable
+|datatables-searchPanes=true
+|datatables-searchPanes.initCollapsed=true
+|sort=HasEndDate
+|order=desc
+}}
+<!-- Create Slot exchange event --> 
+<div class="pagebot-button" 
+     data-config='{
+         "params":{
+             "categories": [
+                 "Category:OSW5433f882b9f14dca81994e058c8ab4a0"
+             ],
+             "jsondata": {
+                "target_object": {
+                    "target_object_type": "{{#ask:[[{{FULLPAGENAME}}]]|?HasType#=|mainlabel=-|limit=1}}",
+                    "target_object_instance": "{{FULLPAGENAME}}"
+                }
+             }
+         }, 
+         "label": " {{#switch: {{USERLANGUAGECODE}} 
+             |en=➕ Document maintenance event
+             |de=➕ Wartungsereignis dokumentieren
+             |#default=➕ Document maintenance event
+         }}"
+     }'>
+</div>
+<!-- 
+This button uses a switch to see what's the type of the page it is placed on (EventSeries or MeetingSeries) and delivers a parameter for the creation of an element of the series (either Event or Meeting)
+-->
