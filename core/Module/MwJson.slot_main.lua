@@ -19,8 +19,9 @@ p.keys = { --jsonschema / json-ld keys
 	name='name',
 	description='description',
 	text='text',
+	smw_quantity_property='x-smw-quantity-property',
 	debug='_debug'
-} 
+}
 p.slots = { --slot names
 	main='main',
 	jsondata='jsondata', 
@@ -720,6 +721,9 @@ function p.getSemanticProperties(args)
 		subjectId = subjectId .. '#' .. subobjectId
 	end
 	
+	-- create smw quantity property within the quantity value subobject
+	-- properties = p.processQuantityValue({properties=properties, value_object=jsondata, schema=subschema, debug=debug}).properties
+	
 	local property_data = {}
 	local context = p.defaultArg(args.context, p.buildContext({jsonschema=schema}).context)
 	local error = ""
@@ -804,6 +808,17 @@ function p.getSemanticProperties(args)
 					end
 				else if (debug) then mw.logObject("not mapped: " .. k .. " = " .. mw.dumpObject(v)) end 
 				end
+				
+				-- create smw quantity property on the parent object
+				if (p.tableLength(v) > 0 and v[1] == nil) then --key value array = object/dict => subobject
+					properties = p.processQuantityValue({properties=properties, value_object=v, schema=schema_properties[k], debug=debug}).properties
+				else --list array
+					for i, e in pairs(v) do
+						if (type(e) == 'table') then 
+							properties = p.processQuantityValue({properties=properties, value_object=e, schema=schema_properties[k], debug=debug}).properties
+						end
+					end
+				end
 			else
 				if (mapping_found) then 
 					for pi, property_name in ipairs(property_names) do
@@ -847,6 +862,40 @@ function p.getSemanticProperties(args)
 	end
 	if (debug) then mw.logObject(error) end
 	return {properties=properties, definitions=property_data, id=subobjectId, context=context, error=error}
+end
+
+function p.processQuantityValue(args)
+	local properties = p.defaultArg(args.properties, {})
+	local object = p.defaultArg(args.value_object) -- {value: 1.1, unit: "Item:..."}
+	local schema = p.defaultArg(args.schema) -- {title: "Length", properties: {unit: {default: "Item:...", enum: ["Item:...", ...], options: enum_titles: ["m", ...]}}}
+	local debug = p.defaultArg(args.debug, false)
+	
+	if debug then
+		mw.log("Check for quantity value object")
+		mw.logObject(object)
+		mw.logObject(schema)
+	end
+	if (object.value ~= nil and schema[p.keys.smw_quantity_property] ~= nil and schema.properties ~= nil and schema.properties.value ~= nil 
+		and schema.properties.unit ~= nil and schema.properties.unit.enum ~= nil and schema.properties.unit.options ~= nil and schema.properties.unit.options.enum_titles ~= nil) then
+		object.property = string.gsub(schema[p.keys.smw_quantity_property], p.keys.property_ns_prefix .. ":", "")
+		object.value = p.defaultArg(object.value, schema.properties.value.default)
+		object.unit = p.defaultArg(object.unit, schema.properties.unit.default)
+		for i, e in pairs(schema.properties.unit.enum) do
+			if e == object.unit then object.unit_index = i end	
+		end
+		-- only map internal properties (Properties:...) and if a unit was found
+			if (object.unit_index ~= nil and p.splitString(schema[p.keys.smw_quantity_property], ':')[1] == p.keys.property_ns_prefix) then
+				if debug then
+					mw.log("Create quantity value")
+					mw.logObject(object)
+				end
+				object.unit_symbol = schema.properties.unit.options.enum_titles[object.unit_index]
+				if (properties[object.property] == nil) then properties[object.property] = {} end
+				table.insert(properties[object.property], object.value .. " " .. object.unit_symbol)
+			end
+		end
+
+	return {properties=properties}
 end
 
 function p.processStatement(args)
