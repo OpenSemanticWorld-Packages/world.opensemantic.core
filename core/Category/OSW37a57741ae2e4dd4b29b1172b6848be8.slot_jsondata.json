@@ -26,5 +26,11 @@
             "lang": "de"
         }
     ],
-    "name": "PhysicalItem"
+    "name": "PhysicalItem",
+    "metaclass": [
+        "Category:OSWca99a9bb9ad24386b222d18a73c2af5e"
+    ],
+    "utf8_icon": [
+        "🪨"
+    ]
 }

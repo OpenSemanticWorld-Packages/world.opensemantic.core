@@ -1,0 +1,21 @@
+{ 
+    "title": "{{{name}}}",
+    "required": ["uuid"],
+    "properties": { 
+        "uuid": {
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        } {{#each constituents}},
+        "{{{name}}}": {
+        {{#if is_array}}"title": "{{{name}}}", "type": "array", "items": { {{/if}}
+            "title": "{{{name}}}",
+            "type": "autocomplete",
+            "range": "{{{type}}}" {{#if default}},
+            "default": "{{{default}}}"{{/if}} 
+        {{#if is_array}} } {{/if}}
+        } {{/each}}
+    } 
+}

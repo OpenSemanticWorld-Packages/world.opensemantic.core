@@ -1,0 +1,13 @@
+{
+    "title": "Manufacturer",
+    "title*": {
+        "de": "Hersteller"
+    },
+    "description": "The manufacturer of this item - an organization(al unit).",
+    "description*": {
+        "de": "Der Hersteller dieses Gegendstandes - eine Organisation(seinheit)"
+    },
+    "type": "string",
+    "format": "autocomplete",
+    "range": "Category:OSW3cb8cef2225e403092f098f99bc4c472"
+}

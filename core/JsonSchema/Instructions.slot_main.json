@@ -1,0 +1,20 @@
+{
+    "allOf": [
+        {
+            "$ref": "/wiki/JsonSchema:WikiFile?action=raw&slot=main"
+        }
+    ],
+    "title": "Instructions",
+    "title*": {
+        "de": "Anleitung"
+    },
+    "description": "A list of steps to be performed, e.g., the setup instructions.",
+    "description*": {
+        "de": "Eine Liste auszuführenden Schritte, z. B. die Einrichtungsanweisungen."
+    },
+    "eval_template": {
+        "type": "mustache-wikitext",
+        "mode": "render",
+        "value": "{{=<% %>=}} <%={{ }}=%>  {{#instructions}}[[:{{{.}}}]];{{/instructions}} {{=<% %>=}} <%={{ }}=%>"
+    }
+}

@@ -1,0 +1,377 @@
+{
+    "@context": [
+        "/wiki/Category:Category?action=raw&slot=jsonschema",
+        {
+            "actionees_default": {
+                "@id": "Property:HasActionee",
+                "@type": "@id"
+            },
+            "creator_default": {
+                "@id": "Property:HasCreator",
+                "@type": "@id"
+            },
+            "start_date_time_default": "Property:HasStartDateAndTime",
+            "end_date_time_default": "Property:HasEndDateAndTime",
+            "sop": {
+                "@id": "Property:HasSop",
+                "@type": "@id"
+            },
+            "status_default": {
+                "@id": "Property:HasStatus",
+                "@type": "@id"
+            },
+            "tools": {
+                "@id": "Property:HasStatement",
+                "@context": {
+                    "tool_type": {
+                        "@id": "Property:HasToolType",
+                        "@type": "@id"
+                    },
+                    "tool_default": {
+                        "@id": "Property:HasTool",
+                        "@type": "@id"
+                    }
+                }
+            },
+            "input": {
+                "@id": "Property:HasStatement",
+                "@context": {
+                    "input_type": {
+                        "@id": "Property:HasInputType",
+                        "@type": "@id"
+                    },
+                    "input_default": {
+                        "@id": "Property:HasInput",
+                        "@type": "@id"
+                    }
+                }
+            },
+            "output": {
+                "@id": "Property:HasStatement",
+                "@context": {
+                    "output_type": {
+                        "@id": "Property:HasOutputType",
+                        "@type": "@id"
+                    },
+                    "output_default": {
+                        "@id": "Property:HasOutput",
+                        "@type": "@id"
+                    }
+                }
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Category?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "c11438cd-6c81-4ed1-a5a2-53555ee351b4",
+    "title": "ProcessType",
+    "title*": {
+        "en": "ProcessType",
+        "de": "Prozesstyp"
+    },
+    "description": "",
+    "description*": {},
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWc11438cd6c814ed1a5a253555ee351b4"
+            ]
+        },
+        "actionees_default": {
+            "type": "array",
+            "title": "Actionees (default)",
+            "title*": {
+                "de": "Akteure (Standardwert)"
+            },
+            "items": {
+                "type": "string",
+                "title": "Actionee",
+                "title*": {
+                    "de": "Akteur"
+                },
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
+                    }
+                }
+            }
+        },
+        "creator_default": {
+            "type": "string",
+            "title": "Creator (default)",
+            "title*": {
+                "de": "Ersteller*in (Standardwert)"
+            },
+            "format": "autocomplete",
+            "options": {
+                "autocomplete": {
+                    "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
+                }
+            }
+        },
+        "start_date_time_default": {
+            "type": "string",
+            "title": "Start time (default)",
+            "title*": {
+                "de": "Startzeitpunkt (Standardwert)"
+            },
+            "format": "date",
+            "options": {
+                "flatpicker": {}
+            }
+        },
+        "end_date_time_default": {
+            "type": "string",
+            "title": "End time (default)",
+            "title*": {
+                "de": "Endzeitpunkt (Standardwert)"
+            },
+            "format": "date",
+            "options": {
+                "flatpicker": {}
+            }
+        },
+        "status_default": {
+            "type": "string",
+            "format": "autocomplete",
+            "title": "Status  (default)",
+            "title*": {
+                "de": "Status (Standardwert)"
+            },
+            "options": {
+                "autocomplete": {
+                    "category": "Category:OSW9725d7a91bab4f1aa68f423e4e9bfcf4"
+                }
+            }
+        },
+        "sop_default": {
+            "title": "Standard operating procedure (SOP, default)",
+            "title*": {
+                "de": "Standard operating procedure (SOP, Standardwert)"
+            },
+            "type": "string",
+            "format": "autocomplete",
+            "range": "Category:OSWa2c8dd387d0b4a0c807a5a7bde190ba3"
+        },
+        "tools": {
+            "type": "array",
+            "title": "Tools (default)",
+            "title*": {
+                "de": "Werkzeuge (Standardwert)"
+            },
+            "items": {
+                "title": "Tool",
+                "title*": {
+                    "de": "Werkzeug"
+                },
+                "type": "object",
+                "id": "tool_",
+                "defaultProperties": [
+                    "tool_type",
+                    "tool_default"
+                ],
+                "required": [
+                    "tool_type",
+                    "uuid"
+                ],
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "tool_type": {
+                        "title": "Type",
+                        "title*": {
+                            "de": "Typ"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "todo: we need an any-subcategory-of shortcut",
+                                "query": "[[SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]"
+                            }
+                        }
+                    },
+                    "tool_default": {
+                        "title": "Default",
+                        "title*": {
+                            "de": "Standardwert"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                        "watch": {
+                            "tool_type_w": "tool_.tool_type"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[$(tool_type_w)]]"
+                            }
+                        }
+                    }
+                },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "render",
+                        "value": "{{#switch:{{USERLANGUAGECODE}}|en=Type|de=Typ|#default=Type}}: [[:{{{tool_type}}}]] {{#if: {{{tool_default}}} | ({{#switch:{{USERLANGUAGECODE}}|en=default|de=Default|#default=default}}: [[{{{tool_default}}}]]) | ({{#switch:{{USERLANGUAGECODE}}|en=no default|de=Kein Default|#default=no default}})}} "
+                    }
+                ]
+            }
+        },
+        "input": {
+            "title": "Inputs (default)",
+            "title*": {
+                "de": "Eingangsressourcen (Standardwert)"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Input",
+                "title*": {
+                    "de": "Ressource"
+                },
+                "type": "object",
+                "id": "input_",
+                "defaultProperties": [
+                    "input_type",
+                    "input_default"
+                ],
+                "required": [
+                    "input_type",
+                    "uuid"
+                ],
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "input_type": {
+                        "title": "Type",
+                        "title*": {
+                            "de": "Typ"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "todo: we need an any-subcategory-of shortcut",
+                                "query": "[[SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:Entity]]"
+                            }
+                        }
+                    },
+                    "input_default": {
+                        "title": "Default",
+                        "title*": {
+                            "de": "Standardwert"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:Entity",
+                        "watch": {
+                            "input_type_w": "input_.input_type"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[$(input_type_w)]]"
+                            }
+                        }
+                    }
+                },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "render",
+                        "value": "{{#switch:{{USERLANGUAGECODE}}|en=Type|de=Typ|#default=Type}}: [[:{{{input_type}}}]] {{#if: {{{input_default}}} | ({{#switch:{{USERLANGUAGECODE}}|en=default|de=Default|#default=default}}: [[{{{input_default}}}]]) | ({{#switch:{{USERLANGUAGECODE}}|en=no default|de=Kein Default|#default=no default}})}} "
+                    }
+                ]
+            }
+        },
+        "output": {
+            "title": "Outputs (default)",
+            "title*": {
+                "de": "Ausgangsressourcen (Standardwert)"
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Output",
+                "title*": {
+                    "de": "Ausgangsressource"
+                },
+                "type": "object",
+                "id": "output_",
+                "defaultProperties": [
+                    "output_type",
+                    "output_default"
+                ],
+                "required": [
+                    "output_type",
+                    "uuid"
+                ],
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "output_type": {
+                        "title": "Type",
+                        "title*": {
+                            "de": "Typ"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "todo: we need an any-subcategory-of shortcut",
+                                "query": "[[SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:Entity]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:Entity]]"
+                            }
+                        }
+                    },
+                    "output_default": {
+                        "title": "Default",
+                        "title*": {
+                            "de": "Standardwert"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:Entity",
+                        "watch": {
+                            "output_type_w": "output_.output_type"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[$(output_type_w)]]"
+                            }
+                        }
+                    }
+                },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "render",
+                        "value": "{{#switch:{{USERLANGUAGECODE}}|en=Type|de=Typ|#default=Type}}: [[:{{{output_type}}}]] {{#if: {{{output_default}}} | ({{#switch:{{USERLANGUAGECODE}}|en=default|de=Default|#default=default}}: [[{{{output_default}}}]]) | ({{#switch:{{USERLANGUAGECODE}}|en=no default|de=Kein Default|#default=no default}})}} "
+                    }
+                ]
+            }
+        }
+    }
+}

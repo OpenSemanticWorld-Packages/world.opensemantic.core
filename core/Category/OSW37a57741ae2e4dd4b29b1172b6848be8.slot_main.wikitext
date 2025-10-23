@@ -1,0 +1,14 @@
+== {{#switch:{{USERLANGUAGECODE}}|#default=Subcategories|de=Sukategorien}} ==
+
+{{#ask: [[HasType::Category:OSWca99a9bb9ad24386b222d18a73c2af5e]]
+|?HasDescription=Description|+lang=en
+|format=datatable
+}}
+
+== {{#switch:{{USERLANGUAGECODE}}|#default=Instances|de=Instanzen}} ==
+
+{{#ask: [[{{FULLPAGENAME}}]]
+|?HasDescription=Description|+lang=en
+|?HasSerialNumber=Serial no|+lang=en
+|format=datatable
+}}

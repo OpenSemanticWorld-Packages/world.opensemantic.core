@@ -1,0 +1,11 @@
+{
+    "title": "Type number",
+    "title*": {
+        "de": "Typennummer"
+    },
+    "description": "Type or model number as specified by the manufacturer",
+    "description*": {
+        "de": "Typen- oder Modellnummer wie vom Hersteller angegeben"
+    },
+    "type": "string"
+}

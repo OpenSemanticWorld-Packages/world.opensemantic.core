@@ -1,0 +1,16 @@
+{
+    "allOf": [
+        {
+            "$ref": "/wiki/JsonSchema:WikiFile?action=raw&slot=main"
+        }
+    ],
+    "title": "Safety data sheet",
+    "title*": {
+        "de": "Sicherheitsdatenblatt"
+    },
+    "eval_template": {
+        "type": "mustache-wikitext",
+        "mode": "render",
+        "value": "{{=<% %>=}} <%={{ }}=%>  {{#safety_data_sheet}}[[:{{{.}}}]];{{/safety_data_sheet}} {{=<% %>=}} <%={{ }}=%>"
+    }
+}

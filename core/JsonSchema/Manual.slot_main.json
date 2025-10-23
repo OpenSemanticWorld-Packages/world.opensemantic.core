@@ -1,0 +1,20 @@
+{
+    "allOf": [
+        {
+            "$ref": "/wiki/JsonSchema:WikiFile?action=raw&slot=main"
+        }
+    ],
+    "title": "Manual",
+    "title*": {
+        "de": "Handbuch"
+    },
+    "description": "Comprehensive guide that details how to use this item.",
+    "description*": {
+        "de": "Handbuch, Gerauchsanweisung, Betriebs- oder Bedienungsanleitung mit Einzelheiten zur Verwendung dieses Gegenstands."
+    },
+    "eval_template": {
+        "type": "mustache-wikitext",
+        "mode": "render",
+        "value": "{{=<% %>=}} <%={{ }}=%>  {{#manual}}[[:{{{.}}}]];{{/manual}} {{=<% %>=}} <%={{ }}=%>"
+    }
+}

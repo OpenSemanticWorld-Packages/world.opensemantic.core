@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.45.2",
+            "version": "0.46.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -98,6 +98,48 @@
                     "name": "Meta",
                     "namespace": "NS_JSONSCHEMA",
                     "urlPath": "JsonSchema/Meta.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "SerialNumber",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/SerialNumber.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "TypeNumber",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/TypeNumber.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "Manufacturer",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/Manufacturer.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "DataSheet",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/DataSheet.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "SafetyDataSheet",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/SafetyDataSheet.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "Manual",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/Manual.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "Instructions",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/Instructions.slot_main.json",
                     "slots": {}
                 },
                 {
@@ -325,6 +367,29 @@
                     }
                 },
                 {
+                    "name": "OSWc11438cd6c814ed1a5a253555ee351b4",
+                    "label": "ProcessType",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_jsonschema.json"
+                        },
+                        "schema_template": {
+                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_schema_template.text"
+                        }
+                    }
+                },
+                {
                     "name": "OSWe5aa96bffb1c4d95be7fbd46142ad203",
                     "label": "Process",
                     "namespace": "NS_CATEGORY",
@@ -381,6 +446,29 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWca99a9bb9ad24386b222d18a73c2af5e",
+                    "label": "PhysicalItemType",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_jsonschema.json"
+                        },
+                        "schema_template": {
+                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_schema_template.text"
                         }
                     }
                 },

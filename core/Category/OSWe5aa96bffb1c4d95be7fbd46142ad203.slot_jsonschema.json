@@ -18,6 +18,14 @@
                 "@id": "Property:HasInput",
                 "@type": "@id"
             },
+            "location": {
+                "@id": "Property:HasLocation",
+                "@type": "@id"
+            },
+            "location_name": {
+                "@id": "Property:HasLocation",
+                "@type": "@id"
+            },
             "output": {
                 "@id": "Property:HasOutput",
                 "@type": "@id"
@@ -28,6 +36,10 @@
             },
             "actionees": {
                 "@id": "Property:HasActionee",
+                "@type": "@id"
+            },
+            "projects": {
+                "@id": "Property:HasProject",
                 "@type": "@id"
             },
             "status": {
@@ -65,6 +77,13 @@
         "en": "Members of the Process Category describe the act of changing the state or properties of something",
         "de": "Prozesse beschreiben den Akt des Änderns eines Zustandes oder der Eigenschaften von etwas."
     },
+    "defaultProperties": [
+        "actionees",
+        "start_date_time",
+        "tool",
+        "input",
+        "output"
+    ],
     "required": [
         "type"
     ],
@@ -115,6 +134,26 @@
                 "de": "Endzeitpunkt"
             },
             "format": "date-time"
+        },
+        "location": {
+            "type": "string",
+            "title": "Location",
+            "title*": {
+                "de": "Ort"
+            },
+            "format": "autocomplete",
+            "range": "Category:OSW3d238d05316e45a4ac95a11d7b24e36b"
+        },
+        "location_name": {
+            "type": "string",
+            "title": "Location (text)",
+            "title*": {
+                "de": "Ort (Text)"
+            },
+            "description": "Its prefered to select or create a location from or in the autocomplete field 'Location'.",
+            "description*": {
+                "de": "Vorzugsweise sollte ein Ort aus dem Autocomplete-Feld 'Ort' ausgewählt oder erstellt werden."
+            }
         },
         "status": {
             "type": "string",
@@ -207,6 +246,32 @@
                 },
                 "format": "autocomplete",
                 "range": "Category:Entity"
+            },
+            "options": {
+                "conditional_visible": {
+                    "modes": [
+                        "query",
+                        "default"
+                    ]
+                }
+            }
+        },
+        "projects": {
+            "type": "array",
+            "format": "table",
+            "title": "Project(s)",
+            "title*": {
+                "de": "Projekt(e)"
+            },
+            "items": {
+                "type": "string",
+                "title": "Project",
+                "title*": {
+                    "de": "Projekt"
+                },
+                "format": "autocomplete",
+                "$comment": "Project",
+                "range": "Category:OSWb2d7e6a2eff94c82b7f1f2699d5b0ee3"
             },
             "options": {
                 "conditional_visible": {

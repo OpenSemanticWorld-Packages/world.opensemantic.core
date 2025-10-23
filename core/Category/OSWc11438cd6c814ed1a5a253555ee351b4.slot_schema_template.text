@@ -1,0 +1,73 @@
+{ 
+    "title": "{{{name}}}",
+    "required": ["uuid"],
+    "properties": { 
+        "uuid": {
+            "type": "string",
+            "format": "uuid",
+            "options": {
+                "hidden": true
+            }
+        } {{#if creator_default}},
+        "creator": {
+            "default": "{{{creator_default}}}"
+        } {{/if}} {{#if actionees_default}},
+        "actionees": {
+            "default": [
+                {{#each actionees_default}}"{{{.}}}"{{#unless @last}},
+                {{/unless}}{{/each}}
+            ]
+        } {{/if}} {{#if start_date_time_default}},
+        "start_date_time": {
+            "default": "{{{start_date_time_default}}}"
+        } {{/if}} {{#if end_date_time_default}},
+        "end_date_time": {
+            "default": "{{{end_date_time_default}}}"
+        } {{/if}} {{#if status_default}},
+        "status": {
+            "default": "{{{status_default}}}"
+        } {{/if}} {{#if sop_default}},
+        "sop": {
+            "default": "{{{sop_default}}}"
+        } {{/if}} {{#if tool}},
+        "tools": {
+            "items": {
+                "options": {
+                    "autocomplete": {
+                        "query": "{{#each tools}}[[{{{tools}}}{{{tool_type}}}]]{{#unless @last}} OR {{/unless}}{{/each}}"            
+                    }
+                }
+            },
+            "default": [
+                {{#each tools}}"{{{tools}}}{{{tool_default}}}"{{#unless @last}},
+                {{/unless}}{{/each}}
+            ]
+        } {{/if}} {{#if input}},
+        "input": {
+            "items": {
+                "options": {
+                    "autocomplete": {
+                        "query": "{{#each input}}[[{{{input}}}{{{input_type}}}]]{{#unless @last}} OR {{/unless}}{{/each}}"            
+                    }
+                }
+            },
+            "default": [
+                {{#each input}}"{{{input}}}{{{input_default}}}"{{#unless @last}},
+                {{/unless}}{{/each}}
+            ]
+        } {{/if}} {{#if output}},
+        "output": {
+            "items": {
+                "options": {
+                    "autocomplete": {
+                        "query": "{{#each output}}[[{{{output}}}{{{output_type}}}]]{{#unless @last}} OR {{/unless}}{{/each}}"            
+                    }
+                }
+            },
+            "default": [
+                {{#each output}}"{{{output}}}{{{output_default}}}"{{#unless @last}},
+                {{/unless}}{{/each}}
+            ]
+        } {{/if}} 
+    } 
+}

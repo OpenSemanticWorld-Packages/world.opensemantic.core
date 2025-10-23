@@ -1,0 +1,24 @@
+{
+    "subclass_of": [
+        "Category:Category"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "c11438cd-6c81-4ed1-a5a2-53555ee351b4",
+    "label": [
+        {
+            "text": "MetaProcessCategory",
+            "lang": "en"
+        },
+        {
+            "text": "Process Type",
+            "lang": "en"
+        },
+        {
+            "text": "Processtyp",
+            "lang": "de"
+        }
+    ],
+    "name": "ProcessType"
+}

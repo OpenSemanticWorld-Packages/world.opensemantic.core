@@ -1,0 +1,22 @@
+{
+    "subclass_of": [
+        "Category:Category"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "ca99a9bb-9ad2-4386-b222-d18a73c2af5e",
+    "label": [
+        {
+            "text": "Physical Item Type",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Helps to create subcategories of PhysicalItem",
+            "lang": "en"
+        }
+    ],
+    "name": "PhysicalItemType"
+}

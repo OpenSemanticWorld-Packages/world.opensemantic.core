@@ -1,5 +1,41 @@
 {
     "@context": [
+        {
+            "data_sheet": {
+                "@id": "Property:HasDataSheet",
+                "@type": "@id"
+            },
+            "instructions": {
+                "@id": "Property:HasInstructions",
+                "@type": "@id"
+            },
+            "manual": {
+                "@id": "Property:HasManual",
+                "@type": "@id"
+            },
+            "manufacturer": {
+                "@id": "Property:HasManufacturer",
+                "@type": "@id"
+            },
+            "origin": {
+                "@id": "Property:HasStatement",
+                "@type": "@id",
+                "@context": {
+                    "origin_item_instance_property": "Property:HasProperty",
+                    "origin_item_instance": "Property:HasObject"
+                }
+            },
+            "quantity_statements": {
+                "@id": "Property:HasStatement",
+                "@type": "@id"
+            },
+            "safety_data_sheet": {
+                "@id": "Property:HasSafetyDataSheet",
+                "@type": "@id"
+            },
+            "serial_number": "Property:HasSerialNumber",
+            "type_no": "Property:HasTypeNumber"
+        },
         "/wiki/Category:Item?action=raw&slot=jsonschema"
     ],
     "allOf": [
@@ -26,6 +62,163 @@
         "type": {
             "default": [
                 "Category:OSW37a57741ae2e4dd4b29b1172b6848be8"
+            ]
+        },
+        "quantity_statements": {
+            "type": "array",
+            "format": "tabs",
+            "title": "Quantitative statement(s)",
+            "title*": {
+                "de": "Quantitative Aussage(n)"
+            },
+            "eval_template": {
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{#quantity_statements}}.. {{#quantity}}[[{{quantity}}]]{{/quantity}} {{#value}}{{value}}{{/value}}<br>{{/quantity_statements}}"
+            },
+            "items": {
+                "$ref": "/wiki/JsonSchema:QuantityProperty?action=raw"
+            }
+        },
+        "origin": {
+            "type": "array",
+            "format": "table",
+            "title": "Origin",
+            "title*": {
+                "de": "Ursprung"
+            },
+            "description": "Other physical item(s) that this physical item was derived from.",
+            "description*": {
+                "de": "Andere(r) physische(r) Gegenstand/Gegenstände aus der dieser physische Gegenstand hergestellt wurde."
+            },
+            "options": {
+                "enable_array_copy": true,
+                "array_copy_ignore": [
+                    "uuid",
+                    "attachments"
+                ]
+            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <ul><%#origin%><li>[[<%origin_item_instance%>]] ({{#switch:{{USERLANGUAGECODE}}|en=Type|de=Typ|#default=Type}}: {{#ask:[[<%origin_item_instance%>]]|?HasType=|format=plain|mainlabel=-}})</li><%/origin%></ul>"
+                }
+            ],
+            "items": {
+                "type": "object",
+                "format": "grid-strict",
+                "title": "Other physical Item",
+                "title*": {
+                    "de": "Anderer physischer Gegenstand"
+                },
+                "id": "origin_item",
+                "headerTemplate": "{{ i1 }}",
+                "defaultProperties": [],
+                "required": [
+                    "uuid",
+                    "origin_item_type",
+                    "origin_item_instance_property",
+                    "origin_item_instance"
+                ],
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "dynamic_template": "{{_uuid_}}",
+                        "options": {
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "empty"
+                            }
+                        }
+                    },
+                    "origin_item_type": {
+                        "title": "Type",
+                        "title*": {
+                            "de": "Typ"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:Category",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "Tool",
+                                "query": "[[:Category:OSW37a57741ae2e4dd4b29b1172b6848be8]]OR[[SubClassOf::Category:OSW37a57741ae2e4dd4b29b1172b6848be8]]OR[[SubClassOf.SubClassOf::Category:OSW37a57741ae2e4dd4b29b1172b6848be8]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:OSW37a57741ae2e4dd4b29b1172b6848be8]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSW37a57741ae2e4dd4b29b1172b6848be8]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSW37a57741ae2e4dd4b29b1172b6848be8]]"
+                            },
+                            "grid_columns": 12
+                        },
+                        "default": "Category:OSW37a57741ae2e4dd4b29b1172b6848be8",
+                        "propertyOrder": 40
+                    },
+                    "origin_item_instance_property": {
+                        "type": "string",
+                        "default": "Property:HasOrigin",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "origin_item_instance": {
+                        "title": "Instance",
+                        "title*": {
+                            "de": "Instanz"
+                        },
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:OSW37a57741ae2e4dd4b29b1172b6848be8",
+                        "watch": {
+                            "origin_item_type_": "origin_item.origin_item_type"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[HasType::$(origin_item_type_)]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                            },
+                            "grid_columns": 12
+                        },
+                        "propertyOrder": 50
+                    }
+                }
+            }
+        },
+        "type_no": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:TypeNumber?action=raw&slot=main"
+                }
+            ]
+        },
+        "manufacturer": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:Manufacturer?action=raw&slot=main"
+                }
+            ]
+        },
+        "data_sheet": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:DataSheet?action=raw&slot=main"
+                }
+            ]
+        },
+        "safety_data_sheet": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:SafetyDataSheet?action=raw&slot=main"
+                }
+            ]
+        },
+        "manual": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:Manual?action=raw&slot=main"
+                }
+            ]
+        },
+        "instructions": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:Instructions?action=raw&slot=main"
+                }
             ]
         }
     }
