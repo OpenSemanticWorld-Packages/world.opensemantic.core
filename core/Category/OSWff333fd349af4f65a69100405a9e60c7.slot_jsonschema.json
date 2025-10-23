@@ -33,6 +33,10 @@
             "editing_context": {
                 "@id": "Property:HasEditingContext",
                 "@type": "@id"
+            },
+            "local_path": {
+                "@id": "Property:HasLocalPath",
+                "@type": "@id"
             }
         }
     ],
@@ -119,6 +123,20 @@
                     }
                 }
             }
+        },
+        "local_path": {
+            "type": "string",
+            "title": "Local Path",
+            "title*": {
+                "de": "Lokaler Dateipfad"
+            },
+            "description": "The local file path of a file, e.g. S:....",
+            "description*": {
+                "de": "Der Pfad einer lokalen Datei, z.B. S:...."
+            }
         }
-    }
+    },
+    "defaultProperties": [
+        "local_path"
+    ]
 }
