@@ -2,8 +2,20 @@
     "@context": [
         "/wiki/Category:OSWe5aa96bffb1c4d95be7fbd46142ad203?action=raw&slot=jsonschema",
         {
+            "belongs_to_project": {
+                "@id": "Property:BelongsTo",
+                "@type": "@id"
+            },
+            "issue_label": {
+                "@id": "Property:HasIssueLabel",
+                "@type": "@id"
+            },
             "prio": {
                 "@id": "Property:HasPriority",
+                "@type": "@id"
+            },
+            "prerequisite_task": {
+                "@id": "Property:HasPrerequisite",
                 "@type": "@id"
             },
             "related_to": {
@@ -12,6 +24,14 @@
             },
             "related_to_project": {
                 "@id": "Property:IsRelatedTo",
+                "@type": "@id"
+            },
+            "superordinate_work_package": {
+                "@id": "Property:IsSubordinateTo",
+                "@type": "@id"
+            },
+            "superordinate_task": {
+                "@id": "Property:IsSubordinateTo",
                 "@type": "@id"
             }
         }
@@ -44,6 +64,61 @@
             "default": [
                 "Category:OSWc5d4829ed2744a219ba027171c75fa1d"
             ]
+        },
+        "conclusion": {
+            "type": "array",
+            "title": "Conclusion",
+            "title*": {
+                "de": "Fazit"
+            },
+            "description": "A brief final summary that highlights the key results or insights of a task.",
+            "description*": {
+                "de": "Eine kurze abschließende Zusammenfassung, die die wichtigsten Ergebnisse oder Erkenntnisse eines Tasks hervorhebt."
+            },
+            "format": "table",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "$comment": "Displays value according to user language with eng as fallback option. Note: {{=<% %>=}} changes mustache expression from {{..}} to <% %> for mixing with wikitext templates",
+                    "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#label%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/label%> }}"
+                }
+            ],
+            "items": {
+                "title": "Conclusion",
+                "title*": {
+                    "de": "Fazit"
+                },
+                "eval_template": [
+                    {
+                        "type": "wikitext",
+                        "mode": "store",
+                        "value": "{{{text}}}@{{{lang}}}"
+                    }
+                ],
+                "$ref": "/wiki/JsonSchema:Label?action=raw"
+            },
+            "minItems": 1
+        },
+        "issue_label": {
+            "type": "array",
+            "title": "Issue Label",
+            "title*": {
+                "de": "Issue-Label"
+            },
+            "description": "Designated to categorize task, which are considered issues in software development.",
+            "description*": {
+                "de": "Dient der Kategorisierung von Aufgaben, die im Sinne eines Issues bei der Softwareentwicklung angelegt werden."
+            },
+            "items": {
+                "title": "Label",
+                "title*": {
+                    "de": "Label"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:OSW8cb1935054464c99836d3bc0573a11cc"
+            }
         },
         "prio": {
             "title": "Priority",
@@ -88,6 +163,75 @@
                     "de": "Projekt"
                 },
                 "range": "Category:OSWb2d7e6a2eff94c82b7f1f2699d5b0ee3"
+            }
+        },
+        "belongs_to_project": {
+            "title": "Belongs to (project)",
+            "title*": {
+                "de": "Gehört zu (Projekt)"
+            },
+            "description": "Project to which this task belongs.",
+            "description*": {
+                "de": "Projekt, zu dem diese Aufgabe gehört."
+            },
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Project",
+                "title*": {
+                    "de": "Projekt"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:OSWb2d7e6a2eff94c82b7f1f2699d5b0ee3"
+            }
+        },
+        "superordinate_work_package": {
+            "type": "array",
+            "title": "Superordinate work package(s)",
+            "title*": {
+                "de": "Übergeordnete(s) Arbeitspaket(e)"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Work package",
+                "title*": {
+                    "de": "Arbeitspaket"
+                },
+                "range": "Category:OSWb47292f68e834e3592f1fa8f706ddde4"
+            }
+        },
+        "superordinate_task": {
+            "type": "array",
+            "title": "Superordinate task(s)",
+            "title*": {
+                "de": "Übergeordnete(r) Task(s)"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Task",
+                "title*": {
+                    "de": "Aufgabe"
+                },
+                "range": "Category:OSWc5d4829ed2744a219ba027171c75fa1d"
+            }
+        },
+        "prerequisite_task": {
+            "type": "array",
+            "title": "Prerequisite task(s)",
+            "title*": {
+                "de": "Vorausgesetzte(r) Task(s)"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Task",
+                "title*": {
+                    "de": "Aufgabe"
+                },
+                "range": "Category:OSWc5d4829ed2744a219ba027171c75fa1d"
             }
         }
     }
