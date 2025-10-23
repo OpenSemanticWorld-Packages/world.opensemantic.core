@@ -68,6 +68,37 @@ function p.loadJson(args)
 		if (text ~= nil) then json = mw.text.jsonDecode(text) end
 	end	
 	
+	
+	local generated_content = json["$defs"] and json["$defs"]["generated"]
+	
+	if generated_content then
+	    -- Check if "$ref": "#/$defs/generated" exists directly in the table
+	    if json["$ref"] == "#/$defs/generated" then
+	        json = p.tableMerge(p.copy(generated_content), json)
+	        json["$ref"] = nil -- Remove the reference after merging
+	    end
+	
+	    -- Check if "$ref": "#/$defs/generated" is contained in "allOf"
+	    if json["allOf"] then
+	        for _, item in ipairs(json["allOf"]) do
+	            if item["$ref"] == "#/$defs/generated" then
+	            	
+	            	-- Remove the reference after merging
+	                for i, v in ipairs(json["allOf"]) do
+	                    if v["$ref"] == "#/$defs/generated" then
+	                        table.remove(json["allOf"], i)
+	                        break
+	                    end
+	                end
+	                json = p.tableMerge(p.copy(generated_content), json)
+	                
+	                break
+	            end
+	        end
+	    end
+	    json["$defs"]["generated"] = nil
+	end
+	
 	--mw.logObject(json)
 	p.cache[page_title][slot] = json
 
