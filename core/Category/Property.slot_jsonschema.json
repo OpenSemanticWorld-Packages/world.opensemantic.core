@@ -17,6 +17,14 @@
                 "@type": "@id"
             },
             "label**": "Property:Has preferred property label",
+            "ontologies": {
+                "@id": "rdfs:isDefinedBy",
+                "@type": "@id"
+            },
+            "ontologies*": {
+                "@id": "Property:IsPartOf",
+                "@type": "@id"
+            },
             "ontology_iri": "Property:Equivalent_URI",
             "property_type": "Property:Has_type",
             "relations": {
@@ -175,15 +183,36 @@
             "title*": {
                 "de": "Ontologie-IRI(s)"
             },
-            "description": "E. g. from https://www.qudt.org/doc/DOC_VOCAB-QUANTITY-KINDS.html",
+            "description": "e. g. from https://www.qudt.org/doc/DOC_VOCAB-QUANTITY-KINDS.html",
             "description*": {
-                "de": "Z. B. von https://www.qudt.org/doc/DOC_VOCAB-QUANTITY-KINDS.html"
+                "de": "z. B. von https://www.qudt.org/doc/DOC_VOCAB-QUANTITY-KINDS.html"
             },
             "type": "array",
             "items": {
                 "title": "IRI",
                 "type": "string",
                 "format": "url"
+            }
+        },
+        "ontologies": {
+            "type": "array",
+            "title": "Ontologies",
+            "title*": {
+                "de": "Ontologien"
+            },
+            "description": "Ontologies that contain this term",
+            "description*": {
+                "de": "Ontologien, die diesen Begriff enthalten"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "$comment": "range is OwlOntology",
+                "range": "Category:OSW662db0a2ad0946148422245f84e82f64",
+                "title": "Ontology",
+                "title*": {
+                    "de": "Ontologie"
+                }
             }
         },
         "subproperty_of": {
@@ -226,6 +255,57 @@
             "default": [
                 "Category:Property"
             ]
+        },
+        "see_also": {
+            "type": "array",
+            "title": "See also",
+            "title*": {
+                "de": "Siehe auch"
+            },
+            "description": "External reference",
+            "description*": {
+                "de": "Externer Verweis"
+            },
+            "items": {
+                "type": "string",
+                "format": "url",
+                "title": "URL"
+            }
+        },
+        "relations": {
+            "title": "Relations",
+            "title*": {
+                "de": "Beziehungen"
+            },
+            "description": "Relations of this property to other properties, instances or literals (OWL Restrictions)",
+            "description*": {
+                "de": "Beziehungen dieses Attributs zu anderen Attributen, Instanzen oder Literalwerten (OWL-Einschränkungen)"
+            },
+            "type": "array",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{#relations}}[[Property:InverseOf]] [[{{{inverse_of}}}]]<br>{{/relations}}"
+                }
+            ],
+            "items": {
+                "type": "object",
+                "title": "Relation",
+                "title*": {
+                    "de": "Beziehung"
+                },
+                "required": [
+                    "inverse_of"
+                ],
+                "properties": {
+                    "inverse_of": {
+                        "type": "string",
+                        "title": "Property",
+                        "description": "Property to use in this relation"
+                    }
+                }
+            }
         }
     }
 }
