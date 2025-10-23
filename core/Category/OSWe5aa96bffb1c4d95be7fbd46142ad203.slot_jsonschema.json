@@ -34,21 +34,40 @@
                 "@id": "Property:HasStatus",
                 "@type": "@id"
             },
-            "start_date_time": "Property:HasStartDateAndTime",
-            "end_date_time": "Property:HasEndDateAndTime",
+            "start_date_time": {
+                "@id": "Property:HasStartDate",
+                "@type": "xsd:dateTime"
+            },
+            "end_date_time": {
+                "@id": "Property:HasEndDate",
+                "@type": "xsd:dateTime"
+            },
             "subprocesses": {
                 "@id": "Property:HasPart",
                 "@type": "@id"
             }
         }
     ],
-    "type": "object",
     "allOf": [
         {
             "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
         }
     ],
     "title": "Process",
+    "title*": {
+        "en": "Process",
+        "de": "Prozess"
+    },
+    "type": "object",
+    "uuid": "5a07d666-c55b-4ffa-89d4-9633c708029d",
+    "description": "Members of the Process Category describe the act of changing the state or properties of something",
+    "description*": {
+        "en": "Members of the Process Category describe the act of changing the state or properties of something",
+        "de": "Prozesse beschreiben den Akt des Änderns eines Zustandes oder der Eigenschaften von etwas."
+    },
+    "required": [
+        "type"
+    ],
     "properties": {
         "type": {
             "default": [
@@ -62,11 +81,7 @@
                 "de": "Ersteller"
             },
             "format": "autocomplete",
-            "options": {
-                "autocomplete": {
-                    "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
-                }
-            }
+            "range": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
         },
         "actionees": {
             "type": "array",
@@ -81,11 +96,7 @@
                     "de": "Akteur"
                 },
                 "format": "autocomplete",
-                "options": {
-                    "autocomplete": {
-                        "category": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
-                    }
-                }
+                "range": "Category:OSW44deaa5b806d41a2a88594f562b110e9"
             }
         },
         "start_date_time": {
@@ -226,27 +237,6 @@
         "parameters": {
             "type": "object",
             "title": "Parameters"
-        },
-        "_subprocesses": {
-            "title": "Subprocesses",
-            "type": "array",
-            "format": "tabs",
-            "items": {
-                "$ref": "#"
-            }
         }
-    },
-    "required": [
-        "type"
-    ],
-    "uuid": "5a07d666-c55b-4ffa-89d4-9633c708029d",
-    "title*": {
-        "en": "Process",
-        "de": "Prozess"
-    },
-    "description": "Members of the Process Category describe the act of changing the state or properties of something",
-    "description*": {
-        "en": "Members of the Process Category describe the act of changing the state or properties of something",
-        "de": "Prozesse beschreiben den Akt des Änderns eines Zustandes oder der Eigenschaften von etwas."
     }
 }
