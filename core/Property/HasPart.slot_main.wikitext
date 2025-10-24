@@ -1,0 +1,6 @@
+{{OslTemplate:Property
+|data_type=Page
+|description=Inverse to [[Property:IsPartOf]]
+|ontology_iri=http://emmo.info/emmo/top/mereotopology#EMMO_17e27c22_37e1_468c_9dd7_95e137f73e7f
+|category=Category:ObjectProperty
+}}
