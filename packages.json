@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.49.1",
+            "version": "0.49.2",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -116,6 +116,12 @@
                     "name": "Manufacturer",
                     "namespace": "NS_JSONSCHEMA",
                     "urlPath": "JsonSchema/Manufacturer.slot_main.json",
+                    "slots": {}
+                },
+                {
+                    "name": "WikiFile",
+                    "namespace": "NS_JSONSCHEMA",
+                    "urlPath": "JsonSchema/WikiFile.slot_main.json",
                     "slots": {}
                 },
                 {
