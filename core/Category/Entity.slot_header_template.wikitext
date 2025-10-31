@@ -63,9 +63,9 @@
     }}</td>
 </tr>
 <tr>
-{{#if: {{{ordering_categories|}}}|<!-- show a row if an ordering_categories exists -->
-    <th>{{{_label_ordering_categories|Classification categories}}}</th>
-    <td>{{{ordering_categories|}}}</td>
+{{#if: {{{classification_categories|}}}|<!-- show a row if an classification_categories exists -->
+    <th>{{{_label_classification_categories|Classification categories}}}</th>
+    <td>{{{classification_categories|}}}</td>
     </tr>
     <tr>
 |}}

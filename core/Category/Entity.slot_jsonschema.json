@@ -103,11 +103,11 @@
         "name*": {
             "@id": "Property:HasName"
         },
-        "ordering_categories": {
+        "classification_categories": {
             "@id": "Property:Category",
             "@type": "@id"
         },
-        "ordering_categories*": {
+        "classification_categories*": {
             "@id": "Property:HasClassificationCategory",
             "@type": "@id"
         },
@@ -392,7 +392,7 @@
                 }
             ]
         },
-        "ordering_categories": {
+        "classification_categories": {
             "type": "array",
             "format": "table",
             "title": "Classification categories",
@@ -406,7 +406,7 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}}<%#ordering_categories%>[[:<%.%>]] <br> <%/ordering_categories%>"
+                "value": "{{=<% %>=}}<%#classification_categories%>[[:<%.%>]] <br> <%/classification_categories%>"
             },
             "items": {
                 "title": "Classification category",
