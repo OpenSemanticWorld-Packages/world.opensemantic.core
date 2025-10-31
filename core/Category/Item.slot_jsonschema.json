@@ -34,7 +34,14 @@
                 }
             ],
             "items": {
-                "subclassof_range": "Category:Item"
+                "subclassof_range": "Category:Item",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "$comment": "All categories here since subclassof_range is limited by depth 5",
+                        "query": "[[:Category:%2B]]"
+                    }
+                }
             },
             "minItems": 1,
             "default": [

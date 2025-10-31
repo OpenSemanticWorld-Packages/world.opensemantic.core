@@ -40,10 +40,12 @@
     "properties": {
         "type": {
             "items": {
+                "subclassof_range": "Category:Category",
                 "format": "autocomplete",
                 "options": {
                     "autocomplete": {
-                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                        "$comment": "All categories here since subclassof_range is limited by depth 5",
+                        "query": "[[:Category:%2B]]"
                     }
                 }
             },
