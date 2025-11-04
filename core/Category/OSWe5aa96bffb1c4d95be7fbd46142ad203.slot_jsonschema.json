@@ -47,11 +47,11 @@
                 "@type": "@id"
             },
             "start_date_time": {
-                "@id": "Property:HasStartDate",
+                "@id": "Property:HasStartDateTime",
                 "@type": "xsd:dateTime"
             },
             "end_date_time": {
-                "@id": "Property:HasEndDate",
+                "@id": "Property:HasEndDateTime",
                 "@type": "xsd:dateTime"
             },
             "subprocesses": {
