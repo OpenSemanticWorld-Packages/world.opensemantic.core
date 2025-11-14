@@ -86,6 +86,7 @@
         },
         "actionees_default": {
             "type": "array",
+            "format": "table",
             "title": "Actionees (default)",
             "title*": {
                 "de": "Akteure (Standardwert)"
@@ -123,10 +124,7 @@
             "title*": {
                 "de": "Startzeitpunkt (Standardwert)"
             },
-            "format": "date",
-            "options": {
-                "flatpicker": {}
-            }
+            "format": "date-time"
         },
         "end_date_time_default": {
             "type": "string",
@@ -134,10 +132,7 @@
             "title*": {
                 "de": "Endzeitpunkt (Standardwert)"
             },
-            "format": "date",
-            "options": {
-                "flatpicker": {}
-            }
+            "format": "date-time"
         },
         "status_default": {
             "type": "string",
@@ -163,6 +158,7 @@
         },
         "tools": {
             "type": "array",
+            "format": "table",
             "title": "Tools (default)",
             "title*": {
                 "de": "Werkzeuge (Standardwert)"
@@ -188,7 +184,8 @@
                         "format": "uuid",
                         "options": {
                             "hidden": true
-                        }
+                        },
+                        "title": "UUID"
                     },
                     "tool_type": {
                         "title": "Type",
@@ -259,7 +256,8 @@
                         "format": "uuid",
                         "options": {
                             "hidden": true
-                        }
+                        },
+                        "title": "UUID"
                     },
                     "input_type": {
                         "title": "Type",
@@ -330,7 +328,8 @@
                         "format": "uuid",
                         "options": {
                             "hidden": true
-                        }
+                        },
+                        "title": "UUID"
                     },
                     "output_type": {
                         "title": "Type",

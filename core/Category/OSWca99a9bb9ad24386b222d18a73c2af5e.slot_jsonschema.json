@@ -1,5 +1,6 @@
 {
     "@context": [
+        "/wiki/Category:Category?action=raw&slot=jsonschema",
         {
             "constituents": {
                 "@type": "@id",
@@ -30,8 +31,7 @@
                 "@type": "@id"
             },
             "type_no": "Property:HasTypeNumber"
-        },
-        "/wiki/Category:Category?action=raw&slot=jsonschema"
+        }
     ],
     "allOf": [
         {
@@ -277,6 +277,7 @@
                 ],
                 "properties": {
                     "uuid": {
+                        "title": "UUID",
                         "type": "string",
                         "format": "uuid",
                         "options": {

@@ -8,15 +8,11 @@
     "uuid": "c11438cd-6c81-4ed1-a5a2-53555ee351b4",
     "label": [
         {
-            "text": "MetaProcessCategory",
-            "lang": "en"
-        },
-        {
             "text": "Process Type",
             "lang": "en"
         },
         {
-            "text": "Processtyp",
+            "text": "Prozesstyp",
             "lang": "de"
         }
     ],

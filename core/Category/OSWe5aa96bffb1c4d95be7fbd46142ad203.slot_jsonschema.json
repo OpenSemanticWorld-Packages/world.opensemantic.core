@@ -221,7 +221,7 @@
                     "de": "Ressource"
                 },
                 "format": "autocomplete",
-                "range": "Category:Entity"
+                "range": "Category:Item"
             },
             "options": {
                 "conditional_visible": {
@@ -245,7 +245,7 @@
                     "de": "Ressource"
                 },
                 "format": "autocomplete",
-                "range": "Category:Entity"
+                "range": "Category:Item"
             },
             "options": {
                 "conditional_visible": {

@@ -1,12 +1,12 @@
 {
     "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
         {
             "extends_documentation_of": {
                 "@id": "Property:ExtendsDocumentationOf",
                 "@type": "@id"
             }
-        },
-        "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
     ],
     "allOf": [
         {
@@ -28,36 +28,39 @@
     "required": [
         "type"
     ],
+    "defaultProperties": [
+        "extends_documentation_of"
+    ],
     "properties": {
         "type": {
             "default": [
                 "Category:OSW5f0dff1c477e45e7ad45e4e247e28f35"
-            ],
-            "extends_documentation_of": {
-                "type": "array",
-                "format": "table",
-                "title": "Extends documentation of",
+            ]
+        },
+        "extends_documentation_of": {
+            "type": "array",
+            "format": "table",
+            "title": "Extends documentation of",
+            "title*": {
+                "de": "Ergänzt die Dokumentation von"
+            },
+            "description": "The content of this entry will be embedded into the selected page(s) (footer)",
+            "description*": {
+                "de": "Der Inhalt dieses Eintrags wird in die ausgewählte(n) Seite(n) (Fußzeile) eingebettet"
+            },
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Class/Category",
                 "title*": {
-                    "de": "Ergänzt die Dokumentation von"
+                    "de": "Klasse/Kategorie"
                 },
-                "description": "The content of this entry will be embedded into the selected page(s) (footer)",
-                "description*": {
-                    "de": "Der Inhalt dieses Eintrags wird in die ausgewählte(n) Seite(n) (Fußzeile) eingebettet"
+                "options": {
+                    "autocomplete": {
+                        "query": "[[:Category:%2B]]"
+                    }
                 },
-                "items": {
-                    "type": "string",
-                    "format": "autocomplete",
-                    "title": "Class/Category",
-                    "title*": {
-                        "de": "Klasse/Kategorie"
-                    },
-                    "options": {
-                        "autocomplete": {
-                            "query": "[[:Category:%2B]]"
-                        }
-                    },
-                    "uniqueItems": true
-                }
+                "uniqueItems": true
             }
         }
     }

@@ -1,14 +1,16 @@
 { 
-    "title": "{{{name}}}",
-    "required": ["uuid"],
-    "properties": { 
-        "uuid": {
-            "type": "string",
-            "format": "uuid",
-            "options": {
-                "hidden": true
-            }
-        } {{#if creator_default}},
+    "defaultProperties": [{{#replace "^[\s]*,+|,+[\s]*$" "" "g"}}{{!-- Trim leading and trailing whitespace + comma --}} {{#if creator_default}}
+        "creator",{{/if}}{{#if actionees_default}}
+        "actionees",{{/if}}{{#if start_date_time_default}}
+        "start_date_time",{{/if}}{{#if end_date_time_default}}
+        "end_date_time",{{/if}}{{#if status_default}}
+        "status",{{/if}}{{#if sop_default}}
+        "sop",{{/if}}{{#if tools}}
+        "tool",{{/if}}{{#if input}}
+        "input",{{/if}}{{#if output}}
+        "output",{{/if}}{{/replace}}
+    ],
+    "properties": { {{#replace "^[\s]*,+|,+[\s]*$" "" "g"}}{{!-- Trim leading and trailing whitespace + comma --}}{{#if creator_default}}
         "creator": {
             "default": "{{{creator_default}}}"
         } {{/if}} {{#if actionees_default}},
@@ -19,9 +21,13 @@
             ]
         } {{/if}} {{#if start_date_time_default}},
         "start_date_time": {
+            "type": "string",
+            "format": "date-time",
             "default": "{{{start_date_time_default}}}"
         } {{/if}} {{#if end_date_time_default}},
         "end_date_time": {
+            "type": "string",
+            "format": "date-time",
             "default": "{{{end_date_time_default}}}"
         } {{/if}} {{#if status_default}},
         "status": {
@@ -29,8 +35,8 @@
         } {{/if}} {{#if sop_default}},
         "sop": {
             "default": "{{{sop_default}}}"
-        } {{/if}} {{#if tool}},
-        "tools": {
+        } {{/if}} {{#if tools}},
+        "tool": {
             "items": {
                 "options": {
                     "autocomplete": {
@@ -68,6 +74,6 @@
                 {{#each output}}"{{{output}}}{{{output_default}}}"{{#unless @last}},
                 {{/unless}}{{/each}}
             ]
-        } {{/if}} 
+        } {{/if}} {{/replace}}
     } 
 }
