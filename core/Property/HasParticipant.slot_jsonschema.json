@@ -1,0 +1,14 @@
+{
+    "uuid": "62f80a36-9253-4279-8ef8-d77eae1571b0",
+    "title": "HasParticipant",
+    "title*": {
+        "en": "Participant",
+        "de": "Teilnehmer"
+    },
+    "description": "Someone or something that takes part in a process ",
+    "description*": {
+        "en": "Someone or something that takes part in a process ",
+        "de": "Someone or something that takes part in a process "
+    },
+    "type": "string"
+}

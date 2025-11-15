@@ -1,0 +1,32 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasTool",
+    "property_type": "Page",
+    "uuid": "c48de177-f909-4809-b409-37f2e47a3bdc",
+    "label": [
+        {
+            "text": "Tool",
+            "lang": "en"
+        },
+        {
+            "text": "Werkzeug",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Points to a tools as participant ",
+            "lang": "en"
+        },
+        {
+            "text": "Points to a tools as participant ",
+            "lang": "de"
+        }
+    ],
+    "subproperty_of": [
+        "Property:HasParticipant"
+    ]
+}

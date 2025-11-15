@@ -1,0 +1,14 @@
+{
+    "uuid": "c48de177-f909-4809-b409-37f2e47a3bdc",
+    "title": "HasTool",
+    "title*": {
+        "en": "Tool",
+        "de": "Werkzeug"
+    },
+    "description": "Points to a tools as participant ",
+    "description*": {
+        "en": "Points to a tools as participant ",
+        "de": "Points to a tools as participant "
+    },
+    "type": "string"
+}
