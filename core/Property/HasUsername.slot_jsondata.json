@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasUsername",
+    "property_type": "Text",
+    "uuid": "8d712108-be9f-4479-90d8-78a39738da3b",
+    "label": [
+        {
+            "text": "Username",
+            "lang": "en"
+        },
+        {
+            "text": "Nutzername",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

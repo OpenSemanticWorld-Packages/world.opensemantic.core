@@ -29,6 +29,15 @@
     <td>{{{name|}}}</td>
     </tr>
     |<!-- else show nothing -->}}
+{{#if: {{{type|}}} |<!-- if type is not empty, show -->
+    <tr>
+    <th>{{#switch:{{USERLANGUAGECODE}}
+        |de=Typen/Kategorien
+        |#default=Types/Categories
+        }}</th>
+    <td>{{{type|}}}</td>
+    </tr>
+|<!-- else show nothing -->}}
 {{#if: {{{image|}}}|<!-- show a row if an image exists -->
     <tr>
     <td class="picture" colspan="2">[[{{{image|}}}|200x800px]]</td>
@@ -36,8 +45,8 @@
     |<!-- don't show a row, if there is no image -->}}
 <tr>
 <td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
-    |en=Statements (outgoing)
     |de=Aussagen (ausgehend)
+    |#default=Statements (outgoing)
     }}</td>
 </tr>
 <tr>
@@ -45,8 +54,8 @@
 </tr>
 <tr>
 <td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
-    |en=Statements (incoming)
-    |de=Aussagen (eingehend)
+    |de=Aussagen (ausgehend)
+    |#default=Statements (outgoing)
     }}</td>
 </tr>
 <tr>
@@ -62,12 +71,60 @@
     |@deferred
     }}</td>
 </tr>
+{{#if: {{{access_policy|}}} |<!-- if policy is not empty, show -->
 <tr>
+<td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
+    |de=Zugriffs- und Nutzungsrichtlinie
+    |#default=Access and usage policy
+    }}</td>
+</tr>
+    <tr>
+    <th>{{#switch:{{USERLANGUAGECODE}}
+        |de=Zugriffs- und Nutzungsrichtlinie
+        |#default=Access and usage policy
+        }}</th>
+    <td>{{{access_policy|}}}</td>
+    </tr>
+|<!-- else show nothing -->}}
+{{#if: {{{rdf_type|}}} {{{exact_ontology_match|}}} {{{close_ontology_match|}}} {{{classification_categories|}}} {{{keywords|}}} {{{based_on|}}}  |<!-- if any annotation, show -->
+<tr>
+<td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
+    |de=Annotationen
+    |#default=Annotations
+    }}</td>
+</tr>
+{{#if: {{{rdf_type|}}} |<!-- if rdf_type is not empty, show -->
+    <tr>
+    <th>{{#switch:{{USERLANGUAGECODE}}
+        |de=Zusätzliche(r) RDF-Typ(en)
+        |#default=Additional RDF Type(s)
+        }}</th>
+    <td>{{{rdf_type|}}}</td>
+    </tr>
+|<!-- else show nothing -->}}
+{{#if: {{{exact_ontology_match|}}} |<!-- if exact_ontology_match is not empty, show -->
+    <tr>
+    <th>{{#switch:{{USERLANGUAGECODE}}
+        |de=Ontologieübereinstimmung (exakt)
+        |#default=Ontology Match (Exact)
+        }}</th>
+    <td>{{{exact_ontology_match|}}}</td>
+    </tr>
+|<!-- else show nothing -->}}
+{{#if: {{{close_ontology_match|}}} |<!-- if close_ontology_match is not empty, show -->
+    <tr>
+    <th>{{#switch:{{USERLANGUAGECODE}}
+        |de=Ontologieübereinstimmung (ähnlich)
+        |#default=Ontology Match (Close)
+        }}</th>
+    <td>{{{close_ontology_match|}}}</td>
+    </tr>
+|<!-- else show nothing -->}}
 {{#if: {{{classification_categories|}}}|<!-- show a row if an classification_categories exists -->
+    <tr>
     <th>{{{_label_classification_categories|Classification categories}}}</th>
     <td>{{{classification_categories|}}}</td>
     </tr>
-    <tr>
 |}}
 {{#if: {{{keywords|}}}|<!-- show a row if an keywords exists -->
     <tr>
@@ -75,6 +132,16 @@
     <td>{{{keywords|}}}</td>
     </tr>
 |}}
+{{#if: {{{based_on|}}} |<!-- if based_on is not empty, show -->
+    <tr>
+    <th>{{#switch:{{USERLANGUAGECODE}}
+        |de=Basierend auf
+        |#default=Based on
+        }}</th>
+    <td>{{{based_on|}}}</td>
+    </tr>
+|<!-- else show nothing -->}}
+|<!-- else hide annotation section -->}}
 </table>
 
 =={{{_label_description| {{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung}} }}}==

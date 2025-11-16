@@ -1,0 +1,58 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
+        {
+            "username": {
+                "@id": "Property:HasUsername",
+                "@type": "xsd:string"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "8b3e627e-b76b-46d6-8fce-3a12ff220c8e",
+    "title": "UserAccount",
+    "title*": {
+        "en": "User account",
+        "de": "Nutzerkonto"
+    },
+    "description": "Allows a user to authenticate to a system",
+    "description*": {
+        "en": "Allows a user to authenticate to a system",
+        "de": "Ermöglicht einem Benutzer, sich bei einem System zu authentifizieren"
+    },
+    "required": [
+        "type",
+        "username"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW8b3e627eb76b46d68fce3a12ff220c8e"
+            ]
+        },
+        "username": {
+            "title": "Username",
+            "title*": {
+                "de": "Nutzername"
+            },
+            "description": "Organization user ID",
+            "description*": {
+                "de": "Organization-User-ID"
+            },
+            "type": "string",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "$comment": "Displays a link to the system user page, preventing redirect to the user entity page",
+                    "value": "{{=<% %>=}} [{{fullurl:User:<%username%>|redirect=no}} <%username%>]"
+                }
+            ]
+        }
+    }
+}

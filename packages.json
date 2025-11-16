@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.50.1",
+            "version": "0.51.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -215,14 +215,85 @@
                         "header": {
                             "urlPath": "Category/Item.slot_header.wikitext"
                         },
-                        "header_template": {
-                            "urlPath": "Category/Item.slot_header_template.wikitext"
-                        },
                         "jsondata": {
                             "urlPath": "Category/Item.slot_jsondata.json"
                         },
                         "jsonschema": {
                             "urlPath": "Category/Item.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWb24f37ada8d043c194e7036df5d86b39",
+                    "label": "UserGroup",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWb24f37ada8d043c194e7036df5d86b39.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWb24f37ada8d043c194e7036df5d86b39.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWb24f37ada8d043c194e7036df5d86b39.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWb24f37ada8d043c194e7036df5d86b39.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWb24f37ada8d043c194e7036df5d86b39.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW5335efe7928d49619412fe28363b5e8a",
+                    "label": "Administrators",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSW5335efe7928d49619412fe28363b5e8a.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSW5335efe7928d49619412fe28363b5e8a.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSW5335efe7928d49619412fe28363b5e8a.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSW5335efe7928d49619412fe28363b5e8a.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW2b28cfd4bf8446e586f0e90152127b4a",
+                    "label": "RegisteredUsers",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSW2b28cfd4bf8446e586f0e90152127b4a.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSW2b28cfd4bf8446e586f0e90152127b4a.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSW2b28cfd4bf8446e586f0e90152127b4a.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSW2b28cfd4bf8446e586f0e90152127b4a.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW8b3e627eb76b46d68fce3a12ff220c8e",
+                    "label": "UserAccount",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW8b3e627eb76b46d68fce3a12ff220c8e.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW8b3e627eb76b46d68fce3a12ff220c8e.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW8b3e627eb76b46d68fce3a12ff220c8e.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW8b3e627eb76b46d68fce3a12ff220c8e.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW8b3e627eb76b46d68fce3a12ff220c8e.slot_jsonschema.json"
                         }
                     }
                 },
@@ -1349,6 +1420,40 @@
                     "namespace": "SMW_NS_PROPERTY",
                     "urlPath": "Property/Visible%20to.slot_main.wikitext",
                     "slots": {}
+                },
+                {
+                    "name": "HasGroupname",
+                    "label": "HasGroupname",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasGroupname.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasGroupname.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasGroupname.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasGroupname.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasUsername",
+                    "label": "HasUsername",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasUsername.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasUsername.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasUsername.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasUsername.slot_jsondata.json"
+                        }
+                    }
                 },
                 {
                     "name": "Helper/UI/Tiles/Grid",

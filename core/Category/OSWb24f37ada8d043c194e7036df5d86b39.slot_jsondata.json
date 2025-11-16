@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "b24f37ad-a8d0-43c1-94e7-036df5d86b39",
+    "label": [
+        {
+            "text": "User group",
+            "lang": "en"
+        },
+        {
+            "text": "Nutzergruppe",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Organizes system users as backbone of the permissions system",
+            "lang": "en"
+        },
+        {
+            "text": "Organisiert die System-Benutzer zur Implementierung des Berechtigungssystems",
+            "lang": "de"
+        }
+    ],
+    "name": "UserGroup"
+}

@@ -1,5 +1,6 @@
 {
     "@context": [
+        "/wiki/Category:Entity?action=raw&slot=jsonschema",
         {
             "exact_ontology_match***": {
                 "@id": "owl:sameAs",
@@ -8,8 +9,7 @@
             "rdf_type*": {
                 "@id": "schema:additionalType"
             }
-        },
-        "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        }
     ],
     "allOf": [
         {
@@ -26,13 +26,6 @@
     ],
     "properties": {
         "type": {
-            "eval_template": [
-                {
-                    "type": "mustache-wikitext",
-                    "mode": "render",
-                    "value": "{{#type}} [[:{{{.}}}]] <br>{{/type}}"
-                }
-            ],
             "items": {
                 "subclassof_range": "Category:Item",
                 "format": "autocomplete",
@@ -54,53 +47,6 @@
                         "default",
                         "query"
                     ]
-                }
-            }
-        },
-        "entry_access": {
-            "type": "object",
-            "title": "Access restrictions",
-            "title*": {
-                "de": "Zugriffsbeschränkungen"
-            },
-            "eval_template": {
-                "type": "mustache-wikitext",
-                "mode": "render",
-                "value": "{{=<% %>=}} {{#ifeq: <%={{ }}=%> {{{entry_access.read.level}}} {{=<% %>=}} |public|{{#set: |Visible to=public }} | }} <%={{ }}=%>"
-            },
-            "properties": {
-                "read": {
-                    "type": "object",
-                    "title": "Read access",
-                    "title*": {
-                        "de": "Lesezugriff"
-                    },
-                    "properties": {
-                        "level": {
-                            "type": "string",
-                            "title": "Level",
-                            "title*": {
-                                "de": "Level"
-                            },
-                            "enum": [
-                                "public",
-                                "internal",
-                                "restricted"
-                            ],
-                            "options": {
-                                "enum_titles": [
-                                    "Public",
-                                    "For all users",
-                                    "For some users"
-                                ],
-                                "enum_titles*": [
-                                    "Öffentlich",
-                                    "Für alle Nutzer",
-                                    "Für bestimmte Nutzer"
-                                ]
-                            }
-                        }
-                    }
                 }
             }
         }

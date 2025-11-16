@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasGroupname",
+    "property_type": "Text",
+    "uuid": "5bad5f46-d762-4871-bd24-261573a64b13",
+    "label": [
+        {
+            "text": "Groupname",
+            "lang": "en"
+        }
+    ],
+    "description": []
+}

@@ -1,0 +1,62 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
+        {
+            "groupname": "Property:HasGroupname"
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "b24f37ad-a8d0-43c1-94e7-036df5d86b39",
+    "title": "UserGroup",
+    "title*": {
+        "en": "User group",
+        "de": "Nutzergruppe"
+    },
+    "description": "Organizes system users as backbone of the permissions system",
+    "description*": {
+        "en": "Organizes system users as backbone of the permissions system",
+        "de": "Organisiert die System-Benutzer zur Implementierung des Berechtigungssystems"
+    },
+    "required": [
+        "type"
+    ],
+    "defaultProperties": [
+        "groupname"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWb24f37ada8d043c194e7036df5d86b39"
+            ]
+        },
+        "groupname": {
+            "type": "string",
+            "title": "Group name",
+            "title*": {
+                "de": "Gruppenname"
+            },
+            "format": "autocomplete",
+            "options": {
+                "autocomplete": {
+                    "search": "search_sysinfo",
+                    "getResultValue": "getResultValue_sysinfo",
+                    "renderResult": "renderResult_sysinfo",
+                    "onUpdate": "onUpdate_sysinfo",
+                    "onSubmit": "onSubmit_sysinfo",
+                    "sysinfo": "usergroups"
+                }
+            },
+            "eval_template": {
+                "$comment": "See https://www.mediawiki.org/wiki/Extension:Semantic_ACL",
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} <%groupname%> {{#set: |Editable by=whitelist |Editable by group= sysop;<%groupname%> |+sep=; }}"
+            }
+        }
+    }
+}

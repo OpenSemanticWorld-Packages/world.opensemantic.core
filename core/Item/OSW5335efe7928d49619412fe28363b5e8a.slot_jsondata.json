@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:OSWb24f37ada8d043c194e7036df5d86b39"
+    ],
+    "groupname": "sysop",
+    "uuid": "5335efe7-928d-4961-9412-fe28363b5e8a",
+    "label": [
+        {
+            "text": "Administrators",
+            "lang": "en"
+        },
+        {
+            "text": "Administratoren",
+            "lang": "de"
+        }
+    ],
+    "description": [],
+    "name": "Administrators"
+}

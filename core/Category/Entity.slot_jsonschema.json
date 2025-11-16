@@ -7,6 +7,7 @@
         "skos": "https://www.w3.org/TR/skos-reference/",
         "wiki": "https://wiki-dev.open-semantic-lab.org/id/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "odrl": "http://www.w3.org/ns/odrl/2/",
         "Category": {
             "@id": "wiki:Category-3A",
             "@prefix": true
@@ -122,6 +123,40 @@
         "short_name": {
             "@id": "Property:HasShortName"
         },
+        "access_policy": {
+            "@id": "odrl:hasPolicy",
+            "@type": "@id",
+            "@context": {
+                "usergroup_permissions": {
+                    "@id": "odrl:permission",
+                    "@type": "@id",
+                    "@context": {
+                        "assignee_usergroup": {
+                            "@id": "odrl:assignee",
+                            "@type": "@id"
+                        },
+                        "action": {
+                            "@id": "odrl:action",
+                            "@type": "@id"
+                        }
+                    }
+                },
+                "user_permissions": {
+                    "@id": "odrl:permission",
+                    "@type": "@id",
+                    "@context": {
+                        "assignee_user": {
+                            "@id": "odrl:assignee",
+                            "@type": "@id"
+                        },
+                        "action": {
+                            "@id": "odrl:action",
+                            "@type": "@id"
+                        }
+                    }
+                }
+            }
+        },
         "statements": {
             "@id": "Property:HasStatement",
             "@type": "@id"
@@ -161,6 +196,13 @@
             "propertyOrder": -1010,
             "type": "array",
             "format": "table",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <%#type%> {{Viewer/Link |page=<%.%> }} <br><%/type%>"
+                }
+            ],
             "items": {
                 "title": "Type",
                 "title*": {
@@ -184,6 +226,13 @@
             },
             "type": "array",
             "format": "table",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{#rdf_type}} {{=<% %>=}} {{Viewer/Link |url= <%={{ }}=%> {{{.}}} {{=<% %>=}} }} <br><%={{ }}=%>{{/rdf_type}}"
+                }
+            ],
             "items": {
                 "title": "RDF type",
                 "title*": {
@@ -203,6 +252,13 @@
             "description*": {
                 "de": "Verwenden Sie diese Eigenschaft nur, wenn alle in der Ontologie definierten Eigenschaften auf dieses Objekt übertragen werden können."
             },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{#exact_ontology_match}} {{=<% %>=}} {{Viewer/Link |url= <%={{ }}=%> {{{.}}} {{=<% %>=}} }} <br><%={{ }}=%>{{/exact_ontology_match}}"
+                }
+            ],
             "items": {
                 "type": "string",
                 "options": {
@@ -221,6 +277,13 @@
             "description*": {
                 "de": "Verwenden Sie diese Eigenschaft, wenn Sie nicht sicher sind, ob alle Eigenschaften aus der Ontologie für dieses Objekt geltend gemacht werden können, die Bedeutung aber sehr nahe liegt."
             },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{#close_ontology_match}} {{=<% %>=}} {{Viewer/Link |url= <%={{ }}=%> {{{.}}} {{=<% %>=}} }} <br><%={{ }}=%>{{/close_ontology_match}}"
+                }
+            ],
             "items": {
                 "type": "string",
                 "options": {
@@ -403,11 +466,13 @@
             "description*": {
                 "de": "Ordnungskategorien werden verwendet, um Instanzen zu kategorisieren, z. B. nach ihrer Verwendung, nicht aber nach ihren Eigenschaften. Bei der Abfrage nach Instanzen einer hier aufgeführten Ordnungskategorie wird diese Instanz zurückgegeben. Hinweis: Ordnungskategorien definieren keine Eigenschaften, während 'normale' Kategorien Eigenschaften definieren, denen eine Instanz Werte zuweist."
             },
-            "eval_template": {
-                "type": "mustache-wikitext",
-                "mode": "render",
-                "value": "{{=<% %>=}}<%#classification_categories%>[[:<%.%>]] <br> <%/classification_categories%>"
-            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <%#classification_categories%> {{Viewer/Link |page=<%.%> }} <br><%/classification_categories%>"
+                }
+            ],
             "items": {
                 "title": "Classification category",
                 "title*": {
@@ -434,11 +499,13 @@
             "description*": {
                 "de": "Dient der nutzerdefinierten Kategorisierung des Elements"
             },
-            "eval_template": {
-                "type": "mustache-wikitext",
-                "mode": "render",
-                "value": "{{#keywords}}[[{{{.}}}]] <br> {{/keywords}}"
-            },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <%#keywords%> {{Viewer/Link |page=<%.%> }} <br><%/keywords%>"
+                }
+            ],
             "items": {
                 "title": "Keyword",
                 "title*": {
@@ -459,11 +526,168 @@
             "description*": {
                 "de": "Andere Entitäten auf die diese basiert, z. B. wenn sie durch Kopieren entstanden ist"
             },
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <%#based_on%> {{Viewer/Link |page=<%.%> }} <br><%/based_on%>"
+                }
+            ],
             "items": {
-                "type": "string"
+                "type": "string",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "$comment": "All categories here since subclassof_range is limited by depth 5",
+                        "query": "[[:Category:%2B]]"
+                    }
+                }
             },
             "options": {
                 "hidden": "true"
+            }
+        },
+        "access_policy": {
+            "title": "AccessAndUsagePolicy",
+            "title*": {
+                "en": "Access policy",
+                "de": "Zugriffsbeschränkungen"
+            },
+            "description": "Defines access control rules (who can read/write this entity).",
+            "description*": {
+                "de": "Definiert Zugriffsregeln (wer darf diese Entität lesen/bearbeiten)."
+            },
+            "type": "object",
+            "defaultProperties": [
+                "usergroup_permissions"
+            ],
+            "$comment": "See also https://www.w3.org/TR/odrl-vocab/#term-hasPolicy and https://w3c.github.io/odrl/bp/#. For interoperability with DSP/DCAT see https://docs.internationaldataspaces.org/ids-knowledgebase/dataspace-protocol/catalog/catalog.protocol#id-1.2-dcat-and-odrl-profiles.",
+            "eval_template": {
+                "$comment": "See https://www.mediawiki.org/wiki/Extension:Semantic_ACL",
+                "type": "mustache-wikitext",
+                "mode": "render",
+                "value": "{{=<% %>=}} <%#access_policy.usergroup_permissions%> [[<%assignee_usergroup%>]] {{#switch: <%action%> |odrl:read= {{#set: |Visible to=whitelist |Visible to group= {{#ask: [[<%assignee_usergroup%>]]|?HasGroupname=|mainlabel=-|link=none|format=plain}} }} (read) |odrl:write= {{#set: |Editable by=whitelist |Editable by group= {{#ask: [[<%assignee_usergroup%>]]|?HasGroupname=|mainlabel=-|link=none|format=plain}} }} (write) |#default=}} <br> <%/access_policy.usergroup_permissions%> <%#access_policy.user_permissions%>  [[<%assignee_user%>]] {{#switch: <%action%> |odrl:read= {{#set: |Visible to=whitelist |Visible to user= User:{{#ask: [[<%assignee_user%>]]|?HasUsername=|mainlabel=-|link=none|format=plain}} }} (read) |odrl:write= {{#set: |Editable by=whitelist |Editable by user= User:{{#ask: [[<%assignee_user%>]]|?HasUsername=|mainlabel=-|link=none|format=plain}} }} (write) |#default=}} <br> <%/access_policy.user_permissions%>"
+            },
+            "properties": {
+                "usergroup_permissions": {
+                    "title": "GroupPermissions",
+                    "title*": {
+                        "en": "Group permissions",
+                        "de": "Gruppen-Erlaubnisse"
+                    },
+                    "type": "array",
+                    "format": "table",
+                    "minItems": 1,
+                    "items": {
+                        "title": "GroupPermission",
+                        "title*": {
+                            "en": "Permission",
+                            "de": "Erlaubnis"
+                        },
+                        "type": "object",
+                        "required": [
+                            "assignee_usergroup",
+                            "action"
+                        ],
+                        "properties": {
+                            "assignee_usergroup": {
+                                "title": "User group",
+                                "title*": {
+                                    "de": "Nutzergruppe"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "range": "Category:OSWb24f37ada8d043c194e7036df5d86b39",
+                                "options": {
+                                    "autocomplete": {
+                                        "$commment": "user should not create new or edit existing groups here",
+                                        "create_inline": false
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "string",
+                                "title": "Action",
+                                "title*": {
+                                    "de": "Aktion"
+                                },
+                                "enum": [
+                                    "odrl:read",
+                                    "odrl:write"
+                                ],
+                                "options": {
+                                    "enum_titles": [
+                                        "read",
+                                        "edit"
+                                    ],
+                                    "enum_titles*": [
+                                        "Lesen",
+                                        "Bearbeiten"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "user_permissions": {
+                    "title": "UserPermissions",
+                    "title*": {
+                        "en": "User permissions",
+                        "de": "Nutzer-Erlaubnisse"
+                    },
+                    "type": "array",
+                    "format": "table",
+                    "items": {
+                        "title": "Permission",
+                        "title*": {
+                            "en": "Permission",
+                            "de": "Erlaubnis"
+                        },
+                        "type": "object",
+                        "required": [
+                            "assignee_user",
+                            "action"
+                        ],
+                        "properties": {
+                            "assignee_user": {
+                                "title": "Specific user",
+                                "title*": {
+                                    "de": "Bestimmter Nutzer"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "range": "Category:OSW8b3e627eb76b46d68fce3a12ff220c8e",
+                                "options": {
+                                    "autocomplete": {
+                                        "$commment": "user should not create new or edit existing accounts here",
+                                        "create_inline": false
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "string",
+                                "title": "Action",
+                                "title*": {
+                                    "de": "Aktion"
+                                },
+                                "enum": [
+                                    "odrl:read",
+                                    "odrl:write"
+                                ],
+                                "options": {
+                                    "enum_titles": [
+                                        "read",
+                                        "edit"
+                                    ],
+                                    "enum_titles*": [
+                                        "Lesen",
+                                        "Bearbeiten"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "statements": {

@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:OSWb24f37ada8d043c194e7036df5d86b39"
+    ],
+    "groupname": "user",
+    "uuid": "2b28cfd4-bf84-46e5-86f0-e90152127b4a",
+    "label": [
+        {
+            "text": "Registered users",
+            "lang": "en"
+        },
+        {
+            "text": "Angemeldete Nutzer",
+            "lang": "de"
+        }
+    ],
+    "description": [],
+    "name": "RegisteredUsers"
+}
