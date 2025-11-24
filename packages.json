@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.51.0",
+            "version": "0.51.1",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -1420,6 +1420,23 @@
                     "namespace": "SMW_NS_PROPERTY",
                     "urlPath": "Property/Visible%20to.slot_main.wikitext",
                     "slots": {}
+                },
+                {
+                    "name": "HasSerialNumber",
+                    "label": "HasSerialNumber",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasSerialNumber.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasSerialNumber.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasSerialNumber.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasSerialNumber.slot_jsondata.json"
+                        }
+                    }
                 },
                 {
                     "name": "HasGroupname",

@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasSerialNumber",
+    "property_type": "Text",
+    "uuid": "6d543c84-04f9-4bb1-a020-fa3529ce3bf0",
+    "label": [
+        {
+            "text": "HasSerialNumber",
+            "lang": "en"
+        }
+    ],
+    "description": []
+}
