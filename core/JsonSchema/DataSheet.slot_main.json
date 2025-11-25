@@ -1,9 +1,5 @@
 {
-    "allOf": [
-        {
-            "$ref": "/wiki/JsonSchema:WikiFile?action=raw&slot=main"
-        }
-    ],
+    "$ref": "/wiki/JsonSchema:WikiFile?action=raw&slot=main",
     "title": "Data sheet",
     "title*": {
         "de": "Datenblatt"
