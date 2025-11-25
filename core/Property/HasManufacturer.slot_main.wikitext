@@ -1,0 +1,6 @@
+{{OslTemplate:Property
+|subproperty_of=
+|data_type=Text
+|allowed_value=
+|category=OSL/Property
+}}

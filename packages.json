@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.51.1",
+            "version": "0.51.2",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -1166,6 +1166,26 @@
                     }
                 },
                 {
+                    "name": "HasStatement",
+                    "label": "HasStatement",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasStatement.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasStatement.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasStatement.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasStatement.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasStatement.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
                     "name": "HasDescription",
                     "label": "HasDescription",
                     "namespace": "SMW_NS_PROPERTY",
@@ -1435,6 +1455,120 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasSerialNumber.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasInstructions",
+                    "label": "HasInstructions",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasInstructions.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasInstructions.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasInstructions.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasInstructions.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasInstructions.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasManual",
+                    "label": "HasManual",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasManual.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasManual.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasManual.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasManual.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasTypeNumber",
+                    "label": "HasTypeNumber",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasTypeNumber.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasTypeNumber.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasTypeNumber.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasTypeNumber.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasManufacturer",
+                    "label": "HasManufacturer",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasManufacturer.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasManufacturer.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasManufacturer.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasManufacturer.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasManufacturer.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasDataSheet",
+                    "label": "HasDataSheet",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasDataSheet.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasDataSheet.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasDataSheet.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasDataSheet.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasDataSheet.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasSafetyDataSheet",
+                    "label": "HasSafetyDataSheet",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasSafetyDataSheet.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasSafetyDataSheet.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasSafetyDataSheet.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasSafetyDataSheet.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasSafetyDataSheet.slot_jsonschema.json"
                         }
                     }
                 },

@@ -1,0 +1,23 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasManufacturer",
+    "property_type": "Page",
+    "uuid": "bdb826e1-4b9d-4c5c-8158-07ba05ba10a5",
+    "label": [
+        {
+            "text": "HasManufacturer",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "States the manufacturer of an item, e.g. physical item or software",
+            "lang": "en"
+        }
+    ],
+    "relations": [],
+    "subproperty_of": "Property:HasCreator"
+}

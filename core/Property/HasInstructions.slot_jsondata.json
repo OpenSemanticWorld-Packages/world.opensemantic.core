@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasInstructions",
+    "property_type": "Page",
+    "uuid": "4c5d50ee-bba4-405b-bcd0-1f772ab292b9",
+    "label": [
+        {
+            "text": "Instructions",
+            "lang": "en"
+        }
+    ],
+    "description": [],
+    "subproperty_of": [
+        "Property:HasFileAttachment"
+    ]
+}

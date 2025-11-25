@@ -1,0 +1,14 @@
+{
+    "property_type": "Page",
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "HasManual",
+    "uuid": "26186f8f-e949-4a80-8455-b5e5a0e8f204",
+    "label": [
+        {
+            "text": "HasManual",
+            "lang": "en"
+        }
+    ]
+}

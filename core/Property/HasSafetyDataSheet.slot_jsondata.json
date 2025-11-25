@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasSafetyDataSheet",
+    "property_type": "Page",
+    "uuid": "2f532461-3f24-42f8-81d5-177820ffbfd2",
+    "label": [
+        {
+            "text": "Safety data sheet",
+            "lang": "en"
+        }
+    ],
+    "description": [],
+    "subproperty_of": [
+        "Property:HasFileAttachment"
+    ]
+}

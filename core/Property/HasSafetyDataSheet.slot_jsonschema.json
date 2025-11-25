@@ -1,0 +1,10 @@
+{
+    "uuid": "2f532461-3f24-42f8-81d5-177820ffbfd2",
+    "title": "HasSafetyDataSheet",
+    "title*": {
+        "en": "Safety data sheet"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

@@ -1,0 +1,10 @@
+{
+    "uuid": "490e3de0-8870-4542-af7b-45ad248e8b5f",
+    "title": "HasStatement",
+    "title*": {
+        "de": "Statement"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

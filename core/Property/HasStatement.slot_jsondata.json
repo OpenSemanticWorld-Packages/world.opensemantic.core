@@ -1,0 +1,16 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasStatement",
+    "property_type": "Page",
+    "uuid": "490e3de0-8870-4542-af7b-45ad248e8b5f",
+    "label": [
+        {
+            "text": "Statement",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

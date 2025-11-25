@@ -1,0 +1,12 @@
+{
+    "uuid": "bdb826e1-4b9d-4c5c-8158-07ba05ba10a5",
+    "title": "HasManufacturer",
+    "title*": {
+        "en": "HasManufacturer"
+    },
+    "description": "States the manufacturer of an item, e.g. physical item or software",
+    "description*": {
+        "en": "States the manufacturer of an item, e.g. physical item or software"
+    },
+    "type": "string"
+}

@@ -1,0 +1,10 @@
+{
+    "uuid": "da21d3b9-4a65-4406-bb90-053315d1a8f5",
+    "title": "HasDataSheet",
+    "title*": {
+        "en": "Data sheet"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

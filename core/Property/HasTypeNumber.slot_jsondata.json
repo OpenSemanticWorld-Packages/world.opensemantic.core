@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasTypeNumber",
+    "property_type": "Text",
+    "uuid": "6b2476f7-12be-495f-a9ec-ff4e266c3bd6",
+    "label": [
+        {
+            "text": "Type number",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

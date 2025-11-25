@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasDataSheet",
+    "property_type": "Page",
+    "uuid": "da21d3b9-4a65-4406-bb90-053315d1a8f5",
+    "label": [
+        {
+            "text": "Data sheet",
+            "lang": "en"
+        }
+    ],
+    "description": [],
+    "subproperty_of": [
+        "Property:HasFileAttachment"
+    ]
+}

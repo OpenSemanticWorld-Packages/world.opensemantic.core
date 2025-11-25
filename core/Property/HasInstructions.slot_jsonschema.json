@@ -1,0 +1,10 @@
+{
+    "uuid": "4c5d50ee-bba4-405b-bcd0-1f772ab292b9",
+    "title": "HasInstructions",
+    "title*": {
+        "en": "Instructions"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}
