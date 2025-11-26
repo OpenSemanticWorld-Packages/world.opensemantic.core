@@ -66,46 +66,22 @@
             ]
         },
         "type_no": {
-            "allOf": [
-                {
-                    "$ref": "/wiki/JsonSchema:TypeNumber?action=raw&slot=main"
-                }
-            ]
+            "$ref": "/wiki/JsonSchema:TypeNumber?action=raw&slot=main"
         },
         "manufacturer": {
-            "allOf": [
-                {
-                    "$ref": "/wiki/JsonSchema:Manufacturer?action=raw&slot=main"
-                }
-            ]
+            "$ref": "/wiki/JsonSchema:Manufacturer?action=raw&slot=main"
         },
         "data_sheet": {
-            "allOf": [
-                {
-                    "$ref": "/wiki/JsonSchema:DataSheet?action=raw&slot=main"
-                }
-            ]
+            "$ref": "/wiki/JsonSchema:DataSheet?action=raw&slot=main"
         },
         "safety_data_sheet": {
-            "allOf": [
-                {
-                    "$ref": "/wiki/JsonSchema:SafetyDataSheet?action=raw&slot=main"
-                }
-            ]
+            "$ref": "/wiki/JsonSchema:SafetyDataSheet?action=raw&slot=main"
         },
         "instructions": {
-            "allOf": [
-                {
-                    "$ref": "/wiki/JsonSchema:Instructions?action=raw&slot=main"
-                }
-            ]
+            "$ref": "/wiki/JsonSchema:Instructions?action=raw&slot=main"
         },
         "manual": {
-            "allOf": [
-                {
-                    "$ref": "/wiki/JsonSchema:Manual?action=raw&slot=main"
-                }
-            ]
+            "$ref": "/wiki/JsonSchema:Manual?action=raw&slot=main"
         },
         "supply": {
             "title": "Supply",
