@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.52.0",
+            "version": "0.52.1",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -237,6 +237,26 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/Item.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW31a9c96c1f444f84b944d49afbce409b",
+                    "label": "PagePackage",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW31a9c96c1f444f84b944d49afbce409b.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW31a9c96c1f444f84b944d49afbce409b.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW31a9c96c1f444f84b944d49afbce409b.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW31a9c96c1f444f84b944d49afbce409b.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW31a9c96c1f444f84b944d49afbce409b.slot_jsonschema.json"
                         }
                     }
                 },
@@ -1037,6 +1057,26 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasType.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasSchema",
+                    "label": "HasSchema",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasSchema.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasSchema.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasSchema.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasSchema.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasSchema.slot_jsonschema.json"
                         }
                     }
                 },

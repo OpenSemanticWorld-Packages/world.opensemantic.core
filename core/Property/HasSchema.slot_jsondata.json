@@ -1,0 +1,16 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasSchema",
+    "property_type": "Page",
+    "uuid": "dc92506f-8673-4524-aac1-55d2d5d98ca1",
+    "label": [
+        {
+            "text": "Schema",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

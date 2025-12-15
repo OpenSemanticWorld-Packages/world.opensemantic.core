@@ -1,0 +1,10 @@
+{
+    "uuid": "dc92506f-8673-4524-aac1-55d2d5d98ca1",
+    "title": "HasSchema",
+    "title*": {
+        "de": "Schema"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

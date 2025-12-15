@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "31a9c96c-1f44-4f84-b944-d49afbce409b",
+    "label": [
+        {
+            "text": "Page Package",
+            "lang": "en"
+        },
+        {
+            "text": "Seitenpaket",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "A collection of wiki pages",
+            "lang": "en"
+        },
+        {
+            "text": "Eine Samlung von Wiki-Seiten",
+            "lang": "de"
+        }
+    ],
+    "name": "PagePackage"
+}

@@ -1,0 +1,90 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
+        {
+            "url*": "Property:HasUrl",
+            "version*": "Property:HasVersion",
+            "global_id": {
+                "@id": "Property:HasId"
+            },
+            "parts": {
+                "@id": "Property:HasPart",
+                "@type": "@id"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "31a9c96c-1f44-4f84-b944-d49afbce409b",
+    "title": "PagePackage",
+    "title*": {
+        "en": "Page Package",
+        "de": "Seitenpaket"
+    },
+    "description": "A collection of wiki pages",
+    "description*": {
+        "en": "A collection of wiki pages",
+        "de": "Eine Samlung von Wiki-Seiten"
+    },
+    "required": [
+        "type"
+    ],
+    "defaultProperties": [
+        "global_id",
+        "version",
+        "url",
+        "parts"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW31a9c96c1f444f84b944d49afbce409b"
+            ]
+        },
+        "global_id": {
+            "type": "string",
+            "title": "ID",
+            "description": "e.g. world.opensemantic.core"
+        },
+        "version": {
+            "title": "Version",
+            "description": "e.g. 'v1.0.1",
+            "type": "string"
+        },
+        "url": {
+            "title": "URL / Websites",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "format": "url",
+                "title": "URL"
+            }
+        },
+        "parts": {
+            "type": "array",
+            "title": "Included page(s)",
+            "title*": {
+                "de": "Enthaltene Seite(n)"
+            },
+            "format": "table",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "title": "Page",
+                "title*": {
+                    "de": "Seite"
+                },
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[Category:Entity]]OR[[:Category:%2B]]"
+                    }
+                }
+            }
+        }
+    }
+}
