@@ -1,5 +1,5 @@
 <!-- List of all events--> 
-== {{#switch:{{USERLANGUAGECODE}}|#default=Events|de=Ereignisse}} ==
+<h2 class="section-collapsible-initial-collapsed section-heading--collapsed">{{#switch:{{USERLANGUAGECODE}}|#default=Events|de=Ereignisse}}</h2>
 {{#ask:[[-HasEvent::{{FULLPAGENAME}}]] OR [[Category:OSWb97757b46edb430591758662c18d354d]][[HasTarget::{{FULLPAGENAME}}]]
 |mainlabel={{#switch:{{USERLANGUAGECODE}}|#default=Event|de=Ereignis}}
 |?HasType={{#switch:{{USERLANGUAGECODE}}|#default=Type|de=Typ}}
