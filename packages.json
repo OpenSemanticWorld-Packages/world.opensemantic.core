@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.51.4",
+            "version": "0.52.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -22,6 +22,23 @@
             "requiredPackages": [],
             "baseURL": "https://raw.githubusercontent.com/OpenSemanticWorld-Packages/world.opensemantic.core/main/core/",
             "pages": [
+                {
+                    "name": "OSWf831ae62f2194f58a828b99ab406898b",
+                    "label": "WorldOpensemanticCore",
+                    "namespace": "NS_ITEM",
+                    "urlPath": "Item/OSWf831ae62f2194f58a828b99ab406898b.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Item/OSWf831ae62f2194f58a828b99ab406898b.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Item/OSWf831ae62f2194f58a828b99ab406898b.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Item/OSWf831ae62f2194f58a828b99ab406898b.slot_jsondata.json"
+                        }
+                    }
+                },
                 {
                     "name": "Lustache",
                     "namespace": "NS_MODULE",
@@ -1603,6 +1620,57 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasUsername.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasId",
+                    "label": "HasId",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasId.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasId.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasId.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasId.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasUrl",
+                    "label": "HasUrl",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasUrl.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasUrl.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasUrl.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasUrl.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasVersion",
+                    "label": "HasVersion",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasVersion.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasVersion.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasVersion.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasVersion.slot_jsondata.json"
                         }
                     }
                 },

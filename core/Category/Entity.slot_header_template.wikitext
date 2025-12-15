@@ -1,6 +1,7 @@
 <table class="info_box">
 <tr>
-<th class="heading" colspan="2">{{#if: {{{label|}}}|{{{label|}}} | {{{id|{{PAGENAME}}}}} }} 
+<th colspan="2" class="heading">{{#if: {{{label|}}}|{{{label|}}} | {{{id|{{PAGENAME}}}}} }} {{#info: ID: {{{id|{{PAGENAMEE}}}}} &#124; UUID: {{{uuid|}}} {{#if: {{#ask: [[Category:OSW31a9c96c1f444f84b944d49afbce409b]][[HasPart::{{FULLPAGENAME}}]] |format=plain |mainlabel=HasId |headers=hide }} | 
+&#124; 📦: {{#ask: [[Category:OSW31a9c96c1f444f84b944d49afbce409b]][[HasPart::{{FULLPAGENAME}}]] |format=plain |mainlabel=HasId |headers=hide }} |}} |max-width=350 | info}} </th>
 </th>
 </tr>
 <tr class="osw-table-details">
@@ -54,8 +55,8 @@
 </tr>
 <tr>
 <td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
-    |de=Aussagen (ausgehend)
-    |#default=Statements (outgoing)
+    |de=Aussagen (eingehend)
+    |#default=Statements (incoming)
     }}</td>
 </tr>
 <tr>

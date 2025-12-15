@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasId",
+    "property_type": "Text",
+    "uuid": "fb49af80-86bc-40c4-a013-dca5ab8a95d4",
+    "label": [
+        {
+            "text": "HasId",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

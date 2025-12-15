@@ -1,0 +1,14 @@
+{
+    "property_type": "Text",
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasVersion",
+    "uuid": "b5719704-a2f5-416d-a6bb-d47fed01ff25",
+    "label": [
+        {
+            "text": "Version",
+            "lang": "en"
+        }
+    ]
+}

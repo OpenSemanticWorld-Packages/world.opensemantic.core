@@ -1,0 +1,20 @@
+{
+    "property_type": "URL",
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasUrl",
+    "uuid": "854eb935-1a0f-42f5-80e9-51ee57a01392",
+    "label": [
+        {
+            "text": "URL",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Generic link to an internet ressource",
+            "lang": "en"
+        }
+    ]
+}
