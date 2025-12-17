@@ -701,7 +701,7 @@
             "eval_template": {
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{#statements}}.. {{#predicate}}[[{{predicate}}]]{{/predicate}}{{#property}}[[{{property}}]]{{/property}}{{#quantity}}[[{{quantity}}]]{{/quantity}} {{#object}}[[{{object}}]]{{/object}}{{#value}}{{value}}{{/value}}<br>{{/statements}}"
+                "value": "{{=<% %>=}} <%#statements%>.. {{Viewer/Link |page=<%#predicate%><%predicate%><%/predicate%><%#property%><%property%><%/property%><%#quantity%><%quantity%><%/quantity%>}} <%#object%>{{Viewer/Link |page=<%object%>}}<%/object%><%#value%><%value%><%/value%><br><%/statements%>"
             },
             "items": {
                 "$ref": "/wiki/JsonSchema:Statement?action=raw"

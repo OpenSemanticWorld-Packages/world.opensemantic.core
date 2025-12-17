@@ -69,6 +69,7 @@
     |format=plainlist
     |template=Template:Helper/UI/Query/ReverseListFormat
     |named args=yes
+    |link=none
     |@deferred
     }}</td>
 </tr>
