@@ -566,7 +566,7 @@
                 "$comment": "See https://www.mediawiki.org/wiki/Extension:Semantic_ACL",
                 "type": "mustache-wikitext",
                 "mode": "render",
-                "value": "{{=<% %>=}} <%#access_policy.usergroup_permissions%> [[<%assignee_usergroup%>]] {{#switch: <%action%> |odrl:read= {{#set: |Visible to=whitelist |Visible to group= {{#ask: [[<%assignee_usergroup%>]]|?HasGroupname=|mainlabel=-|link=none|format=plain}} }} (read) |odrl:write= {{#set: |Editable by=whitelist |Editable by group= {{#ask: [[<%assignee_usergroup%>]]|?HasGroupname=|mainlabel=-|link=none|format=plain}} }} (write) |#default=}} <br> <%/access_policy.usergroup_permissions%> <%#access_policy.user_permissions%>  [[<%assignee_user%>]] {{#switch: <%action%> |odrl:read= {{#set: |Visible to=whitelist |Visible to user= User:{{#ask: [[<%assignee_user%>]]|?HasUsername=|mainlabel=-|link=none|format=plain}} }} (read) |odrl:write= {{#set: |Editable by=whitelist |Editable by user= User:{{#ask: [[<%assignee_user%>]]|?HasUsername=|mainlabel=-|link=none|format=plain}} }} (write) |#default=}} <br> <%/access_policy.user_permissions%>"
+                "value": "{{=<% %>=}} <%#access_policy.usergroup_permissions%> {{#if: <%assignee_usergroup%> | [[<%assignee_usergroup%>]] {{#switch: <%action%> |odrl:read= {{#set: |Visible to=whitelist |Visible to group= {{#ask: [[<%assignee_usergroup%>]]|?HasGroupname=|mainlabel=-|link=none|format=plain}} }} (read) |odrl:write= {{#set: |Editable by=whitelist |Editable by group= {{#ask: [[<%assignee_usergroup%>]]|?HasGroupname=|mainlabel=-|link=none|format=plain}} }} (write) |#default=}} <br> |}} <%/access_policy.usergroup_permissions%> <%#access_policy.user_permissions%> {{#if: <%assignee_user%> | [[<%assignee_user%>]] {{#switch: <%action%> |odrl:read= {{#set: |Visible to=whitelist |Visible to user= User:{{#ask: [[<%assignee_user%>]]|?HasUsername=|mainlabel=-|link=none|format=plain}} }} (read) |odrl:write= {{#set: |Editable by=whitelist |Editable by user= User:{{#ask: [[<%assignee_user%>]]|?HasUsername=|mainlabel=-|link=none|format=plain}} }} (write) |#default=}} <br> |}} <%/access_policy.user_permissions%>"
             },
             "properties": {
                 "usergroup_permissions": {
@@ -577,7 +577,6 @@
                     },
                     "type": "array",
                     "format": "table",
-                    "minItems": 1,
                     "items": {
                         "title": "GroupPermission",
                         "title*": {
@@ -596,6 +595,7 @@
                                     "de": "Nutzergruppe"
                                 },
                                 "type": "string",
+                                "minLength": 1,
                                 "format": "autocomplete",
                                 "range": "Category:OSWb24f37ada8d043c194e7036df5d86b39",
                                 "options": {
@@ -655,6 +655,7 @@
                                     "de": "Bestimmter Nutzer"
                                 },
                                 "type": "string",
+                                "minLength": 1,
                                 "format": "autocomplete",
                                 "range": "Category:OSW8b3e627eb76b46d68fce3a12ff220c8e",
                                 "options": {
