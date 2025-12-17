@@ -1,1 +1,1 @@
-<includeonly>* {{#if: {{{subject|}}}|{{{subject|}}}|{{{default_subject|}}}}}  {{{property}}}  ..<br></includeonly>
+<includeonly>* {{#if: {{{subject|}}}|{{Viewer/Link |page={{{subject|}}}}}|{{Viewer/Link |page={{{default_subject|}}}}}}}  {{Viewer/Link |page={{{property}}}}}  ..<br></includeonly>

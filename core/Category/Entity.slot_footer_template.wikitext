@@ -1,13 +1,15 @@
 
 {{#if: {{#ask: [[IsPartOf::{{FULLPAGENAME}}]]|format=plain|limit=1|searchlabel=}} |
-=={{{_label_attachments| {{#switch:{{USERLANGUAGECODE}}|en=Structure|de=Struktur|#default=Structure}} }}}==
+=={{#switch:{{USERLANGUAGECODE}}|en=Structure|de=Struktur|#default=Structure}}==
 
-{{#tree:
+{{#tree:  minExpandLevel=2 |
 {{#ask:
  [[{{FULLPAGENAME}}]]
  OR [[IsPartOf::{{FULLPAGENAME}}]]
  OR [[IsPartOf.IsPartOf::{{FULLPAGENAME}}]]
  OR [[IsPartOf.IsPartOf.IsPartOf::{{FULLPAGENAME}}]]
+ OR [[IsPartOf.IsPartOf.IsPartOf.IsPartOf::{{FULLPAGENAME}}]]
+ OR [[IsPartOf.IsPartOf.IsPartOf.IsPartOf.IsPartOf::{{FULLPAGENAME}}]]
  |format=tree
  |parent=IsPartOf
 }}
