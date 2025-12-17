@@ -20,10 +20,6 @@
                 "@id": "Property:HasEvent",
                 "@type": "@id"
             },
-            "purposes": {
-                "@id": "Property:HasPurpose",
-                "@type": "xsd:string"
-            },
             "slots": {
                 "@id": "Property:HasSlot",
                 "@type": "@id",
@@ -93,28 +89,6 @@
         "type": {
             "default": [
                 "Category:OSWe427aafafbac4262955b9f690a83405d"
-            ]
-        },
-        "purposes": {
-            "title": "Purpose(s)",
-            "title*": {
-                "de": "Zweck(e)"
-            },
-            "type": "array",
-            "format": "table",
-            "items": {
-                "title": "Purpose",
-                "title*": {
-                    "de": "Zweck"
-                },
-                "type": "string"
-            },
-            "eval_template": [
-                {
-                    "type": "mustache-wikitext",
-                    "mode": "render",
-                    "value": "{{=<% %>=}} <ul><%#purposes%><li><%.%></li><%/purposes%></ul>"
-                }
             ]
         },
         "typical_process": {
