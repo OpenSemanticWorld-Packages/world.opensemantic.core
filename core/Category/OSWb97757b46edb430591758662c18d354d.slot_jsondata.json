@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "b97757b4-6edb-4305-9175-8662c18d354d",
+    "label": [
+        {
+            "text": "Event",
+            "lang": "en"
+        },
+        {
+            "text": "Ereignis",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Something that happens or takes place, esp. something significant or noteworthy; an incident, an occurrence (according to Oxford English Dictionary).",
+            "lang": "en"
+        },
+        {
+            "text": "Etwas, das geschieht oder stattfindet, insbesondere etwas Bedeutendes oder Bemerkenswertes; ein Ereignis, ein Vorfall.",
+            "lang": "de"
+        }
+    ],
+    "name": "Event"
+}

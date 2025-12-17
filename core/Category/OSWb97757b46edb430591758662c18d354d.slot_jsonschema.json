@@ -1,0 +1,111 @@
+{
+    "@context": [
+        {
+            "duration": {
+                "@id": "Property:HasDuration"
+            },
+            "duration*": {
+                "@id": "schema:duration"
+            },
+            "end_date": {
+                "@id": "Property:HasEndDate",
+                "@type": "xs:date"
+            },
+            "end_date*": {
+                "@id": "schema:endDate",
+                "@type": "xs:date"
+            },
+            "end_date_time": {
+                "@id": "Property:HasEndDateAndTime",
+                "@type": "xs:dateTime"
+            },
+            "end_date_time*": {
+                "@id": "schema:endDate",
+                "@type": "xs:dateTime"
+            },
+            "start_date": {
+                "@id": "Property:HasStartDate",
+                "@type": "xs:date"
+            },
+            "start_date*": {
+                "@id": "schema:startDate",
+                "@type": "xs:date"
+            },
+            "start_date_time": {
+                "@id": "Property:HasStartDateAndTime",
+                "@type": "xs:dateTime"
+            },
+            "start_date_time*": {
+                "@id": "schema:startDate",
+                "@type": "xs:dateTime"
+            }
+        },
+        "/wiki/Category:Item?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "b97757b4-6edb-4305-9175-8662c18d354d",
+    "title": "Event",
+    "title*": {
+        "en": "Event",
+        "de": "Ereignis"
+    },
+    "description": "Something that happens or takes place, esp. something significant or noteworthy; an incident, an occurrence (according to Oxford English Dictionary).",
+    "description*": {
+        "en": "Something that happens or takes place, esp. something significant or noteworthy; an incident, an occurrence (according to Oxford English Dictionary).",
+        "de": "Etwas, das geschieht oder stattfindet, insbesondere etwas Bedeutendes oder Bemerkenswertes; ein Ereignis, ein Vorfall."
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWb97757b46edb430591758662c18d354d"
+            ]
+        },
+        "start_date": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:StartDate?action=raw"
+                }
+            ]
+        },
+        "start_date_time": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:StartDateTime?action=raw"
+                }
+            ]
+        },
+        "end_date": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:EndDate?action=raw"
+                }
+            ]
+        },
+        "end_date_time": {
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:EndDateTime?action=raw"
+                }
+            ]
+        },
+        "duration": {
+            "title": "Duration",
+            "title*": {
+                "de": "Dauer"
+            },
+            "allOf": [
+                {
+                    "$ref": "/wiki/JsonSchema:Duration?action=raw"
+                }
+            ]
+        }
+    }
+}

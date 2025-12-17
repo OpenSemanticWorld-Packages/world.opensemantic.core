@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "name": "HasTypicalProcess",
+    "property_type": "Page",
+    "uuid": "445f2ca2-1311-44a1-8cb9-c44d34bbc55c",
+    "label": [
+        {
+            "text": "HasTypicalProcess",
+            "lang": "en"
+        }
+    ],
+    "description": []
+}

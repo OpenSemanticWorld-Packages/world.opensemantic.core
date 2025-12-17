@@ -1,0 +1,11 @@
+{
+    "uuid": "db05baa0-7f06-4a0e-b7ea-e8b40b4bcc3d",
+    "title": "HasAction",
+    "title*": {
+        "en": "has action",
+        "de": "hat Aktion"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

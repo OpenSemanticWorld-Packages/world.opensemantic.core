@@ -1,0 +1,15 @@
+{
+    "type": [
+        "Category:DataProperty"
+    ],
+    "name": "HasInitDate",
+    "property_type": "Date",
+    "uuid": "16d6d8ca-c42f-43a1-a95e-bc42dda66fe7",
+    "label": [
+        {
+            "text": "HasInitDate",
+            "lang": "en"
+        }
+    ],
+    "subproperty_of": "Property:HasStartDate"
+}

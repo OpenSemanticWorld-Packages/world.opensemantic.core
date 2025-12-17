@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.52.2",
+            "version": "0.52.3",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -875,6 +875,52 @@
                     }
                 },
                 {
+                    "name": "OSWb97757b46edb430591758662c18d354d",
+                    "label": "Event",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW5433f882b9f14dca81994e058c8ab4a0",
+                    "label": "ToolMaintenanceEvent",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "Query/SlotAction",
+                    "namespace": "NS_TEMPLATE",
+                    "urlPath": "Template/Query/SlotAction.slot_main.wikitext",
+                    "slots": {}
+                },
+                {
                     "name": "Property",
                     "label": "Property",
                     "namespace": "NS_CATEGORY",
@@ -1711,6 +1757,160 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasVersion.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasEvent",
+                    "label": "HasEvent",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasEvent.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasEvent.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasEvent.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasEvent.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasEvent.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasSlot",
+                    "label": "HasSlot",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasSlot.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasSlot.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasSlot.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasSlot.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasSlot.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasOccupant",
+                    "label": "HasOccupant",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasOccupant.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasOccupant.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasOccupant.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasOccupant.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasOccupant.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasTarget",
+                    "label": "HasTarget",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasTarget.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasTarget.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasTarget.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasTarget.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasTarget.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasAction",
+                    "label": "HasAction",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasAction.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasAction.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasAction.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasAction.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasAction.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasTypeRestriction",
+                    "label": "HasTypeRestriction",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasTypeRestriction.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasTypeRestriction.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasTypeRestriction.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasTypeRestriction.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasTypeRestriction.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasInitDate",
+                    "label": "HasInitDate",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasInitDate.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasInitDate.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasInitDate.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasInitDate.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasTypicalProcess",
+                    "label": "HasTypicalProcess",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasTypicalProcess.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasTypicalProcess.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasTypicalProcess.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasTypicalProcess.slot_jsondata.json"
                         }
                     }
                 },

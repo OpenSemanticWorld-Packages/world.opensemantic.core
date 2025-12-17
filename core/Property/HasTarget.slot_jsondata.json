@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasTarget",
+    "property_type": "Page",
+    "uuid": "90d2fbae-774a-4fab-8601-6a7904577cdc",
+    "label": [
+        {
+            "text": "has target",
+            "lang": "en"
+        },
+        {
+            "text": "hat Ziel",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

@@ -1,0 +1,1 @@
+<includeonly>{{#ask: [[{{{1}}}]]|?HasOccupant=|format=plain|mainlabel=-|default={{#switch:{{USERLANGUAGECODE}}|de=Keine Belegung|#default=No occupant}} }} @ {{#ask: [[{{{1}}}]]|?HasSlot=|format=plain|mainlabel=-}}</includeonly>

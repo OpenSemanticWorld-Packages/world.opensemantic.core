@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasTypeRestriction",
+    "property_type": "Page",
+    "uuid": "b683fd35-f94e-4b52-8009-730fcd4c8840",
+    "label": [
+        {
+            "text": "has type restriction",
+            "lang": "en"
+        },
+        {
+            "text": "hat Typ-Einschränkung",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

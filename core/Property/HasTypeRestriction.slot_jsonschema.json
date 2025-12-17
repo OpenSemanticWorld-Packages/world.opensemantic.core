@@ -1,0 +1,11 @@
+{
+    "uuid": "b683fd35-f94e-4b52-8009-730fcd4c8840",
+    "title": "HasTypeRestriction",
+    "title*": {
+        "en": "has type restriction",
+        "de": "hat Typ-Einschränkung"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

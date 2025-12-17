@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:OSWb97757b46edb430591758662c18d354d"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "5433f882-b9f1-4dca-8199-4e058c8ab4a0",
+    "label": [
+        {
+            "text": "Tool maintenance event",
+            "lang": "en"
+        },
+        {
+            "text": "Werkzeugwartungs-Ereignis",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "An event describing the maintenance of a tool",
+            "lang": "en"
+        },
+        {
+            "text": "Ein Ereignis, das die Wartung eines Werkzeugs beschreibt",
+            "lang": "de"
+        }
+    ],
+    "name": "ToolMaintenanceEvent"
+}

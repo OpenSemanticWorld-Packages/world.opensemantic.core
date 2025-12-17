@@ -1,0 +1,11 @@
+{
+    "uuid": "90d2fbae-774a-4fab-8601-6a7904577cdc",
+    "title": "HasTarget",
+    "title*": {
+        "en": "has target",
+        "de": "hat Ziel"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

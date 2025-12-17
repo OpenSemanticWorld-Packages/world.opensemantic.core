@@ -1,0 +1,11 @@
+{
+    "uuid": "8551b2eb-37c7-4695-9767-14ebe644eb6c",
+    "title": "HasEvent",
+    "title*": {
+        "en": "has event",
+        "de": "hat Ereignis"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

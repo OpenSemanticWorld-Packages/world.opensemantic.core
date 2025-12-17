@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasOccupant",
+    "property_type": "Page",
+    "uuid": "4f21c196-f91b-435a-b8bd-927c198aed95",
+    "label": [
+        {
+            "text": "has occupant",
+            "lang": "en"
+        },
+        {
+            "text": "hat Belegung",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

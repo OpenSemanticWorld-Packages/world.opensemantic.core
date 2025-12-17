@@ -1,0 +1,11 @@
+{
+    "uuid": "61a26714-681b-443e-a2df-37d1d401099e",
+    "title": "HasSlot",
+    "title*": {
+        "en": "has slot",
+        "de": "hat Slot"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}

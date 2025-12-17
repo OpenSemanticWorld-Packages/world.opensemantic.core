@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasSlot",
+    "property_type": "Page",
+    "uuid": "61a26714-681b-443e-a2df-37d1d401099e",
+    "label": [
+        {
+            "text": "has slot",
+            "lang": "en"
+        },
+        {
+            "text": "hat Slot",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

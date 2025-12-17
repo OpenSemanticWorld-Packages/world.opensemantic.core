@@ -1,0 +1,20 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasAction",
+    "property_type": "Page",
+    "uuid": "db05baa0-7f06-4a0e-b7ea-e8b40b4bcc3d",
+    "label": [
+        {
+            "text": "has action",
+            "lang": "en"
+        },
+        {
+            "text": "hat Aktion",
+            "lang": "de"
+        }
+    ],
+    "description": []
+}

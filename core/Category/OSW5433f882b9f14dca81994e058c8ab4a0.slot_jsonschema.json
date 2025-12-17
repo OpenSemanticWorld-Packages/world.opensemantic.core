@@ -1,0 +1,316 @@
+{
+    "@context": [
+        {
+            "start_date_time": {
+                "@id": "Property:HasStartDate",
+                "@type": "xsd:dateTime"
+            },
+            "end_date_time": {
+                "@id": "Property:HasEndDate",
+                "@type": "xsd:dateTime"
+            },
+            "slot_actions": {
+                "@id": "Property:HasAction",
+                "@type": "@id",
+                "@context": {
+                    "type": {
+                        "@id": "Property:HasType",
+                        "@type": "@id"
+                    },
+                    "slot_osw_id": {
+                        "@id": "Property:HasSlot",
+                        "@type": "@id"
+                    },
+                    "slot_occupant": {
+                        "@id": "Property:HasStatement",
+                        "@type": "@id",
+                        "@context": {
+                            "slot_occupant_instance_property": "Property:HasProperty",
+                            "slot_occupant_instance": "Property:HasObject"
+                        }
+                    }
+                }
+            },
+            "target_object": {
+                "@id": "Property:HasStatement",
+                "@type": "@id",
+                "@context": {
+                    "target_object_instance_property": "Property:HasProperty",
+                    "target_object_instance": "Property:HasObject"
+                }
+            }
+        },
+        "/wiki/Category:OSWb97757b46edb430591758662c18d354d?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSWb97757b46edb430591758662c18d354d?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "5433f882-b9f1-4dca-8199-4e058c8ab4a0",
+    "title": "ToolMaintenanceEvent",
+    "title*": {
+        "en": "Tool maintenance event",
+        "de": "Werkzeugwartungs-Ereignis"
+    },
+    "description": "An event describing the maintenance of a tool.",
+    "description*": {
+        "en": "An event describing the maintenance of a tool.",
+        "de": "Ein Ereignis, das die Wartung eines Werkzeugs beschreibt."
+    },
+    "required": [
+        "type",
+        "end_date_time",
+        "target_object"
+    ],
+    "defaultProperties": [
+        "start_date_time",
+        "slot_actions"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW5433f882b9f14dca81994e058c8ab4a0"
+            ]
+        },
+        "start_date_time": {
+            "dynamic_template": "{{_now_}}",
+            "_template": "now",
+            "options": {
+                "dynamic_template": {
+                    "override": "empty"
+                }
+            }
+        },
+        "end_date_time": {
+            "dynamic_template": "{{_now_}}",
+            "_template": "now",
+            "options": {
+                "dynamic_template": {
+                    "override": "empty"
+                }
+            }
+        },
+        "target_object": {
+            "type": "object",
+            "title": "Target object",
+            "title*": {
+                "de": "Zielobjekt"
+            },
+            "description": "Tool, which the maintenance is performed on.",
+            "description*": {
+                "de": "Werkzeug, mit dem die Wartung durchgeführt wird."
+            },
+            "id": "target_object",
+            "eval_template": {
+                "mode": "render",
+                "type": "mustache-wikitext",
+                "value": "{{=<% %>=}} [[<%target_object.target_object_instance%>]] ({{#switch:{{USERLANGUAGECODE}}|#default=Type|de=Typ}}: {{#ask:[[<%target_object.target_object_instance%>]]|?HasType=|format=plain|mainlabel=-}})"
+            },
+            "defaultProperties": [
+                "target_object_type",
+                "target_object_instance"
+            ],
+            "required": [
+                "uuid",
+                "target_object_instance_property",
+                "target_object_instance"
+            ],
+            "properties": {
+                "uuid": {
+                    "title": "UUID",
+                    "type": "string",
+                    "format": "uuid",
+                    "options": {
+                        "hidden": true
+                    }
+                },
+                "target_object_type": {
+                    "title": "Type",
+                    "title*": {
+                        "de": "Typ"
+                    },
+                    "type": "string",
+                    "format": "autocomplete",
+                    "range": "Category:Category",
+                    "options": {
+                        "autocomplete": {
+                            "$comment": "Tool",
+                            "query": "[[SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWe427aafafbac4262955b9f690a83405d]]"
+                        }
+                    },
+                    "propertyOrder": 10
+                },
+                "target_object_instance_property": {
+                    "type": "string",
+                    "default": "Property:HasTarget",
+                    "options": {
+                        "hidden": true
+                    }
+                },
+                "target_object_instance": {
+                    "title": "Instance",
+                    "title*": {
+                        "de": "Instanz"
+                    },
+                    "type": "string",
+                    "format": "autocomplete",
+                    "range": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                    "watch": {
+                        "type_": "target_object.target_object_type"
+                    },
+                    "options": {
+                        "autocomplete": {
+                            "query": "[[HasType::$(type_)]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                        }
+                    },
+                    "propertyOrder": 20
+                }
+            }
+        },
+        "slot_actions": {
+            "type": "array",
+            "format": "table",
+            "title": "Slot action(s)",
+            "title*": {
+                "de": "Slot-Aktionen"
+            },
+            "id": "slot_actions",
+            "eval_template": {
+                "mode": "render",
+                "type": "mustache-wikitext",
+                "value": "{{=<% %>=}} <ul><%#slot_actions%><li>{{Template:Viewer/Link|page=<%slot_osw_id%>|url=|label=}}: {{#if: <%slot_occupant.slot_occupant_instance%> | [[<%slot_occupant.slot_occupant_instance%>]] ({{#switch:{{USERLANGUAGECODE}}|de=Typ|#default=Type}}: {{#ask:[[<%slot_occupant.slot_occupant_instance%>]]|?HasType=|format=plain|mainlabel=-}}) | {{#switch:{{USERLANGUAGECODE}}|de=Keine Belegung|#default=No occupant}} }}</li><%/slot_actions%></ul><%^slot_actions%>{{#switch:{{USERLANGUAGECODE}}|en=No slot action defined|de=Keine Slot-Aktion angegeben|#default=Type}}<%/slot_actions%>"
+            },
+            "items": {
+                "title": "Slot action",
+                "title*": {
+                    "de": "Slot-Aktion"
+                },
+                "type": "object",
+                "required": [
+                    "uuid",
+                    "slot_osw_id",
+                    "slot_type_restriction",
+                    "slot_occupant"
+                ],
+                "defaultProperties": [],
+                "id": "slot_action",
+                "properties": {
+                    "type": {
+                        "$comment": "deprecated, undefined Category:SlotAction can be replaced with property chain -HasAction.HasType::Category:OSW5433f882b9f14dca81994e058c8ab4a0 (Action of a ToolMaintenanceEvent)",
+                        "type": "array",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "uuid": {
+                        "title": "UUID",
+                        "type": "string",
+                        "format": "uuid",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "slot_osw_id": {
+                        "type": "string",
+                        "format": "autocomplete",
+                        "title": "Target slot",
+                        "title*": {
+                            "de": "Ziel-Slot"
+                        },
+                        "watch": {
+                            "target_obj": "target_object.target_object_instance",
+                            "slot_type_restriction_": "slot_action.slot_type_restriction"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[-HasSlot::$(target_obj)]]|?Display_title_of=label|?HasImage=image|?HasDescription=description|?HasId=slot_id|?HasTypeRestriction=type_restriction|?HasOccupant.HasType=occupant_type",
+                                "field_maps": [
+                                    {
+                                        "source_path": "$",
+                                        "template": "{{{result.printouts.type_restriction.[0].fulltext}}}",
+                                        "target_path": "$(slot_type_restriction_)"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "slot_type_restriction": {
+                        "type": "string",
+                        "$comment": "Tool",
+                        "default": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "slot_occupant": {
+                        "type": "object",
+                        "title": "New occupant of the slot",
+                        "title*": {
+                            "de": "Neue Belegung des Slots"
+                        },
+                        "description": "Tool or component to replace the one installed in the slot.",
+                        "description*": {
+                            "de": "Das Werkzeug oder Komponente, die das im Slot installierte ersetzen soll."
+                        },
+                        "id": "slot_occupant",
+                        "required": [
+                            "slot_occupant_instance",
+                            "slot_occupant_instance_property"
+                        ],
+                        "defaultProperties": [
+                            "slot_occupant_type"
+                        ],
+                        "properties": {
+                            "slot_occupant_type": {
+                                "title": "Type",
+                                "title*": {
+                                    "de": "Typ"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "range": "Category:Category",
+                                "watch": {
+                                    "slot_type": "slot_action.slot_type_restriction"
+                                },
+                                "options": {
+                                    "autocomplete": {
+                                        "$comment": "Tool",
+                                        "query": "[[:$(slot_type)]]OR[[SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf.SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf::$(slot_type)]]OR[[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::$(slot_type)]]"
+                                    }
+                                },
+                                "propertyOrder": 11
+                            },
+                            "slot_occupant_instance_property": {
+                                "type": "string",
+                                "default": "Property:HasOccupant",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "slot_occupant_instance": {
+                                "title": "Instance",
+                                "title*": {
+                                    "de": "Instanz"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "range": "Category:OSWe427aafafbac4262955b9f690a83405d",
+                                "watch": {
+                                    "type_": "slot_occupant.slot_occupant_type"
+                                },
+                                "options": {
+                                    "autocomplete": {
+                                        "query": "[[HasType::$(type_)]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                                    }
+                                },
+                                "propertyOrder": 21
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

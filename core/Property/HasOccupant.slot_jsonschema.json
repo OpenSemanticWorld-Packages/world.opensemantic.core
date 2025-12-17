@@ -1,0 +1,11 @@
+{
+    "uuid": "4f21c196-f91b-435a-b8bd-927c198aed95",
+    "title": "HasOccupant",
+    "title*": {
+        "en": "has occupant",
+        "de": "hat Belegung"
+    },
+    "description": "",
+    "description*": {},
+    "type": "string"
+}
