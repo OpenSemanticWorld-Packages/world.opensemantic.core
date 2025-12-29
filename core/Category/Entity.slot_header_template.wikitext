@@ -144,6 +144,13 @@
     </tr>
 |<!-- else show nothing -->}}
 |<!-- else hide annotation section -->}}
+{{#if: {{{_details|}}} |<!-- if _details (json slot rendered as tree view) is not empty, show -->
+    <tr><td class="subheading" colspan="2">{{#switch:{{USERLANGUAGECODE}}
+        |de=Details
+        |#default=Details
+        }}</td></tr>
+    <tr><td  colspan="2">{{{_details|}}}</td></tr>
+|<!-- else show nothing -->}}
 </table>
 
 =={{{_label_description| {{#switch:{{USERLANGUAGECODE}}|en=Description|de=Beschreibung}} }}}==

@@ -155,7 +155,47 @@ function p.walkJsonSchema(args)
 			templates[category] = mw.slots.slotContent( category_template_slot , category )
 		end
 	end	
+	-- Process propertyOrder based on nesting level
 	if (root) then
+		local visited_properties = {}
+		
+		-- Iterate through visited schemas and adjust propertyOrder
+		for i, category in ipairs(visited) do
+			local schema = jsonschemas[category]
+			-- Calculate level: last visited (most specific) has level=1, first (base) has highest level
+			local level = #visited - i + 1
+			
+			if schema and schema.properties then
+				for property, prop_data in pairs(schema.properties) do
+					-- Set default propertyOrder if not set and property not visited before
+					if not prop_data.propertyOrder and not visited_properties[property] then
+						prop_data.propertyOrder = 1000
+					end
+					
+					if prop_data.propertyOrder then
+						local order = prop_data.propertyOrder
+						
+						if order < 0 then
+							-- Absolute value - keep as is (currently not ranked correctly)
+							prop_data.propertyOrder = order
+						elseif order <= 1000 then
+							-- Insert on top, rank higher levels before lower levels
+							-- Default value is 1000, so we shift -2*1000 per level
+							prop_data.propertyOrder = (1000 * 1000 - level * 2000) + order
+						else -- order > 1000
+							-- Insert at bottom, rank higher levels after lower levels
+							-- Default value is 1000, so we shift +2*1000 per level
+							prop_data.propertyOrder = (1000 * 1000 + level * 2000) + order
+						end
+					end
+					
+					-- Mark property as visited
+					visited_properties[property] = true
+				end
+			end
+		end
+		
+		-- Merge all schemas after adjusting propertyOrder
 		for i, category in ipairs(visited) do
 			--merge all schemas. we need to make a copy here, otherwise jsonschemas["Category:Entity"] contains the merged schema
 			jsonschema = p.copy(p.tableMerge(jsonschema, jsonschemas[category])) 
@@ -186,6 +226,7 @@ function p.expandEmbeddedTemplates(args)
 	local msg = ""
 	local res = p.defaultArg(args.jsondata, "")
 	local root = p.defaultArg(args.root, true) -- first entry into recursion
+	local debug = p.defaultArg(args.debug, false)
 	
 	for k,v in pairs(jsondata) do
 		local eval_template = nil
@@ -210,7 +251,7 @@ function p.expandEmbeddedTemplates(args)
 			end
 		elseif type(v) == 'table' then 
 			if (p.tableLength(v) > 0 and v[1] == nil) then --key value array = object/dict
-				local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=v, jsonschema=p.defaultArgPath(jsonschema, {"properties", k}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false})
+				local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=v, jsonschema=p.defaultArgPath(jsonschema, {"properties", k}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false, debug=debug})
 				msg = msg .. sub_res.debug_msg
 				jsondata[k] = sub_res.res
 				--if (sub_res.unparsed ~= nil) then jsondata[k] = sub_res.unparsed else jsondata[k] = sub_res.wikitext end
@@ -230,7 +271,7 @@ function p.expandEmbeddedTemplates(args)
 					end
 
 					if type(e) == 'table' then 	
-						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false})
+						local sub_res = p.expandEmbeddedTemplates({frame=frame, jsondata=e, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false, debug=debug})
 						msg = msg .. sub_res.debug_msg
 						if (type(sub_res.res) == 'table') then 
 							if (debug) then msg = msg .. "Values for " .. k .. " contains non-literal items: " .. mw.dumpObject( sub_res.res ) .. " => skip value in wikitemplate array param creation\n<br>" end
@@ -242,7 +283,7 @@ function p.expandEmbeddedTemplates(args)
 						if (eval_template ~= nil and eval_template.value ~= nil) then
 							
 							--evaluate single array item string as json {"self": "<value>", ".": "<value>"} => does not work since jsondata is an object
-							--e = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false})
+							--e = p.expandEmbeddedTemplates({frame=frame, jsondata={["self"]=e,["."]=e}, jsonschema=p.defaultArgPath(jsonschema, {"properties", k, "items"}, {}), template=eval_template, mode=mode, stringify_arrays=stringify_arrays, root=false, debug=debug})
 							
 
 							if (eval_template.type == "mustache" or eval_template.type == "mustache-wikitext") then
@@ -334,7 +375,7 @@ function p.processJsondata(args)
 	local jsonld = p.copy(jsondata)
 	local json_data_store = p.copy(jsondata)
 	local json_data_render = p.copy(jsondata)
-	json_res_store = p.expandEmbeddedTemplates({jsonschema=jsonschema, jsondata=json_data_store, mode='store'})
+	json_res_store = p.expandEmbeddedTemplates({jsonschema=jsonschema, jsondata=json_data_store, mode='store', debug=debug})
 	msg = msg .. json_res_store.debug_msg
 	--mw.log("JSONDATA STORE")
 	--mw.logObject(json_res_store.res)
@@ -373,22 +414,43 @@ function p.processJsondata(args)
 	jsondata =json_res.res
 	--mw.log("JSONDATA RENDER")
 	--mw.logObject(jsondata)
+	
+	local renderMode = "tree"
+	if jsondata.__render_mode__ == "tree" then renderMode = "tree" end
+	if jsondata.__render_mode__ == "table" then renderMode = "table" end
 
 	local max_index = p.tableLength(schema_res.visited)
 	for i, category in ipairs(schema_res.visited) do
 		if (mode == p.mode.footer) then category = schema_res.visited[max_index - i +1] end --reverse order for footer templates
 		local super_jsonschema = schema_res.jsonschemas[category]
 		local template = schema_res.templates[category]
+		local _details = nil
+		if (mode == p.mode.header and renderMode == "tree" and i == 1) then -- insert tree after root infobox
+			local tree_view_wikitext = p.renderJson({jsonschema=jsonschema, context=smw_res.context, property_definitions=smw_res.definitions, jsondata=jsondata})
+			tree_view_wikitext = frame:preprocess(tree_view_wikitext)
+			--tree_view = frame:callParserFunction( '#tree', { "", id="jsondata-tree", class="info-tree", minExpandLevel=2, quicksearch=true, tree_view_wikitext } ) -- doesn't render, so we add a div wrapper below
+			tree_view = frame:callParserFunction( '#tree', { tree_view_wikitext } )
+			--tree_view = frame:preprocess("{{#tree | " .. tree_view_wikitext .. " }}")
+			if (debug) then
+				mw.logObject("TREE")
+				mw.logObject(tree_view_wikitext)
+				mw.logObject(tree_view)
+			end
+			_details = '<div id="jsondata-tree" class="info-tree" >' .. tree_view .. '</div>'
+		end
 		if (template ~= nil) then
+			-- render custom template
 			if (debug) then msg = msg .. "Parse \n\n" .. template .. " \n\nwith params " .. mw.dumpObject( jsondata ) .. "\n<br>" end
 			local stripped_jsondata={}
 			for k, v in pairs(jsondata) do
 				if (type(v) ~= 'table') then stripped_jsondata[k] = v end --delete object values, not supported by wiki templates	
 			end
+			stripped_jsondata["_details"] = _details
 			local child = frame:newChild{args=stripped_jsondata}
 			if ( template:sub(1, #"=") == "=" ) then template = "\n" .. template end -- add line break if template starts with heading (otherwise not rendered by mw parser)
 			wikitext = wikitext .. child:preprocess( template )
-		elseif (mode == p.mode.header) then
+		end
+		if (template == nil and mode == p.mode.header and renderMode == "table") then
 			local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
 			for j, subcategory in ipairs(schema_res.visited) do
 				if j > i then
@@ -561,6 +623,198 @@ function p.renderInfoBox(args)
 	--mw.logObject(res)
 	
 	return {wikitext=res}
+end
+
+function p.renderLiteral(args)
+	local frame = mw.getCurrentFrame()
+	local debug = p.defaultArg(args.debug, false)
+	local key = p.defaultArg(args.key, nil)
+	local value = p.defaultArg(args.value, nil)
+	local schema = p.defaultArg(args.schema, nil) -- local property schema
+	local property_definitions = p.defaultArg(args.property_definitions, {}) -- {property: <smw_property>, ...}
+    local level = p.defaultArg(args.level, 0)
+    local result = ""
+    
+    -- Create the indentation prefix for the main level
+    local prefix = string.rep("*", level + 1)
+    
+    -- Get the label/title from schema
+    local label = p.renderMultilangValue({jsonschema=schema, default=key})
+    
+    -- format label bold
+    label = "'''" .. label .. "'''"
+    
+    -- display further information in tooltip
+	local description = p.renderMultilangValue({jsonschema=schema, key="description"})
+	if (p.tableLength(p.defaultArgPath(property_definitions, {key, 'defined_in'}, {})) > 0) then description = description .. "<br>Definition: " end
+	for i, c in pairs(p.defaultArgPath(property_definitions, {key, 'defined_in'}, {})) do 
+		if (i > 1) then description = description .. ", " end
+		description = description .. "[[:" ..c .. "]]"
+	end
+	if (description ~= "") then description = "{{#info: " .. description .. "|note }}" end -- smw tooltip
+	label = label .. description
+	--label = frame:preprocess(label) -- we need to evaluate the wikitext before we pass it to the tree tag
+    
+    -- Helper function to check if value is an array
+    local function isArray(v)
+        return type(v) == "table" and v[1] ~= nil
+    end
+    
+    -- Helper function to convert value to string
+    local function valueToString(v)
+        if type(v) == "boolean" then
+            return tostring(v)
+        elseif type(v) == "nil" then
+            return "nil"
+        elseif type(v) == "string" then
+        	return p.wrapLinkIfNs(v)
+        else
+            return tostring(v)
+        end
+    end
+    
+    -- Handle different value types
+    if not isArray(value) then
+        -- Single literal value
+        result = prefix .. " " .. label .. ": " .. valueToString(value) .. "\n"
+        
+    elseif #value == 1 then
+        -- Array with single element
+        result = prefix .. " " .. label .. ": " .. valueToString(value[1]) .. "\n"
+        
+    else
+        -- Array with multiple elements (length > 1)
+        result = prefix .. " " .. label .. ":\n"
+        local nestedPrefix = string.rep("*", level + 2)
+        if value ~= nil then
+	        for _, item in ipairs(value) do
+	            result = result .. nestedPrefix .. " " .. valueToString(item) .. "\n"
+	        end
+	    end
+    end
+    
+    return result
+end
+
+function p.renderJson(args)
+	local frame = mw.getCurrentFrame()
+	local debug = p.defaultArg(args.debug, false)
+	local jsondata = p.defaultArg(args.jsondata, {})
+	local jsonschema = p.defaultArg(args.jsonschema, nil) -- global schema with allOfs merged
+	local property_definitions = p.defaultArg(args.property_definitions, {}) -- dict schema_key: {property: <smw_property>, ...}
+	local level = p.defaultArg(args.level, 0)
+    local result = ""
+    
+    -- Helper function to check if a table is an array (has numeric indices)
+    local function isArray(t)
+        if type(t) ~= "table" then
+            return false
+        end
+        return t[1] ~= nil
+    end
+    
+    -- Helper function to check if a value is a literal (not a table)
+    local function isLiteral(v)
+        return type(v) ~= "table"
+    end
+    
+    -- Try detect and render quantity objects
+    local function isQuantityObject(val, def)
+        if type(val) ~= 'table' then return false end
+        local num = val.numerical_value or val.value or val.amount
+        local unit = val.unit
+        if num ~= nil and (type(unit) == 'string' or unit == nil) then
+            return true
+        end
+        if type(def) == 'table' and type(def.properties) == 'table' then
+            local hasNumDef = def.properties.numerical_value or def.properties.value or def.properties.amount
+            local hasUnitDef = def.properties.unit
+            if hasNumDef and hasUnitDef then return true end
+        end
+        return false
+    end
+
+    local function renderQuantity(val)
+        local num = val and (val.numerical_value or val.value or val.amount)
+        local unit = val and val.unit
+        if num == nil then return nil end
+        local unitTxt = unit and p.wrapLinkIfNs(unit) or ""
+        if unitTxt ~= "" then return tostring(num) .. " " .. unitTxt end
+        return tostring(num)
+    end
+    
+    -- Helper function to get propertyOrder from schema
+    local function getPropertyOrder(key)
+        if jsonschema and jsonschema.properties and jsonschema.properties[key] then
+            local propSchema = jsonschema.properties[key]
+            if propSchema.propertyOrder then
+                return propSchema.propertyOrder
+            end
+        end
+        -- Default order for properties without explicit order
+        return 1000000 -- High value to place them at the end
+    end
+    
+    -- Collect all keys and sort them by propertyOrder
+    local sortedKeys = {}
+    for key, _ in pairs(jsondata) do
+        table.insert(sortedKeys, key)
+    end
+    
+    table.sort(sortedKeys, function(a, b)
+        return getPropertyOrder(a) < getPropertyOrder(b)
+    end)
+    
+    -- Iterate over sorted keys
+    for _, key in ipairs(sortedKeys) do
+        local value = jsondata[key]
+        local do_render = true
+        -- Look up the property definition in the schema
+        local propertySchema = nil
+        if jsonschema and jsonschema.properties then
+            propertySchema = jsonschema.properties[key]
+            if p.defaultArgPath(propertySchema, {"options", "hidden"}, false) == true then
+            	do_render = false	
+            end
+        end
+        
+        if do_render then
+        	
+	        if isLiteral(value) then
+	            -- Single literal value (string, number, boolean, nil)
+	            result = result .. p.renderLiteral({key=key, value=value, schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
+	            
+	        elseif isArray(value) then
+	            -- Array - determine if it contains literals or objects
+	            if #value == 0 or isLiteral(value[1]) then
+	                -- Empty array or array of literals
+	                result = result .. p.renderLiteral({key=key, value=value, schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
+	            else
+	                -- Array of objects - recurse for each item
+	                local itemSchema = propertySchema and propertySchema.items
+	                for _, item in ipairs(value) do
+						if isQuantityObject(item) then
+					    	result = result .. p.renderLiteral({key=key, value=renderQuantity(item), schema=itemSchema, property_definitions=property_definitions, level=level, debug=debug})	
+					    else
+	                		result = result .. p.renderLiteral({key=key, value="", schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
+	                    	result = result .. p.renderJson({jsondata=item, jsonschema=itemSchema, level=level + 1, debug=debug})
+	                    end
+	                end
+	            end
+	            
+	        else
+	            -- Single object - recurse with incremented level
+	            if isQuantityObject(value) then
+					result = result .. p.renderLiteral({key=key, value=renderQuantity(value), schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})	
+				else
+	            	result = result .. p.renderLiteral({key=key, value="", schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
+	            	result = result .. p.renderJson({jsondata=value, jsonschema=propertySchema, level=level + 1, debug=debug})
+	            end
+	        end
+	   end
+    end
+    
+    return result
 end
 
 -- test
@@ -1208,6 +1462,22 @@ function p.renderMultilangValue(args)
 		result = result .. " }}"
 	end		
 	return result
+end
+
+function p.wrapLinkIfNs(s)
+	local frame = mw.getCurrentFrame()
+    if type(s) ~= 'string' then return s end
+    if s:find('%[%[') then return s end -- already linked
+    local ns, rest = s:match('^([%a]+):(.*)$')
+    if not ns or not rest or rest == '' then return s end
+
+    if ns == 'Category' or ns == 'Item' or ns == 'File' or ns == 'Property' then
+        -- If there is an anchor/subobject in the title, use the Viewer/Link template
+         return frame:expandTemplate{ title = 'Viewer/Link', args = { page = s } }
+         --s = "{{Viewer/Link |page= " .. s .. "}}"
+    end
+
+    return s
 end
 
 return p
