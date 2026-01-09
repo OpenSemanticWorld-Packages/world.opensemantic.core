@@ -52,7 +52,7 @@
         },
         "version": {
             "title": "Version",
-            "description": "e.g. 'v1.0.1",
+            "description": "e.g. v1.0.1",
             "type": "string"
         },
         "url": {
@@ -71,7 +71,6 @@
                 "de": "Enthaltene Seite(n)"
             },
             "format": "table",
-            "uniqueItems": true,
             "items": {
                 "type": "string",
                 "title": "Page",
