@@ -16,6 +16,7 @@
             "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
         }
     ],
+    "uuid": "4240d9f1-cbe6-45bd-b932-0868584f7071",
     "type": "object",
     "title": "Item",
     "title*": {
