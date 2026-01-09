@@ -54,7 +54,7 @@
             "items": {
                 "title": "Label",
                 "title*": {
-                    "de": "Name"
+                    "de": "Bezeichnung"
                 },
                 "eval_template": [
                     {
