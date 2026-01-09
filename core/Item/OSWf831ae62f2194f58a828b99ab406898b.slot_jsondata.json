@@ -3,11 +3,12 @@
         "Category:OSW31a9c96c1f444f84b944d49afbce409b"
     ],
     "global_id": "world.opensemantic.core",
-    "version": "0.53.1",
+    "version": "0.53.2",
     "url": [
         "https://github.com/OpenSemanticWorld-Packages/world.opensemantic.core"
     ],
     "parts": [
+        "Item:OSWf831ae62f2194f58a828b99ab406898b",
         "Module:Lustache",
         "Module:Lustache/Context",
         "Module:Lustache/Renderer",
@@ -157,7 +158,5 @@
             "lang": "en"
         }
     ],
-    "description": [],
-    "name": "WorldOpensemanticCore",
-    "version": "0.52.3"
+    "name": "WorldOpensemanticCore"
 }
