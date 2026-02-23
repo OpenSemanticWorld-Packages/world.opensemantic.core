@@ -472,6 +472,9 @@
                         "header": {
                             "urlPath": "Category/OSW11a53cdfbdc24524bf8ac435cbf65d9d.slot_header.wikitext"
                         },
+                        "header_template": {
+                            "urlPath": "Category/OSW11a53cdfbdc24524bf8ac435cbf65d9d.slot_header_template.wikitext"
+                        },
                         "jsondata": {
                             "urlPath": "Category/OSW11a53cdfbdc24524bf8ac435cbf65d9d.slot_jsondata.json"
                         },
