@@ -8,6 +8,9 @@
   "name":"{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}",
   "root":"{{{root|}}}",
   "properties":[{{#arraymap:{{{properties|}}}|;|x|"x"|,}}],
+  "ignore_properties":[
+{{#if: {{{ignore_properties|}}}|{{#arraymap:{{{ignore_properties|}}}|;|x|"x"|,}}|}}
+],
   "depth":{{{depth|2}}},
   "edit":{{#ifeq: {{{edit|0}}}|1|true|false}}, 
   "permalink":{{#ifeq: {{{permalink|0}}}|1|true|false}}, 
@@ -36,7 +39,21 @@
 				"de": "Name der Wurzelseite"
 			},
 			"description": {
-				"en": "Dafault value is the current page",
+				"en": "Default value is the current page",
+				"de": "Standardwert ist die aktuelle Seite"
+			},
+			"type": "wiki-page-name",
+			"required": true,
+			"autovalue": "{{subst:FULLPAGENAME}}",
+			"suggested": true
+		},
+		"roots": {
+			"label": {
+				"en": "Semicolon separated root page name(s)",
+				"de": "Per Semicolon getrennte Namen der Wurzelseiten"
+			},
+			"description": {
+				"en": "Default value is the current page",
 				"de": "Standardwert ist die aktuelle Seite"
 			},
 			"type": "wiki-page-name",
@@ -55,6 +72,19 @@
 			},
 			"required": true,
 			"autovalue": "IsA; HasPart",
+			"suggested": true
+		},
+		"ignore_properties": {
+			"label": {
+				"en": "Ignored properties",
+				"de": "Ignorierte Attribute"
+			},
+			"description": {
+				"en": "Semicolon separated property list that is excluded from the right-click context menue",
+				"de": "Per Semicolon getrennte List von Attributen, die im Rechtklick-Menü ausgeblendet werden soll"
+			},
+			"required": false,
+			"autovalue": "Display_title_of; Display_title_of_lowercase; Display_title_of_normalized; Has_query; HasUuid",
 			"suggested": true
 		},
 		"depth": {
