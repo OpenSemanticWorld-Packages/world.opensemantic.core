@@ -1,10 +1,13 @@
 {
-    "type": "object",
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema"
+    ],
     "allOf": [
         {
             "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
         }
     ],
+    "type": "object",
     "title": "Data",
     "required": [
         "type"
