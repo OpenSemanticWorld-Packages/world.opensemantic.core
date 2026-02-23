@@ -415,7 +415,7 @@ function p.processJsondata(args)
 		wikitext = wikitext .. "<div class='jsonld-header' style='display:none' data-jsonld='" .. mw.text.jsonEncode( jsonld ):gsub("'","`") .. "'></div>"
 	end
 	
-	local json_res = p.expandEmbeddedTemplates({jsonschema=jsonschema, jsondata=json_data_render, mode='render'})
+	local json_res = p.expandEmbeddedTemplates({jsonschema=jsonschema, jsondata=json_data_render, mode='render', debug=debug})
 	msg = msg .. json_res.debug_msg
 	jsondata =json_res.res
 	--mw.log("JSONDATA RENDER")
