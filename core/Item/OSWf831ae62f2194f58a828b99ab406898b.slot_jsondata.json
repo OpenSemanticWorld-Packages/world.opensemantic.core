@@ -38,7 +38,6 @@
         "Item:OSW5335efe7928d49619412fe28363b5e8a",
         "Item:OSW2b28cfd4bf8446e586f0e90152127b4a",
         "Category:OSW8b3e627eb76b46d68fce3a12ff220c8e",
-        "Category:Term",
         "Category:OSW379d5a1589c74c82bc0de47938264d00",
         "Category:OSW5f0dff1c477e45e7ad45e4e247e28f35",
         "Category:OSW2ac4493f8635481eaf1db961b63c8325",
@@ -158,5 +157,11 @@
             "lang": "en"
         }
     ],
-    "name": "WorldOpensemanticCore"
+    "name": "WorldOpensemanticCore",
+    "description": [
+        {
+            "text": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
+            "lang": "en"
+        }
+    ]
 }
