@@ -1,6 +1,9 @@
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Item:OSW7d7193567ea14e4e89b74de88983b718", slot="jsondata"}).json, debug=true, mode="header"}))
 
 local lustache = require("Module:Lustache")
+-- try to load the LuaCache module
+local status, module = pcall(require, 'mw.ext.LuaCache')
+local cache = status and module or nil
 
 local p = {} --p stands for package
 
@@ -348,6 +351,26 @@ function p.expandEmbeddedTemplates(args)
 	return {res=res, debug_msg=msg}
 end
 
+function p.getMulti(keys)
+	--return cache.getMulti(keys)
+	local res = cache.php.getMulti(keys)
+	local results = {}
+	for k, v in pairs(res) do
+		results[k] = mw.text.jsonDecode(v)
+	end
+	return results
+end
+
+function p.setMulti(data, timeout)
+	--return cache.setMulti(data, timeout)
+	local results = {}
+	for k, v in pairs(data) do
+		results[k] = mw.text.jsonEncode(v)
+	end
+	local res = cache.php.setMulti(results, timeout)
+	return res
+end
+
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Item:OSW7d7193567ea14e4e89b74de88983b718", slot="jsondata"}).json, debug=true, mode="header"}))
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Item:OSWa4da6664aeac466a86b09e6b32a1cb41", slot="jsondata"}).json, debug=true, mode="header"}))
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Category:OSWb3022bbf7e7146eb8e6f6e3264f50bbe", slot="jsondata"}).json, debug=true, mode="header", categories={"Category:Category"}}))
@@ -364,6 +387,8 @@ function p.processJsondata(args)
 	
 	local wikitext = ""
 	local msg = "" --debug msg
+	local timing = {}
+	timing["TOTAL"] = os.clock()
 
 	if (p.nilOrEmpty(jsondata) or (p.nilOrEmpty(categories) and p.nilOrEmpty(jsonschema) and p.nilOrEmpty(jsondata[p.keys.category]))) then return {wikitext=wikitext, debug_msg=msg} end --nothing to do here
 	--if (jsondata == nil or p.tableLength(jsondata) == 0 or (categories == nil and jsonschema == nil and jsondata[p.keys.category] == nil)) then return {wikitext=wikitext, debug_msg=msg} end --nothing to do here
@@ -372,12 +397,42 @@ function p.processJsondata(args)
 	--if (categories == nil) then categories = jsondata[p.keys.category] end -- let function param overwrite json property
 	if (not p.nilOrEmpty(jsondata[p.keys.category])) then categories = jsondata[p.keys.category] end -- let json property overwrite function param
 	
-	local schema_res = p.walkJsonSchema({jsonschema=jsonschema, categories=categories, mode=mode, recursive=recursive, debug=debug})
-	local expand_res = p.expandJsonRef({json=schema_res.jsonschema, debug=debug})
+	local cacheKey = nil
+	if not p.nilOrEmpty(categories) then string.gsub(table.concat(categories, '.'), "Category:", "") end
+	local schema_res = nil
+	local expand_res = nil
+	local cacheStore = {}
+	local useCache = false
+	if (useCache and cache ~= nil and cacheKey ~= nil and cacheKey ~= "") then
+		timing["loadCache"] = os.clock()
+		cacheStore = cache.getMulti({cacheKey .. "." .. mode .. ".schema.walked", cacheKey .. "." .. mode .. ".schema.walked.expanded"})
+		--cacheStore["schema.walked"] = cache.get(cacheKey .. "." .. mode .. ".schema.walked")
+		--cacheStore["schema.walked.expanded"] =  cache.get(cacheKey .. "." .. mode .. ".schema.walked.expanded")
+		schema_res = cacheStore[cacheKey .. "." .. mode .. ".schema.walked"]
+		expand_res = cacheStore[cacheKey .. "." .. mode .. ".schema.walked.expanded"]
+		timing["loadCache"] = os.clock() - timing["loadCache"]
+	end
+
+	timing["walkJsonSchema"] = os.clock()
+	if (schema_res == nil) then schema_res = p.walkJsonSchema({jsonschema=jsonschema, template=template, categories=categories, mode=mode, recursive=recursive, debug=debug}) end
+	timing["walkJsonSchema"] = os.clock() - timing["walkJsonSchema"]
+	timing["expandJsonRef"] = os.clock()
+	if (expand_res == nil) then expand_res = p.expandJsonRef({json=schema_res.jsonschema, debug=debug}) end
+	timing["expandJsonRef"] = os.clock() - timing["expandJsonRef"]
+
+	if (useCache and cache ~= nil and cacheKey ~= nil and cacheKey ~= "" and cacheStore[cacheKey .. "." .. mode .. ".schema.walked"] == nil) then
+		timing["storeCache"] = os.clock()
+		--cacheStore[cacheKey .. "." .. mode .. ".schema"] = expand_res.json
+		cacheStore[cacheKey .. "." .. mode .. ".schema.walked"] = schema_res
+		cacheStore[cacheKey .. "." .. mode .. ".schema.walked.expanded"] = expand_res
+		cache.setMulti(cacheStore, 5*60)
+		timing["storeCache"] = os.clock() - timing["storeCache"]
+	end
+
 	jsonschema = expand_res.json
 	--mw.log(mw.text.jsonEncode(jsonschema))
 
-
+	timing["createProperties"] = os.clock()
 	local jsonld = p.copy(jsondata)
 	local json_data_store = p.copy(jsondata)
 	local json_data_render = p.copy(jsondata)
@@ -412,9 +467,11 @@ function p.processJsondata(args)
 				if (p.tableLength(vpart) == 2 and vpart[1] == "File") then jsonld[k] = mw.getCurrentFrame():callParserFunction( 'filepath', { vpart[2] } ) end --google does not follow redirects via "File":"wiki:Special:Redirect/file/"
 			end
 		end
-		wikitext = wikitext .. "<div class='jsonld-header' style='display:none' data-jsonld='" .. mw.text.jsonEncode( jsonld ):gsub("'","`") .. "'></div>"
+		-- wikitext = wikitext .. "<div class='jsonld-header' style='display:none' data-jsonld='" .. mw.text.jsonEncode( jsonld ):gsub("'","`") .. "'></div>"
 	end
+	timing["createProperties"] = os.clock() - timing["createProperties"]	
 	
+	timing["render"] = os.clock()
 	local json_res = p.expandEmbeddedTemplates({jsonschema=jsonschema, jsondata=json_data_render, mode='render', debug=debug})
 	msg = msg .. json_res.debug_msg
 	jsondata =json_res.res
@@ -475,6 +532,8 @@ function p.processJsondata(args)
 		end
 	end
 	
+	timing["render"] = os.clock() - timing["render"]
+	
 	local set_categories_in_wikitext = {}
 	p.tableMerge(set_categories_in_wikitext, json_res_store.res[p.keys.subcategory])  --classes/categories, nil for items
 	if (title.nsText ~= "Category") then --items
@@ -502,7 +561,11 @@ function p.processJsondata(args)
 		p.setNormalizedLabel(smw_res.properties) --build normalized multilang label
 		mw.ext.displaytitle.set(display_label)
 		--smw_res.properties['@category'] = jsondata[p.keys.category]
+		
+		timing["storeProperties"] = os.clock()
 		local store_res = mw.smw.set( smw_res.properties ) --store as semantic properties
+		timing["storeProperties"] = os.clock() - timing["storeProperties"]
+		
 		if (debug) then msg = msg .. mw.dumpObject(smw_res.properties) end
 		if (store_res) then 
 			if (debug) then msg = msg .. "SMW SUCCESS: " end
@@ -515,6 +578,10 @@ function p.processJsondata(args)
 	wikitext = wikitext .. "\n" .. p.setCategories({categories=set_categories_in_wikitext, sortkey=display_label}).wikitext
 	
 	if (debug) then mw.logObject(res) end
+	timing["TOTAL"] = os.clock() - timing["TOTAL"]
+	--mw.log("TIMING")
+	--mw.logObject(timing)
+	--wikitext = wikitext .. "\n==Performance==\n" .. p.dump(timing)
 	return {wikitext=wikitext, debug_msg=msg}
 end
 
