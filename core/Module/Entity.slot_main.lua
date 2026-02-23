@@ -1,26 +1,40 @@
 local p = {} --p stands for package
 local mwjson = require('Module:MwJson')
 
-function p.process(frame, mode, title)
+function p.process(frame, mode, title, jsondata, jsonschema, template)
 	local msg = "Debug Output: <br>" --debug msg
 
 	local res = ""
 	if title == nil then title = mw.title.getCurrentTitle().fullText end
 	local namespace = mwjson.splitString(title, ':')[1]
 	
-	local jsondata_res = mwjson.loadJson({title=title, slot=mwjson.slots.jsondata})
-	local jsondata = jsondata_res.json
+	if (jsondata == nil and frame.args['jsondata'] ~= nil) then 
+		--jsondata =  mw.text.jsonDecode(mw.text.unstrip(frame.args['jsondata']), mw.text.JSON_TRY_FIXING)--:gsub("<*>", ""):gsub("</nowiki>", "")) 
+		jsondata =  mw.text.jsonDecode(frame.args['jsondata'], mw.text.JSON_TRY_FIXING) -- nowiki-wrapping and mw.text.unstrip does not work
+	end
+	if (jsonschema == nil and frame.args['jsonschema'] ~= nil) then 
+		jsonschema =  mw.text.jsonDecode(frame.args['jsonschema'], mw.text.JSON_TRY_FIXING)
+	end
+	if (template == nil and frame.args['template'] ~= nil) then 
+		template =  mw.text.unstrip(frame.args['template'])
+	end
+	if (jsondata == nil) then
+		local jsondata_res = mwjson.loadJson({title=title, slot=mwjson.slots.jsondata})
+		jsondata = jsondata_res.json
+		msg = msg .. jsondata_res.debug_msg
+	end
+	
+	mw.logObject(jsondata)
+	
 	local debug = mwjson.defaultArg(jsondata[mwjson.keys.debug], false)
-	msg = msg .. jsondata_res.debug_msg
 	
 	local process_res = nil
 	if (namespace == "Category") then
-		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.header, categories={"Category:Category"}, recursive=true, debug=debug}) end
-		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.footer, categories={"Category:Category"}, recursive=true, debug=debug}) end
-		--mw.smw.set( {["IsA"]="Category:Category"}) --Todo: use type / HasType ?
+		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.header, categories={"Category:Category"}, recursive=true, debug=debug}) end
+		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.footer, categories={"Category:Category"}, recursive=true, debug=debug}) end
 	else
-		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.header, debug=debug}) end
-		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsondata=jsondata, mode=mwjson.mode.footer, debug=debug}) end
+		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.header, debug=debug}) end
+		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.footer, debug=debug}) end
 	end
 	
 	res = res .. process_res.wikitext
@@ -54,5 +68,13 @@ return p
 frame = mw.getCurrentFrame() -- Get a frame object
 title="Item:OSL7d7193567ea14e4e89b74de88983b718"
 newFrame = frame:newChild{ title=title, args = {}}
+mw.log(p.header( newFrame, title ) ) 
+--]]
+
+--DEBUG (custom schema and template)
+--[[
+frame = mw.getCurrentFrame() -- Get a frame object
+title="Item:OSL7d7193567ea14e4e89b74de88983b718"
+newFrame = frame:newChild{ title=title, args = {jsonschema='{"title": "MySchema", "properties": {"name": {"title": "Name"}}}', template="Name: {{{name}}}", jsondata='{"name":"TEST"}'}}
 mw.log(p.header( newFrame, title ) ) 
 --]]

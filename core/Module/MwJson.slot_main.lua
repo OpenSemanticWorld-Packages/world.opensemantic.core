@@ -155,6 +155,12 @@ function p.walkJsonSchema(args)
 			templates[category] = mw.slots.slotContent( category_template_slot , category )
 		end
 	end	
+	if (root and p.tableLength(jsonschema) > 0) then
+		table.insert(visited, "_") -- dummy category for own schema 
+		jsonschemas["_"] = p.copy(jsonschema)
+		templates["_"] = template
+	end
+	
 	-- Process propertyOrder based on nesting level
 	if (root) then
 		local visited_properties = {}
