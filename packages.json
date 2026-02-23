@@ -1336,6 +1336,9 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasFileAttachment.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasFileAttachment.slot_jsonschema.json"
                         }
                     }
                 },

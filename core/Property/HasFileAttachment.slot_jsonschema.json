@@ -1,0 +1,18 @@
+{
+    "title": "Attachment",
+    "title*": {
+        "de": "Anhang"
+    },
+    "type": "string",
+    "format": "url",
+    "options": {
+        "upload": {}
+    },
+    "links": [
+        {
+            "href": "{{#if self}}/w/index.php?title=Special:Redirect/file/{{self}}{{/if}}",
+            "rel": "{{#if self}}download{{/if}}",
+            "download": true
+        }
+    ]
+}
