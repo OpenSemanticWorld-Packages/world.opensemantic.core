@@ -17,6 +17,8 @@
                 "@id": "Property:SubClassOf",
                 "@type": "@id"
             },
+            "version": "owl:versionInfo",
+            "version*": "Property:HasVersion",
             "utf8_icon": "Property:HasUtf8Icon"
         },
         "/wiki/Category:Entity?action=raw&slot=jsonschema"
@@ -37,6 +39,9 @@
         "subclass_of",
         "type"
     ],
+    "defaultProperties": [
+        "version"
+    ],
     "properties": {
         "type": {
             "items": {
@@ -55,6 +60,20 @@
             "options": {
                 "hidden": true
             }
+        },
+        "version": {
+            "title": "Version",
+            "title*": {
+                "de": "Version"
+            },
+            "description": "Human-readable version string (e.g. 1.0.1) following https://semver.org/",
+            "description*": {
+                "de": "Für Menschen lesbare Versionszeichenfolge (z.B. 1.0.1) gemäß https://semver.org/"
+            },
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+            "propertyOrder": -1010,
+            "default": "0.1.0"
         },
         "subclass_of": {
             "title": "Supercategories",

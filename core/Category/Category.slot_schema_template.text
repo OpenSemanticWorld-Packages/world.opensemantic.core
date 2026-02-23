@@ -13,6 +13,7 @@
     ],
     "type": "object",
     "uuid": "{{{uuid}}}",
+    {{#if version}}"x-oold-version": "{{{version}}}",{{/if}}
     "title": "{{{name}}}",
     "title*": {
     	{{#each label}}
