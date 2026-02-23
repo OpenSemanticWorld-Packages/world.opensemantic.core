@@ -335,12 +335,6 @@
                     }
                 },
                 {
-                    "name": "Term",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/Term.slot_main.wikitext",
-                    "slots": {}
-                },
-                {
                     "name": "OSW379d5a1589c74c82bc0de47938264d00",
                     "label": "OwlThing",
                     "namespace": "NS_CATEGORY",
@@ -980,6 +974,9 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/ObjectProperty.slot_jsonschema.json"
+                        },
+                        "schema_template": {
+                            "urlPath": "Category/ObjectProperty.slot_schema_template.text"
                         }
                     }
                 },
