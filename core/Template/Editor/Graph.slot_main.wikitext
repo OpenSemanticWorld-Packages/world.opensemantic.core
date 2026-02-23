@@ -24,7 +24,7 @@
 		"file_name": {
 			"label": {
 				"en": "Graph name",
-				"de": "Name des Graph-Name"
+				"de": "Name des Graphs"
 			},
 			"description": {
 				"en": "Must be unique on this page",
