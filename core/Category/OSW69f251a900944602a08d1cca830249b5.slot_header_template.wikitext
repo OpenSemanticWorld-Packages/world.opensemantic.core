@@ -1,17 +1,4 @@
-<table class="info_box">
-<tr>
-<th class="heading" colspan="2">{{{_label_schema|SubQuantityProperty}}}</th>
-</tr>
-<tr>
-    <th>{{{_label_display_units|Display Units}}}</th>
-    <td>{{#ask: [[{{FULLPAGENAME}}]] |?HasDisplayUnit= |format=plain |mainlabel=-}}</td>
-</tr>
-<tr>
-    <th>{{{_label_input_units|Input Units}}}</th>
-    <td>{{#ask: [[{{FULLPAGENAME}}]] |?HasInputUnit= |format=plain |mainlabel=-}}</td>
-</tr>
-</table>  <!-- 
--->{{#set: 
+{{#set: 
   |Corresponds to={{#ask: [[{{{base_property}}}]] |?Corresponds to |mainlabel=- |headers=hide |format=plainlist |link=none |valuesep=;}} |+sep=;
 }}<!-- 
 -->{{#if: {{{display_units|}}} | <!-- set specified display units if defined-->
