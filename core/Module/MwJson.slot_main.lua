@@ -548,8 +548,11 @@ function p.renderInfoBox(args)
 		if (not ignore_properties[k]) then
 			if (schema['properties'] ~= nil and schema['properties'][k] ~= nil and (type(v) ~= 'table' or v[1] ~= nil)) then --literal or literal array
 				local def = schema_allOfMerged['properties'][k]
+				-- skip hidden properties
+				local hidden = p.defaultArgPath(def, {'options', 'hidden'}, false)
+				if (hidden ~= true and hidden ~= "true") then
 				--mw.logObject(def)
-				
+
 				local label = p.renderMultilangValue({jsonschema=def, default=k})
 				
 				local description = p.renderMultilangValue({jsonschema=def, key="description"})
@@ -622,9 +625,10 @@ function p.renderInfoBox(args)
 					end
 					cell:wikitext("\n" .. v .. "")
 				end
+			end -- hidden check
 			end
 		end
-	end	
+	end
 	res = res .. tostring( tbl )
 	--mw.logObject(res)
 	
