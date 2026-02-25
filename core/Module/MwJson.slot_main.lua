@@ -444,19 +444,9 @@ function p.processJsondata(args)
 			end
 			_details = '<div id="jsondata-tree" class="info-tree" >' .. tree_view .. '</div>'
 		end
-		if (template ~= nil) then
-			-- render custom template
-			if (debug) then msg = msg .. "Parse \n\n" .. template .. " \n\nwith params " .. mw.dumpObject( jsondata ) .. "\n<br>" end
-			local stripped_jsondata={}
-			for k, v in pairs(jsondata) do
-				if (type(v) ~= 'table') then stripped_jsondata[k] = v end --delete object values, not supported by wiki templates	
-			end
-			stripped_jsondata["_details"] = _details
-			local child = frame:newChild{args=stripped_jsondata}
-			if ( template:sub(1, #"=") == "=" ) then template = "\n" .. template end -- add line break if template starts with heading (otherwise not rendered by mw parser)
-			wikitext = wikitext .. child:preprocess( template )
-		end
-		if (template == nil and mode == p.mode.header and renderMode == "table") then
+		local template_has_infobox = (template ~= nil and string.find(template, 'class="info_box"') ~= nil)
+		-- render auto-generated infobox when template has no infobox table or no template exists
+		if (not template_has_infobox and mode == p.mode.header) then
 			local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
 			for j, subcategory in ipairs(schema_res.visited) do
 				if j > i then
@@ -472,6 +462,18 @@ function p.processJsondata(args)
 			-- context is already build in p.getSemanticProperties. schema_allOfMerged is used to provide the full schema for overridden properties
 			local infobox_res = p.renderInfoBox({jsonschema=super_jsonschema, schema_allOfMerged=jsonschema, context=smw_res.context, property_definitions=smw_res.definitions, jsondata=jsondata, ignore_properties=ignore_properties})
 			wikitext = wikitext .. frame:preprocess( infobox_res.wikitext )
+		end
+		-- render custom template (backward compatible for templates with infobox, or remaining non-table content like #set: calls)
+		if (template ~= nil) then
+			if (debug) then msg = msg .. "Parse \n\n" .. template .. " \n\nwith params " .. mw.dumpObject( jsondata ) .. "\n<br>" end
+			local stripped_jsondata={}
+			for k, v in pairs(jsondata) do
+				if (type(v) ~= 'table') then stripped_jsondata[k] = v end --delete object values, not supported by wiki templates
+			end
+			stripped_jsondata["_details"] = _details
+			local child = frame:newChild{args=stripped_jsondata}
+			if ( template:sub(1, #"=") == "=" ) then template = "\n" .. template end -- add line break if template starts with heading (otherwise not rendered by mw parser)
+			wikitext = wikitext .. child:preprocess( template )
 		end
 	end
 	
