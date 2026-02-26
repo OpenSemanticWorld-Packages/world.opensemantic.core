@@ -446,7 +446,7 @@ function p.processJsondata(args)
 		end
 		local template_has_infobox = (template ~= nil and string.find(template, 'class="info_box"') ~= nil and string.find(template, '@renderInfoBox') == nil)
 		-- render auto-generated infobox when template has no full infobox table, no template exists, or template opts in via @renderInfoBox marker
-		if (not template_has_infobox and mode == p.mode.header) then
+		if (not template_has_infobox and mode == p.mode.header and renderMode ~= "tree") then
 			local ignore_properties = {[p.keys.category]=true} -- don't render type/category on every subclass
 			for j, subcategory in ipairs(schema_res.visited) do
 				if j > i then
