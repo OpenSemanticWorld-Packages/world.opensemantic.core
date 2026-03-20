@@ -1,0 +1,7 @@
+Exact ontology match:
+
+* {{Template:Viewer/Link|page=|url=https://w3id.org/pmd/co/ValueObject|label=https://w3id.org/pmd/co/ValueObject}}
+
+Close ontology matches: 
+
+* {{Template:Viewer/Link|page=|url=https://www.w3.org/TR/vocab-data-cube|label=https://www.w3.org/TR/vocab-data-cube}}

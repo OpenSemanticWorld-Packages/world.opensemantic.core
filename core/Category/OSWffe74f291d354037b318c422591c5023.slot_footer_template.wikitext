@@ -1,0 +1,9 @@
+== Usage ==
+
+{{#ask: [[HasCharacteristic::{{FULLPAGENAME}}]]
+|?Display_title_of=Name
+|?-Has_subobject=Parent (property of)
+|?HasDescription=Description
+|format=table
+|default=No usage found
+}}

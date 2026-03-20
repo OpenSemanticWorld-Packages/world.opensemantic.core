@@ -1,0 +1,30 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "93ccae36-2435-42ce-ac6c-951450a81d47",
+    "label": [
+        {
+            "text": "Characteristic",
+            "lang": "en"
+        },
+        {
+            "text": "Charakteristik",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Elementary building block for object data schemas. Can inherit, reuse and/or define custom properties from other Characteristcs. Properties can have literal values or other complex values (objects) described by other Characteristics. ",
+            "lang": "en"
+        },
+        {
+            "text": "Elementarer Baustein für Objekt-Datenschema. Kann Attribute von anderen Charakteristiken erben, übernehmen und/oder eigene definieren. Attribute können als Werte sowohl Literale als auch komplexe Objekte haben die von anderen Charakteristiken beschrieben werden.  ",
+            "lang": "de"
+        }
+    ],
+    "name": "Characteristic",
+    "metaclass": [
+        "Category:OSWffe74f291d354037b318c422591c5023"
+    ]
+}

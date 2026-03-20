@@ -1,0 +1,24 @@
+{
+    "type": [
+        "Category:OSWffe74f291d354037b318c422591c5023"
+    ],
+    "subclass_of": [
+        "Category:OSW93ccae36243542ceac6c951450a81d47"
+    ],
+    "characteristics": [],
+    "properties": [],
+    "uuid": "6ef70c80-8fb5-4abb-bacb-059c285713d4",
+    "label": [
+        {
+            "text": "Ontology related",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Provides properties for mapping to ontology terms",
+            "lang": "en"
+        }
+    ],
+    "name": "OntologyRelated"
+}

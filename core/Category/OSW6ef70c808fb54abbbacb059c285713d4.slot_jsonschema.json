@@ -1,0 +1,75 @@
+{
+    "@context": [
+        "/wiki/Category:OSW93ccae36243542ceac6c951450a81d47?action=raw&slot=jsonschema",
+        {
+            "exact_ontology_match": "owl:sameAs",
+            "exact_ontology_match*": "skos:exactMatch",
+            "exact_ontology_match**": "Property:Equivalent_URI",
+            "exact_ontology_match***": "Property:HasExactOntologyMatch",
+            "close_ontology_match": "skos:closeMatch",
+            "close_ontology_match*": "Property:HasCloseOntologyMatch"
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSW93ccae36243542ceac6c951450a81d47?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "6ef70c80-8fb5-4abb-bacb-059c285713d4",
+    "title": "OntologyRelated",
+    "title*": {
+        "en": "Ontology related"
+    },
+    "description": "Provides properties for mapping to ontology terms",
+    "description*": {
+        "en": "Provides properties for mapping to ontology terms"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW6ef70c808fb54abbbacb059c285713d4"
+            ]
+        },
+        "exact_ontology_match": {
+            "type": "array",
+            "title": "Ontology Match (Exact)",
+            "description": "Only use this property if all properties defined in the Ontology can be asserted to this object.",
+            "titel*": {
+                "de": "Ontologieübereinstimmung (exakt)"
+            },
+            "description*": {
+                "de": "Verwenden Sie diese Eigenschaft nur, wenn alle in der Ontologie definierten Eigenschaften auf dieses Objekt übertragen werden können."
+            },
+            "items": {
+                "type": "string",
+                "options": {
+                    "compact": "true"
+                }
+            }
+        },
+        "close_ontology_match": {
+            "type": "array",
+            "title": "Ontology Match (Close)",
+            "description": "Use this property if you are not sure if all properties from the ontology can be asserted to this object but the meaning is very close.",
+            "titel*": {
+                "de": "Ontologieübereinstimmung (ähnlich)"
+            },
+            "description*": {
+                "de": "Verwenden Sie diese Eigenschaft, wenn Sie nicht sicher sind, ob alle Eigenschaften aus der Ontologie für dieses Objekt geltend gemacht werden können, die Bedeutung aber sehr nahe liegt."
+            },
+            "items": {
+                "type": "string",
+                "options": {
+                    "compact": "true"
+                }
+            }
+        }
+    },
+    "defaultProperties": [
+        "type"
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "range": [],
+    "name": "HasRange",
+    "property_type": "Page",
+    "uuid": "660e1548-3bf0-4cc8-878c-e9f426c223bf",
+    "label": [
+        {
+            "text": "Has range",
+            "lang": "en"
+        },
+        {
+            "text": "hat Wertebereich",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "The category or class that defines the allowed values for this property",
+            "lang": "en"
+        },
+        {
+            "text": "Die Kategorie oder Klasse, die die erlaubten Werte für dieses Attribut definiert",
+            "lang": "de"
+        }
+    ]
+}

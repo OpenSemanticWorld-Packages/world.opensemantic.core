@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.55.0",
+            "version": "0.56.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -218,6 +218,52 @@
                     }
                 },
                 {
+                    "name": "OSW93ccae36243542ceac6c951450a81d47",
+                    "label": "Characteristic",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW93ccae36243542ceac6c951450a81d47.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW93ccae36243542ceac6c951450a81d47.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW93ccae36243542ceac6c951450a81d47.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW93ccae36243542ceac6c951450a81d47.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW93ccae36243542ceac6c951450a81d47.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWffe74f291d354037b318c422591c5023",
+                    "label": "CharacteristicType",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_jsonschema.json"
+                        },
+                        "schema_template": {
+                            "urlPath": "Category/OSWffe74f291d354037b318c422591c5023.slot_schema_template.text"
+                        }
+                    }
+                },
+                {
                     "name": "Item",
                     "label": "Item",
                     "namespace": "NS_CATEGORY",
@@ -237,6 +283,26 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/Item.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW6ef70c808fb54abbbacb059c285713d4",
+                    "label": "OntologyRelated",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW6ef70c808fb54abbbacb059c285713d4.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW6ef70c808fb54abbbacb059c285713d4.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW6ef70c808fb54abbbacb059c285713d4.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW6ef70c808fb54abbbacb059c285713d4.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW6ef70c808fb54abbbacb059c285713d4.slot_jsonschema.json"
                         }
                     }
                 },
@@ -1914,6 +1980,26 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasTypicalProcess.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasRange",
+                    "label": "HasRange",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasRange.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasRange.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasRange.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasRange.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Property/HasRange.slot_jsonschema.json"
                         }
                     }
                 },

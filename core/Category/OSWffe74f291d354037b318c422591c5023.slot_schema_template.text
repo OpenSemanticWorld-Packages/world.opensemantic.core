@@ -1,0 +1,86 @@
+{
+    "@context": [
+    	{{#each subclass_of}}
+        "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}}
+        {{/each}}
+        {{#each characteristics}},
+        "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"
+        {{/each}},{
+        {{#join properties}}
+            {{#if rdf_property}}"{{name}}": "{{rdf_property}}"{{/if}}
+        {{/join}}
+        }
+    ],
+    "allOf": [
+    	{{#each subclass_of}}
+        {"$ref": "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}} }
+        {{/each}}
+        {{#each characteristics}},
+        {"$ref": "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"}
+        {{/each}}
+    ],
+    "type": "object",
+    "uuid": "{{{uuid}}}",
+    "title": "{{{name}}}",
+    "title*": {
+    	{{#each label}}
+        "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
+    	{{/each}}
+    },
+    "description": "{{{description.[0].text}}}",
+    "description*": {
+    	{{#each description}}
+        "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
+    	{{/each}}
+    },
+    "required": [
+        "type"
+        {{#each properties}}
+            {{#if required}},"{{name}}"{{/if}}
+        {{/each}}
+    ],
+    "defaultProperties": [
+        "type"
+        {{#each properties}}
+            {{#if recommended}},"{{name}}"{{/if}}
+        {{/each}}
+    ],
+    "properties": {
+        "type": {
+            "default": ["{{{_page_title}}}"]
+        }
+        {{#each properties}},
+        "{{{name}}}": {
+            {{#if array}}"type": "array", "items": {
+            {{/if}}
+            "title":  "{{{name}}}"
+            {{#if label}}, "title*": {
+            	{{#each label}}
+                "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
+            	{{/each}}
+            }{{/if}}
+            {{#if description}}, "description": "{{{description.[0].text}}}",
+            "description*": {
+            	{{#each description}}
+                "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
+            	{{/each}}
+            }{{/if}}
+            {{#if rdf_property}}, "$ref": "/wiki/{{{rdf_property}}}?action=raw\u0026slot=jsonschema"{{/if}}
+            {{#if characteristic}}, "$ref": "/wiki/{{{characteristic}}}?action=raw\u0026slot=jsonschema"{{/if}}
+            {{#if range}}, "type": "string", "format": "autocomplete", "range": "{{{range}}}"
+            {{else}}{{#if type}}, "type": "{{{type}}}"{{/if}}
+            {{#if format}}, "format": "{{{format}}}"{{/if}}
+            {{/if}}
+            {{#if pattern}}, "pattern": "{{{pattern}}}"{{/if}}
+            {{#if minimum}}, "minimum": {{minimum}}{{/if}}
+            {{#if maximum}}, "maximum": {{maximum}}{{/if}}
+            {{#if exclusive_minimum}}, "exclusiveMinimum": {{exclusive_minimum}}{{/if}}
+            {{#if exclusive_maximum}}, "exclusiveMaximum": {{exclusive_maximum}}{{/if}}
+            {{#if multiple_of}}, "multipleOf": {{multiple_of}}{{/if}}
+            {{#if min_length}}, "minLength": {{min_length}}{{/if}}
+            {{#if max_length}}, "maxLength": {{max_length}}{{/if}}
+            {{#if array}} } {{/if}}
+        }
+    	{{/each}}
+    }
+}

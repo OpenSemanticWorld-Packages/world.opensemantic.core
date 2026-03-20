@@ -3,7 +3,7 @@
         "Category:OSW31a9c96c1f444f84b944d49afbce409b"
     ],
     "global_id": "world.opensemantic.core",
-    "version": "0.54.2",
+    "version": "0.56.0",
     "url": [
         "https://github.com/OpenSemanticWorld-Packages/world.opensemantic.core"
     ],
@@ -32,7 +32,10 @@
         "JsonSchema:WikiFile",
         "Category:Category",
         "Category:Entity",
+        "Category:OSW93ccae36243542ceac6c951450a81d47",
+        "Category:OSWffe74f291d354037b318c422591c5023",
         "Category:Item",
+        "Category:OSW6ef70c808fb54abbbacb059c285713d4",
         "Category:OSW31a9c96c1f444f84b944d49afbce409b",
         "Category:OSWb24f37ada8d043c194e7036df5d86b39",
         "Item:OSW5335efe7928d49619412fe28363b5e8a",
@@ -124,6 +127,7 @@
         "Property:HasTypeRestriction",
         "Property:HasInitDate",
         "Property:HasTypicalProcess",
+        "Property:HasRange",
         "Template:Helper/UI/Tiles/Grid",
         "Template:Helper/UI/Tiles/Tile",
         "Template:Helper/UI/VE/Hidden",
@@ -165,9 +169,9 @@
         }
     ],
     "meta": {
-        "uuid": "3dfa668a-5b15-443e-84a6-a35e1f23be58",
+        "uuid": "061f0e63-aeaa-4ccd-a6b3-f50e3685f7de",
         "change_id": [
-            "779d8edd-3cb2-4565-bcd4-56c58c10cc0f"
+            "0ca28b03-bc28-494f-82ad-fd9049933022"
         ]
     }
 }

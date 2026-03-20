@@ -1,0 +1,56 @@
+{
+    "@context": [
+        {
+            "type": {
+                "@id": "Property:HasType",
+                "@type": "@id"
+            }
+        }
+    ],
+    "type": "object",
+    "uuid": "93ccae36-2435-42ce-ac6c-951450a81d47",
+    "title": "Characteristic",
+    "title*": {
+        "en": "Characteristic",
+        "de": "Charakteristik"
+    },
+    "description": "Elementary building block for object data schemas. Can inherit, reuse and/or define custom properties from other Characteristcs. Properties can have literal values or other complex values (objects) described by other Characteristics. ",
+    "description*": {
+        "en": "Elementary building block for object data schemas. Can inherit, reuse and/or define custom properties from other Characteristcs. Properties can have literal values or other complex values (objects) described by other Characteristics. ",
+        "de": "Elementarer Baustein für Objekt-Datenschema. Kann Attribute von anderen Charakteristiken erben, übernehmen und/oder eigene definieren. Attribute können als Werte sowohl Literale als auch komplexe Objekte haben die von anderen Charakteristiken beschrieben werden.  "
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "title": "Types/Categories",
+            "title*": {
+                "de": "Typen/Kategorien"
+            },
+            "propertyOrder": -1010,
+            "type": "array",
+            "format": "table",
+            "items": {
+                "title": "Type",
+                "title*": {
+                    "de": "Type"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[HasType::Category:Category]]|?Display_title_of=label|?HasImage=image|?HasDescription=description"
+                    }
+                }
+            },
+            "minItems": 1,
+            "default": [
+                "Category:OSW93ccae36243542ceac6c951450a81d47"
+            ],
+            "options": {
+                "hidden": true
+            }
+        }
+    }
+}

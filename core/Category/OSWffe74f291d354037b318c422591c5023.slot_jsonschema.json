@@ -1,0 +1,752 @@
+{
+    "@context": [
+        {
+            "subclass_of": {
+                "@id": "rdfs:subClassOf",
+                "@type": "@id"
+            },
+            "subclass_of*": {
+                "@id": "Property:SubClassOf",
+                "@type": "@id"
+            },
+            "characteristics": {
+                "@id": "Property:HasCharacteristic",
+                "@type": "@id"
+            },
+            "characteristic": {
+                "@id": "Property:HasCharacteristic",
+                "@type": "@id"
+            },
+            "properties": {
+                "@id": "Property:HasProperty",
+                "@type": "@id"
+            }
+        },
+        "/wiki/Category:Entity?action=raw&slot=jsonschema"
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "ffe74f29-1d35-4037-b318-c422591c5023",
+    "title": "CharacteristicType",
+    "title*": {
+        "en": "Characteristic Type",
+        "de": "Charakteristik-Typ"
+    },
+    "description": "A set of properties intended to be used in other characteristic types or classes",
+    "description*": {
+        "en": "A set of properties intended to be used in other characteristic types or classes",
+        "de": "Ein Satz von Eigenschaften zur Nutzung in anderen Charakteristik-Typen oder Klassen"
+    },
+    "required": [
+        "type",
+        "subclass_of",
+        "label"
+    ],
+    "defaultProperties": [
+        "characteristics",
+        "properties"
+    ],
+    "properties": {
+        "type": {
+            "items": {
+                "format": "autocomplete",
+                "subclassof_range": "Category:OSWffe74f291d354037b318c422591c5023",
+                "$comment": "Explicit query because subclassof_range does not include the specified category itself. Includes 5 levels of SubClassOf depth.",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[:Category:OSWffe74f291d354037b318c422591c5023]] OR [[SubClassOf::Category:OSWffe74f291d354037b318c422591c5023]] OR [[SubClassOf.SubClassOf::Category:OSWffe74f291d354037b318c422591c5023]] OR [[SubClassOf.SubClassOf.SubClassOf::Category:OSWffe74f291d354037b318c422591c5023]] OR [[SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWffe74f291d354037b318c422591c5023]] OR [[SubClassOf.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSWffe74f291d354037b318c422591c5023]]"
+                    }
+                }
+            },
+            "default": [
+                "Category:OSWffe74f291d354037b318c422591c5023"
+            ],
+            "options": {
+                "collapsed": true
+            }
+        },
+        "subclass_of": {
+            "title": "Supercategories (is a)",
+            "title*": {
+                "de": "Überkategorien (ist eine)"
+            },
+            "description": "Parent class(es)",
+            "description*": {
+                "de": "Elternklasse(n)"
+            },
+            "options": {
+                "$comment": "should be an $example",
+                "infoText": "A car is a vehicle"
+            },
+            "type": "array",
+            "format": "table",
+            "propertyOrder": -1009,
+            "items": {
+                "title": "Category",
+                "title*": {
+                    "en": "Category",
+                    "de": "Kategorie"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "$comment": "range MetaCharacteristic, subclass_of range Characteristic",
+                "range": "Category:OSWffe74f291d354037b318c422591c5023",
+                "subclassof_range": "Category:OSW93ccae36243542ceac6c951450a81d47"
+            },
+            "default": [
+                "Category:OSW93ccae36243542ceac6c951450a81d47"
+            ],
+            "minItems": 1
+        },
+        "label": {
+            "propertyOrder": -1009
+        },
+        "characteristics": {
+            "title": "Characteristics (mixin)",
+            "title*": {
+                "de": "Charakteristiken (mixin)"
+            },
+            "description": "Include all properties of an existing characteristic without subclassof-relation",
+            "description*": {
+                "de": "Wiederverwendete Schema-Bestandteile ohne starke Elternklassenbeziehung"
+            },
+            "options": {
+                "$comment": "should be an $example",
+                "infoText": "A human has a physical dimension without beeing a physical dimension"
+            },
+            "$example": "",
+            "type": "array",
+            "propertyOrder": -1009,
+            "items": {
+                "title": "Characteristic",
+                "title*": {
+                    "de": "Charakteristik"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "$comment": "range MetaCharacteristic, subclass_of range Characteristic",
+                "range": "Category:OSWffe74f291d354037b318c422591c5023",
+                "subclassof_range": "Category:OSW93ccae36243542ceac6c951450a81d47"
+            }
+        },
+        "properties": {
+            "title": "Own properties",
+            "title*": {
+                "de": "Eigene Attribute"
+            },
+            "description": "Properties that are defined in addition to the ones inherited by superclasses and imported characteristics",
+            "description*": {
+                "de": "Attribute die zusätzlich zu den durch Elternklassen und importierte Charakteristiken geerbten Attributen definiert werden"
+            },
+            "propertyOrder": -1009,
+            "type": "array",
+            "format": "tabs",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} <%#properties%>* <%name%> {{#if: <%rdf_property%> |({{Viewer/Link |page=<%rdf_property%>}}) }}: {{#if: <%characteristic%> |{{Viewer/Link |page=<%characteristic%>}} }} <br> <%/properties%>"
+                }
+            ],
+            "items": {
+                "id": "own_property",
+                "headerTemplate": "{{ i1 }} - {{ self.name }}",
+                "required": [
+                    "uuid",
+                    "name"
+                ],
+                "defaultProperties": [
+                    "rdf_property",
+                    "label",
+                    "description",
+                    "required",
+                    "recommended",
+                    "array"
+                ],
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "format": "uuid",
+                        "options": {
+                            "hidden": "true"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+                        "title": "Name",
+                        "description": "Technical name / keyword. Should be lowercase without spaces and special chars except underscore",
+                        "description*": {
+                            "de": "Technischer Name / Schlüsselwort. Sollte in Kleinbuchstaben ohne Leerzeichen und Sonderzeichen außer Unterstrich sein."
+                        }
+                    },
+                    "label": {
+                        "type": "array",
+                        "title": "Label(s)",
+                        "title*": {
+                            "de": "Bezeichnung(en)"
+                        },
+                        "description": "At least one label is required.",
+                        "description*": {
+                            "de": "Mindestens eine Bezeichnung ist erforderlich."
+                        },
+                        "format": "table",
+                        "eval_template": [
+                            {
+                                "type": "mustache-wikitext",
+                                "mode": "render",
+                                "$comment": "Displays value according to user language with eng as fallback option. Note: {{=<% %>=}} changes mustache expression from {{..}} to <% %> for mixing with wikitext templates",
+                                "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#label%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/label%> }}"
+                            }
+                        ],
+                        "items": {
+                            "title": "Label",
+                            "title*": {
+                                "de": "Bezeichnung"
+                            },
+                            "eval_template": [
+                                {
+                                    "type": "wikitext",
+                                    "mode": "store",
+                                    "value": "{{{text}}}@{{{lang}}}"
+                                }
+                            ],
+                            "$ref": "/wiki/JsonSchema:Label?action=raw"
+                        },
+                        "minItems": 1,
+                        "options": {
+                            "grid_columns": 12
+                        }
+                    },
+                    "description": {
+                        "title": "Description",
+                        "title*": {
+                            "de": "Beschreibung"
+                        },
+                        "type": "array",
+                        "format": "table",
+                        "eval_template": {
+                            "type": "mustache-wikitext",
+                            "mode": "render",
+                            "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
+                        },
+                        "items": {
+                            "eval_template": [
+                                {
+                                    "type": "wikitext",
+                                    "mode": "store",
+                                    "value": "{{{text}}}@{{{lang}}}"
+                                }
+                            ],
+                            "$ref": "/wiki/JsonSchema:Description?action=raw"
+                        },
+                        "options": {
+                            "grid_columns": 12
+                        }
+                    },
+                    "rdf_property": {
+                        "type": "string",
+                        "title": "Internal vocabulary mapping",
+                        "title*": {
+                            "de": "Interne Vokabular-Zuordnung"
+                        },
+                        "description": "Maps a property keyword to an internal RDF property as defined in JSON-LD. Required to query this information, e.g., for tabular or graph views. Also adopts value range and data type restrictions of the property if defined.",
+                        "description*": {
+                            "de": "Ordnet gemäß JSON-LD einem Eigenschafts-Schlüsselwort ein internes RDF-Property zu. Wird benötigt um diese Information abzufragen, etwa für tabellarische oder Graph-Ansichten. Übernimmt auch die Wertebereichs- und Datentypbeschränkungen des Propertys, falls definiert."
+                        },
+                        "format": "autocomplete",
+                        "range": "Category:Property",
+                        "watch": {
+                            "label": "own_property.label",
+                            "description": "own_property.description",
+                            "range": "own_property.range"
+                        },
+                        "options": {
+                            "autocomplete": {
+                                "query": "[[Category:Property]]|?HasLabel=label|?HasDescription=description|?HasRange=range",
+                                "field_maps": [
+                                    {
+                                        "source_path": "$",
+                                        "template": "[{{#each result.printouts.label}}{\"text\": \"{{{.}}}\"}{{/each}}]",
+                                        "target_path": "$(label)"
+                                    },
+                                    {
+                                        "source_path": "$",
+                                        "$comment": "multilang properties are normalized",
+                                        "template_multilang": "[{{#each result.printouts.description}}{\"text\": \"{{{Text.item.[0]}}}\", \"lang\": \"{{{[Language code].item.[0]}}}\"}{{/each}}]",
+                                        "template": "[{{#each result.printouts.description}}{\"text\": \"{{{.}}}\"}{{/each}}]",
+                                        "target_path": "$(description)"
+                                    },
+                                    {
+                                        "__disabled__source_path": "$..range..fulltext",
+                                        "source_path": "$",
+                                        "template": "[\"{{{result.printouts.range.[0].fulltext}}}\"]",
+                                        "target_path": "$(range)"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "external_rdf_properties": {
+                        "title": "External Vocabulary mapping",
+                        "title*": {
+                            "de": "Externe Vokabular-Zuordnung"
+                        },
+                        "description": "Maps a property keyword to an external RDF property as defined in JSON-LD. Required to exchange data with other systems using those properties in its vocabulary.",
+                        "description*": {
+                            "de": "Ordnet gemäß JSON-LD einem Eigenschafts-Schlüsselwort ein RDF-Property zu. Erforderlich für den Datenaustausch mit anderen Systemen, die diese Properties in ihrem Vokabular verwenden."
+                        },
+                        "type": "array",
+                        "items": {
+                            "$comment": "ToDo: Create context notation with '*'. ToDo: Should validate IRIs (https://schema.org/xxx, schema:xxx, Property:xxx)",
+                            "type": "string",
+                            "options": {
+                                "compact": true
+                            }
+                        }
+                    },
+                    "required": {
+                        "type": "boolean",
+                        "format": "checkbox",
+                        "title": "Required",
+                        "title*": {
+                            "de": "Verpflichtend"
+                        },
+                        "description": "Indicates whether this field is mandatory. Mandatory properties are always displayed in the editor.",
+                        "description*": {
+                            "de": "Gibt an, ob dieses Attribut erforderlich ist."
+                        },
+                        "default": false
+                    },
+                    "recommended": {
+                        "type": "boolean",
+                        "format": "checkbox",
+                        "title": "Recommended",
+                        "title*": {
+                            "de": "Empfohlen"
+                        },
+                        "description": "Indicates whether this field is suggested but not required. If properties are recommended they are displayed by default. Otherwise they must be selected explicitly by the user",
+                        "description*": {
+                            "de": "Gibt an, ob dieses Attribut vorgeschlagen wird aber nicht verpflichend ist. Wenn Attribute empfohlen sind werden sie standardmäßig angezeigt. Andernfalls müssen sie vom Nutzer explizit ausgewählt werden."
+                        },
+                        "default": true
+                    },
+                    "array": {
+                        "type": "boolean",
+                        "format": "checkbox",
+                        "title": "Array",
+                        "title*": {
+                            "de": "Liste"
+                        },
+                        "description": "Indicates whether this property can contain multiple values.",
+                        "description*": {
+                            "de": "Gibt an, ob dieses Attribut mehrere Werte enthalten kann."
+                        },
+                        "default": false
+                    }
+                },
+                "oneOf": [
+                    {
+                        "title": "NumberProperty",
+                        "title*": {
+                            "de": "Zahlenwert-Attribut"
+                        },
+                        "description": "Attribute for numerical values (integers or decimals)",
+                        "description*": {
+                            "de": "Attribut für Zahlenwerte (ganze Zahlen oder Dezimalzahlen)"
+                        },
+                        "required": [
+                            "type"
+                        ],
+                        "defaultProperties": [],
+                        "properties": {
+                            "type": {
+                                "title": "Number Type",
+                                "title*": {
+                                    "de": "Zahlentyp"
+                                },
+                                "description": "Type of number: whole numbers or decimals",
+                                "description*": {
+                                    "de": "Zahlentyp: ganze Zahlen oder Dezimalzahlen"
+                                },
+                                "type": "string",
+                                "enum": [
+                                    "number",
+                                    "integer"
+                                ],
+                                "default": "number",
+                                "options": {
+                                    "enum_titles": [
+                                        "Decimals (number)",
+                                        "Whole numbers (integer)"
+                                    ],
+                                    "enum_titles*": {
+                                        "de": [
+                                            "Dezimalzahlen (number)",
+                                            "Ganze Zahlen (integer)"
+                                        ]
+                                    }
+                                }
+                            },
+                            "minimum": {
+                                "title": "Minimum",
+                                "title*": {
+                                    "de": "Minimum"
+                                },
+                                "description": "Minimum allowed value (inclusive)",
+                                "description*": {
+                                    "de": "Minimal erlaubter Wert (einschließlich)"
+                                },
+                                "type": "number"
+                            },
+                            "maximum": {
+                                "title": "Maximum",
+                                "title*": {
+                                    "de": "Maximum"
+                                },
+                                "description": "Maximum allowed value (inclusive)",
+                                "description*": {
+                                    "de": "Maximal erlaubter Wert (einschließlich)"
+                                },
+                                "type": "number"
+                            },
+                            "exclusive_minimum": {
+                                "title": "Exclusive minimum",
+                                "title*": {
+                                    "de": "Exklusives Minimum"
+                                },
+                                "description": "Value must be strictly greater than this",
+                                "description*": {
+                                    "de": "Wert muss strikt größer als dieser sein"
+                                },
+                                "type": "number"
+                            },
+                            "exclusive_maximum": {
+                                "title": "Exclusive maximum",
+                                "title*": {
+                                    "de": "Exklusives Maximum"
+                                },
+                                "description": "Value must be strictly less than this",
+                                "description*": {
+                                    "de": "Wert muss strikt kleiner als dieser sein"
+                                },
+                                "type": "number"
+                            },
+                            "multiple_of": {
+                                "title": "Multiple of",
+                                "title*": {
+                                    "de": "Vielfaches von"
+                                },
+                                "description": "Value must be a multiple of this number (e.g., step size)",
+                                "description*": {
+                                    "de": "Wert muss ein Vielfaches dieser Zahl sein (z. B. Schrittweite)"
+                                },
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                            },
+                            "enum": {
+                                "title": "Allowed values",
+                                "title*": {
+                                    "de": "Erlaubte Werte"
+                                },
+                                "description": "Predefined list of allowed numerical values",
+                                "description*": {
+                                    "de": "Vordefinierte Liste erlaubter Zahlenwerte"
+                                },
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            },
+                            "default": {
+                                "title": "Default value",
+                                "title*": {
+                                    "de": "Standardwert"
+                                },
+                                "description": "Default value for this property",
+                                "description*": {
+                                    "de": "Standardwert für dieses Attribut"
+                                },
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {
+                        "title": "TextProperty",
+                        "title*": {
+                            "de": "Text-Attribut"
+                        },
+                        "description": "Attribute for textual values",
+                        "description*": {
+                            "de": "Attribut für Textwerte"
+                        },
+                        "required": [
+                            "type"
+                        ],
+                        "defaultProperties": [],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "const": "string",
+                                "default": "string",
+                                "options": {
+                                    "hidden": "true"
+                                }
+                            },
+                            "format": {
+                                "title": "Format",
+                                "title*": {
+                                    "de": "Format"
+                                },
+                                "description": "Display and validation format for string values",
+                                "description*": {
+                                    "de": "Anzeige- und Validierungsformat für Textwerte"
+                                },
+                                "type": "string",
+                                "enum": [
+                                    "date",
+                                    "date-time",
+                                    "time",
+                                    "email",
+                                    "uri",
+                                    "color"
+                                ],
+                                "options": {
+                                    "enum_titles": [
+                                        "Date (date)",
+                                        "Date and time (date-time)",
+                                        "Time (time)",
+                                        "Email (email)",
+                                        "URI (uri)",
+                                        "Color (color)"
+                                    ],
+                                    "enum_titles*": {
+                                        "de": [
+                                            "Datum (date)",
+                                            "Datum und Uhrzeit (date-time)",
+                                            "Uhrzeit (time)",
+                                            "E-Mail (email)",
+                                            "URI (uri)",
+                                            "Farbe (color)"
+                                        ]
+                                    }
+                                }
+                            },
+                            "pattern": {
+                                "title": "Regular expression",
+                                "title*": {
+                                    "de": "Regulärer Ausdruck"
+                                },
+                                "description": "A regular expression pattern the value must match",
+                                "description*": {
+                                    "de": "Ein regulärer Ausdruck, dem der Wert entsprechen muss"
+                                },
+                                "type": "string"
+                            },
+                            "min_length": {
+                                "title": "Minimum length",
+                                "title*": {
+                                    "de": "Mindestlänge"
+                                },
+                                "description": "Minimum number of characters",
+                                "description*": {
+                                    "de": "Mindestanzahl von Zeichen"
+                                },
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "max_length": {
+                                "title": "Maximum length",
+                                "title*": {
+                                    "de": "Maximallänge"
+                                },
+                                "description": "Maximum number of characters",
+                                "description*": {
+                                    "de": "Maximale Anzahl von Zeichen"
+                                },
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "enum": {
+                                "title": "Allowed values",
+                                "title*": {
+                                    "de": "Erlaubte Werte"
+                                },
+                                "description": "Predefined list of allowed values",
+                                "description*": {
+                                    "de": "Vordefinierte Liste erlaubter Werte"
+                                },
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "default": {
+                                "title": "Default value",
+                                "title*": {
+                                    "de": "Standardwert"
+                                },
+                                "description": "Default value for this property",
+                                "description*": {
+                                    "de": "Standardwert für dieses Attribut"
+                                },
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "title": "BooleanProperty",
+                        "title*": {
+                            "de": "Wahrheitswert-Attribut"
+                        },
+                        "description": "Attribute for true/false values",
+                        "description*": {
+                            "de": "Attribut für Wahrheitswerte (wahr/falsch)"
+                        },
+                        "required": [
+                            "type"
+                        ],
+                        "defaultProperties": [],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "const": "boolean",
+                                "default": "boolean",
+                                "options": {
+                                    "hidden": "true"
+                                }
+                            },
+                            "default": {
+                                "title": "Default value",
+                                "title*": {
+                                    "de": "Standardwert"
+                                },
+                                "description": "Default value for this property",
+                                "description*": {
+                                    "de": "Standardwert für dieses Attribut"
+                                },
+                                "type": "boolean",
+                                "format": "checkbox"
+                            }
+                        }
+                    },
+                    {
+                        "title": "LinkProperty",
+                        "title*": {
+                            "de": "Verweis-Attribut"
+                        },
+                        "description": "Attribute that links to another entity via autocomplete",
+                        "description*": {
+                            "de": "Attribut, das über Autovervollständigung auf eine andere Entität verweist"
+                        },
+                        "required": [
+                            "type"
+                        ],
+                        "defaultProperties": [
+                            "range"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "const": "iri",
+                                "default": "iri",
+                                "options": {
+                                    "hidden": "true"
+                                }
+                            },
+                            "range": {
+                                "title": "Autocomplete value range",
+                                "title*": {
+                                    "de": "Wertebereich für Auto-Vervollständigung"
+                                },
+                                "description": "Enables autocomplete support by looking up all elements that are in at least one of the listed categories. Currently only a single category is supported.",
+                                "description*": {
+                                    "de": "Ermöglicht die Unterstützung der automatischen Vervollständigung durch Nachschlagen aller Elemente, die mindestens in einer der aufgeführten Kategorien enthalten sind. Derzeit wird nur eine einzelne Kategorie unterstützt."
+                                },
+                                "type": "array",
+                                "maxItems": 1,
+                                "items": {
+                                    "type": "string",
+                                    "format": "autocomplete",
+                                    "range": "Category:Category",
+                                    "subclassof_range": "Category:Item",
+                                    "options": {
+                                        "autocomplete": {
+                                            "query": "[[:Category:%2B]]"
+                                        }
+                                    }
+                                }
+                            },
+                            "subclassof_range": {
+                                "$comment": "ToDo",
+                                "description": "Allows selecting classes rather than instances",
+                                "description*": {
+                                    "de": "Ermöglicht die Auswahl von Klassen anstelle von Instanzen"
+                                },
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "query": {
+                                "$comment": "This will allow complex expressions like '(A & B) | C' in the future",
+                                "options": {
+                                    "hidden": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "ComplexProperty",
+                        "title*": {
+                            "en": "Complex property",
+                            "de": "Komplexes Attribut"
+                        },
+                        "description": "Attribute that contains a subobject, defined by another characteristic type or class",
+                        "description*": {
+                            "de": "Attribut, das auf ein Subobjekt verweist, das durch eine andere Charakteristik oder Klasse definiert ist"
+                        },
+                        "required": [
+                            "type",
+                            "characteristic"
+                        ],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "const": "object",
+                                "default": "object",
+                                "options": {
+                                    "hidden": "true"
+                                }
+                            },
+                            "characteristic": {
+                                "title": "Characteristic",
+                                "title*": {
+                                    "de": "Charakteristik"
+                                },
+                                "description": "The characteristic or class defining the object this property points to",
+                                "description*": {
+                                    "de": "Die Charakteristik oder Klasse die das Objekt spezifiziert auf die das Attribut zeigt"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "$comment": "range MetaCharacteristic, subclass_of range Characteristic for convenience. Should allow also classes in general.",
+                                "range": "Category:OSWffe74f291d354037b318c422591c5023",
+                                "subclassof_range": "Category:OSW93ccae36243542ceac6c951450a81d47",
+                                "#range": "Category:Category",
+                                "#subclassof_range": "Category:Item"
+                            },
+                            "rdf_property": {
+                                "range": "Category:ObjectProperty",
+                                "default": "Property:HasCharacteristic"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "uuid": "660e1548-3bf0-4cc8-878c-e9f426c223bf",
+    "title": "HasRange",
+    "title*": {
+        "en": "Has range",
+        "de": "hat Wertebereich"
+    },
+    "description": "The category or class that defines the allowed values for this property",
+    "description*": {
+        "en": "The category or class that defines the allowed values for this property",
+        "de": "Die Kategorie oder Klasse, die die erlaubten Werte für dieses Attribut definiert"
+    },
+    "type": "string"
+}
