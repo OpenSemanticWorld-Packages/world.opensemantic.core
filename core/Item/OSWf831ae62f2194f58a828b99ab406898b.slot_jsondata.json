@@ -3,7 +3,7 @@
         "Category:OSW31a9c96c1f444f84b944d49afbce409b"
     ],
     "global_id": "world.opensemantic.core",
-    "version": "0.54.1",
+    "version": "0.54.2",
     "url": [
         "https://github.com/OpenSemanticWorld-Packages/world.opensemantic.core"
     ],
@@ -163,5 +163,11 @@
             "text": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
             "lang": "en"
         }
-    ]
+    ],
+    "meta": {
+        "uuid": "3dfa668a-5b15-443e-84a6-a35e1f23be58",
+        "change_id": [
+            "779d8edd-3cb2-4565-bcd4-56c58c10cc0f"
+        ]
+    }
 }

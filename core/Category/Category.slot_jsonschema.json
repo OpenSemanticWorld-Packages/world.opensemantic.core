@@ -21,11 +21,11 @@
             "version*": "Property:HasVersion",
             "utf8_icon": "Property:HasUtf8Icon"
         },
-        "/wiki/Category:Entity?action=raw&slot=jsonschema"
+        "/wiki/Category:OSWffe74f291d354037b318c422591c5023?action=raw&slot=jsonschema"
     ],
     "allOf": [
         {
-            "$ref": "/wiki/Category:Entity?action=raw&slot=jsonschema"
+            "$ref": "/wiki/Category:OSWffe74f291d354037b318c422591c5023?action=raw&slot=jsonschema"
         }
     ],
     "uuid": "89aafe6d-ae5a-4f29-97ff-df7736d4cab6",
