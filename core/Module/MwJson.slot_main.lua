@@ -421,6 +421,18 @@ function p.processJsondata(args)
 	--mw.log("JSONDATA RENDER")
 	--mw.logObject(jsondata)
 	
+	-- label fallback: eval_template #switch handles user_lang -> en, this picks the first entry in the array
+	local _label_fallback = nil
+	local _original_labels = jsonld[p.keys.label]
+	if _original_labels ~= nil and type(_original_labels) == 'table' then
+		for _, lbl in ipairs(_original_labels) do
+			if type(lbl) == 'table' and lbl["text"] ~= nil then
+				if lbl["lang"] == "en" then _label_fallback = lbl["text"]; break end
+				if _label_fallback == nil then _label_fallback = lbl["text"] end
+			end
+		end
+	end
+
 	local renderMode = "tree"
 	if jsondata.__render_mode__ == "tree" then renderMode = "tree" end
 	if jsondata.__render_mode__ == "table" then renderMode = "table" end
@@ -469,6 +481,9 @@ function p.processJsondata(args)
 			local stripped_jsondata={}
 			for k, v in pairs(jsondata) do
 				if (type(v) ~= 'table') then stripped_jsondata[k] = v end --delete object values, not supported by wiki templates
+			end
+			if (stripped_jsondata[p.keys.label] == nil or stripped_jsondata[p.keys.label] == "") and _label_fallback ~= nil then
+				stripped_jsondata[p.keys.label] = _label_fallback
 			end
 			stripped_jsondata["_details"] = _details
 			local child = frame:newChild{args=stripped_jsondata}
