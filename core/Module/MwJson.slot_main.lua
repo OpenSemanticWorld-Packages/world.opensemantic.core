@@ -482,7 +482,8 @@ function p.processJsondata(args)
 			for k, v in pairs(jsondata) do
 				if (type(v) ~= 'table') then stripped_jsondata[k] = v end --delete object values, not supported by wiki templates
 			end
-			if (stripped_jsondata[p.keys.label] == nil or stripped_jsondata[p.keys.label] == "") and _label_fallback ~= nil then
+			local _lbl = stripped_jsondata[p.keys.label]
+			if (_lbl == nil or (type(_lbl) == "string" and _lbl:match("^%s*$"))) and _label_fallback ~= nil then
 				stripped_jsondata[p.keys.label] = _label_fallback
 			end
 			stripped_jsondata["_details"] = _details
@@ -805,7 +806,7 @@ function p.renderJson(args)
             	do_render = false
             end
         end
-        if (not display_empty and (value == nil or value == "" or (type(value) == "table" and next(value) == nil))) then
+        if (not display_empty and (value == nil or (type(value) == "string" and value:match("^%s*$")) or (type(value) == "table" and next(value) == nil))) then
         	do_render = false
         end
 
