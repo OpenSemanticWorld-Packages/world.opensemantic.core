@@ -715,8 +715,9 @@ function p.renderJson(args)
 	local jsonschema = p.defaultArg(args.jsonschema, nil) -- global schema with allOfs merged
 	local property_definitions = p.defaultArg(args.property_definitions, {}) -- dict schema_key: {property: <smw_property>, ...}
 	local level = p.defaultArg(args.level, 0)
+	local display_empty = p.defaultArg(args.display_empty, false)
     local result = ""
-    
+
     -- Helper function to check if a table is an array (has numeric indices)
     local function isArray(t)
         if type(t) ~= "table" then
@@ -786,10 +787,13 @@ function p.renderJson(args)
         if jsonschema and jsonschema.properties then
             propertySchema = jsonschema.properties[key]
             if p.defaultArgPath(propertySchema, {"options", "hidden"}, false) == true then
-            	do_render = false	
+            	do_render = false
             end
         end
-        
+        if (not display_empty and (value == nil or value == "" or (type(value) == "table" and next(value) == nil))) then
+        	do_render = false
+        end
+
         if do_render then
         	
 	        if isLiteral(value) then
@@ -809,7 +813,7 @@ function p.renderJson(args)
 					    	result = result .. p.renderLiteral({key=key, value=renderQuantity(item), schema=itemSchema, property_definitions=property_definitions, level=level, debug=debug})	
 					    else
 	                		result = result .. p.renderLiteral({key=key, value="", schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
-	                    	result = result .. p.renderJson({jsondata=item, jsonschema=itemSchema, level=level + 1, debug=debug})
+	                    	result = result .. p.renderJson({jsondata=item, jsonschema=itemSchema, level=level + 1, display_empty=display_empty, debug=debug})
 	                    end
 	                end
 	            end
@@ -820,7 +824,7 @@ function p.renderJson(args)
 					result = result .. p.renderLiteral({key=key, value=renderQuantity(value), schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})	
 				else
 	            	result = result .. p.renderLiteral({key=key, value="", schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
-	            	result = result .. p.renderJson({jsondata=value, jsonschema=propertySchema, level=level + 1, debug=debug})
+	            	result = result .. p.renderJson({jsondata=value, jsonschema=propertySchema, level=level + 1, display_empty=display_empty, debug=debug})
 	            end
 	        end
 	   end
