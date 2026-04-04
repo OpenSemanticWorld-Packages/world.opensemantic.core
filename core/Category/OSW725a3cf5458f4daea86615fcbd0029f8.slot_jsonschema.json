@@ -1,0 +1,267 @@
+{
+    "@context": [
+        "/wiki/Category:Category?action=raw&slot=jsonschema",
+        {
+            "owl": "http://www.w3.org/2002/07/owl#",
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "iri": {
+                "@id": "@id"
+            },
+            "label": {
+                "@id": "rdfs:label"
+            },
+            "altLabel": {
+                "@id": "skos:altLabel"
+            },
+            "text": {
+                "@id": "@value"
+            },
+            "lang": {
+                "@id": "@language"
+            },
+            "disjointUnionOf": "owl:disjointUnionOf",
+            "disjointWith": "owl:disjointWith",
+            "equivalentClass": "owl:equivalentClass",
+            "unionOf": {
+                "@id": "owl:unionOf",
+                "@container": "@list",
+                "@type": "@id"
+            },
+            "comment": "rdfs:comment",
+            "on_property": {
+                "@id": "owl:onProperty",
+                "@type": "@id"
+            },
+            "some_values_from": {
+                "@id": "owl:someValuesFrom",
+                "@type": "@id"
+            },
+            "domain": {
+                "@id": "rdfs:domain",
+                "@type": "@id"
+            },
+            "range": {
+                "@id": "rdfs:range",
+                "@type": "@id"
+            },
+            "subproperty_of": {
+                "@id": "rdfs:subPropertyOf",
+                "@type": "@id"
+            },
+            "iri*": "Property:Equivalent_URI",
+            "imported_from*": "Property:Imported_from",
+            "restrictions": "rdfs:subClassOf",
+            "restrictions*": "Property:HasRestriction",
+            "on_property*": "Property:HasProperty",
+            "all_values_from": "owl:allValuesFrom",
+            "all_values_from*": "Property:HasObject",
+            "some_values_from*": "Property:HasObject",
+            "has_value": "owl:hasValue",
+            "has_value*": "Property:HasValue",
+            "max_cardinality": "owl:maxCardinality",
+            "min_cardinality": "owl:minCardinality",
+            "cardinality": "owl:cardinality",
+            "_instances": {
+                "@reverse": "Property:Category"
+            },
+            "see_also": {
+                "@id": "rdfs:seeAlso"
+            },
+            "see_also*": "Property:HasUrl",
+            "ontologies": {
+                "@id": "rdfs:isDefinedBy",
+                "@type": "@id"
+            },
+            "ontologies*": {
+                "@id": "Property:IsPartOf",
+                "@type": "@id"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Category?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "725a3cf5-458f-4dae-a866-15fcbd0029f8",
+    "$id": "https://opensemantic.world/OSW725a3cf5458f4daea86615fcbd0029f8/0.1.0",
+    "title": "OwlClass",
+    "title*": {
+        "en": "OWL Class"
+    },
+    "description": "",
+    "description*": {},
+    "required": [
+        "type"
+    ],
+    "defaultProperties": [
+        "ontologies",
+        "restrictions"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW725a3cf5458f4daea86615fcbd0029f8"
+            ]
+        },
+        "subclass_of": {
+            "$comment": "OwlThing",
+            "default": [
+                "Category:OSW379d5a1589c74c82bc0de47938264d00"
+            ],
+            "items": {
+                "range": "Category:OSW725a3cf5458f4daea86615fcbd0029f8",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[HasType.SubClassOf::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[HasType.SubClassOf.SubClassOf::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[HasType.SubClassOf.SubClassOf.SubClassOf::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[HasType.SubClassOf.SubClassOf.SubClassOf.SubClassOf::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]"
+                    }
+                }
+            }
+        },
+        "ontologies": {
+            "type": "array",
+            "title": "Ontologies",
+            "description": "Ontologies that contain this term",
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "$comment": "range is OwlOntology",
+                "range": "Category:OSW662db0a2ad0946148422245f84e82f64",
+                "title": "Ontology"
+            }
+        },
+        "imported_from": {
+            "type": "string",
+            "description": "A prefixed IRI defining this entry as a imported term. In OSW the prefix must be a registered imported ontology.",
+            "title": "Imported from",
+            "example": "schema:Person",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{=<% %>=}} {{#ask: [[:{{FULLPAGENAME}}]] |?Equivalent_URI= |format=plain |mainlabel=-}} <%={{ }}=%>"
+                }
+            ]
+        },
+        "see_also": {
+            "type": "array",
+            "title": "See also",
+            "description": "External reference",
+            "items": {
+                "type": "string",
+                "format": "url",
+                "title": "URL"
+            }
+        },
+        "restrictions": {
+            "title": "Restrictions",
+            "title*": {
+                "en": "Relations"
+            },
+            "description": "Relations of this class to other classes, instances or literals (OWL Restrictions)",
+            "type": "array",
+            "eval_template": [
+                {
+                    "type": "mustache-wikitext",
+                    "mode": "render",
+                    "value": "{{#restrictions}} {{=<% %>=}} {{Viewer/Link <%={{ }}=%> |page={{{on_property}}} {{=<% %>=}} }} <%={{ }}=%> [[:{{{some_values_from}}}{{{all_values_from}}}]]<br>{{/restrictions}}"
+                }
+            ],
+            "items": {
+                "type": "object",
+                "title": "Restriction",
+                "title*": {
+                    "en": "Relation"
+                },
+                "required": [
+                    "uuid",
+                    "rdf_type",
+                    "on_property"
+                ],
+                "properties": {
+                    "uuid": {
+                        "title": "UUID",
+                        "type": "string",
+                        "format": "uuid",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "rdf_type": {
+                        "type": "string",
+                        "default": "owl:Restriction",
+                        "options": {
+                            "hidden": true
+                        }
+                    },
+                    "on_property": {
+                        "type": "string",
+                        "format": "autocomplete",
+                        "range": "Category:ObjectProperty",
+                        "title": "Property",
+                        "description": "Property to use in this relation"
+                    },
+                    "some_values_from": {
+                        "type": "string",
+                        "format": "autocomplete",
+                        "$comment": "Range is other OWL classes",
+                        "range": "Category:OSW725a3cf5458f4daea86615fcbd0029f8",
+                        "title": "Value (Class)",
+                        "description": "Another class which is the value of this relation. Other classes for the same property are allowed.",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "There's no simple query yet for any subclassof OwlClass, so we query 5 level explicit",
+                                "query": "[[HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[SubClassOf.SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]OR [[SubClassOf.SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]OR [[SubClassOf.SubClassOf.SubClassOf.SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]"
+                            }
+                        }
+                    },
+                    "all_values_from": {
+                        "type": "string",
+                        "format": "autocomplete",
+                        "$comment": "Range is other OWL classes",
+                        "range": "Category:OSW725a3cf5458f4daea86615fcbd0029f8",
+                        "title": "Value (Class, strict)",
+                        "description": "Another class which is the value of this relation. No other classes for the same property are allowed.",
+                        "options": {
+                            "autocomplete": {
+                                "$comment": "There's no simple query yet for any subclassof OwlClass, so we query 5 level explicit",
+                                "query": "[[HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]] OR [[SubClassOf.SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]OR [[SubClassOf.SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]OR [[SubClassOf.SubClassOf.SubClassOf.SubClassOf.HasType::Category:OSW725a3cf5458f4daea86615fcbd0029f8]]"
+                            }
+                        }
+                    },
+                    "has_value": {
+                        "type": "string",
+                        "title": "Value (Instance)",
+                        "format": "autocomplete",
+                        "range": "Category:Item",
+                        "description": "An instance which is the value of this relation"
+                    },
+                    "min_cardinality": {
+                        "type": "integer",
+                        "title": "Min count (Cardinality)",
+                        "description": "Minimal allowed number of relations"
+                    },
+                    "max_cardinality": {
+                        "type": "integer",
+                        "title": "Max count (Cardinality)",
+                        "description": "Maximal allowed number of relations"
+                    },
+                    "cardinality": {
+                        "type": "integer",
+                        "title": "Count (Cardinality)",
+                        "description": "Exact allowed number of relations"
+                    }
+                }
+            }
+        },
+        "_instances": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "range": "Category:Item"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
+        {
+            "url": "Property:HasUrl"
+        }
+    ],
+    "properties": {
+        "NameOfMostBasicConcept": {
+            "type": "string"
+        },
+        "url": {
+            "type": "string"
+        },
+        "type": {
+            "default": [
+                "Category:OSW288260cd0728420c9f40ae1c5fa19111"
+            ]
+        }
+    },
+    "title": "Ontology",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "required": [
+        "type"
+    ],
+    "uuid": "288260cd-0728-420c-9f40-ae1c5fa19111",
+    "title*": {
+        "en": "Ontology",
+        "de": "Ontologie"
+    },
+    "description": "System von Informationen mit logischen Relationen",
+    "description*": {
+        "en": "System von Informationen mit logischen Relationen"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "type": [
+        "Category:Category"
+    ],
+    "subclass_of": [
+        "Category:Category"
+    ],
+    "uuid": "725a3cf5-458f-4dae-a866-15fcbd0029f8",
+    "name": "OwlClass",
+    "label": [
+        {
+            "text": "OWL Class",
+            "lang": "en"
+        }
+    ],
+    "metaclass": [
+        "Category:OSW725a3cf5458f4daea86615fcbd0029f8"
+    ]
+}

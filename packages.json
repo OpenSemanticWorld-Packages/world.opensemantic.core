@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.56.2",
+            "version": "0.57.0",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -421,6 +421,69 @@
                     }
                 },
                 {
+                    "name": "OSW288260cd0728420c9f40ae1c5fa19111",
+                    "label": "Ontology",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW288260cd0728420c9f40ae1c5fa19111.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW288260cd0728420c9f40ae1c5fa19111.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW288260cd0728420c9f40ae1c5fa19111.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW288260cd0728420c9f40ae1c5fa19111.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW288260cd0728420c9f40ae1c5fa19111.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW662db0a2ad0946148422245f84e82f64",
+                    "label": "OwlOntology",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW662db0a2ad0946148422245f84e82f64.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW662db0a2ad0946148422245f84e82f64.slot_footer.wikitext"
+                        },
+                        "footer_template": {
+                            "urlPath": "Category/OSW662db0a2ad0946148422245f84e82f64.slot_footer_template.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW662db0a2ad0946148422245f84e82f64.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW662db0a2ad0946148422245f84e82f64.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW662db0a2ad0946148422245f84e82f64.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSW725a3cf5458f4daea86615fcbd0029f8",
+                    "label": "OwlClass",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSW725a3cf5458f4daea86615fcbd0029f8.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSW725a3cf5458f4daea86615fcbd0029f8.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSW725a3cf5458f4daea86615fcbd0029f8.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSW725a3cf5458f4daea86615fcbd0029f8.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSW725a3cf5458f4daea86615fcbd0029f8.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
                     "name": "OSW5f0dff1c477e45e7ad45e4e247e28f35",
                     "label": "DocumentationExtension",
                     "namespace": "NS_CATEGORY",
@@ -544,69 +607,6 @@
                     }
                 },
                 {
-                    "name": "OSWc11438cd6c814ed1a5a253555ee351b4",
-                    "label": "ProcessType",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_jsonschema.json"
-                        },
-                        "schema_template": {
-                            "urlPath": "Category/OSWc11438cd6c814ed1a5a253555ee351b4.slot_schema_template.text"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWe5aa96bffb1c4d95be7fbd46142ad203",
-                    "label": "Process",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSWe5aa96bffb1c4d95be7fbd46142ad203.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWc5d4829ed2744a219ba027171c75fa1d",
-                    "label": "Task",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSWc5d4829ed2744a219ba027171c75fa1d.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
                     "name": "OSWcbb09a36336740c6a2cd62db9bf647ec",
                     "label": "IntangibleItem",
                     "namespace": "NS_CATEGORY",
@@ -623,49 +623,6 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSWcbb09a36336740c6a2cd62db9bf647ec.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWca99a9bb9ad24386b222d18a73c2af5e",
-                    "label": "PhysicalItemType",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_jsonschema.json"
-                        },
-                        "schema_template": {
-                            "urlPath": "Category/OSWca99a9bb9ad24386b222d18a73c2af5e.slot_schema_template.text"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW37a57741ae2e4dd4b29b1172b6848be8",
-                    "label": "PhysicalItem",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSW37a57741ae2e4dd4b29b1172b6848be8.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSW37a57741ae2e4dd4b29b1172b6848be8.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSW37a57741ae2e4dd4b29b1172b6848be8.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSW37a57741ae2e4dd4b29b1172b6848be8.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSW37a57741ae2e4dd4b29b1172b6848be8.slot_jsonschema.json"
                         }
                     }
                 },
@@ -749,231 +706,6 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSWd02741381aaa4709ae0753a0edc341ce.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW2c32802be59040248c85eda3479d484c",
-                    "label": "StatusEnumeration",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSW2c32802be59040248c85eda3479d484c.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW9725d7a91bab4f1aa68f423e4e9bfcf4",
-                    "label": "TaskStatus",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSW9725d7a91bab4f1aa68f423e4e9bfcf4.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWf474ec34b7df451ea8356134241aef8a",
-                    "label": "Done",
-                    "namespace": "NS_ITEM",
-                    "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Item/OSWf474ec34b7df451ea8356134241aef8a.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWa2b4567ad4874ea1b9adfed19a3d06d1",
-                    "label": "InWork",
-                    "namespace": "NS_ITEM",
-                    "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Item/OSWa2b4567ad4874ea1b9adfed19a3d06d1.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWaa8d29404288446a9f3ec7afa4e2a512",
-                    "label": "ToDo",
-                    "namespace": "NS_ITEM",
-                    "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Item/OSWaa8d29404288446a9f3ec7afa4e2a512.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW65c8449bdd4f4fbcb7f68203a11d6e8f",
-                    "label": "Priority",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSW65c8449bdd4f4fbcb7f68203a11d6e8f.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW8743c7d03c4e46c1bd42bb05e1a082d9",
-                    "label": "High",
-                    "namespace": "NS_ITEM",
-                    "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Item/OSW8743c7d03c4e46c1bd42bb05e1a082d9.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW8d781c35212548fa9b2fccad3765da65",
-                    "label": "Medium",
-                    "namespace": "NS_ITEM",
-                    "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Item/OSW8d781c35212548fa9b2fccad3765da65.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWcaf7db070ad6407babc5245e84d76840",
-                    "label": "Low",
-                    "namespace": "NS_ITEM",
-                    "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Item/OSWcaf7db070ad6407babc5245e84d76840.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWe427aafafbac4262955b9f690a83405d",
-                    "label": "Tool",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_footer.wikitext"
-                        },
-                        "footer_template": {
-                            "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_footer_template.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSWe427aafafbac4262955b9f690a83405d.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSWb97757b46edb430591758662c18d354d",
-                    "label": "Event",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSWb97757b46edb430591758662c18d354d.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "OSW5433f882b9f14dca81994e058c8ab4a0",
-                    "label": "ToolMaintenanceEvent",
-                    "namespace": "NS_CATEGORY",
-                    "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Category/OSW5433f882b9f14dca81994e058c8ab4a0.slot_jsonschema.json"
                         }
                     }
                 },
@@ -1449,300 +1181,10 @@
                     "slots": {}
                 },
                 {
-                    "name": "HasDate",
-                    "label": "HasDate",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasDate.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasDate.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasDate.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasDate.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasStartDate",
-                    "label": "HasStartDate",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasStartDate.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasStartDate.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasStartDate.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasStartDate.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasStartDateAndTime",
-                    "label": "HasStartDateAndTime",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasStartDateAndTime.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasStartDateAndTime.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasStartDateAndTime.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasStartDateAndTime.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasEndDate",
-                    "label": "HasEndDate",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasEndDate.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasEndDate.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasEndDate.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasEndDate.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasEndDateAndTime",
-                    "label": "HasEndDateAndTime",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasEndDateAndTime.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasEndDateAndTime.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasEndDateAndTime.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasEndDateAndTime.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasInput",
-                    "label": "HasInput",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasInput.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasInput.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasInput.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasInput.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasOutput",
-                    "label": "HasOutput",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasOutput.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasOutput.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasOutput.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasOutput.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasParticipant",
-                    "label": "HasParticipant",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasParticipant.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasParticipant.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasParticipant.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasParticipant.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasParticipant.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasTool",
-                    "label": "HasTool",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasTool.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasTool.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasTool.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasTool.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasTool.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
                     "name": "Visible to",
                     "namespace": "SMW_NS_PROPERTY",
                     "urlPath": "Property/Visible%20to.slot_main.wikitext",
                     "slots": {}
-                },
-                {
-                    "name": "HasSerialNumber",
-                    "label": "HasSerialNumber",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasSerialNumber.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasSerialNumber.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasSerialNumber.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasSerialNumber.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasInstructions",
-                    "label": "HasInstructions",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasInstructions.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasInstructions.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasInstructions.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasInstructions.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasInstructions.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasManual",
-                    "label": "HasManual",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasManual.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasManual.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasManual.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasManual.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasTypeNumber",
-                    "label": "HasTypeNumber",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasTypeNumber.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasTypeNumber.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasTypeNumber.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasTypeNumber.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasManufacturer",
-                    "label": "HasManufacturer",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasManufacturer.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasManufacturer.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasManufacturer.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasManufacturer.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasManufacturer.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasDataSheet",
-                    "label": "HasDataSheet",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasDataSheet.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasDataSheet.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasDataSheet.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasDataSheet.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasDataSheet.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasSafetyDataSheet",
-                    "label": "HasSafetyDataSheet",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasSafetyDataSheet.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasSafetyDataSheet.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasSafetyDataSheet.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasSafetyDataSheet.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasSafetyDataSheet.slot_jsonschema.json"
-                        }
-                    }
                 },
                 {
                     "name": "HasGroupname",
@@ -1826,160 +1268,6 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasVersion.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasEvent",
-                    "label": "HasEvent",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasEvent.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasEvent.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasEvent.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasEvent.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasEvent.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasSlot",
-                    "label": "HasSlot",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasSlot.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasSlot.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasSlot.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasSlot.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasSlot.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasOccupant",
-                    "label": "HasOccupant",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasOccupant.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasOccupant.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasOccupant.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasOccupant.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasOccupant.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasTarget",
-                    "label": "HasTarget",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasTarget.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasTarget.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasTarget.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasTarget.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasTarget.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasAction",
-                    "label": "HasAction",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasAction.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasAction.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasAction.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasAction.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasAction.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasTypeRestriction",
-                    "label": "HasTypeRestriction",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasTypeRestriction.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasTypeRestriction.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasTypeRestriction.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasTypeRestriction.slot_jsondata.json"
-                        },
-                        "jsonschema": {
-                            "urlPath": "Property/HasTypeRestriction.slot_jsonschema.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasInitDate",
-                    "label": "HasInitDate",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasInitDate.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasInitDate.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasInitDate.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasInitDate.slot_jsondata.json"
-                        }
-                    }
-                },
-                {
-                    "name": "HasTypicalProcess",
-                    "label": "HasTypicalProcess",
-                    "namespace": "SMW_NS_PROPERTY",
-                    "urlPath": "Property/HasTypicalProcess.slot_main.wikitext",
-                    "slots": {
-                        "footer": {
-                            "urlPath": "Property/HasTypicalProcess.slot_footer.wikitext"
-                        },
-                        "header": {
-                            "urlPath": "Property/HasTypicalProcess.slot_header.wikitext"
-                        },
-                        "jsondata": {
-                            "urlPath": "Property/HasTypicalProcess.slot_jsondata.json"
                         }
                     }
                 },

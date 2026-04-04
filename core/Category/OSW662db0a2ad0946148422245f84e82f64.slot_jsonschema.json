@@ -1,0 +1,161 @@
+{
+    "@context": [
+        "/wiki/Category:OSW288260cd0728420c9f40ae1c5fa19111?action=raw&slot=jsonschema",
+        {
+            "iri": "@id",
+            "dc": "http://purl.org/dc/elements/1.1/",
+            "label": "dc:title",
+            "description": "dc:abstract",
+            "see_also": "rdfs:seeAlso",
+            "is_defined_by": "rdfs:isDefinedBy",
+            "version_info": "owl:versionInfo",
+            "prior_version": {
+                "type": "@id",
+                "@id": "owl:priorVersion"
+            },
+            "backward_compatible_with": {
+                "type": "@id",
+                "@id": "owl:backwardCompatibleWith"
+            },
+            "incompatible_with": {
+                "type": "@id",
+                "@id": "owl:incompatibleWith"
+            },
+            "imports": {
+                "type": "@id",
+                "@id": "owl:imports"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:OSW288260cd0728420c9f40ae1c5fa19111?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "662db0a2-ad09-4614-8422-245f84e82f64",
+    "title": "OwlOntology",
+    "title*": {
+        "en": "OWL Ontology"
+    },
+    "description": "see https://www.w3.org/TR/owl-ref/#Ontology-def",
+    "description*": {
+        "en": "see https://www.w3.org/TR/owl-ref/#Ontology-def"
+    },
+    "required": [
+        "type"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSW662db0a2ad0946148422245f84e82f64"
+            ]
+        },
+        "iri": {
+            "description": "IRI, e. g. 'http://www.example.com/ontology'",
+            "options": {
+                "hidden": false
+            }
+        },
+        "prefix": {
+            "type": "string",
+            "title": "(Prefered) prefix",
+            "description": "Typically the IRI extended with '/' or #', e. g. 'http://www.example.com/ontology#'"
+        },
+        "prefix_name": {
+            "type": "string",
+            "title": "(Preferred) prefix name",
+            "description": "A short representation of the IRI, e. g. 'ex'"
+        },
+        "version_iri": {
+            "type": "string",
+            "title": "Version IRI",
+            "description": "A version IRI, e. g. http://www.example.com/ontology/0.1.0"
+        },
+        "version_info": {
+            "type": "string",
+            "title": "Version info",
+            "description": "A version identifier, e. g. v0.1.0"
+        },
+        "prior_version": {
+            "type": "array",
+            "title": "Prior versions",
+            "description": "Prior versions of this ontology",
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Version",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW662db0a2ad0946148422245f84e82f64"
+                    }
+                }
+            }
+        },
+        "backward_compatible_with": {
+            "type": "array",
+            "title": "Backward compatible",
+            "description": "Prior backward-compatible versions of this ontology",
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Version",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW662db0a2ad0946148422245f84e82f64"
+                    }
+                }
+            }
+        },
+        "incompatible_with": {
+            "type": "array",
+            "title": "Incompatible",
+            "description": "Prior incompatible versions of this ontology",
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Version",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW662db0a2ad0946148422245f84e82f64"
+                    }
+                }
+            }
+        },
+        "imports": {
+            "type": "array",
+            "title": "Imported ontolgies",
+            "description": "OWL imports of other ontologies",
+            "items": {
+                "type": "string",
+                "format": "autocomplete",
+                "title": "Ontology",
+                "options": {
+                    "autocomplete": {
+                        "category": "Category:OSW662db0a2ad0946148422245f84e82f64"
+                    }
+                }
+            }
+        },
+        "see_also": {
+            "type": "array",
+            "title": "Documentation",
+            "description": "A web resource describing this ontology, e. g. a website",
+            "items": {
+                "type": "string",
+                "format": "url",
+                "title": "Link"
+            }
+        },
+        "is_defined_by": {
+            "type": "array",
+            "title": "Source",
+            "description": "A web resource defining this ontology, e. g. a turtle file",
+            "items": {
+                "type": "string",
+                "format": "url",
+                "title": "Link"
+            }
+        }
+    }
+}
