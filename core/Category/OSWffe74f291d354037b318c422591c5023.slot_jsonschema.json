@@ -204,10 +204,6 @@
                             }
                         ],
                         "items": {
-                            "title": "Label",
-                            "title*": {
-                                "de": "Bezeichnung"
-                            },
                             "eval_template": [
                                 {
                                     "type": "wikitext",

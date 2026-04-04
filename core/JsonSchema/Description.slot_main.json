@@ -9,6 +9,9 @@
         }
     },
     "title": "Description",
+    "title*": {
+        "de": "Beschreibung"
+    },
     "id": "description",
     "type": "object",
     "required": [

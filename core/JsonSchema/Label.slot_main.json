@@ -9,6 +9,9 @@
         }
     },
     "title": "Label",
+    "title*": {
+        "de": "Bezeichnung"
+    },
     "id": "label",
     "type": "object",
     "required": [

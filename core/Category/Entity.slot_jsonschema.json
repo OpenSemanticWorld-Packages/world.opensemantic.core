@@ -346,10 +346,6 @@
                 }
             ],
             "items": {
-                "title": "Label",
-                "title*": {
-                    "de": "Bezeichnung"
-                },
                 "eval_template": [
                     {
                         "type": "wikitext",
@@ -422,10 +418,6 @@
                 "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#description%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/description%> }}"
             },
             "items": {
-                "title": "Description",
-                "title*": {
-                    "de": "Beschreibung"
-                },
                 "eval_template": [
                     {
                         "type": "wikitext",
