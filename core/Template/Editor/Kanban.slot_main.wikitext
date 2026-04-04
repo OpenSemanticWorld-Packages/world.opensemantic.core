@@ -1,8 +1,8 @@
-<includeonly>{{Template:Helper/UI/VE/Visible
+{{#ifeq: {{#ask: [[:Category:OSWc5d4829ed2744a219ba027171c75fa1d]] |?HasName= |mainlabel=- |format=plain}} | |<div class="warningbox">'''Kanban Board:''' Required package ''world.opensemantic.base'' is not installed. Please install it via [[Special:Packages]] to use the Task/Kanban functionality.</div>}}<includeonly>{{#ifeq: {{#ask: [[:Category:OSWc5d4829ed2744a219ba027171c75fa1d]] |?HasName= |mainlabel=- |format=plain}} | ||{{Template:Helper/UI/VE/Visible
 |icon=tableAddColumnAfter
 |content=Kanban ''{{{file_name}}}''
 }}
-{{Template:Helper/UI/VE/Hidden 
+{{Template:Helper/UI/VE/Hidden
 |content=<div class="Kanban" style="width: {{#ifeq: {{{full_width|1}}}|1|100%| {{{width|600px}}} }};" data-config='{
   "uuid": "{{{uuid|}}}",
   "name":"{{#if: {{{page_name|}}}|{{#replace:{{#replace: {{{page_name}}}|/|-}}|:|-}}-|}}{{{file_name}}}",
@@ -13,7 +13,7 @@
   }
   {{#if: {{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}|,"query": {"type": "smw", "value": "{{{smw_query|[[IsRelatedTo::{{FULLPAGENAME}}]]}}}"}|}}
 }'></div>
-}}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
+}}}}</includeonly><noinclude>[[Category:OSL/Infrastructure/Template/User]]
 <templatedata>
 {
 	"params": {
