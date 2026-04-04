@@ -13,6 +13,13 @@
         "de": "Beschreibung"
     },
     "id": "description",
+    "eval_template": [
+        {
+            "type": "wikitext",
+            "mode": "store",
+            "value": "{{{text}}}@{{{lang}}}"
+        }
+    ],
     "type": "object",
     "required": [
         "text",

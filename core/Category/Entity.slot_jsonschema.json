@@ -346,13 +346,6 @@
                 }
             ],
             "items": {
-                "eval_template": [
-                    {
-                        "type": "wikitext",
-                        "mode": "store",
-                        "value": "{{{text}}}@{{{lang}}}"
-                    }
-                ],
                 "$ref": "/wiki/JsonSchema:Label?action=raw"
             },
             "minItems": 1
@@ -375,17 +368,11 @@
                 "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#short_name%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/short_name%> }}"
             },
             "items": {
-                "title": "Short name",
+                "title": "ShortName",
                 "title*": {
+                    "en": "Short name",
                     "de": "Kurzname"
                 },
-                "eval_template": [
-                    {
-                        "type": "wikitext",
-                        "mode": "store",
-                        "value": "{{{text}}}@{{{lang}}}"
-                    }
-                ],
                 "$ref": "/wiki/JsonSchema:Label?action=raw"
             }
         },
@@ -418,13 +405,6 @@
                 "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%#description%> | {{#ifeq: <%lang%>|en|#default|<%lang%>}} = <%text%> <%/description%> }}"
             },
             "items": {
-                "eval_template": [
-                    {
-                        "type": "wikitext",
-                        "mode": "store",
-                        "value": "{{{text}}}@{{{lang}}}"
-                    }
-                ],
                 "$ref": "/wiki/JsonSchema:Description?action=raw"
             }
         },

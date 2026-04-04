@@ -204,13 +204,6 @@
                             }
                         ],
                         "items": {
-                            "eval_template": [
-                                {
-                                    "type": "wikitext",
-                                    "mode": "store",
-                                    "value": "{{{text}}}@{{{lang}}}"
-                                }
-                            ],
                             "$ref": "/wiki/JsonSchema:Label?action=raw"
                         },
                         "minItems": 1,
@@ -231,13 +224,6 @@
                             "value": "{{=<% %>=}} {{#switch:{{USERLANGUAGECODE}} <%={{ }}=%> {{#description}} |{{lang}}={{text}} {{/description}} {{=<% %>=}} }}"
                         },
                         "items": {
-                            "eval_template": [
-                                {
-                                    "type": "wikitext",
-                                    "mode": "store",
-                                    "value": "{{{text}}}@{{{lang}}}"
-                                }
-                            ],
                             "$ref": "/wiki/JsonSchema:Description?action=raw"
                         },
                         "options": {

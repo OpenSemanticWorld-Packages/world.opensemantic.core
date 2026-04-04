@@ -13,6 +13,13 @@
         "de": "Bezeichnung"
     },
     "id": "label",
+    "eval_template": [
+        {
+            "type": "wikitext",
+            "mode": "store",
+            "value": "{{{text}}}@{{{lang}}}"
+        }
+    ],
     "type": "object",
     "required": [
         "text",
