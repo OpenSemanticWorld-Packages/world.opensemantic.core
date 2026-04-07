@@ -653,6 +653,36 @@ function p.renderInfoBox(args)
 	return {wikitext=res}
 end
 
+function p.renderArrayItemSummary(args)
+	local frame = mw.getCurrentFrame()
+	local item = p.defaultArg(args.item, {})
+	local index = p.defaultArg(args.index, 0)
+	local schema = p.defaultArg(args.schema, nil)
+
+	-- Try to get a display label: use label if it's a plain string (already language-processed), else fallback to name
+	local display = ""
+	if item.label and type(item.label) == "string" then
+		display = item.label
+	end
+	if display == "" and item.name then
+		display = tostring(item.name)
+	end
+
+	-- Try to get type info: characteristic > type (both may be links if namespace-prefixed)
+	local typeInfo = ""
+	if item.characteristic and type(item.characteristic) == "string" then
+		typeInfo = p.wrapLinkIfNs(item.characteristic)
+	elseif item.type and type(item.type) == "string" then
+		typeInfo = p.wrapLinkIfNs(item.type)
+	end
+
+	if typeInfo ~= "" then
+		return display .. " (" .. typeInfo .. ")"
+	else
+		return display
+	end
+end
+
 function p.renderLiteral(args)
 	local frame = mw.getCurrentFrame()
 	local debug = p.defaultArg(args.debug, false)
@@ -822,14 +852,18 @@ function p.renderJson(args)
 	                -- Empty array or array of literals
 	                result = result .. p.renderLiteral({key=key, value=value, schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
 	            else
-	                -- Array of objects - recurse for each item
+	                -- Array of objects - render header once, then each item underneath
 	                local itemSchema = propertySchema and propertySchema.items
-	                for _, item in ipairs(value) do
+	                -- Single header for the array
+	                result = result .. p.renderLiteral({key=key, value="", schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
+	                for i, item in ipairs(value) do
 						if isQuantityObject(item) then
-					    	result = result .. p.renderLiteral({key=key, value=renderQuantity(item), schema=itemSchema, property_definitions=property_definitions, level=level, debug=debug})	
+					    	result = result .. p.renderLiteral({key=key, value=renderQuantity(item), schema=itemSchema, property_definitions=property_definitions, level=level + 1, debug=debug})
 					    else
-	                		result = result .. p.renderLiteral({key=key, value="", schema=propertySchema, property_definitions=property_definitions, level=level, debug=debug})
-	                    	result = result .. p.renderJson({jsondata=item, jsonschema=itemSchema, level=level + 1, display_empty=display_empty, debug=debug})
+	                		-- Build summary line: "{index} - {label|name} [{characteristic|type}]"
+	                		local summary = p.renderArrayItemSummary({item=item, index=i, schema=itemSchema})
+	                		result = result .. p.renderLiteral({key=tostring(i), value=summary, schema=itemSchema, property_definitions=property_definitions, level=level + 1, debug=debug})
+	                    	result = result .. p.renderJson({jsondata=item, jsonschema=itemSchema, level=level + 2, display_empty=display_empty, debug=debug})
 	                    end
 	                end
 	            end
