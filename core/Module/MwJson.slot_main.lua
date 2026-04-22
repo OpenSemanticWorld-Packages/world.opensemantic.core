@@ -730,16 +730,46 @@ function p.renderLiteral(args)
             return tostring(v)
         end
     end
-    
+
+    -- Check if a single value is a semicolon-separated list of NS:Title entries
+    local expandedValue = nil
+    if not isArray(value) and type(value) == "string" and value:find(';') then
+        -- Only split if entries match <Namespace>:<Title> pattern
+        local parts = p.splitString(value, ';')
+        local allNs = true
+        local cleaned = {}
+        for _, part in ipairs(parts) do
+            part = mw.text.trim(part)
+            if part ~= '' then
+                if not part:match('^[%a]+:.+$') then allNs = false; break end
+                table.insert(cleaned, part)
+            end
+        end
+        if allNs and #cleaned > 0 then expandedValue = cleaned end
+    end
+
     -- Handle different value types
-    if not isArray(value) then
+    if expandedValue then
+        -- Semicolon-separated NS:Title entries rendered as array
+        value = expandedValue
+        if #value == 1 then
+            result = prefix .. " " .. label .. ": " .. valueToString(value[1]) .. "\n"
+        else
+            result = prefix .. " " .. label .. ":\n"
+            local nestedPrefix = string.rep("*", level + 2)
+            for _, item in ipairs(value) do
+                result = result .. nestedPrefix .. " " .. valueToString(item) .. "\n"
+            end
+        end
+
+    elseif not isArray(value) then
         -- Single literal value
         result = prefix .. " " .. label .. ": " .. valueToString(value) .. "\n"
-        
+
     elseif #value == 1 then
         -- Array with single element
         result = prefix .. " " .. label .. ": " .. valueToString(value[1]) .. "\n"
-        
+
     else
         -- Array with multiple elements (length > 1)
         result = prefix .. " " .. label .. ":\n"

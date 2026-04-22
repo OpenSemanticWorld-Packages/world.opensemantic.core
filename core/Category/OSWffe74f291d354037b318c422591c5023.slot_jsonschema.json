@@ -145,7 +145,13 @@
             "propertyOrder": -1009,
             "type": "array",
             "format": "tabs",
-            "eval_template": [
+            "options": {
+                "enable_array_copy": true,
+                "array_copy_ignore": [
+                    "uuid"
+                ]
+            },
+            "Xeval_template": [
                 {
                     "type": "mustache-wikitext",
                     "mode": "render",
@@ -169,10 +175,16 @@
                 ],
                 "properties": {
                     "uuid": {
+                        "title": "UUID",
                         "type": "string",
-                        "format": "uuid",
+                        "$comment": "format uuid field are copied, if not set in copy_ignore",
+                        "format": null,
+                        "dynamic_template": "{{_uuid_}}",
                         "options": {
-                            "hidden": "true"
+                            "hidden": true,
+                            "dynamic_template": {
+                                "override": "empty"
+                            }
                         }
                     },
                     "name": {
