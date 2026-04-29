@@ -1292,6 +1292,23 @@
                     }
                 },
                 {
+                    "name": "HasCharacteristic",
+                    "label": "HasCharacteristic",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasCharacteristic.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasCharacteristic.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasCharacteristic.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasCharacteristic.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
                     "name": "Helper/UI/Tiles/Grid",
                     "namespace": "NS_TEMPLATE",
                     "urlPath": "Template/Helper/UI/Tiles/Grid.slot_main.wikitext",

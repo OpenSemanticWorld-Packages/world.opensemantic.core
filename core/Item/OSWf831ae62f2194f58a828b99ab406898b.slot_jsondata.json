@@ -90,6 +90,7 @@
         "Property:HasUrl",
         "Property:HasVersion",
         "Property:HasRange",
+        "Property:HasCharacteristic",
         "Template:Helper/UI/Tiles/Grid",
         "Template:Helper/UI/Tiles/Tile",
         "Template:Helper/UI/VE/Hidden",
@@ -131,9 +132,9 @@
         }
     ],
     "meta": {
-        "uuid": "3f095845-5a31-4ece-b45c-9995b8c15a33",
+        "uuid": "09c7df0b-64e2-401a-b0d2-c9a5c9e2d783",
         "change_id": [
-            "2a840241-45ef-4929-a823-94c6ae93778e"
+            "362e36a8-b96b-4a52-bad7-b7e986b7668c"
         ]
     }
 }

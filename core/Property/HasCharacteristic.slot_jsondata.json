@@ -1,0 +1,20 @@
+{
+    "name": "HasCharacteristic",
+    "property_type": "Page",
+    "type": [
+        "Category:ObjectProperty"
+    ],
+    "uuid": "52b81b82-c795-44f3-aad2-bfa18e67a287",
+    "label": [
+        {
+            "text": "HasCharacteristic",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "Links an entity to attribute objects",
+            "lang": "en"
+        }
+    ]
+}
