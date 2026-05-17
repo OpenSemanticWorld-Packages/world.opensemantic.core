@@ -20,6 +20,10 @@
             "properties": {
                 "@id": "Property:HasProperty",
                 "@type": "@id"
+            },
+            "metaclass": {
+                "@id": "Property:HasMetaCategory",
+                "@type": "@id"
             }
         },
         "/wiki/Category:Entity?action=raw&slot=jsonschema"
@@ -103,7 +107,25 @@
             "minItems": 1
         },
         "label": {
-            "propertyOrder": -1009
+            "propertyOrder": -1008
+        },
+        "metaclass": {
+            "title": "Metaclasses/-categories",
+            "title*": {
+                "de": "Metaklassen/-kategorien"
+            },
+            "type": "array",
+            "format": "table",
+            "propertyOrder": -1007,
+            "items": {
+                "title": "Metaclass",
+                "title*": {
+                    "de": "Metaklasse"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "subclassof_range": "Category:Category"
+            }
         },
         "characteristics": {
             "title": "Characteristics (mixin)",

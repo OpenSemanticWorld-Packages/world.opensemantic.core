@@ -5,10 +5,6 @@
                 "@id": "owl:equivalentClass",
                 "@type": "@id"
             },
-            "metaclass": {
-                "@id": "Property:HasMetaCategory",
-                "@type": "@id"
-            },
             "subclass_of": {
                 "@id": "rdfs:subClassOf",
                 "@type": "@id"
@@ -96,24 +92,6 @@
             ],
             "options": {
                 "hidden": false
-            }
-        },
-        "metaclass": {
-            "title": "Metaclasses/-categories",
-            "title*": {
-                "de": "Metaklassen/-kategorien"
-            },
-            "type": "array",
-            "format": "table",
-            "propertyOrder": -1008,
-            "items": {
-                "title": "Metaclass",
-                "title*": {
-                    "de": "Metaklasse"
-                },
-                "type": "string",
-                "format": "autocomplete",
-                "subclassof_range": "Category:Category"
             }
         },
         "utf8_icon": {
