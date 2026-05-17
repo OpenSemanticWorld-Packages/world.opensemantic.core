@@ -758,6 +758,27 @@
                             "rdf_property": {
                                 "range": "Category:ObjectProperty",
                                 "default": "Property:HasCharacteristic"
+                            },
+                            "default_unit": {
+                                "title": "Default unit override",
+                                "title*": {
+                                    "de": "Standard-Einheit (Überschreibung)"
+                                },
+                                "description": "Override the default display unit of the referenced characteristic (only relevant for quantity-based characteristics)",
+                                "description*": {
+                                    "de": "Überschreibt die Standard-Anzeigeeinheit der referenzierten Charakteristik (nur relevant für mengenbasierte Charakteristiken)"
+                                },
+                                "type": "string",
+                                "format": "autocomplete",
+                                "watch": {
+                                    "characteristic_w": "own_property.characteristic"
+                                },
+                                "$comment": "Query finds units via the characteristic's SubClassOf chain to the fundamental quantity. Returns empty for non-quantity characteristics (self-guarding).",
+                                "options": {
+                                    "autocomplete": {
+                                        "query": "[[-HasUnit.-HasQuantity::{{$(characteristic_w)}}]][[HasSymbol::like:*{{_user_input}}*]]OR[[-HasUnit.-HasQuantity.-SubClassOf::{{$(characteristic_w)}}]][[HasSymbol::like:*{{_user_input}}*]]OR[[-HasUnit.-HasQuantity.-SubClassOf.-SubClassOf::{{$(characteristic_w)}}]][[HasSymbol::like:*{{_user_input}}*]]OR[[-HasUnit.-HasQuantity.-SubClassOf.-SubClassOf.-SubClassOf::{{$(characteristic_w)}}]][[HasSymbol::like:*{{_user_input}}*]]|?HasSymbol=label"
+                                    }
+                                }
                             }
                         }
                     }

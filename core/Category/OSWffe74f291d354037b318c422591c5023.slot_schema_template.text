@@ -65,8 +65,7 @@
                 "{{{lang}}}": "{{{text}}}"{{#unless @last}},{{/unless}}
             	{{/each}}
             }{{/if}}
-            {{#if rdf_property}}, "$ref": "/wiki/{{{rdf_property}}}?action=raw\u0026slot=jsonschema"{{/if}}
-            {{#if characteristic}}, "$ref": "/wiki/{{{characteristic}}}?action=raw\u0026slot=jsonschema"{{/if}}
+            {{#if characteristic}}{{#if default_unit}}, "allOf": [{"$ref": "/wiki/{{{characteristic}}}?action=raw\u0026slot=jsonschema"}], "properties": {"unit": {"default": "{{{default_unit}}}"}}{{else}}, "$ref": "/wiki/{{{characteristic}}}?action=raw\u0026slot=jsonschema"{{/if}}{{else}}{{#if rdf_property}}, "$ref": "/wiki/{{{rdf_property}}}?action=raw\u0026slot=jsonschema"{{/if}}{{/if}}
             {{#if range}}, "type": "string", "format": "autocomplete", "range": "{{{range}}}"
             {{else}}{{#if type}}, "type": "{{{type}}}"{{/if}}
             {{#if format}}, "format": "{{{format}}}"{{/if}}
