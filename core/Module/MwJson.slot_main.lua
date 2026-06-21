@@ -432,6 +432,14 @@ function p.processJsondata(args)
 			end
 		end
 	end
+	-- apply the fallback to the rendered jsondata so the tree and infobox (which
+	-- render jsondata directly) also show a label when the eval_template #switch
+	-- produced an empty string for the current user language (e.g. en requested
+	-- but the entity only carries a de label)
+	local _rendered_label = jsondata[p.keys.label]
+	if (_rendered_label == nil or (type(_rendered_label) == "string" and _rendered_label:match("^%s*$"))) and _label_fallback ~= nil then
+		jsondata[p.keys.label] = _label_fallback
+	end
 
 	local renderMode = "tree"
 	if jsondata.__render_mode__ == "tree" then renderMode = "tree" end
@@ -591,22 +599,15 @@ function p.renderInfoBox(args)
 				if (type(v) == 'table') then
 					for i,e in pairs(v) do 
 						if (type(e) ~= 'table') then 
-							local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
+							local p_type = p.getPropertyType({context=context, key=k, schema=def})
 							if (p_type == '@id' and p.defaultArgPath(def, {'items', 'type'}, 'unknown') == 'string' and def['eval_template'] == nil) then
 								-- auto-link (OSW-)IDs if no eval_template is present
 								e = string.gsub(e, "Category:", ":Category:") -- make sure category links work
 								e = string.gsub(e, "File:", ":File:") -- do not embedd images but link to them
-								e = "[[" .. e .. "]]" 
-							elseif (p_type == 'xsd:date') then -- formate date with user preferences
-								e = "{{#dateformat:" .. e .. "|ymd}}" 
-							elseif (p_type == 'xsd:dateTime') then -- formate time with user preferences
-								local smw_property = p.defaultArgPath(property_definitions, {k, 'property'})
-								if (smw_property ~= nil) then e = "{{#ask: [[{{FULLPAGENAME}}]]|?" .. smw_property .. "#LOCL#TO= |format=plain |mainlabel=-}}"
-								else 
-									local _, _, date, hours, minutes = string.find(e, "(%S+)[T ](%S+)[:](%S+)[:?]")
-									e = "{{#dateformat:" .. date .. "|ymd}} " .. hours .. ":" .. minutes .. " (UTC)"
-								end
-							elseif (type(v) == 'boolean') then 
+								e = "[[" .. e .. "]]"
+							elseif (p_type == 'xsd:date' or p_type == 'xsd:dateTime') then -- format date/time with user preferences
+								e = p.formatDate(e, p_type, p.defaultArgPath(property_definitions, {k, 'property'}))
+							elseif (type(v) == 'boolean') then
 								if (v) then v = "&#x2705;" else v = "&#x274C;" end -- green check mark or red cross
 							elseif (def['eval_template'] == nil and (string.len(e) > 100) and (string.find(e, "{{") == nil) and (string.find(e, "</") == nil) and (string.find(e, "%[%[") == nil)) then -- no markup, no links
 								e = string.sub(e, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
@@ -618,22 +619,15 @@ function p.renderInfoBox(args)
 						end
 					end
 				else
-					local p_type = p.defaultArgPath(context, {k, '@type'}, '@value')
-					if (p_type == '@id' and p.defaultArgPath(def, {'type'}, 'unknown') == 'string' and def['eval_template'] == nil) then 
+					local p_type = p.getPropertyType({context=context, key=k, schema=def})
+					if (p_type == '@id' and p.defaultArgPath(def, {'type'}, 'unknown') == 'string' and def['eval_template'] == nil) then
 						-- auto-link (OSW-)IDs if no eval_template is present
 						v = string.gsub(v, "Category:", ":Category:") -- make sure category links work
 						v = string.gsub(v, "File:", ":File:") -- do not embedd images but link to them
-						v = "[[" .. v .. "]]" 
-					elseif (p_type == 'xsd:date') then -- formate date & time with user preferences
-						v = "{{#dateformat:" .. v .. "|ymd}}"
-					elseif (p_type == 'xsd:dateTime') then -- formate time with user preferences
-						local smw_property = p.defaultArgPath(property_definitions, {k, 'property'})
-						if (smw_property ~= nil) then v = "{{#ask: [[{{FULLPAGENAME}}]]|?" .. smw_property .. "#LOCL#TO= |format=plain |mainlabel=-}}"
-						else 
-							local _, _, date, hours, minutes = string.find(v, "(%S+)[T ](%S+)[:](%S+)[:?]")
-							v = "{{#dateformat:" .. date .. "|ymd}} " .. hours .. ":" .. minutes .. " (UTC)"
-						end
-					elseif (type(v) == 'boolean') then 
+						v = "[[" .. v .. "]]"
+					elseif (p_type == 'xsd:date' or p_type == 'xsd:dateTime') then -- format date/time with user preferences
+						v = p.formatDate(v, p_type, p.defaultArgPath(property_definitions, {k, 'property'}))
+					elseif (type(v) == 'boolean') then
 						if (v) then v = "&#x2705;" else v = "&#x274C;" end -- green check mark or red cross
 					elseif (def['eval_template'] == nil and (string.len(v) > 100) and (string.find(v, "{{") == nil) and (string.find(v, "</") == nil) and (string.find(v, "%[%[") == nil)) then -- no markup, no links
 						v = string.sub(v, 1, 100) .. "..."; -- limit infobox plain text to max 100 chars
@@ -683,6 +677,52 @@ function p.renderArrayItemSummary(args)
 	end
 end
 
+-- Resolve the effective JSON-LD @type of a property, working for any property
+-- (scalar or array). Falls back from the JSON-LD context @type to the
+-- json-schema format/type, so e.g. date / date-time typed properties are
+-- detected even when no context mapping is present. Returns a JSON-LD type
+-- string such as '@id', 'xsd:date', 'xsd:dateTime' or '@value'.
+function p.getPropertyType(args)
+	local context = p.defaultArg(args.context, nil)
+	local key = p.defaultArg(args.key, nil)
+	local schema = p.defaultArg(args.schema, nil) -- property definition (scalar or array)
+	-- 1) the JSON-LD context @type is most specific and wins whenever it is set
+	if (context ~= nil and key ~= nil) then
+		local p_type = p.defaultArgPath(context, {key, '@type'}, nil)
+		if (p_type ~= nil) then return p_type end
+	end
+	-- 2) fall back to the json-schema format/type (check items for arrays)
+	if (type(schema) == 'table') then
+		local fmt = schema.format or p.defaultArgPath(schema, {'items', 'format'})
+		local t = schema.type or p.defaultArgPath(schema, {'items', 'type'})
+		if (fmt == 'date' or t == 'date') then return 'xsd:date' end
+		if (fmt == 'date-time' or t == 'date-time') then return 'xsd:dateTime' end
+	end
+	return '@value'
+end
+
+-- Format a date / date-time value with the user's date preferences.
+-- smw_property (optional) lets a dateTime render via SMW in the viewer's locale.
+function p.formatDate(value, p_type, smw_property)
+	if (p_type == 'xsd:date') then
+		return "{{#dateformat:" .. value .. "|ymd}}"
+	elseif (p_type == 'xsd:dateTime') then
+		if (smw_property ~= nil) then
+			return "{{#ask: [[{{FULLPAGENAME}}]]|?" .. smw_property .. "#LOCL#TO= |format=plain |mainlabel=-}}"
+		else
+			local _, _, date, hours, minutes = string.find(value, "(%S+)[T ](%S+)[:](%S+)[:?]")
+			-- value without a parsable time part (e.g. a date-only or non-ISO value
+			-- typed as date-time): just format the date, no timezone hint
+			if (date == nil) then return "{{#dateformat:" .. value .. "|ymd}}" end
+			-- no semantic property -> cannot convert to the viewer's timezone, show UTC
+			-- and hint how to enable per-user conversion (SMW #LOCL#TO via a property)
+			return "{{#dateformat:" .. date .. "|ymd}} " .. hours .. ":" .. minutes
+				.. " (UTC){{#info: Specify a semantic property in the schema for time zone conversion |note }}"
+		end
+	end
+	return value
+end
+
 function p.renderLiteral(args)
 	local frame = mw.getCurrentFrame()
 	local debug = p.defaultArg(args.debug, false)
@@ -718,6 +758,11 @@ function p.renderLiteral(args)
         return type(v) == "table" and v[1] ~= nil
     end
     
+    -- Resolve the effective type once (works for scalar and array properties),
+    -- so date / date-time values reuse the same formatter as the infobox.
+    local p_type = p.getPropertyType({schema=schema})
+    local smw_property = p.defaultArgPath(property_definitions, {key, 'property'})
+
     -- Helper function to convert value to string
     local function valueToString(v)
         if type(v) == "boolean" then
@@ -725,6 +770,7 @@ function p.renderLiteral(args)
         elseif type(v) == "nil" then
             return "nil"
         elseif type(v) == "string" then
+        	if (p_type == 'xsd:date' or p_type == 'xsd:dateTime') then return p.formatDate(v, p_type, smw_property) end
         	return p.wrapLinkIfNs(v)
         else
             return tostring(v)
@@ -851,7 +897,12 @@ function p.renderJson(args)
     end
     
     table.sort(sortedKeys, function(a, b)
-        return getPropertyOrder(a) < getPropertyOrder(b)
+        local oa, ob = getPropertyOrder(a), getPropertyOrder(b)
+        -- Primary: schema propertyOrder. Secondary: key name, so properties
+        -- sharing the same (or default) propertyOrder render in a stable,
+        -- reproducible order instead of the arbitrary pairs() iteration order.
+        if oa == ob then return a < b end
+        return oa < ob
     end)
     
     -- Iterate over sorted keys
@@ -1525,38 +1576,54 @@ function p.setNormalizedLabel(properties, use_fallbacks)
 	end
 end
 
+-- Resolve the current user interface language code (e.g. "de", "en").
+-- Cached for the lifetime of the Lua environment (one render = one language).
+function p.getUserLang()
+	if p._userLang == nil then
+		local frame = mw.getCurrentFrame()
+		local lang = mw.text.trim(frame:preprocess('{{USERLANGUAGECODE}}'))
+		if lang == nil or lang == '' then lang = 'en' end
+		p._userLang = lang
+	end
+	return p._userLang
+end
+
+-- Resolve a (multilang) value for the current user language, with fallback to
+-- English and then to the supplied default. Returns a plain string (no
+-- {{#switch}} wikitext), so the value cannot cross-talk with other properties
+-- once the tree/infobox wikitext is preprocessed.
 function p.renderMultilangValue(args)
 	local jsondata = p.defaultArg(args.jsondata, {})
 	local jsonschema = p.defaultArg(args.jsonschema, {})
 	local key = p.defaultArg(args.key, "title")
-	local result = p.defaultArg(args.default, "")
-	local default = p.defaultArg(args.default, nil)
-	-- "title*": {"de": ...}
-	if jsonschema[key] ~= nil then 
-		result = jsonschema[key]
-		default = jsonschema[key] -- default is the English value
+	local fallback = p.defaultArg(args.default, "")
+	local lang = p.getUserLang()
+	local localized = nil -- value matching the user language
+	local en = nil        -- explicit English value (preferred fallback)
+
+	-- plain "title": "..." (language-neutral, treated as English fallback)
+	if type(jsonschema[key]) == 'string' then
+		en = jsonschema[key]
 	end
-	if jsonschema[key .. '*'] ~= nil then -- multilang label with switch
-		result = "{{#switch:{{USERLANGUAGECODE}}"
-		for k,v in pairs(jsonschema[key .. '*']) do 
-			if k == "en" then default = v -- override with explicit English value
-			else result = result .. " |" .. k .. "=" .. v end 
+	-- "title*": {"de": ..., "en": ...}
+	if type(jsonschema[key .. '*']) == 'table' then
+		for k, v in pairs(jsonschema[key .. '*']) do
+			if k == lang then localized = v end
+			if k == "en" then en = v end
 		end
-		if default ~= nil then result = result .. " |#default=" ..  default end
-		result = result .. " }}"
-	end	
+	end
 	-- "some_property": [{"lang": "de", "text": ...}]
-	if jsondata[key] ~= nil then -- multilang label with switch
-		result = "{{#switch:{{USERLANGUAGECODE}}"
-		for k,v in pairs(jsondata[key]) do 
-			if v["lang"] ~= nil and v["text"] ~= nil then
-				if v["lang"] == "en" then default = v["text"]
-				else result = result .. " |" .. v["lang"] .. "=" .. v["text"] end
+	if type(jsondata[key]) == 'table' then
+		for _, v in pairs(jsondata[key]) do
+			if type(v) == 'table' and v["lang"] ~= nil and v["text"] ~= nil then
+				if v["lang"] == lang then localized = v["text"] end
+				if v["lang"] == "en" then en = v["text"] end
 			end
 		end
-		if default ~= nil then result = result .. " |#default=" ..  default end
-		result = result .. " }}"
-	end		
+	end
+
+	local result = localized or en or fallback
+	if result == nil then result = "" end
 	return result
 end
 
