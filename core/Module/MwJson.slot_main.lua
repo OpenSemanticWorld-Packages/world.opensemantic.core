@@ -691,10 +691,16 @@ function p.getPropertyType(args)
 		local p_type = p.defaultArgPath(context, {key, '@type'}, nil)
 		if (p_type ~= nil) then return p_type end
 	end
-	-- 2) fall back to the json-schema format/type (check items for arrays)
+	-- 2) fall back to the json-schema format/type. For arrays the date type/format
+	--    lives on the items schema (the array node only carries the structural
+	--    type 'array'), so read items first and fall back to the schema level -
+	--    which also covers scalars (no items) and a format/type set on the array
+	--    node itself.
 	if (type(schema) == 'table') then
-		local fmt = schema.format or p.defaultArgPath(schema, {'items', 'format'})
-		local t = schema.type or p.defaultArgPath(schema, {'items', 'type'})
+		local node = schema
+		if (schema.type == 'array' and type(schema.items) == 'table') then node = schema.items end
+		local fmt = node.format or schema.format
+		local t = node.type or schema.type
 		if (fmt == 'date' or t == 'date') then return 'xsd:date' end
 		if (fmt == 'date-time' or t == 'date-time') then return 'xsd:dateTime' end
 	end
