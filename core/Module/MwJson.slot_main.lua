@@ -350,6 +350,29 @@ end
 
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Item:OSW7d7193567ea14e4e89b74de88983b718", slot="jsondata"}).json, debug=true, mode="header"}))
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Item:OSWa4da6664aeac466a86b09e6b32a1cb41", slot="jsondata"}).json, debug=true, mode="header"}))
+-- The eval_template #switch renders a multilang field (label, description, ...)
+-- to the current user language and yields an empty string when that language is
+-- missing. This falls back to the en (or first available) text from the original
+-- multilang array (source = [{text, lang}, ...]) so the tree, infobox, subtitle
+-- and template still show a value. Patches jsondata[key] in place when the
+-- rendered value is empty and returns the chosen fallback text (or nil).
+function p.applyMultilangFallback(jsondata, source, key)
+	local fallback = nil
+	if type(source) == 'table' then
+		for _, e in ipairs(source) do
+			if type(e) == 'table' and e["text"] ~= nil then
+				if e["lang"] == "en" then fallback = e["text"]; break end
+				if fallback == nil then fallback = e["text"] end
+			end
+		end
+	end
+	local rendered = jsondata[key]
+	if (rendered == nil or (type(rendered) == "string" and rendered:match("^%s*$"))) and fallback ~= nil then
+		jsondata[key] = fallback
+	end
+	return fallback
+end
+
 -- mw.logObject(p.processJsondata({jsondata=p.loadJson({title="Category:OSWb3022bbf7e7146eb8e6f6e3264f50bbe", slot="jsondata"}).json, debug=true, mode="header", categories={"Category:Category"}}))
 function p.processJsondata(args)
 	local frame = p.defaultArg(args.frame, mw.getCurrentFrame())
@@ -421,25 +444,11 @@ function p.processJsondata(args)
 	--mw.log("JSONDATA RENDER")
 	--mw.logObject(jsondata)
 	
-	-- label fallback: eval_template #switch handles user_lang -> en, this picks the first entry in the array
-	local _label_fallback = nil
-	local _original_labels = jsonld[p.keys.label]
-	if _original_labels ~= nil and type(_original_labels) == 'table' then
-		for _, lbl in ipairs(_original_labels) do
-			if type(lbl) == 'table' and lbl["text"] ~= nil then
-				if lbl["lang"] == "en" then _label_fallback = lbl["text"]; break end
-				if _label_fallback == nil then _label_fallback = lbl["text"] end
-			end
-		end
-	end
-	-- apply the fallback to the rendered jsondata so the tree and infobox (which
-	-- render jsondata directly) also show a label when the eval_template #switch
-	-- produced an empty string for the current user language (e.g. en requested
-	-- but the entity only carries a de label)
-	local _rendered_label = jsondata[p.keys.label]
-	if (_rendered_label == nil or (type(_rendered_label) == "string" and _rendered_label:match("^%s*$"))) and _label_fallback ~= nil then
-		jsondata[p.keys.label] = _label_fallback
-	end
+	-- label / description language fallback: substitute the en (or first available)
+	-- text when the eval_template #switch rendered empty for the user language.
+	-- _label_fallback is reused below for the scalar template args.
+	local _label_fallback = p.applyMultilangFallback(jsondata, jsonld[p.keys.label], p.keys.label)
+	p.applyMultilangFallback(jsondata, jsonld[p.keys.description], p.keys.description)
 
 	local renderMode = "tree"
 	if jsondata.__render_mode__ == "tree" then renderMode = "tree" end

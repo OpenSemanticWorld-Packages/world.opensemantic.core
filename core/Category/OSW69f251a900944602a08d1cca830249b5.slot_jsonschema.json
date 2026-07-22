@@ -40,6 +40,10 @@
             "title*": {
                 "de": "Untergröße von"
             },
+            "description": "The direct parent quantity within the hierarchy of quantities that this property belongs to.",
+            "description*": {
+                "de": "Die direkte Eltern-Messgröße in der Hierarchie von Messgrößen zu der sich dieses Property rechnen lässt."
+            },
             "items": {
                 "type": "string",
                 "format": "autocomplete",
@@ -50,6 +54,10 @@
             "title": "Base quantity",
             "title*": {
                 "de": "Hauptgröße"
+            },
+            "description": "Most general quantity within the hierarchy of quantities that this property belongs to.",
+            "description*": {
+                "de": "Die allgemeinste Messgröße in der Hierarchie von Messgrößen zu der sich dieses Property rechnen lässt."
             },
             "type": "string",
             "format": "autocomplete",

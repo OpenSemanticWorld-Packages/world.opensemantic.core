@@ -3,7 +3,7 @@
         "Category:OSW31a9c96c1f444f84b944d49afbce409b"
     ],
     "global_id": "world.opensemantic.core",
-    "version": "0.58.2",
+    "version": "0.58.3",
     "url": [
         "https://github.com/OpenSemanticWorld-Packages/world.opensemantic.core"
     ],
@@ -132,9 +132,9 @@
         }
     ],
     "meta": {
-        "uuid": "04f8c60f-dddc-426f-9b85-fb82787a229c",
+        "uuid": "7486a8df-32a0-45cc-9109-c5fdeb5f91eb",
         "change_id": [
-            "0edbc64b-8f9e-4746-b10b-014c2393e47e"
+            "2b8f52b7-ea65-4c50-986e-7c0600818b34"
         ]
     }
 }
