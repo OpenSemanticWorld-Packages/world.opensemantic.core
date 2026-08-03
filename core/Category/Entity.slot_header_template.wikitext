@@ -153,6 +153,5 @@
 |<!-- else show nothing -->}}
 </table>
 
-{{#if: {{{description|}}} | <div class="osw-entity-subtitle" style="font-style:italic;">{{{description}}}</div> |<!-- no description: show nothing -->}}
-
+{{#if: {{{description|}}} | <div class="osw-entity-subtitle" style="font-style:italic; margin-bottom:1.5em;">{{{description}}}</div> |<!-- no description: show nothing -->}}
 {{{extensions|}}}
