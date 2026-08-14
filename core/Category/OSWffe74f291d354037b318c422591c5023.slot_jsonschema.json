@@ -195,6 +195,11 @@
                     "recommended",
                     "array"
                 ],
+                "options": {
+                    "copy_ignore": [
+                        "uuid"
+                    ]
+                },
                 "properties": {
                     "uuid": {
                         "title": "UUID",
