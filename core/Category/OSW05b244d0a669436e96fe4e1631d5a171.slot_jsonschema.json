@@ -1,6 +1,17 @@
 {
     "@context": [
-        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema",
+        {
+            "dcat": "http://www.w3.org/ns/dcat#",
+            "download_url": {
+                "@id": "dcat:downloadURL",
+                "@type": "@id"
+            },
+            "access_url": {
+                "@id": "dcat:accessURL",
+                "@type": "@id"
+            }
+        }
     ],
     "allOf": [
         {
@@ -25,6 +36,33 @@
             "default": [
                 "Category:OSW05b244d0a669436e96fe4e1631d5a171"
             ]
+        },
+        "download_url": {
+            "title": "Download URL",
+            "title*": {
+                "de": "Download-URL"
+            },
+            "description": "Direct URL of the file content",
+            "description*": {
+                "de": "Direkte URL des Dateiinhalts"
+            },
+            "type": "string",
+            "format": "url"
+        },
+        "access_url": {
+            "title": "Access URL",
+            "title*": {
+                "de": "Zugriffs-URL"
+            },
+            "description": "Landing page through which the file is reached indirectly",
+            "description*": {
+                "de": "Seite, über die die Datei indirekt erreichbar ist"
+            },
+            "type": "string",
+            "format": "url"
         }
-    }
+    },
+    "defaultProperties": [
+        "download_url"
+    ]
 }

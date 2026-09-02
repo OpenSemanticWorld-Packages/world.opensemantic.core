@@ -1,6 +1,12 @@
 {
     "@context": [
-        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema"
+        "/wiki/Category:OSWff333fd349af4f65a69100405a9e60c7?action=raw&slot=jsonschema",
+        {
+            "local_path": {
+                "@id": "Property:HasLocalPath",
+                "@type": "@id"
+            }
+        }
     ],
     "allOf": [
         {
@@ -25,6 +31,20 @@
             "default": [
                 "Category:OSW3e3f5dd4f71842fbb8f270e511af8031"
             ]
+        },
+        "local_path": {
+            "type": "string",
+            "title": "Local Path",
+            "title*": {
+                "de": "Lokaler Dateipfad"
+            },
+            "description": "The local file path of a file, e.g. S:....",
+            "description*": {
+                "de": "Der Pfad einer lokalen Datei, z.B. S:...."
+            }
         }
-    }
+    },
+    "defaultProperties": [
+        "local_path"
+    ]
 }

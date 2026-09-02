@@ -34,9 +34,9 @@
                 "@id": "Property:HasEditingContext",
                 "@type": "@id"
             },
-            "local_path": {
-                "@id": "Property:HasLocalPath",
-                "@type": "@id"
+            "spdx": "http://spdx.org/rdf/terms#",
+            "checksum": {
+                "@id": "spdx:checksum"
             }
         }
     ],
@@ -124,19 +124,17 @@
                 }
             }
         },
-        "local_path": {
-            "type": "string",
-            "title": "Local Path",
+        "checksum": {
+            "title": "Checksum",
             "title*": {
-                "de": "Lokaler Dateipfad"
+                "de": "Prüfsumme"
             },
-            "description": "The local file path of a file, e.g. S:....",
+            "description": "Checksum of the file content, used to identify identical bytes",
             "description*": {
-                "de": "Der Pfad einer lokalen Datei, z.B. S:...."
-            }
+                "de": "Prüfsumme des Dateiinhalts, dient der Erkennung identischer Bytes"
+            },
+            "type": "string"
         }
     },
-    "defaultProperties": [
-        "local_path"
-    ]
+    "defaultProperties": []
 }

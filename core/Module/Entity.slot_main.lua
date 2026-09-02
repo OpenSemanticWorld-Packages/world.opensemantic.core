@@ -1,21 +1,60 @@
-local p = {} --p stands for package
+-- The Module:Entity shim.
+--
+-- Deployed to the wiki during the migration so that the PHP pipeline can be
+-- switched on and off without editing a single page. The header and footer slot
+-- of every content page calls into this module; it asks whether the PHP
+-- renderer is enabled and, if not, falls through to the untouched legacy code.
+--
+-- $wgMwJsonRenderer ('lua' by default, 'php' to switch over) is therefore a
+-- live rollback switch: flipping it back restores the previous behaviour
+-- everywhere, with no edits and no content migration.
+--
+-- The legacy path below is byte-for-byte the original Module:Entity, kept so
+-- that the fallback is genuinely the old code rather than a reimplementation of
+-- it. Once the parser function lands and the cutover is complete, the whole
+-- module goes away.
+--
+-- Source of record: extensions/MwJson/docs/legacy-lua/Entity.shim.lua
+
+local p = {}
 local mwjson = require('Module:MwJson')
 
+--- True when the PHP pipeline should handle this render.
+-- Guarded so that the module still works on a wiki where the extension is
+-- older than the library, which is what makes deploying this safe.
+local function usePhp()
+	return mw.ext ~= nil
+		and mw.ext.mwjson ~= nil
+		and mw.ext.mwjson.enabled()
+end
+
 function p.process(frame, mode, title, jsondata, jsonschema, template)
+	if usePhp() then
+		return mw.ext.mwjson.render(
+			mode,
+			title,
+			frame.args and frame.args['jsondata'] or nil,
+			frame.args and frame.args['jsonschema'] or nil,
+			frame.args and frame.args['template'] or nil
+		)
+	end
+
+	-- ---------------------------------------------------------------------
+	-- Legacy path, unchanged from the original Module:Entity.
+	-- ---------------------------------------------------------------------
 	local msg = "Debug Output: <br>" --debug msg
 
 	local res = ""
 	if title == nil then title = mw.title.getCurrentTitle().fullText end
 	local namespace = mwjson.splitString(title, ':')[1]
-	
-	if (jsondata == nil and frame.args['jsondata'] ~= nil) then 
-		--jsondata =  mw.text.jsonDecode(mw.text.unstrip(frame.args['jsondata']), mw.text.JSON_TRY_FIXING)--:gsub("<*>", ""):gsub("</nowiki>", "")) 
-		jsondata =  mw.text.jsonDecode(frame.args['jsondata'], mw.text.JSON_TRY_FIXING) -- nowiki-wrapping and mw.text.unstrip does not work
+
+	if (jsondata == nil and frame.args['jsondata'] ~= nil) then
+		jsondata =  mw.text.jsonDecode(frame.args['jsondata'], mw.text.JSON_TRY_FIXING)
 	end
-	if (jsonschema == nil and frame.args['jsonschema'] ~= nil) then 
+	if (jsonschema == nil and frame.args['jsonschema'] ~= nil) then
 		jsonschema =  mw.text.jsonDecode(frame.args['jsonschema'], mw.text.JSON_TRY_FIXING)
 	end
-	if (template == nil and frame.args['template'] ~= nil) then 
+	if (template == nil and frame.args['template'] ~= nil) then
 		template =  mw.text.unstrip(frame.args['template'])
 	end
 	if (jsondata == nil) then
@@ -23,11 +62,9 @@ function p.process(frame, mode, title, jsondata, jsonschema, template)
 		jsondata = jsondata_res.json
 		msg = msg .. jsondata_res.debug_msg
 	end
-	
-	mw.logObject(jsondata)
-	
+
 	local debug = mwjson.defaultArg(jsondata[mwjson.keys.debug], false)
-	
+
 	local process_res = nil
 	if (namespace == "Category") then
 		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.header, categories={"Category:Category"}, recursive=true, debug=debug}) end
@@ -36,13 +73,11 @@ function p.process(frame, mode, title, jsondata, jsonschema, template)
 		if (mode == "header") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.header, debug=debug}) end
 		if (mode == "footer") then process_res = mwjson.processJsondata({frame=frame, jsonschema=jsonschema, template=template, jsondata=jsondata, mode=mwjson.mode.footer, debug=debug}) end
 	end
-	
+
 	res = res .. process_res.wikitext
 	msg = msg .. process_res.debug_msg
 
 	if (debug) then res = msg .. res  end
-	--if (debug) then mw.log(msg) end
-	--mw.logObject(res)
 	return res
 end
 
@@ -54,27 +89,9 @@ function p.footer(frame, title)
 	return p.process(frame, "footer", title)
 end
 
---test: mw.logObject(p.query(mw.getCurrentFrame(), '{"category":"Category:Hardware","manufacturer":"TestM"}'))
 function p.query(frame, jsondata_str)
 	if (jsondata_str == nil) then jsondata_str = frame.args['jsondata'] end
-	--local res = mwjson.processJsondata({frame=frame, jsondata=mw.text.jsonDecode(jsondata_str), mode=mwjson.mode.query}).wikitext
-	return jsondata_str --.. "<br>" .. res
+	return jsondata_str
 end
 
 return p
-
---DEBUG (direct invoke)
---[[
-frame = mw.getCurrentFrame() -- Get a frame object
-title="Item:OSL7d7193567ea14e4e89b74de88983b718"
-newFrame = frame:newChild{ title=title, args = {}}
-mw.log(p.header( newFrame, title ) ) 
---]]
-
---DEBUG (custom schema and template)
---[[
-frame = mw.getCurrentFrame() -- Get a frame object
-title="Item:OSL7d7193567ea14e4e89b74de88983b718"
-newFrame = frame:newChild{ title=title, args = {jsonschema='{"title": "MySchema", "properties": {"name": {"title": "Name"}}}', template="Name: {{{name}}}", jsondata='{"name":"TEST"}'}}
-mw.log(p.header( newFrame, title ) ) 
---]]

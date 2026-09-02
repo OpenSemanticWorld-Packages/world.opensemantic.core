@@ -5,7 +5,7 @@
         {{/each}}
         {{#each characteristics}},
         "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"
-        {{/each}},{
+        {{/each}}{{#if subclass_of}},{{else}}{{#if characteristics}},{{/if}}{{/if}}{
         {{#join properties}}
             {{#if rdf_property}}"{{name}}": "{{rdf_property}}"{{/if}}
         {{/join}}
@@ -13,7 +13,7 @@
     ],
     "allOf": [
     	{{#each subclass_of}}
-        {"$ref": "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"{{#unless @last}},{{/unless}} }
+        {"$ref": "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema" }{{#unless @last}},{{/unless}}
         {{/each}}
         {{#each characteristics}},
         {"$ref": "/wiki/{{{.}}}?action=raw\u0026slot=jsonschema"}
