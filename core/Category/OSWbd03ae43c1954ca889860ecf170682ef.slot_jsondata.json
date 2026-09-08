@@ -1,0 +1,30 @@
+{
+    "subclass_of": [
+        "Category:Item"
+    ],
+    "type": [
+        "Category:Category"
+    ],
+    "uuid": "bd03ae43-c195-4ca8-8986-0ecf170682ef",
+    "label": [
+        {
+            "text": "Page Patch",
+            "lang": "en"
+        },
+        {
+            "text": "Seiten-Patch",
+            "lang": "de"
+        }
+    ],
+    "description": [
+        {
+            "text": "Modifies the slots of other pages at read time, without editing them",
+            "lang": "en"
+        },
+        {
+            "text": "Verändert die Slots anderer Seiten beim Lesen, ohne sie zu bearbeiten",
+            "lang": "de"
+        }
+    ],
+    "name": "PagePatch"
+}

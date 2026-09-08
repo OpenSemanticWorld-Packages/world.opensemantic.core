@@ -1,0 +1,20 @@
+{
+    "name": "HasPatchTarget",
+    "property_type": "Page",
+    "type": [
+        "Category:Property"
+    ],
+    "uuid": "e3d7a1ba-9964-48e1-9478-2c92cabea93d",
+    "label": [
+        {
+            "text": "HasPatchTarget",
+            "lang": "en"
+        }
+    ],
+    "description": [
+        {
+            "text": "A page whose slots a patch modifies at read time",
+            "lang": "en"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
         "Category:OSW31a9c96c1f444f84b944d49afbce409b"
     ],
     "global_id": "world.opensemantic.core",
-    "version": "0.59.0",
+    "version": "0.59.1",
     "url": [
         "https://github.com/OpenSemanticWorld-Packages/world.opensemantic.core"
     ],
@@ -51,6 +51,7 @@
         "Category:OSW3e3f5dd4f71842fbb8f270e511af8031",
         "Category:OSW05b244d0a669436e96fe4e1631d5a171",
         "Category:OSW11a53cdfbdc24524bf8ac435cbf65d9d",
+        "Category:OSWbd03ae43c1954ca889860ecf170682ef",
         "Category:OSWcbb09a36336740c6a2cd62db9bf647ec",
         "Category:OSWa5812d3b5119416c8da1606cbe7054eb",
         "Category:OSW09f6cdd54bc54de786eafced5f675cbe",
@@ -91,6 +92,7 @@
         "Property:HasVersion",
         "Property:HasRange",
         "Property:HasCharacteristic",
+        "Property:HasPatchTarget",
         "Template:Helper/UI/Tiles/Grid",
         "Template:Helper/UI/Tiles/Tile",
         "Template:Helper/UI/VE/Hidden",
@@ -132,9 +134,9 @@
         }
     ],
     "meta": {
-        "uuid": "e78b7fe9-ad19-425b-8924-2035e4f471a3",
+        "uuid": "cd81dd03-1dc3-4dd0-a9d1-05778707656d",
         "change_id": [
-            "9f44148d-db33-4cf0-ad21-64db0e65e5ed"
+            "6ef856d0-368c-4de8-96c9-eca710c1e4af"
         ]
     }
 }

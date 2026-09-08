@@ -1,0 +1,734 @@
+{
+    "@context": [
+        "/wiki/Category:Item?action=raw&slot=jsonschema",
+        {
+            "target": {
+                "@id": "Property:HasPatchTarget",
+                "@type": "@id"
+            }
+        }
+    ],
+    "allOf": [
+        {
+            "$ref": "/wiki/Category:Item?action=raw&slot=jsonschema"
+        }
+    ],
+    "type": "object",
+    "uuid": "bd03ae43-c195-4ca8-8986-0ecf170682ef",
+    "title": "PagePatch",
+    "title*": {
+        "en": "Page Patch",
+        "de": "Seiten-Patch"
+    },
+    "description": "Modifies the slots of the pages listed under Targets, at read time, without editing them. A patched category stays patched wherever it is read, including as part of a subcategory's inheritance chain.",
+    "description*": {
+        "en": "Modifies the slots of the pages listed under Targets, at read time, without editing them. A patched category stays patched wherever it is read, including as part of a subcategory's inheritance chain.",
+        "de": "Verändert die Slots der unter Ziele genannten Seiten beim Lesen, ohne sie zu bearbeiten. Eine gepatchte Kategorie bleibt überall gepatcht, auch innerhalb der Vererbungskette einer Unterkategorie."
+    },
+    "required": [
+        "type",
+        "patchset",
+        "target"
+    ],
+    "defaultProperties": [
+        "patchset",
+        "target",
+        "header_template",
+        "footer_template",
+        "jsonschema",
+        "jsondata"
+    ],
+    "properties": {
+        "type": {
+            "default": [
+                "Category:OSWbd03ae43c1954ca889860ecf170682ef"
+            ]
+        },
+        "patchset": {
+            "title": "Patch sets",
+            "title*": {
+                "de": "Patch-Sets"
+            },
+            "description": "Contexts this patch belongs to. It applies only when the reader asks for one of them: the form editor asks for ui, page rendering for render. Any other name is allowed and stays inert until something asks for it.",
+            "description*": {
+                "de": "Kontexte, zu denen dieser Patch gehört. Er wird nur angewendet, wenn der Leser einen davon anfordert: der Formular-Editor fordert ui an, das Seitenrendering render. Eigene Namen sind erlaubt und bleiben wirkungslos, bis etwas sie anfordert."
+            },
+            "propertyOrder": 100,
+            "type": "array",
+            "format": "table",
+            "uniqueItems": true,
+            "minItems": 1,
+            "default": [
+                "render"
+            ],
+            "items": {
+                "title": "Patch set",
+                "title*": {
+                    "de": "Patch-Set"
+                },
+                "description": "Lower case letters, digits and hyphens, up to 32 characters. For example render, ui, trial-q3.",
+                "description*": {
+                    "de": "Kleinbuchstaben, Ziffern und Bindestriche, bis zu 32 Zeichen. Zum Beispiel render, ui, trial-q3."
+                },
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,31}$",
+                "options": {
+                    "input_width": "200px"
+                }
+            }
+        },
+        "priority": {
+            "title": "Priority",
+            "title*": {
+                "de": "Priorität"
+            },
+            "description": "Order when several patches target the same page: lower runs first. Ties break on page title, so the result is deterministic.",
+            "description*": {
+                "de": "Reihenfolge, wenn mehrere Patches dieselbe Seite betreffen: der niedrigere läuft zuerst. Bei Gleichstand entscheidet der Seitentitel, das Ergebnis ist also eindeutig."
+            },
+            "propertyOrder": 110,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000,
+            "default": 100
+        },
+        "target": {
+            "title": "Targets",
+            "title*": {
+                "de": "Ziele"
+            },
+            "description": "The pages whose slots this patch modifies. Patch a category to affect everything that inherits from it, or a single item to affect only that item.",
+            "description*": {
+                "de": "Die Seiten, deren Slots dieser Patch verändert. Eine Kategorie zu patchen wirkt auf alles, was von ihr erbt, ein einzelnes Item nur auf dieses."
+            },
+            "propertyOrder": 120,
+            "type": "array",
+            "format": "table",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Page",
+                "title*": {
+                    "de": "Seite"
+                },
+                "type": "string",
+                "format": "autocomplete",
+                "options": {
+                    "autocomplete": {
+                        "query": "[[Category:Entity]]OR[[:Category:%2B]]"
+                    }
+                }
+            }
+        },
+        "header_template": {
+            "$ref": "#/$defs/wikitextOps",
+            "title": "Header template operations",
+            "title*": {
+                "de": "Header-Template-Operationen"
+            },
+            "propertyOrder": 200
+        },
+        "footer_template": {
+            "$ref": "#/$defs/wikitextOps",
+            "title": "Footer template operations",
+            "title*": {
+                "de": "Footer-Template-Operationen"
+            },
+            "propertyOrder": 210
+        },
+        "jsonschema": {
+            "$ref": "#/$defs/jsonOps",
+            "title": "Schema operations",
+            "title*": {
+                "de": "Schema-Operationen"
+            },
+            "propertyOrder": 220
+        },
+        "jsondata": {
+            "$ref": "#/$defs/jsonOps",
+            "title": "Data operations",
+            "title*": {
+                "de": "Daten-Operationen"
+            },
+            "propertyOrder": 230
+        }
+    },
+    "$defs": {
+        "wikitextOps": {
+            "description": "Operations applied to this slot in order, each to the result of the previous one.",
+            "description*": {
+                "de": "Operationen, die der Reihe nach auf diesen Slot angewendet werden, jede auf das Ergebnis der vorherigen."
+            },
+            "type": "array",
+            "format": "tabs",
+            "items": {
+                "title": "Operation",
+                "title*": {
+                    "de": "Operation"
+                },
+                "type": "object",
+                "oneOf": [
+                    {
+                        "title": "Set (replace the whole slot)",
+                        "title*": {
+                            "de": "Setzen (ganzen Slot ersetzen)"
+                        },
+                        "description": "Discards the slot's content and uses this instead.",
+                        "description*": {
+                            "de": "Verwirft den Inhalt des Slots und verwendet stattdessen diesen."
+                        },
+                        "required": [
+                            "mode",
+                            "value"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "value"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "set",
+                                "enum": [
+                                    "set"
+                                ],
+                                "default": "set",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "value": {
+                                "title": "New content",
+                                "title*": {
+                                    "de": "Neuer Inhalt"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true,
+                                    "input_height": "200px"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Replace text",
+                        "title*": {
+                            "de": "Text ersetzen"
+                        },
+                        "description": "Exact string match, every occurrence. Prefer this over a regular expression.",
+                        "description*": {
+                            "de": "Exakte Zeichenkette, jedes Vorkommen. Diesem Modus vor einem regulären Ausdruck den Vorzug geben."
+                        },
+                        "required": [
+                            "mode",
+                            "find",
+                            "with"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "find",
+                            "with"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "replace",
+                                "enum": [
+                                    "replace"
+                                ],
+                                "default": "replace",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "find": {
+                                "title": "Find",
+                                "title*": {
+                                    "de": "Suchen"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true
+                                },
+                                "minLength": 1
+                            },
+                            "with": {
+                                "title": "Replace with",
+                                "title*": {
+                                    "de": "Ersetzen durch"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Insert at a placeholder",
+                        "title*": {
+                            "de": "An Platzhalter einfügen"
+                        },
+                        "description": "Inserts at a marker the template already contains, for example <!-- MWJSON:AFTER-GRAPH -->. The safest way to extend a template without restating it.",
+                        "description*": {
+                            "de": "Fügt an einer Markierung ein, die das Template bereits enthält, etwa <!-- MWJSON:AFTER-GRAPH -->. Der sicherste Weg, ein Template zu erweitern, ohne es zu wiederholen."
+                        },
+                        "required": [
+                            "mode",
+                            "at",
+                            "value"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "at",
+                            "value"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "insert",
+                                "enum": [
+                                    "insert"
+                                ],
+                                "default": "insert",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "at": {
+                                "title": "Placeholder",
+                                "title*": {
+                                    "de": "Platzhalter"
+                                },
+                                "description": "An HTML comment marker, for example <!-- MWJSON:AFTER-GRAPH -->",
+                                "description*": {
+                                    "de": "Eine HTML-Kommentar-Markierung, etwa <!-- MWJSON:AFTER-GRAPH -->"
+                                },
+                                "type": "string",
+                                "minLength": 3,
+                                "pattern": "^<!--\\s*[A-Z0-9:_-]+\\s*-->$",
+                                "options": {
+                                    "input_width": "400px",
+                                    "literal": true
+                                }
+                            },
+                            "value": {
+                                "title": "Content to insert",
+                                "title*": {
+                                    "de": "Einzufügender Inhalt"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true,
+                                    "input_height": "150px"
+                                }
+                            },
+                            "before": {
+                                "title": "Insert before the placeholder",
+                                "title*": {
+                                    "de": "Vor dem Platzhalter einfügen"
+                                },
+                                "type": "boolean",
+                                "default": false
+                            }
+                        }
+                    },
+                    {
+                        "title": "Regular expression",
+                        "title*": {
+                            "de": "Regulärer Ausdruck"
+                        },
+                        "description": "Escape hatch. The pattern runs on every render of every target, so a slow pattern is a slow wiki. Prefer Replace text or a placeholder. A pattern that fails or exceeds the backtracking limit is skipped and logged.",
+                        "description*": {
+                            "de": "Notausgang. Das Muster läuft bei jedem Rendern jedes Ziels, ein langsames Muster bedeutet also ein langsames Wiki. Text ersetzen oder ein Platzhalter sind vorzuziehen. Ein Muster, das fehlschlägt oder das Backtracking-Limit überschreitet, wird übersprungen und protokolliert."
+                        },
+                        "required": [
+                            "mode",
+                            "pattern",
+                            "replacement"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "pattern",
+                            "replacement"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "regex",
+                                "enum": [
+                                    "regex"
+                                ],
+                                "default": "regex",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "pattern": {
+                                "title": "Pattern",
+                                "title*": {
+                                    "de": "Muster"
+                                },
+                                "description": "A slash delimited PCRE, for example /^==\\s*Usage\\s*==$/m. The e modifier is rejected.",
+                                "description*": {
+                                    "de": "Ein durch Schrägstriche begrenzter PCRE, etwa /^==\\s*Usage\\s*==$/m. Der Modifikator e wird abgelehnt."
+                                },
+                                "type": "string",
+                                "minLength": 3,
+                                "pattern": "^/.*/[imsxuADSUXJ]*$",
+                                "options": {
+                                    "input_width": "600px",
+                                    "literal": true
+                                }
+                            },
+                            "replacement": {
+                                "title": "Replacement",
+                                "title*": {
+                                    "de": "Ersetzung"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Append",
+                        "title*": {
+                            "de": "Anhängen"
+                        },
+                        "description": "Adds this to the end of the slot.",
+                        "description*": {
+                            "de": "Fügt dies am Ende des Slots an."
+                        },
+                        "required": [
+                            "mode",
+                            "value"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "value"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "append",
+                                "enum": [
+                                    "append"
+                                ],
+                                "default": "append",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "value": {
+                                "title": "Content",
+                                "title*": {
+                                    "de": "Inhalt"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Prepend",
+                        "title*": {
+                            "de": "Voranstellen"
+                        },
+                        "description": "Adds this to the start of the slot.",
+                        "description*": {
+                            "de": "Stellt dies an den Anfang des Slots."
+                        },
+                        "required": [
+                            "mode",
+                            "value"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "value"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "prepend",
+                                "enum": [
+                                    "prepend"
+                                ],
+                                "default": "prepend",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "value": {
+                                "title": "Content",
+                                "title*": {
+                                    "de": "Inhalt"
+                                },
+                                "type": "string",
+                                "format": "textarea",
+                                "options": {
+                                    "input_width": "800px",
+                                    "literal": true
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "jsonOps": {
+            "description": "Operations applied to this slot in order, each to the result of the previous one.",
+            "description*": {
+                "de": "Operationen, die der Reihe nach auf diesen Slot angewendet werden, jede auf das Ergebnis der vorherigen."
+            },
+            "type": "array",
+            "format": "tabs",
+            "items": {
+                "title": "Operation",
+                "title*": {
+                    "de": "Operation"
+                },
+                "type": "object",
+                "oneOf": [
+                    {
+                        "title": "Merge patch (RFC 7396)",
+                        "title*": {
+                            "de": "Merge-Patch (RFC 7396)"
+                        },
+                        "description": "Objects merge recursively, null deletes a key, and any other value including an array replaces it outright. That last rule is what makes it the right tool for shortening a unit list: enum, options.enum_titles and x-enum-varnames are matched by position, so all three have to be replaced together or they stop lining up. See https://www.rfc-editor.org/info/rfc7396",
+                        "description*": {
+                            "de": "Objekte werden rekursiv zusammengeführt, null löscht einen Schlüssel, jeder andere Wert einschließlich eines Arrays ersetzt ihn vollständig. Genau diese letzte Regel macht es zum richtigen Werkzeug, um eine Einheitenliste zu kürzen: enum, options.enum_titles und x-enum-varnames werden über die Position einander zugeordnet, alle drei müssen also gemeinsam ersetzt werden, sonst passen sie nicht mehr zusammen. Siehe https://www.rfc-editor.org/info/rfc7396"
+                        },
+                        "required": [
+                            "mode",
+                            "value"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "value"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "json-merge-patch",
+                                "enum": [
+                                    "json-merge-patch"
+                                ],
+                                "default": "json-merge-patch",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "value": {
+                                "title": "Merge patch",
+                                "title*": {
+                                    "de": "Merge-Patch"
+                                },
+                                "description": "For example, to offer minutes and hours and nothing else: {\"properties\": {\"unit\": {\"enum\": [\"Item:OSWca47b84354ef5eb1947de297c89694a4\", \"Item:OSWa58b950af5d658e7b8bc2e1736817e43\"], \"options\": {\"enum_titles\": [\"min\", \"h\"]}, \"x-enum-varnames\": [\"minute\", \"hour\"]}}}",
+                                "description*": {
+                                    "de": "Zum Beispiel, um nur noch Minuten und Stunden anzubieten: {\"properties\": {\"unit\": {\"enum\": [\"Item:OSWca47b84354ef5eb1947de297c89694a4\", \"Item:OSWa58b950af5d658e7b8bc2e1736817e43\"], \"options\": {\"enum_titles\": [\"min\", \"h\"]}, \"x-enum-varnames\": [\"minute\", \"hour\"]}}}"
+                                },
+                                "type": "string",
+                                "format": "json",
+                                "default": "{}",
+                                "options": {
+                                    "input_height": "260px",
+                                    "literal": true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Overlay (OpenAPI)",
+                        "title*": {
+                            "de": "Overlay (OpenAPI)"
+                        },
+                        "description": "Targets nodes by JSONPath. Use it for surgery a merge patch cannot express, such as taking one unit out of a list by its value rather than restating the whole list. Removing one unit takes one action per parallel array, since enum, options.enum_titles and x-enum-varnames are matched by position. Note that update concatenates arrays rather than replacing them, and that remove cancels update in the same action. See https://spec.openapis.org/overlay/latest.html",
+                        "description*": {
+                            "de": "Adressiert Knoten über JSONPath. Für Eingriffe gedacht, die ein Merge-Patch nicht ausdrücken kann, etwa eine einzelne Einheit über ihren Wert aus einer Liste zu entfernen, statt die ganze Liste erneut anzugeben. Eine Einheit zu entfernen braucht eine Aktion je paralleler Liste, da enum, options.enum_titles und x-enum-varnames über die Position einander zugeordnet werden. Zu beachten: update hängt Arrays an, statt sie zu ersetzen, und remove hebt update in derselben Aktion auf. Siehe https://spec.openapis.org/overlay/latest.html"
+                        },
+                        "required": [
+                            "mode",
+                            "value"
+                        ],
+                        "defaultProperties": [
+                            "mode",
+                            "value"
+                        ],
+                        "properties": {
+                            "mode": {
+                                "type": "string",
+                                "const": "openapi-overlay",
+                                "enum": [
+                                    "openapi-overlay"
+                                ],
+                                "default": "openapi-overlay",
+                                "options": {
+                                    "hidden": true
+                                }
+                            },
+                            "value": {
+                                "title": "Overlay",
+                                "title*": {
+                                    "de": "Overlay"
+                                },
+                                "type": "object",
+                                "required": [
+                                    "overlay",
+                                    "actions"
+                                ],
+                                "defaultProperties": [
+                                    "overlay",
+                                    "actions"
+                                ],
+                                "properties": {
+                                    "overlay": {
+                                        "type": "string",
+                                        "const": "1.0.0",
+                                        "default": "1.0.0",
+                                        "options": {
+                                            "hidden": true
+                                        }
+                                    },
+                                    "info": {
+                                        "title": "Info",
+                                        "title*": {
+                                            "de": "Info"
+                                        },
+                                        "description": "Optional metadata about the overlay itself.",
+                                        "description*": {
+                                            "de": "Optionale Angaben zum Overlay selbst."
+                                        },
+                                        "type": "object",
+                                        "options": {
+                                            "collapsed": true
+                                        },
+                                        "properties": {
+                                            "title": {
+                                                "title": "Title",
+                                                "title*": {
+                                                    "de": "Titel"
+                                                },
+                                                "description": "What this overlay does, for a reader.",
+                                                "description*": {
+                                                    "de": "Was dieses Overlay bewirkt, für Lesende."
+                                                },
+                                                "type": "string"
+                                            },
+                                            "version": {
+                                                "title": "Version",
+                                                "title*": {
+                                                    "de": "Version"
+                                                },
+                                                "description": "Version of this overlay, not of the Overlay specification.",
+                                                "description*": {
+                                                    "de": "Version dieses Overlays, nicht der Overlay-Spezifikation."
+                                                },
+                                                "type": "string",
+                                                "default": "1.0.0"
+                                            }
+                                        }
+                                    },
+                                    "actions": {
+                                        "title": "Actions",
+                                        "title*": {
+                                            "de": "Aktionen"
+                                        },
+                                        "type": "array",
+                                        "format": "tabs",
+                                        "minItems": 1,
+                                        "items": {
+                                            "title": "Action",
+                                            "title*": {
+                                                "de": "Aktion"
+                                            },
+                                            "type": "object",
+                                            "required": [
+                                                "target"
+                                            ],
+                                            "defaultProperties": [
+                                                "target",
+                                                "update"
+                                            ],
+                                            "properties": {
+                                                "target": {
+                                                    "title": "JSONPath target",
+                                                    "title*": {
+                                                        "de": "JSONPath-Ziel"
+                                                    },
+                                                    "description": "A JSONPath starting at $, for example $.properties.unit.enum[?(@ == 'Item:OSWca47b84354ef5eb1947de297c89694a4')]. Address array members by value: an index shifts as soon as anything before it is removed.",
+                                                    "description*": {
+                                                        "de": "Ein JSONPath, der bei $ beginnt, etwa $.properties.unit.enum[?(@ == 'Item:OSWca47b84354ef5eb1947de297c89694a4')]. Array-Elemente über ihren Wert adressieren: ein Index verschiebt sich, sobald etwas davor entfernt wird."
+                                                    },
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "pattern": "^\\$[.\\[].*$",
+                                                    "options": {
+                                                        "input_width": "600px",
+                                                        "literal": true
+                                                    }
+                                                },
+                                                "description": {
+                                                    "title": "Description",
+                                                    "title*": {
+                                                        "de": "Beschreibung"
+                                                    },
+                                                    "type": "string"
+                                                },
+                                                "update": {
+                                                    "title": "Update",
+                                                    "title*": {
+                                                        "de": "Änderung"
+                                                    },
+                                                    "description": "Merged into each targeted node, or appended when the target is an array. For example {\"title\": \"Duration\"} to relabel a field.",
+                                                    "description*": {
+                                                        "de": "Wird in jeden adressierten Knoten eingefügt, oder angehängt, wenn das Ziel ein Array ist. Zum Beispiel {\"title\": \"Dauer\"}, um ein Feld umzubenennen."
+                                                    },
+                                                    "type": "string",
+                                                    "format": "json",
+                                                    "default": "{}",
+                                                    "options": {
+                                                        "input_height": "160px",
+                                                        "literal": true
+                                                    }
+                                                },
+                                                "remove": {
+                                                    "title": "Remove",
+                                                    "title*": {
+                                                        "de": "Entfernen"
+                                                    },
+                                                    "description": "When set, the update above is ignored.",
+                                                    "description*": {
+                                                        "de": "Wenn gesetzt, wird die Änderung oben ignoriert."
+                                                    },
+                                                    "type": "boolean",
+                                                    "default": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -13,7 +13,7 @@
             "globalID": "world.opensemantic.core",
             "label": "OSW Core",
             "description": "Provides core functionalities of OpenSemanticWorld / OpenSemanticLab",
-            "version": "0.59.0",
+            "version": "0.59.1",
             "requiredExtensions": [
                 "OpenSemanticLab",
                 "ExternalData",
@@ -603,6 +603,26 @@
                         },
                         "jsonschema": {
                             "urlPath": "Category/OSW11a53cdfbdc24524bf8ac435cbf65d9d.slot_jsonschema.json"
+                        }
+                    }
+                },
+                {
+                    "name": "OSWbd03ae43c1954ca889860ecf170682ef",
+                    "label": "PagePatch",
+                    "namespace": "NS_CATEGORY",
+                    "urlPath": "Category/OSWbd03ae43c1954ca889860ecf170682ef.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Category/OSWbd03ae43c1954ca889860ecf170682ef.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Category/OSWbd03ae43c1954ca889860ecf170682ef.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Category/OSWbd03ae43c1954ca889860ecf170682ef.slot_jsondata.json"
+                        },
+                        "jsonschema": {
+                            "urlPath": "Category/OSWbd03ae43c1954ca889860ecf170682ef.slot_jsonschema.json"
                         }
                     }
                 },
@@ -1305,6 +1325,23 @@
                         },
                         "jsondata": {
                             "urlPath": "Property/HasCharacteristic.slot_jsondata.json"
+                        }
+                    }
+                },
+                {
+                    "name": "HasPatchTarget",
+                    "label": "HasPatchTarget",
+                    "namespace": "SMW_NS_PROPERTY",
+                    "urlPath": "Property/HasPatchTarget.slot_main.wikitext",
+                    "slots": {
+                        "footer": {
+                            "urlPath": "Property/HasPatchTarget.slot_footer.wikitext"
+                        },
+                        "header": {
+                            "urlPath": "Property/HasPatchTarget.slot_header.wikitext"
+                        },
+                        "jsondata": {
+                            "urlPath": "Property/HasPatchTarget.slot_jsondata.json"
                         }
                     }
                 },
