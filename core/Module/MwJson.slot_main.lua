@@ -535,8 +535,9 @@ function p.processJsondata(args)
 	end
 	
 	-- Todo: Consider moving the category and this block to p.getSemanticProperties with store=true. However, settings categories with @category is only possible for subobjects
+	local display_label = nil
 	if (smw_res ~= nil) then
-		local display_label = p.getDisplayLabel(json_res_store.res, smw_res.properties)
+		display_label = p.getDisplayLabel(json_res_store.res, smw_res.properties)
 		if title.nsText == "Property" then display_label = p.defaultArgPath(json_res_store.res, {p.keys.name}, display_label) end
 
 		if (debug) then msg = msg .. "Store page properties" end
@@ -1011,10 +1012,13 @@ function p.getCategories(args)
 		local allOf = jsonschema[p.keys.allOf]
 		if (allOf ~= nil) then
 			--properties['@category'] = {}
+			-- "allOf" is normally a list of objects, but a schema may write a
+			-- single object instead. pairs() then yields that object's values,
+			-- so `entry` is a string and the loop below raises
+			-- "bad argument #1 to 'next' (table expected, got string)".
+			if (allOf['$ref'] ~= nil) then allOf = {allOf} end
 			for k, entry in pairs(allOf) do
-				local refs = nil
-				if type(entry) == 'table' then refs = entry -- "allOf": [{"$ref": "/wiki/Category:Test?action=raw"}]
-				else refs = {entry} end-- "allOf": {"$ref": "/wiki/Category:Test?action=raw"}
+				if type(entry) ~= 'table' then entry = {} end
 				for p, v in pairs(entry) do
 					if (p == '$ref') then
 						for category in v:gmatch("Category:([^?]+)") do -- e.g. "/wiki/Category:Test?action=raw"
