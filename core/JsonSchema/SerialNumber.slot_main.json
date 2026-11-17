@@ -1,10 +1,12 @@
 {
-    "title": "Serial or batch number",
+    "title": "Serial / batch no.",
     "title*": {
-        "en": "Serial or batch number"
+        "en": "Serial / batch no.",
+        "de": "Serien- / Chargennummer"
     },
-    "description": "Serial or batch number of the item, as specified by the manufacturer or supplier.",
+    "description": "Serial number or batch number of the item, as specified by the manufacturer or supplier.",
     "description*": {
+        "en": "Serial number or batch number of the item, as specified by the manufacturer or supplier.",
         "de": "Serien- oder Chargennummer des Artikels, wie vom Hersteller oder Lieferanten angegeben."
     },
     "type": "string"
